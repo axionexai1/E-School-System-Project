@@ -3,122 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E School System</title>
+    <title>E School System - Login</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
+    <div class="main-wrapper">
+        <div class="container">
 
-        <!-- Left Section -->
-        <div class="left">
+            <!-- Left Section -->
+            <div class="left">
+                <div class="left-top-content">
+                    <!-- School Logo -->
+                    <div class="logo-area">
+                        <img src="logo.jpeg" alt="School Logo" class="school-logo-top">
+                        <span class="logo-text">E School <br><small>System</small></span>
+                    </div>
 
-            <!-- School Logo -->
-            <img src="logo.png" alt="School Logo">
+                    <h1>Smart Learning <br>for a <span>Bright Future</span></h1>
 
-            <h1>E School System</h1>
+                </div>
 
-            <h2>Smart Learning for a Bright Future</h2>
+                <!-- Student/School Picture -->
+                <img src="students.jpeg" alt="Students Image" class="students-img">
+            </div>
 
-            <p>
-                A secure and reliable platform for students,
-                parents and teachers to connect, learn and
-                grow together.
-            </p>
+            <!-- Right Section -->
+            <div class="right">
 
-            <!-- Student Picture -->
-            <img src="students.png" alt="Students Image">
+                <!-- Graduation Icon -->
+                <div class="grad-icon-container">
+                    <div class="grad-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                </div>
+
+                <h1>Welcome Back!</h1>
+                <p class="subtitle">Login to continue to your learning dashboard</p>
+
+                <form>
+                    <!-- Username Input Group -->
+                    <div class="input-group">
+                        <label>Username or Email Address</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-user field-icon"></i>
+                            <input type="text" placeholder="Enter your username or email" required>
+                        </div>
+                    </div>
+
+                    <!-- Password Input Group -->
+                    <div class="input-group">
+                        <label>Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock field-icon"></i>
+                            <input type="password" placeholder="Enter your password" required>
+                            <i class="fa-regular fa-eye-slash toggle-password"></i>
+                        </div>
+                    </div>
+
+                    <!-- Options Container (Remember Me & Terms combined cleanly) -->
+                    <div class="options-container">
+                        <!-- Remember Me -->
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">Remember Me</label>
+                        </div>
+
+                        <!-- Single Terms & Privacy Checkbox -->
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="terms-privacy" required>
+                            <label for="terms-privacy">
+                                I agree to the <a href="#">Terms</a> &amp; <a href="#">Privacy Policy</a> <span class="required-tag">(Required)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Login Button -->
+                    <button type="submit" class="btn-login">
+                        <i class="fa-solid fa-lock"></i> Login to Dashboard
+                    </button>
+                </form>
+
+                <!-- Help Section -->
+                <div class="help-section">
+                    <div class="help-content">
+                        <div class="help-icon">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <div class="help-text">
+                            <h3>Need Help?</h3>
+                            <p>Contact your school for assistance.</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-contact">Contact School <i class="fa-solid fa-angle-right"></i></button>
+                </div>
+
+            </div>
 
         </div>
 
-        <!-- Right Section -->
-        <div class="right">
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-left">
+                <img src="logo.jpeg" alt="E School Logo" class="school-logo">
+                <div>
+                    <h3>E School System</h3>
+                    <p>Empowering Education,<br>Building Futures.</p>
+                </div>
+            </div>
 
-            <!-- Graduation Icon -->
-            <img src="graduation.png" alt="Graduation Icon">
+            <div class="footer-center">
+                
+                <p>Powered by </p>
+                <img src="images/Axionex-logo.jpeg" alt="Axionex Logo" class="axionex-logo">
+                <h4>Axionex AI</h4>
+            </div>
 
-            <h1>Welcome Back!</h1>
-
-            <p>Login to continue to your learning dashboard.</p>
-
-            <form>
-
-                <label>Username or Email Address</label><br>
-                <input type="text" placeholder="Enter your username or email" required>
-
-                <br><br>
-
-                <label>Password</label><br>
-                <input type="password" placeholder="Enter your password" required>
-
-                <br><br>
-
-                <a href="#">Forgot Password?</a>
-
-                <br><br>
-
-                <input type="checkbox" id="remember">
-                <label for="remember">Remember Me</label>
-
-                <br><br>
-
-                <input type="checkbox" id="terms" required>
-                <label for="terms">
-                    I agree to the Terms &amp; Conditions (Required)
-                </label>
-
-                <br><br>
-
-                <input type="checkbox" id="privacy" required>
-                <label for="privacy">
-                    I have read and agree to the Privacy Policy (Required)
-                </label>
-
-                <br><br>
-
-                <button type="submit">
-                    Login to Dashboard
-                </button>
-
-            </form>
-
-            <hr>
-
-            <h3>Need Help?</h3>
-
-            <p>Contact your school for any assistance.</p>
-
-            <button type="button">Contact School</button>
-
-        </div>
-
+            <div class="footer-right">
+                <p>© 2026 E School System. All rights reserved.</p>
+            </div>
+        </footer>
     </div>
-
-    <footer class="footer">
-            <!-- Left Side -->
-    <div class="footer-left">
-        <img src="images/e-school-logo.png" alt="E School Logo" class="school-logo">
-
-        <div>
-            <h3>E School System</h3>
-            <p>Empowering Education,<br>Building Futures.</p>
-        </div>
-    </div>
-
-    <!-- Center Side -->
-    <div class="footer-center">
-        <p>Powered by</p>
-        <img src="images/axionex-logo.png" alt="Axionex Logo" class="axionex-logo">
-    </div>
-
-    <!-- Right Side -->
-    <div class="footer-right">
-        <p>© 2026 E School System. All rights reserved.</p>
-        <p>For under-18 and 18+ users.</p>
-    </div>
-
-
-    </footer>
 
 </body>
 </html>
