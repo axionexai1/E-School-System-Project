@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Software Admin Dashboard</title>
+</head>
+<body>
+
+<h1>Software Admin Dashboard</h1>
+
+<p>Welcome {{ current_user.first_name }}</p>
+
+<a href="{{ url_for('software_admin.profile') }}">Profile</a><br>
+<a href="{{ url_for('software_admin.settings') }}">Settings</a><br>
+<a href="{{ url_for('software_admin.logout') }}">Logout</a>
+<a href="{{ url_for('software_admin.create_school') }}">Create School</a>
+<a href="{{ url_for('software_admin.manage_schools') }}">Manage School</a>
+
+
+</body>
+</html>

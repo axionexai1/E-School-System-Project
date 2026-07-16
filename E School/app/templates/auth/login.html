@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | School Management System</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#f4f6f9;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.container{
+width:100%;
+max-width:420px;
+background:#fff;
+padding:35px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+
+h2{
+text-align:center;
+margin-bottom:25px;
+color:#2c3e50;
+}
+
+.form-group{
+margin-bottom:18px;
+}
+
+label{
+display:block;
+margin-bottom:8px;
+font-weight:bold;
+color:#444;
+}
+
+input{
+width:100%;
+padding:12px;
+border:1px solid #ccc;
+border-radius:6px;
+font-size:15px;
+}
+
+input:focus{
+outline:none;
+border-color:#007bff;
+}
+
+.btn{
+width:100%;
+padding:12px;
+border:none;
+border-radius:6px;
+background:#007bff;
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:.3s;
+}
+
+.btn:hover{
+background:#0056b3;
+}
+
+.flash{
+padding:12px;
+margin-bottom:15px;
+border-radius:5px;
+}
+
+.success{
+background:#d4edda;
+color:#155724;
+}
+
+.danger{
+background:#f8d7da;
+color:#721c24;
+}
+
+.warning{
+background:#fff3cd;
+color:#856404;
+}
+
+.error{
+color:red;
+font-size:14px;
+margin-top:4px;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>School Management System</h2>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="flash {{ category }}">
+{{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<form method="POST">
+
+{{ form.hidden_tag() }}
+
+<div class="form-group">
+
+{{ form.email.label }}
+
+{{ form.email(placeholder="Enter Email") }}
+
+{% for error in form.email.errors %}
+<div class="error">{{ error }}</div>
+{% endfor %}
+
+</div>
+
+<div class="form-group">
+
+{{ form.password.label }}
+
+{{ form.password(placeholder="Enter Password") }}
+
+{% for error in form.password.errors %}
+<div class="error">{{ error }}</div>
+{% endfor %}
+
+</div>
+
+{{ form.submit(class="btn") }}
+
+</form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<table>
+
+    <tr>
+    <th>School Name</th>
+    <th>Code</th>
+    <th>Email</th>
+    <th>City</th>
+    <th>Address</th>
+    </tr>
+    
+{% for school in schools %}
+
+<div class="card shadow-sm mb-3">
+
+<div class="card-body">
+
+<h5 class="fw-bold">
+{{ school.school_name }}
+</h5>
+
+<p>
+{{ school.email }}
+</p>
+
+<p>
+{{ school.phone }}
+</p>
+
+<div class="text-end mt-3">
+
+<a href="{{ url_for('software_admin.school_detail', school_id=school.id) }}"
+class="btn btn-primary btn-sm">
+View Details
+</a>
+
+<a href="{{url_for('software_admin.edit_school', id=school.id)}}"
+class="btn btn-warning btn-sm">
+Edit
+</a>
+
+{% endfor %}
+   
+    
+    </table>

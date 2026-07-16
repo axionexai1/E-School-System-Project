@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Create School</title>
+
+<style>
+body {
+font-family: Arial, sans-serif;background: #f5f6fa;}
+
+.container {width: 500px;margin: 50px auto;background: white;padding: 30px;border-radius: 10px;}
+
+h2 {text-align: center;}
+
+label {display: block;margin-top: 15px;font-weight: bold;}
+
+input, textarea {width: 100%;padding: 10px;margin-top: 5px;}
+
+button {width: 100%;padding: 12px;margin-top: 20px;background: #2563eb;color: white;border: none;border-radius: 5px;cursor: pointer;}
+
+button:hover {background: #1d4ed8;}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Create New School</h2>
+
+
+<form method="POST">
+
+{{ form.hidden_tag() }}
+
+
+<label>
+School Name
+</label>
+
+{{ form.school_name(
+placeholder="Enter School Name"
+) }}
+
+
+<label>
+School Code
+</label>
+
+{{ form.school_code(placeholder="Enter School Code") }}
+
+
+<label>
+School Email
+</label>
+
+{{ form.email(placeholder="Enter School Email") }}
+
+<label>
+Phone Number
+</label>
+{{ form.phone(placeholder="Enter Phone Number") }}
+
+<label >
+City
+</label>
+{{ form.city(placeholder="Enter City")}}
+
+<label >
+Country
+</label>
+{{ form.country(placeholder="Enter Country")}}
+<label>
+Address
+</label>
+
+{{ form.address(placeholder="Enter School Address",rows=4) }}
+
+
+{{ form.submit() }}
+
+</form>
+
+</div>
+
+
+</body>
+</html>
