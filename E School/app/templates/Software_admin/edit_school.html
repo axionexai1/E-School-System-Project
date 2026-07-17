@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Edit School</title>
+
+<style>
+body {
+font-family: Arial, sans-serif;
+background: #f5f6fa;
+}
+
+.container {
+width: 500px;
+margin: 40px auto;
+background: white;
+padding: 30px;
+border-radius: 10px;
+}
+
+h2 {
+text-align: center;
+}
+
+label {
+display: block;
+margin-top: 15px;
+font-weight: bold;
+}
+
+input, textarea {
+width: 100%;
+padding: 10px;
+margin-top: 5px;
+}
+
+button {
+width: 100%;
+padding: 12px;
+margin-top: 20px;
+background: #2563eb;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.back {
+display: block;
+text-align: center;
+margin-top: 15px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+<h2>Edit School</h2>
+
+
+<form method="POST">
+
+{{ form.hidden_tag() }}
+
+
+<label>School Name</label>
+{{ form.school_name() }}
+
+
+
+<label>School Code</label>
+{{ form.school_code() }}
+
+
+
+<label>Email</label>
+{{ form.email() }}
+
+
+
+<label>Phone</label>
+{{ form.phone() }}
+
+
+
+<label>Address</label>
+{{ form.address(rows=4) }}
+
+
+
+<label>City</label>
+{{ form.city() }}
+
+
+
+<label>Country</label>
+{{ form.country() }}
+
+
+
+{{ form.submit() }}
+
+
+</form>
+
+
+<a class="back"
+href="{{ url_for('software_admin.school_detail', school_id=school.id) }}">
+Back to Details
+</a>
+
+
+</div>
+
+
+</body>
+
+</html>
