@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E School System</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==========================================
+       1. LOGIN SCREEN CONTAINER
+       ========================================== -->
+    <div id="login-screen" class="main-wrapper">
+        <div class="container">
+            <!-- Left Section -->
+            <div class="left">
+                <div class="left-top-content">
+                    <div class="logo-area">
+                        <img src="images/logo.jpeg" alt="School Logo" class="school-logo-top">
+                        <span class="logo-text">E School <br><small>System</small></span>
+                    </div>
+                    <h1>Smart Learning <br>for a <span>Bright Future</span></h1>
+                </div>
+                <img src="images/students.jpeg" alt="Students Image" class="students-img">
+            </div>
+
+            <!-- Right Section -->
+            <div class="right">
+                <div class="grad-icon-container">
+                    <div class="grad-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                </div>
+                <h1>Welcome Back!</h1>
+                <p class="subtitle">Login to continue to your learning dashboard</p>
+
+                <!-- Added id to handle login via JavaScript -->
+                <form id="login-form">
+                    <div class="input-group">
+                        <label>Username or Email Address</label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-user field-icon"></i>
+                            <input type="text" placeholder="Enter your username or email" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock field-icon"></i>
+                            <input type="password" id="login-password" placeholder="Enter your password" required>
+                            <i class="fa-regular fa-eye-slash toggle-password"></i>
+                        </div>
+                    </div>
+                    <div class="options-container">
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">Remember Me</label>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="terms-privacy" required>
+                            <label for="terms-privacy">
+                                I agree to the <a href="#">Terms</a> &amp; <a href="#">Privacy Policy</a> <span class="required-tag">(Required)</span>
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-login">
+                        <i class="fa-solid fa-lock"></i> Login to Dashboard
+                    </button>
+                </form>
+
+                <div class="help-section">
+                    <div class="help-content">
+                        <div class="help-icon"><i class="fa-solid fa-headset"></i></div>
+                        <div class="help-text">
+                            <h3>Need Help?</h3>
+                            <p>Contact your school for assistance.</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-contact">Contact School <i class="fa-solid fa-angle-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer inside login screen wrapper -->
+        <footer class="footer">
+            <div class="footer-left">
+                <img src="images/logo.jpeg" alt="E School Logo" class="school-logo">
+                <div>
+                    <h3>E School System</h3>
+                    <p>Empowering Education,<br>Building Futures.</p>
+                </div>
+            </div>
+            <div class="footer-center">
+                <p>Powered by</p>
+                <img src="images/Axionex-logo.jpeg" alt="Axionex Logo" class="axionex-logo">
+            </div>
+            <div class="footer-right">
+                <p>© 2026 E School System. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- ==========================================
+       2. DASHBOARD SCREEN CONTAINER (Hidden by default)
+       ========================================== -->
+    <div id="dashboard-screen" class="dashboard-container d-none">
+        <!-- Left Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h2>E School</h2>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="#" class="active"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+                <a href="#"><i class="fa-solid fa-book-open"></i> My Courses</a>
+                <a href="#"><i class="fa-solid fa-pen-to-square"></i> Assignments</a>
+                <a href="#"><i class="fa-solid fa-calendar-days"></i> Schedule</a>
+                <a href="#"><i class="fa-solid fa-square-poll-vertical"></i> Report Card</a>
+                <a href="#"><i class="fa-solid fa-gear"></i> Settings</a>
+            </nav>
+            <div class="sidebar-logout">
+                <!-- Added id to handle logout functionality -->
+                <a href="#" id="btn-logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Right Main Content Area -->
+        <main class="main-content">
+            <!-- Top Header Bar -->
+            <header class="top-header">
+                <div class="header-welcome">
+                    <h1>Welcome back, <span class="student-name">Ali Ahmed</span> 👋</h1>
+                    <p>Here is what's happening with your studies today.</p>
+                </div>
+                <div class="header-profile">
+                    <div class="notification-icon">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <img src="images/logo.jpeg" alt="Student Profile" class="profile-avatar">
+                </div>
+            </header>
+
+            <!-- Quick Stats Cards Row -->
+            <section class="stats-row">
+                <div class="stat-card blue-card">
+                    <div class="stat-icon"><i class="fa-solid fa-book"></i></div>
+                    <div class="stat-info">
+                        <h3>6</h3>
+                        <p>Enrolled Courses</p>
+                    </div>
+                </div>
+                <div class="stat-card purple-card">
+                    <div class="stat-icon"><i class="fa-solid fa-clock-history"></i></div>
+                    <div class="stat-info">
+                        <h3>94%</h3>
+                        <p>Attendance Rate</p>
+                    </div>
+                </div>
+                <div class="stat-card orange-card">
+                    <div class="stat-icon"><i class="fa-solid fa-file-circle-exclamation"></i></div>
+                    <div class="stat-info">
+                        <h3>2</h3>
+                        <p>Pending Tasks</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dashboard Details Grid -->
+            <div class="content-grid">
+                <!-- Left Block: Today's Classes -->
+                <div class="grid-card">
+                    <div class="card-header">
+                        <h2>Today's Class Schedule</h2>
+                        <a href="#">View All</a>
+                    </div>
+                    <ul class="schedule-list">
+                        <li>
+                            <div class="class-time">09:00 AM</div>
+                            <div class="class-details">
+                                <strong>Mathematics (Algebra)</strong>
+                                <p>Room 402 • Prof. Kamran</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="class-time">11:30 AM</div>
+                            <div class="class-details">
+                                <strong>Computer Science (HTML/CSS)</strong>
+                                <p>Lab 2 • Mis Aisha</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Right Block: Upcoming Assignments -->
+                <div class="grid-card">
+                    <div class="card-header">
+                        <h2>Upcoming Assignments</h2>
+                    </div>
+                    <ul class="assignment-list">
+                        <li class="urgent">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                            <div class="assign-info">
+                                <strong>Physics Lab Report</strong>
+                                <p>Due: Tomorrow, 11:59 PM</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div class="assign-info">
+                                <strong>English Essay Writing</strong>
+                                <p>Due: Friday, 05:00 PM</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- The Only JavaScript Link -->
+    <script src="script.js"></script>
+</body>
+</html>

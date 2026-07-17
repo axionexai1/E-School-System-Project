@@ -1,0 +1,494 @@
+/* ==========================================
+   1. Google Fonts, Variables & Global Setup
+   ========================================== */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --primary-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    --font-family: 'Plus Jakarta Sans', sans-serif;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --sidebar-bg: #0b1a30;
+    --bg-main: #f1f5f9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Helper class to easily hide/show screens using JavaScript */
+.d-none {
+    display: none !important;
+}
+
+/* ==========================================
+   2. LOGIN SCREEN LAYOUT STYLE
+   ========================================== */
+.main-wrapper {
+    width: 95%;
+    max-width: 1200px; 
+    margin: 40px auto 90px auto; 
+    display: flex;
+    flex-direction: column;
+    flex: 1; 
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    background: #ffffff;
+    border-radius: 26px;
+    overflow: hidden;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    min-height: 580px;
+}
+
+.left {
+    flex: 1; 
+    background: linear-gradient(180deg, #f3f7ff 0%, #e1e9ff 40%, #c4b5fd 100%);
+    padding: 45px 50px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid #f1f5f9;
+}
+
+.left-top-content {
+    width: 100%;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.school-logo-top {
+    height: 46px; 
+    width: auto;
+}
+
+.logo-text {
+    font-weight: 800;
+    font-size: 1.2rem; 
+    line-height: 1.1;
+    color: #1e3a8a;
+}
+
+.logo-text small { font-weight: 600; color: #3b82f6; }
+
+.left h1 {
+    font-size: 2.2rem; 
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.25;
+    margin-bottom: 15px;
+}
+
+.left h1 span { color: #3b82f6; }
+
+.left p {
+    color: var(--text-muted);
+    font-size: 0.92rem; 
+    line-height: 1.6;
+    max-width: 360px;
+}
+
+.students-img {
+    width: 100%;
+    max-width: 300px; 
+    margin: auto auto 0 auto;
+    display: block;
+    object-fit: contain;
+}
+
+.right {
+    flex: 1.2; 
+    padding: 45px 55px; 
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.grad-icon-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.grad-icon {
+    background: #eef2ff;
+    color: #6366f1;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+}
+
+.right h1 {
+    font-size: 1.85rem; 
+    font-weight: 800;
+    text-align: center;
+    color: #0f172a;
+    margin-bottom: 6px;
+}
+
+.right .subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    margin-bottom: 25px;
+}
+
+.input-group { margin-bottom: 15px; }
+
+.input-group label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #334155;
+    margin-bottom: 7px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 12px 14px 12px 44px; 
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    background-color: #fafafa;
+    transition: all 0.3s ease;
+}
+
+.input-wrapper input:focus {
+    outline: none;
+    background-color: #ffffff;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1);
+}
+
+.field-icon {
+    position: absolute;
+    left: 15px;
+    color: #94a3b8;
+    font-size: 1.05rem;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 15px 0;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.checkbox-container label {
+    font-size: 0.85rem; 
+    font-weight: 600;
+    color: #475569;
+    cursor: pointer;
+    line-height: 1.4;
+}
+
+.checkbox-container label a { color: #3b82f6; text-decoration: none; }
+.checkbox-container label a:hover { text-decoration: underline; }
+
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #6366f1;
+    cursor: pointer;
+    margin-top: 2px;
+}
+
+.required-tag { color: #ef4444; font-size: 0.75rem; font-weight: 700; }
+
+.btn-login {
+    width: 100%;
+    padding: 13px; 
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 6px 12px rgba(139, 92, 246, 0.12);
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.btn-login:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 16px rgba(139, 92, 246, 0.2);
+}
+
+.help-section {
+    background-color: #f8fafc;
+    border-top: 1px solid #f1f5f9;
+    margin: 30px -55px -45px -55px; 
+    padding: 18px 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.help-content { display: flex; align-items: center; gap: 12px; }
+
+.help-icon {
+    background: #e0f2fe;
+    color: #0284c7;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.help-text h3 { font-size: 0.88rem; font-weight: 700; color: #0f172a; }
+.help-text p { font-size: 0.78rem; color: var(--text-muted); }
+
+.btn-contact {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #4f46e5;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-contact:hover { background: #f1f5f9; }
+
+/* ==========================================
+   3. LOGIN SCREEN FOOTER STYLE
+   ========================================== */
+.footer {
+    background-color: #0b1a30;
+    color: #ffffff;
+    padding: 16px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+}
+
+.footer-left { display: flex; align-items: center; gap: 10px; }
+.footer-left .school-logo { height: 32px; }
+.footer-left h3 { font-size: 0.88rem; font-weight: 700; }
+.footer-left p { font-size: 0.68rem; color: #94a3b8; line-height: 1.25; }
+
+.footer-center {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-center p {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.axionex-logo {
+    height: 28px;
+    width: auto;
+    object-fit: contain;
+}
+
+.footer-right { text-align: right; }
+.footer-right p { font-size: 0.75rem; color: #94a3b8; }
+
+/* ==========================================
+   4. STUDENT DASHBOARD SCREEN LAYOUT STYLE
+   ========================================== */
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+.sidebar {
+    width: 260px;
+    background-color: var(--sidebar-bg);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    justify-content: space-between;
+}
+
+.sidebar-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 40px; }
+.sidebar-brand i { font-size: 1.8rem; color: #3b82f6; }
+.sidebar-brand h2 { font-size: 1.3rem; font-weight: 800; }
+
+.sidebar-menu { display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.sidebar-menu a {
+    color: #94a3b8;
+    text-decoration: none;
+    padding: 12px 15px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+}
+
+.sidebar-menu a:hover, 
+.sidebar-menu a.active {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-menu a.active { background: var(--primary-gradient); }
+
+.sidebar-logout a {
+    color: #ef4444;
+    text-decoration: none;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+}
+
+.main-content {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background-color: #f8fafc;
+}
+
+.header-welcome h1 span {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text; /* Yeh standard property add karein */
+    -webkit-text-fill-color: transparent;
+}
+
+.header-welcome p { color: var(--text-muted); font-size: 0.9rem; margin-top: 4px; }
+
+.header-profile { display: flex; align-items: center; gap: 20px; }
+.notification-icon { position: relative; font-size: 1.3rem; color: var(--text-muted); cursor: pointer; }
+.notification-icon .badge {
+    position: absolute; top: -5px; right: -5px; background-color: #ef4444; color: white;
+    font-size: 0.65rem; font-weight: 700; width: 16px; height: 16px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+}
+.profile-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid #3b82f6; }
+
+.stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.stat-card {
+    background: #ffffff; padding: 20px; border-radius: 16px;
+    display: flex; align-items: center; gap: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+}
+.stat-icon { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+.blue-card .stat-icon { background: #eff6ff; color: #3b82f6; }
+.purple-card .stat-icon { background: #f5f3ff; color: #8b5cf6; }
+.orange-card .stat-icon { background: #fff7ed; color: #ea580c; }
+.stat-info h3 { font-size: 1.5rem; font-weight: 800; }
+.stat-info p { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+
+.content-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 25px; }
+.grid-card { background: #ffffff; border-radius: 16px; padding: 25px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01); }
+.card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.card-header h2 { font-size: 1.15rem; font-weight: 800; }
+.card-header a { color: #3b82f6; text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+
+.schedule-list, .assignment-list { list-style: none; display: flex; flex-direction: column; gap: 15px; }
+.schedule-list li { display: flex; align-items: center; gap: 20px; padding-bottom: 15px; border-bottom: 1px solid var(--border-color); }
+.schedule-list li:last-child { border-bottom: none; padding-bottom: 0; }
+.class-time { background: #f1f5f9; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; color: #475569; }
+.class-details strong { font-size: 0.95rem; color: #0f172a; }
+.class-details p { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+
+.assignment-list li { display: flex; align-items: center; gap: 15px; padding: 12px 15px; background: #f8fafc; border-radius: 12px; }
+.assignment-list li i { font-size: 1.1rem; color: #22c55e; }
+.assignment-list li.urgent i { color: #ef4444; }
+.assign-info strong { font-size: 0.9rem; display: block; }
+.assign-info p { font-size: 0.78rem; color: var(--text-muted); }
+
+/* ==========================================
+   5. RESPONSIVE MEDIA QUERIES
+   ========================================== */
+@media (max-width: 992px) {
+    body { overflow: auto; height: auto; }
+    .footer { width: 100%; margin-left: 0; }
+    .main-wrapper { margin: 20px auto; }
+    .container { flex-direction: column; }
+    .left { border-right: none; border-bottom: 1px solid #f1f5f9; padding: 35px; }
+    .right { padding: 40px 35px; }
+    .help-section { margin: 20px -35px -40px -35px; padding: 15px 35px; }
+    .dashboard-container { flex-direction: column; height: auto; }
+    .sidebar { width: 100%; height: auto; padding: 20px; }
+    .sidebar-menu { flex-direction: row; flex-wrap: wrap; }
+    .stats-row { grid-template-columns: 1fr; }
+    .content-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+    .footer { flex-direction: column; text-align: center; }
+    .footer-left { flex-direction: column; }
+    .footer-right { text-align: center; }
+}
