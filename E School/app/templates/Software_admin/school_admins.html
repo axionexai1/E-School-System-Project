@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}School Admins{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+<div class="d-flex justify-content-between mb-3">
+
+<h3>School Admins</h3>
+
+<a href="{{ url_for('software_admin.create_school_admin') }}"
+class="btn btn-primary">
+
++ Create School Admin
+
+</a>
+
+</div>
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<table class="table table-bordered table-hover">
+
+<thead class="table-dark">
+
+<tr>
+
+<th>ID</th>
+<th>Full Name</th>
+<th>Email</th>
+<th>Username</th>
+<th>School</th>
+<th>Status</th>
+<th width="220">Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for admin in admins %}
+
+<tr>
+
+<td>{{ admin.id }}</td>
+
+<td>{{ admin.full_name }}</td>
+
+<td>{{ admin.email }}</td>
+
+<td>{{ admin.username }}</td>
+
+<td>{{ admin.school.school_name }}</td>
+
+<td>
+
+{% if admin.is_active %}
+
+<span class="badge bg-success">
+Active
+</span>
+
+{% else %}
+
+<span class="badge bg-danger">
+Inactive
+</span>
+
+{% endif %}
+
+</td>
+
+<td>
+
+<a href="{{ url_for('software_admin.school_admin_detail', id=admin.id) }}"
+class="btn btn-info btn-sm">
+
+View
+
+</a>
+
+<a href="{{ url_for('software_admin.edit_school_admin', id=admin.id) }}"
+class="btn btn-warning btn-sm">
+
+Edit
+
+</a>
+
+<a href="{{ url_for('software_admin.delete_school_admin', id=admin.id) }}"
+class="btn btn-danger btn-sm"
+onclick="return confirm('Delete this School Admin?')">
+
+Delete
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

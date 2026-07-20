@@ -35,9 +35,9 @@ with app.app_context():
 
         software_admin_role = Role.query.filter_by(role_name="Software Admin").first()
 
-        admin = User(username="admin",email="admin@eschool.com",role_id=software_admin_role.id,school_id=None,is_active=True,is_verified=True)
+        admin = User(full_name="Software Administrator",username="admin",email="admin@eschool.com",role_id=software_admin_role.id,school_id=None,is_active=True,is_verified=True)
 
-        admin.set_password("Admin@123")
+        admin.set_password("Admin123")
 
         db.session.add(admin)
         db.session.commit()

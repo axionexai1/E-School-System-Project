@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, EmailField, TextAreaField, SubmitField, PasswordField, SelectField
+from wtforms import StringField, EmailField, TextAreaField, SubmitField, PasswordField, SelectField,BooleanField
 from wtforms.validators import DataRequired, Email, Length, EqualTo
 
 
@@ -36,3 +36,13 @@ class CreateSchoolAdmin(FlaskForm):
     confirm_password= PasswordField("Confirm Password", validators=[DataRequired(), EqualTo("password", message="Password must match.")])
     school = SelectField("School", coerce=int, validators=[DataRequired()])
     submit = SubmitField("Create School Admin ")
+#For Edit School Admin
+class EditSchoolAdminForm(FlaskForm):
+
+    full_name = StringField("Full Name",validators=[DataRequired()])
+    username = StringField("Username",validators=[DataRequired()])
+    email = StringField("Email",validators=[DataRequired(), Email()])
+    phone = StringField("Phone Number",validators=[DataRequired()])
+    school = SelectField( "Assigned School", coerce=int,validators=[DataRequired()])
+    is_active = BooleanField("Active Account")
+    submit = SubmitField("Update School Admin")
