@@ -3,264 +3,324 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Dashboard</title>
+    <title>Document</title>
 </head>
 <body>
+    <!-- ========================================================= -->
+<!-- Home Dashboard Section Starts -->
+<!-- ========================================================= -->
 
-    <!-- Header -->
-    <header>
-        <h1>E-School Management System</h1>
-        <h2>Student Dashboard</h2>
-        <hr>
-    </header>
-    <!-- Welcome Section -->
-    <section>
-        <h3>Welcome Message</h3>
-        <p>Welcome, Student! We hope you have a productive day.</p>
-    </section>
+<section id="home-dashboard-section" class="dashboard-section">
 
-    <hr>
+    <!-- Section Header -->
 
-    <!-- Student Profile -->
-    <section>
-        <h3>Student Profile Card</h3>
+    <div id="home-dashboard-header" class="section-header">
 
-        <img src="student.jpg" alt="Student Photo" width="120">
+        <h2 id="home-dashboard-title" class="section-title">
+            Home Dashboard
+        </h2>
 
-        <table>
-            <tr>
-                <td><b>Name:</b></td>
-                <td>Ali Khan</td>
-            </tr>
+        <p id="home-dashboard-description" class="section-description">
 
-            <tr>
-                <td><b>Student ID:</b></td>
-                <td>2025-001</td>
-            </tr>
+            The Home Dashboard is the first screen a student sees after
+            logging into the system. It provides a quick overview of
+            important information so students do not need to open every
+            menu separately.
 
-            <tr>
-                <td><b>Class:</b></td>
-                <td>BS Artificial Intelligence</td>
-            </tr>
-
-            <tr>
-                <td><b>Section:</b></td>
-                <td>A</td>
-            </tr>
-
-            <tr>
-                <td><b>Email:</b></td>
-                <td>student@email.com</td>
-            </tr>
-        </table>
-
-        <p>
-            <a href="profile.html">View Full Profile</a>
-        </p>
-    </section>
-
-    <hr>
-
-    <!-- Today's Classes -->
-    <section>
-
-        <h3>Today's Classes</h3>
-
-        <table border="1" cellpadding="8">
-
-            <tr>
-                <th>Subject</th>
-                <th>Teacher</th>
-                <th>Time</th>
-                <th>Room</th>
-            </tr>
-
-            <tr>
-                <td>Programming</td>
-                <td>Mr. Ahmed</td>
-                <td>9:00 AM</td>
-                <td>Lab 1</td>
-            </tr>
-
-            <tr>
-                <td>Database</td>
-                <td>Ms. Sara</td>
-                <td>11:00 AM</td>
-                <td>Room 202</td>
-            </tr>
-
-            <tr>
-                <td>Artificial Intelligence</td>
-                <td>Dr. Khan</td>
-                <td>2:00 PM</td>
-                <td>Lab 3</td>
-            </tr>
-
-        </table>
-
-        <p>
-            <a href="classes.html">View Complete Schedule</a>
         </p>
 
-    </section>
+    </div>
 
-    <hr>
+    <!-- Dashboard Widgets -->
 
-    <!-- Attendance -->
-    <section>
+    <article id="dashboard-widgets-card" class="dashboard-card">
 
-        <h3>Attendance Summary</h3>
+        <div class="card-header">
 
-        <p>Overall Attendance: <b>92%</b></p>
+            <h3 class="card-title">
+                Dashboard Widgets
+            </h3>
 
-        <ul>
-            <li>Present Days : 46</li>
-            <li>Absent Days : 4</li>
-            <li>Late Days : 2</li>
-        </ul>
+        </div>
 
-        <a href="attendance.html">View Attendance Details</a>
+        <div class="card-body">
 
-    </section>
+            <ul id="dashboard-widget-list" class="widget-list">
 
-    <hr>
+                <li class="widget-item">
 
-    <!-- Assignments -->
-    <section>
+                    <a href="welcome-message.html"
+                       id="welcome-message-link"
+                       class="widget-link">
 
-        <h3>Upcoming Assignments</h3>
+                        Welcome Message
 
-        <table border="1" cellpadding="8">
+                    </a>
 
-            <tr>
-                <th>Subject</th>
-                <th>Assignment</th>
-                <th>Due Date</th>
-            </tr>
+                </li>
 
-            <tr>
-                <td>Database</td>
-                <td>Normalization Report</td>
-                <td>20 July 2026</td>
-            </tr>
+                <li class="widget-item">
 
-            <tr>
-                <td>Programming</td>
-                <td>HTML Project</td>
-                <td>23 July 2026</td>
-            </tr>
+                    <a href="student-profile.html"
+                       id="student-profile-link"
+                       class="widget-link">
 
-        </table>
+                        Student Profile Card
 
-        <p>
-            <a href="assignments.html">View All Assignments</a>
-        </p>
+                    </a>
 
-    </section>
+                </li>
 
-    <hr>
+                <li class="widget-item">
 
-    <!-- Upcoming Exams -->
-    <section>
+                    <a href="todays-classes.html"
+                       id="todays-classes-link"
+                       class="widget-link">
 
-        <h3>Upcoming Exams</h3>
+                        Today's Classes
 
-        <table border="1" cellpadding="8">
+                    </a>
 
-            <tr>
-                <th>Subject</th>
-                <th>Date</th>
-                <th>Time</th>
-            </tr>
+                </li>
 
-            <tr>
-                <td>Artificial Intelligence</td>
-                <td>28 July 2026</td>
-                <td>10:00 AM</td>
-            </tr>
+                <li class="widget-item">
 
-            <tr>
-                <td>Database</td>
-                <td>30 July 2026</td>
-                <td>9:00 AM</td>
-            </tr>
+                    <a href="attendance-summary.html"
+                       id="attendance-summary-link"
+                       class="widget-link">
 
-        </table>
+                        Attendance Summary
 
-        <p>
-            <a href="exam.html">View Exam Schedule</a>
-        </p>
+                    </a>
 
-    </section>
+                </li>
 
-    <hr>
+                <li class="widget-item">
 
-    <!-- Latest Announcements -->
-    <section>
+                    <a href="upcoming-assignment.html"
+                       id="upcoming-assignment-link"
+                       class="widget-link">
 
-        <h3>Latest Announcements</h3>
+                        Upcoming Assignment
 
-        <ul>
+                    </a>
 
-            <li>Semester registration starts next week.</li>
+                </li>
 
-            <li>Library will remain closed on Friday.</li>
+                <li class="widget-item">
 
-            <li>Project presentations begin on Monday.</li>
+                    <a href="upcoming-exam.html"
+                       id="upcoming-exam-link"
+                       class="widget-link">
 
-        </ul>
+                        Upcoming Exam
 
-        <a href="announcements.html">Read More</a>
+                    </a>
 
-    </section>
+                </li>
 
-    <hr>
+                <li class="widget-item">
 
-    <!-- Fee Status -->
-    <section>
+                    <a href="latest-announcement.html"
+                       id="latest-announcement-link"
+                       class="widget-link">
 
-        <h3>Fee Status</h3>
+                        Latest Announcement
 
-        <p><b>Status:</b> Paid</p>
+                    </a>
 
-        <p><b>Last Payment:</b> 10 July 2026</p>
+                </li>
 
-        <a href="fee.html">View Fee Details</a>
+                <li class="widget-item">
 
-    </section>
+                    <a href="fee-status.html"
+                       id="fee-status-link"
+                       class="widget-link">
 
-    <hr>
+                        Fee Status
 
-    <!-- Quick Shortcuts -->
-    <section>
+                    </a>
 
-        <h3>Quick Shortcuts</h3>
+                </li>
 
-        <ul>
+                <li class="widget-item">
 
-            <li><a href="profile.html">Student Profile</a></li>
+                    <a href="quick-shortcuts.html"
+                       id="quick-shortcuts-link"
+                       class="widget-link">
 
-            <li><a href="attendance.html">Attendance</a></li>
+                        Quick Shortcuts
 
-            <li><a href="classes.html">Today's Classes</a></li>
+                    </a>
 
-            <li><a href="assignments.html">Assignments</a></li>
+                </li>
 
-            <li><a href="exam.html">Upcoming Exams</a></li>
+            </ul>
 
-            <li><a href="announcements.html">Announcements</a></li>
+        </div>
 
-            <li><a href="fee.html">Fee Status</a></li>
+    </article>
 
-        </ul>
+    <!-- Widget Description Table -->
 
-    </section>
+    <article id="widget-description-card" class="dashboard-card">
 
-    <hr>
+        <div class="card-header">
 
-    <footer>
-        <p> 2026 E-School Management System</p>
-    </footer>
+            <h3 class="card-title">
+                Widget Description
+            </h3>
 
+        </div>
+
+        <div class="card-body">
+
+            <table id="widget-description-table"
+                   class="dashboard-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th class="table-heading">
+                            Widget
+                        </th>
+
+                        <th class="table-heading">
+                            Description
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td class="table-data">
+                            Welcome Message
+                        </td>
+
+                        <td class="table-data">
+                            Greets the student personally after login.
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="table-data">
+                            Student Profile Card
+                        </td>
+
+                        <td class="table-data">
+                            Shows student's photo, name, class, section,
+                            roll number and student ID.
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="table-data">
+                            Today's Classes
+                        </td>
+
+                        <td class="table-data">
+                            Displays today's subjects, timings,
+                            teacher names and classroom numbers.
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="table-data">
+                            Attendance Summary
+                        </td>
+
+                        <td class="table-data">
+                            Displays attendance percentage and
+                            attendance status.
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="table-data">
+                            Upcoming Assignment
+                        </td>
+
+                        <td class="table-data">
+                            Shows the next assignment with
+                            its due date.
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="table-data">
+                            Upcoming Exam
+                        </td>
+
+                        <td class="table-data">
+                            Displays the next scheduled exam.
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="table-data">
+                            Latest Announcement
+                        </td>
+
+                        <td class="table-data">
+                            Shows the newest school notice.
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="table-data">
+                            Fee Status
+                        </td>
+
+                        <td class="table-data">
+                            Displays whether fees are Paid or Pending.
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="table-data">
+                            Quick Shortcuts
+                        </td>
+
+                        <td class="table-data">
+                            Quick navigation buttons for Attendance,
+                            Results, Fees, Assignments, Exams and Course Content.
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </article>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- Home Dashboard Section Ends -->
+<!-- ========================================================= -->
 </body>
 </html>
