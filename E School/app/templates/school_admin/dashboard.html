@@ -1,0 +1,363 @@
+{% extends "school_admin/base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+<div>
+
+<h2 class="fw-bold">
+School Admin Dashboard
+</h2>
+
+<p class="text-muted mb-0">
+Welcome back, <strong>{{ current_user.full_name }}</strong>
+</p>
+
+</div>
+
+</div>
+
+<!-- Dashboard Cards -->
+
+<div class="row g-4">
+
+<div class="col-xl-4 col-md-6">
+
+<div class="card bg-primary text-white shadow h-100">
+
+<div class="card-body">
+
+<div class="d-flex justify-content-between">
+
+<div>
+
+<h5>Total Students</h5>
+
+<h1>{{ total_students }}</h1>
+
+</div>
+
+<i class="bi bi-mortarboard-fill fs-1"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-xl-4 col-md-6">
+
+<div class="card bg-success text-white shadow h-100">
+
+<div class="card-body">
+
+<div class="d-flex justify-content-between">
+
+<div>
+
+<h5>Total Teachers</h5>
+
+<h1>{{ total_teachers }}</h1>
+
+</div>
+
+<i class="bi bi-person-workspace fs-1"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-xl-4 col-md-6">
+
+<div class="card bg-warning text-dark shadow h-100">
+
+<div class="card-body">
+
+<div class="d-flex justify-content-between">
+
+<div>
+
+<h5>Total Classes</h5>
+
+<h1>{{ total_classes }}</h1>
+
+</div>
+
+<i class="bi bi-building fs-1"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-xl-4 col-md-6">
+
+<div class="card bg-info text-white shadow h-100">
+
+<div class="card-body">
+
+<div class="d-flex justify-content-between">
+
+<div>
+
+<h5>Total Sections</h5>
+
+<h1>{{ total_sections }}</h1>
+
+</div>
+
+<i class="bi bi-diagram-3-fill fs-1"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-xl-4 col-md-6">
+
+<div class="card bg-danger text-white shadow h-100">
+
+<div class="card-body">
+
+<div class="d-flex justify-content-between">
+
+<div>
+
+<h5>Total Subjects</h5>
+
+<h1>{{ total_subjects }}</h1>
+
+</div>
+
+<i class="bi bi-book-fill fs-1"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-xl-4 col-md-6">
+
+<div class="card bg-secondary text-white shadow h-100">
+
+<div class="card-body">
+
+<div class="d-flex justify-content-between">
+
+<div>
+
+<h5>Pending Fees</h5>
+
+<h1>{{ pending_fees }}</h1>
+
+</div>
+
+<i class="bi bi-cash-stack fs-1"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Recent Activity + Quick Actions -->
+
+<div class="row mt-4">
+
+<div class="col-lg-7">
+
+<div class="card shadow">
+
+<div class="card-header bg-primary text-white">
+
+<h5 class="mb-0">
+
+<i class="bi bi-clock-history"></i>
+
+Recent Activities
+
+</h5>
+
+</div>
+
+<div class="card-body">
+
+<ul class="list-group list-group-flush">
+
+<li class="list-group-item">
+
+🟢 New Student Registered
+
+</li>
+
+<li class="list-group-item">
+
+👨‍🏫 Teacher Added
+
+</li>
+
+<li class="list-group-item">
+
+💰 Fee Payment Received
+
+</li>
+
+<li class="list-group-item">
+
+📄 Assignment Uploaded
+
+</li>
+
+<li class="list-group-item">
+
+📝 Attendance Updated
+
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-5">
+
+<div class="card shadow">
+
+<div class="card-header bg-success text-white">
+
+<h5 class="mb-0">
+
+<i class="bi bi-lightning-fill"></i>
+
+Quick Actions
+
+</h5>
+
+</div>
+
+<div class="card-body d-grid gap-2">
+
+<a href="#" class="btn btn-primary">
+
+<i class="bi bi-person-plus-fill"></i>
+
+Add Student
+
+</a>
+
+<a href="#" class="btn btn-success">
+
+<i class="bi bi-person-workspace"></i>
+
+Add Teacher
+
+</a>
+
+<a href="#" class="btn btn-warning">
+
+<i class="bi bi-building-add"></i>
+
+Create Class
+
+</a>
+
+<a href="#" class="btn btn-info text-white">
+
+<i class="bi bi-calendar-check-fill"></i>
+
+Record Attendance
+
+</a>
+
+<a href="#" class="btn btn-secondary">
+
+<i class="bi bi-journal-plus"></i>
+
+Create Assignment
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- School Information -->
+
+<div class="card shadow mt-4">
+
+<div class="card-header bg-dark text-white">
+
+<h5 class="mb-0">
+
+<i class="bi bi-building"></i>
+
+School Information
+
+</h5>
+
+</div>
+
+<div class="card-body">
+
+<div class="row">
+
+<div class="col-md-4">
+
+<strong>School Name</strong>
+
+<p>{{ current_user.school.school_name }}</p>
+
+</div>
+
+<div class="col-md-4">
+
+<strong>Email</strong>
+
+<p>{{ current_user.school.email }}</p>
+
+</div>
+
+<div class="col-md-4">
+
+<strong>Phone</strong>
+
+<p>{{ current_user.school.phone }}</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}
+

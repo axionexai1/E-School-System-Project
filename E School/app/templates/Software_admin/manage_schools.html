@@ -1,44 +1,122 @@
-<table>
 
-    <tr>
-    <th>School Name</th>
-    <th>Code</th>
-    <th>Email</th>
-    <th>City</th>
-    <th>Address</th>
-    </tr>
-    
-{% for school in schools %}
 
-<div class="card shadow-sm mb-3">
+<!-- Demo Data   -->
+
+{% extends "base.html" %}
+
+{% block title %}School Details{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+<div class="d-flex justify-content-between mb-3">
+
+<h3>School List </h3>
+
+<a href="{{ url_for('software_admin.create_school') }}"
+class="btn btn-primary">
+
++ Create  New School 
+
+</a>
+
+</div>
+
+<div class="card shadow">
 
 <div class="card-body">
 
-<h5 class="fw-bold">
-{{ school.school_name }}
-</h5>
+<table class="table table-bordered table-hover">
 
-<p>
-{{ school.email }}
-</p>
+<thead class="table-dark">
 
-<p>
-{{ school.phone }}
-</p>
+    <tr>
+        <th>School Name</th>
+        <th>Code</th>
+        <th>Email</th>
+        <th>City</th>
+        <th>Status</th>
+        <th>Address</th>
+        <th>Quick Actions</th>
+        </tr>
 
-<div class="text-end mt-3">
+</thead>
+
+<tbody>
+
+{% for school in schools %}
+
+<tr>
+
+<td>{{ school.school_name }}</td>
+
+<td>{{ school.school_code }}</td>
+
+<td>{{ school.email }}</td>
+
+<td>{{ school.city }}</td>
+<td>
+
+    {% if school.is_active %}
+    
+    <span class="badge bg-success">
+    Active
+    </span>
+    
+    {% else %}
+    
+    <span class="badge bg-danger">
+    Inactive
+    </span>
+    
+    {% endif %}
+    
+    </td>
+
+<td>{{ school.address }}</td>
+
+
+    
+
+<td>
 
 <a href="{{ url_for('software_admin.school_detail', school_id=school.id) }}"
-class="btn btn-primary btn-sm">
-View Details
+class="btn btn-info btn-sm">
+
+View
+
 </a>
 
-<a href="{{url_for('software_admin.edit_school', id=school.id)}}"
+<a href="{{ url_for('software_admin.edit_school', id=school.id) }}"
 class="btn btn-warning btn-sm">
+
 Edit
+
 </a>
+
+<a href="{{ url_for('software_admin.delete_school', id=school.id) }}"
+class="btn btn-danger btn-sm"
+onclick="return confirm('Delete this School Admin?')">
+
+Delete
+
+</a>
+
+</td>
+
+</tr>
 
 {% endfor %}
-   
-    
-    </table>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

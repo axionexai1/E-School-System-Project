@@ -7,7 +7,8 @@ from app.models.school import School
 from flask_login import logout_user
 from sqlalchemy.exc import IntegrityError
 from .forms import EditSchoolForm
-
+from app.models import User,Role,School
+from .forms import CreateSchoolAdmin,EditSchoolAdminForm
 from . import software_admin
 
 
@@ -29,11 +30,13 @@ def logout():
 # ===========================
 # School Management
 # ===========================
+
 @software_admin.route("/school/<int:school_id>/detail")
 @login_required
 def school_detail(school_id):
 
     school = School.query.get_or_404(school_id)
+    admin =User.query.filter_by(school_id= school_id, role_id =Role.query.filter_by(role_name = "School Admin").first().id).first()
 
     student_count = 0
     teacher_count = 0
@@ -41,13 +44,12 @@ def school_detail(school_id):
     subscription = "Basic Plan"
 
     return render_template("software_admin/school_detail.html",
-    school=school,
+    school=school,admin= admin,
     student_count=student_count,
     teacher_count=teacher_count,
     class_count=class_count,
     subscription=subscription
-    )
-
+)
 
 
 @software_admin.route("/schools/list")
@@ -55,6 +57,8 @@ def school_detail(school_id):
 def schools():
     schools = School.query.all()
     return render_template("software_admin/schools.html", schools=schools)
+
+
 
 @software_admin.route('/schools')
 @login_required
@@ -150,23 +154,97 @@ def delete_school(id):
 # ===========================
 # School Admin Management
 # ===========================
+#View Detail 
+
+@software_admin.route("/school-admins/<int:id>")
+@login_required
+def school_admin_detail(id):
+
+    admin = User.query.get_or_404(id)
+
+    return render_template("software_admin/school_admin_detail.html", admin=admin)
+
+
+
 
 @software_admin.route("/school-admins")
 @login_required
 def school_admins():
-    return render_template("software_admin/school_admins.html")
+
+    school_admin_role = Role.query.filter_by(role_name="School Admin").first()
+    admins = User.query.filter_by(role_id=school_admin_role.id).all()
+    return render_template("software_admin/school_admins.html",admins=admins)
 
 
-@software_admin.route("/school-admins/create")
+@software_admin.route("/school-admins/create", methods=["GET", "POST"])
 @login_required
 def create_school_admin():
-    return render_template("software_admin/create_school_admin.html")
+
+    form = CreateSchoolAdmin()
+
+    # Load all schools into dropdown
+    form.school.choices = [
+    (school.id, school.school_name)
+    for school in School.query.order_by(School.school_name).all()]
+
+    if form.validate_on_submit():
+        # Get School Admin role
+        school_admin_role = Role.query.filter_by(role_name="School Admin" ).first()
+        if not school_admin_role:
+            flash("School Admin role not found.", "danger")
+            return redirect(url_for("software_admin.create_school_admin"))
+
+    # Check duplicate email
+        existing_user = User.query.filter_by(email=form.email.data).first()
+
+        if existing_user:
+            flash("Email already exists.", "danger")
+            return redirect(url_for("software_admin.create_school_admin"))
+
+    # Create user
+        user = User(full_name= form.full_name.data,username=form.email.data.split("@")[0],email=form.email.data,
+        role_id=school_admin_role.id,school_id=form.school.data, is_active=True, is_verified=True)
+
+        user.set_password(form.password.data)
+
+        db.session.add(user)
+        db.session.commit()
+
+        flash("School Admin created successfully.", "success")
+
+        return redirect(url_for("software_admin.school_admins"))
+
+    return render_template("software_admin/create_school_admin.html",form=form)
 
 
-@software_admin.route("/school-admins/<int:id>/edit")
+@software_admin.route("/school-admins/<int:id>/edit", methods=["GET", "POST"])
 @login_required
 def edit_school_admin(id):
-    return render_template("software_admin/edit_school_admin.html")
+
+    admin = User.query.get_or_404(id)
+
+    form = EditSchoolAdminForm(obj=admin)
+
+    form.school.choices = [(school.id, school.school_name)for school in School.query.order_by(School.school_name).all()]
+
+    if form.validate_on_submit():
+
+        admin.full_name = form.full_name.data
+        admin.username = form.username.data
+        admin.email = form.email.data
+        admin.phone = form.phone.data
+        admin.school_id = form.school.data
+        admin.is_active = form.is_active.data
+
+        db.session.commit()
+
+        flash("School Admin updated successfully.", "success")
+
+        return redirect( url_for("software_admin.school_admin_detail",id=admin.id))
+
+    return render_template(
+    "software_admin/edit_school_admin.html",form=form,admin=admin)
+
 
 
 @software_admin.route("/school-admins/<int:id>/delete")

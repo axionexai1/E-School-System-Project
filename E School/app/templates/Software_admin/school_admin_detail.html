@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}School Admin Details{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+<div class="card shadow">
+
+<div class="card-header bg-primary text-white">
+
+<h4>School Admin Details</h4>
+
+</div>
+
+<div class="card-body">
+
+<p><strong>Full Name:</strong> {{ admin.full_name }}</p>
+
+<p><strong>Username:</strong> {{ admin.username }}</p>
+
+<p><strong>Email:</strong> {{ admin.email }}</p>
+
+<p><strong>School:</strong> {{ admin.school.school_name }}</p>
+
+<p><strong>Role:</strong> {{ admin.role.role_name }}</p>
+
+<p>
+<strong>Status:</strong>
+
+{% if admin.is_active %}
+
+Active
+
+{% else %}
+
+Inactive
+
+{% endif %}
+
+</p>
+
+<p><strong>Created:</strong> {{ admin.created_at }}</p>
+
+<hr>
+
+<a href="{{ url_for('software_admin.edit_school_admin', id=admin.id) }}"
+class="btn btn-warning">
+
+Edit
+
+</a>
+
+<a href="{{ url_for('software_admin.delete_school_admin', id=admin.id) }}"
+class="btn btn-danger"
+onclick="return confirm('Delete this School Admin?')">
+
+Delete
+
+</a>
+
+<a href="{{ url_for('software_admin.school_admins') }}"
+class="btn btn-secondary">
+
+Back
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

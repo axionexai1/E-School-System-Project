@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Edit School Admin{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+<div class="card shadow">
+
+<div class="card-header bg-warning">
+<h4>Edit School Admin</h4>
+</div>
+
+<div class="card-body">
+
+<form method="POST">
+
+{{ form.hidden_tag() }}
+
+<div class="mb-3">
+{{ form.full_name.label(class="form-label") }}
+{{ form.full_name(class="form-control") }}
+</div>
+
+<div class="mb-3">
+{{ form.username.label(class="form-label") }}
+{{ form.username(class="form-control") }}
+</div>
+
+<div class="mb-3">
+{{ form.email.label(class="form-label") }}
+{{ form.email(class="form-control") }}
+</div>
+
+<div class="mb-3">
+{{ form.phone.label(class="form-label") }}
+{{ form.phone(class="form-control") }}
+</div>
+
+<div class="mb-3">
+{{ form.school.label(class="form-label") }}
+{{ form.school(class="form-select") }}
+</div>
+
+<div class="form-check mb-3">
+{{ form.is_active(class="form-check-input") }}
+{{ form.is_active.label(class="form-check-label") }}
+</div>
+
+{{ form.submit(class="btn btn-success") }}
+
+<a href="{{ url_for('software_admin.school_admin_detail', id=admin.id) }}"
+class="btn btn-secondary">
+Cancel
+</a>
+
+</form>
+
+</div>
+</div>
+</div>
+
+{% endblock %}
