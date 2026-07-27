@@ -1,207 +1,294 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Home Dashboard | IESLMS</title>
-
-    <link rel="stylesheet" href="home-dashboard.css">
-
+    <title>Student Management System Dashboard</title>
 </head>
-
 <body>
 
-    <!-- ========================================================= -->
-    <!-- Home Dashboard Section Starts -->
-    <!-- ========================================================= -->
+    <!-- ============================= -->
+    <!-- MAIN DASHBOARD CONTAINER       -->
+    <!-- ============================= -->
+    <div class="dashboard-container">
 
-    <section id="home-dashboard-section" class="dashboard-section">
+        <!-- ============================= -->
+        <!-- LEFT SIDEBAR                   -->
+        <!-- ============================= -->
+        <aside class="sidebar sidebar-expanded" id="sidebar">
 
-        <!-- Header -->
+            <!-- Sidebar Header: Logo + Menu Toggle -->
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="logo.png" alt="School Logo" class="sidebar-logo-img">
+                    <span class="sidebar-logo-text">SMS Portal</span>
+                </div>
 
-        <header id="home-dashboard-header" class="section-header">
-
-            <h1 id="home-dashboard-title" class="section-title">
-                Home Dashboard
-            </h1>
-
-            <p id="home-dashboard-description" class="section-description">
-                Welcome to your dashboard. Quickly access your profile,
-                attendance, classes, assignments, exams, fee status and
-                important announcements.
-            </p>
-
-        </header>
-
-        <!-- Dashboard Widgets -->
-
-        <article id="dashboard-widgets-card" class="dashboard-card">
-
-            <div class="card-header">
-
-                <h2 class="card-title">
-                    Dashboard Widgets
-                </h2>
-
+                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle sidebar menu">
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                </button>
             </div>
 
-            <div class="card-body">
+            <!-- Sidebar Navigation Menu -->
+            <nav class="sidebar-menu" aria-label="Primary sidebar navigation">
+                <ul class="sidebar-list">
 
-                <ul id="dashboard-widget-list" class="widget-list">
-
-                    <li class="widget-item">
-                        <a href="welcome-message.html" id="welcome-message-link" class="widget-link">
-                            👋 Welcome Message
+                    <li class="sidebar-item">
+                        <a href="#dashboard" class="sidebar-link" aria-label="Dashboard">
+                            <span class="sidebar-icon">
+                                <img src="icons/dashboard.svg" alt="">
+                            </span>
+                            <span class="sidebar-text">Dashboard</span>
                         </a>
                     </li>
 
-                    <li class="widget-item">
-                        <a href="student-profile.html" id="student-profile-link" class="widget-link">
-                            👤 Student Profile
+                    <li class="sidebar-item">
+                        <a href="#alerts" class="sidebar-link" aria-label="Alerts">
+                            <span class="sidebar-icon">
+                                <img src="icons/alerts.svg" alt="">
+                            </span>
+                            <span class="sidebar-text">Alerts</span>
                         </a>
                     </li>
 
-                    <li class="widget-item">
-                        <a href="todays-classes.html" id="todays-classes-link" class="widget-link">
-                            📚 Today's Classes
+                    <li class="sidebar-item">
+                        <a href="#academic" class="sidebar-link" aria-label="Academic">
+                            <span class="sidebar-icon">
+                                <img src="icons/academic.svg" alt="">
+                            </span>
+                            <span class="sidebar-text">Academic</span>
                         </a>
                     </li>
 
-                    <li class="widget-item">
-                        <a href="attendance-summary.html" id="attendance-summary-link" class="widget-link">
-                            📊 Attendance Summary
+                    <li class="sidebar-item">
+                        <a href="#schedule" class="sidebar-link" aria-label="Schedule">
+                            <span class="sidebar-icon">
+                                <img src="icons/schedule.svg" alt="">
+                            </span>
+                            <span class="sidebar-text">Schedule</span>
                         </a>
                     </li>
 
-                    <li class="widget-item">
-                        <a href="upcoming-assignment.html" id="upcoming-assignment-link" class="widget-link">
-                            📝 Upcoming Assignments
+                    <li class="sidebar-item">
+                        <a href="#reports" class="sidebar-link" aria-label="Reports">
+                            <span class="sidebar-icon">
+                                <img src="icons/reports.svg" alt="">
+                            </span>
+                            <span class="sidebar-text">Reports</span>
                         </a>
                     </li>
 
-                    <li class="widget-item">
-                        <a href="upcoming-exam.html" id="upcoming-exam-link" class="widget-link">
-                            📅 Upcoming Exams
+                    <li class="sidebar-item">
+                        <a href="#chat" class="sidebar-link" aria-label="Chat">
+                            <span class="sidebar-icon">
+                                <img src="icons/chat.svg" alt="">
+                            </span>
+                            <span class="sidebar-text">Chat</span>
                         </a>
                     </li>
 
-                    <li class="widget-item">
-                        <a href="latest-announcement.html" id="latest-announcement-link" class="widget-link">
-                            📢 Announcements
-                        </a>
-                    </li>
-
-                    <li class="widget-item">
-                        <a href="fee-status.html" id="fee-status-link" class="widget-link">
-                            💳 Fee Status
-                        </a>
-                    </li>
-
-                    <li class="widget-item">
-                        <a href="quick-shortcuts.html" id="quick-shortcuts-link" class="widget-link">
-                            ⚡ Quick Shortcuts
+                    <li class="sidebar-item">
+                        <a href="#settings" class="sidebar-link" aria-label="Settings">
+                            <span class="sidebar-icon">
+                                <img src="icons/settings.svg" alt="">
+                            </span>
+                            <span class="sidebar-text">Settings</span>
                         </a>
                     </li>
 
                 </ul>
+            </nav>
 
-            </div>
+        </aside>
 
-        </article>
+        <!-- ============================= -->
+        <!-- MAIN WRAPPER                   -->
+        <!-- ============================= -->
+        <div class="main-wrapper">
 
-        <!-- Widget Description -->
+            <!-- ============================= -->
+            <!-- TOP NAVIGATION BAR             -->
+            <!-- ============================= -->
+            <header class="top-navbar">
 
-        <article id="widget-description-card" class="dashboard-card">
+                <!-- Navbar Left: Title and Subtitle -->
+                <div class="navbar-left">
+                    <h1 class="page-title">Student Portal</h1>
+                    <p class="page-subtitle">Welcome to your learning dashboard</p>
+                </div>
 
-            <div class="card-header">
+                <!-- Navbar Right: Navigation Items -->
+                <nav class="navbar-right" aria-label="Top navigation">
+                    <ul class="navbar-menu">
 
-                <h2 class="card-title">
-                    Widget Description
-                </h2>
+                        <li class="navbar-item">
+                            <a href="#home" class="navbar-link" aria-label="Home">Home</a>
+                        </li>
 
-            </div>
+                        <li class="navbar-item navbar-item-notifications">
+                            <a href="#notifications" class="navbar-link" aria-label="Notifications">
+                                Notifications
+                                <span class="notification-badge" id="notification-badge">0</span>
+                            </a>
+                        </li>
 
-            <div class="card-body">
+                        <li class="navbar-item">
+                            <a href="#contact-school" class="navbar-link" aria-label="Contact School">Contact School</a>
+                        </li>
 
-                <table id="widget-description-table" class="dashboard-table">
+                        <li class="navbar-item">
+                            <a href="#about-us" class="navbar-link" aria-label="About Us">About Us</a>
+                        </li>
 
-                    <thead>
+                        <li class="navbar-item">
+                            <a href="#logout" class="navbar-link" aria-label="Logout">Logout</a>
+                        </li>
 
-                        <tr>
+                    </ul>
+                </nav>
 
-                            <th>Widget</th>
+            </header>
 
-                            <th>Description</th>
+            <!-- ============================= -->
+            <!-- SEARCH BAR SECTION             -->
+            <!-- ============================= -->
+            <section class="search-section" aria-label="Search">
+                <form class="search-form" role="search">
+                    <label for="search-input" class="search-label">Search</label>
+                    <input
+                        type="search"
+                        id="search-input"
+                        name="search"
+                        class="search-input"
+                        placeholder="Search announcements, assignments, fees, reports..."
+                        aria-label="Search announcements, assignments, fees, reports"
+                    >
+                </form>
+            </section>
 
-                        </tr>
+            <!-- ============================= -->
+            <!-- DASHBOARD CONTENT               -->
+            <!-- ============================= -->
+            <main class="dashboard-content">
 
-                    </thead>
+                <!-- Dashboard Cards Grid -->
+                <section class="dashboard-grid" id="dashboard-grid" aria-label="Dashboard overview cards">
 
-                    <tbody>
+                    <!-- Card 1: My Course Content -->
+                    <article class="dashboard-card">
+                        <header class="card-header">
+                            <h2 class="card-title">My Course Content</h2>
+                        </header>
+                        <div class="card-body"></div>
+                    </article>
 
-                        <tr>
-                            <td>Welcome Message</td>
-                            <td>Displays a personalized greeting after login.</td>
-                        </tr>
+                    <!-- Card 2: Attendance & Percentage -->
+                    <article class="dashboard-card">
+                        <header class="card-header">
+                            <h2 class="card-title">Attendance &amp; Percentage</h2>
+                        </header>
+                        <div class="card-body"></div>
+                    </article>
 
-                        <tr>
-                            <td>Student Profile</td>
-                            <td>Shows the student's basic profile information.</td>
-                        </tr>
+                    <!-- Card 3: Fees / Challans -->
+                    <article class="dashboard-card">
+                        <header class="card-header">
+                            <h2 class="card-title">Fees / Challans</h2>
+                        </header>
+                        <div class="card-body"></div>
+                    </article>
 
-                        <tr>
-                            <td>Today's Classes</td>
-                            <td>Displays today's timetable and subjects.</td>
-                        </tr>
+                    <!-- Card 4: Assignments / Homework -->
+                    <article class="dashboard-card">
+                        <header class="card-header">
+                            <h2 class="card-title">Assignments / Homework</h2>
+                        </header>
+                        <div class="card-body"></div>
+                    </article>
 
-                        <tr>
-                            <td>Attendance Summary</td>
-                            <td>Shows attendance percentage and status.</td>
-                        </tr>
+                    <!-- Card 5: Upcoming Exams -->
+                    <article class="dashboard-card">
+                        <header class="card-header">
+                            <h2 class="card-title">Upcoming Exams</h2>
+                        </header>
+                        <div class="card-body"></div>
+                    </article>
 
-                        <tr>
-                            <td>Upcoming Assignments</td>
-                            <td>Displays pending assignments with due dates.</td>
-                        </tr>
+                    <!-- Card 6: Daily Time Table -->
+                    <article class="dashboard-card">
+                        <header class="card-header">
+                            <h2 class="card-title">Daily Time Table</h2>
+                        </header>
+                        <div class="card-body"></div>
+                    </article>
 
-                        <tr>
-                            <td>Upcoming Exams</td>
-                            <td>Shows the next scheduled examinations.</td>
-                        </tr>
+                    <!-- Card 7: Exam & Test Results -->
+                    <article class="dashboard-card">
+                        <header class="card-header">
+                            <h2 class="card-title">Exam &amp; Test Results</h2>
+                        </header>
+                        <div class="card-body"></div>
+                    </article>
 
-                        <tr>
-                            <td>Announcements</td>
-                            <td>Displays the latest notices from the school.</td>
-                        </tr>
+                    <!-- Card 8: Online Applications -->
+                    <article class="dashboard-card">
+                        <header class="card-header">
+                            <h2 class="card-title">Online Applications</h2>
+                        </header>
+                        <div class="card-body"></div>
+                    </article>
 
-                        <tr>
-                            <td>Fee Status</td>
-                            <td>Shows whether the fee is paid or pending.</td>
-                        </tr>
+                    <!-- Card 9: Library -->
+                    <article class="dashboard-card">
+                        <header class="card-header">
+                            <h2 class="card-title">Library</h2>
+                        </header>
+                        <div class="card-body"></div>
+                    </article>
 
-                        <tr>
-                            <td>Quick Shortcuts</td>
-                            <td>Provides quick access to important student features.</td>
-                        </tr>
+                    <!-- Card 10: Student Profile -->
+                    <article class="dashboard-card">
+                        <header class="card-header">
+                            <h2 class="card-title">Student Profile</h2>
+                        </header>
+                        <div class="card-body"></div>
+                    </article>
 
-                    </tbody>
+                    <!-- Card 11: School Notices -->
+                    <article class="dashboard-card">
+                        <header class="card-header">
+                            <h2 class="card-title">School Notices</h2>
+                        </header>
+                        <div class="card-body"></div>
+                    </article>
 
-                </table>
+                    <!-- Card 12: AI Study Assistant -->
+                    <article class="dashboard-card">
+                        <header class="card-header">
+                            <h2 class="card-title">AI Study Assistant</h2>
+                        </header>
+                        <div class="card-body"></div>
+                    </article>
 
-            </div>
+                </section>
 
-        </article>
+            </main>
 
-    </section>
+            <!-- ============================= -->
+            <!-- FOOTER                         -->
+            <!-- ============================= -->
+            <footer class="footer">
+                <p class="footer-text">&copy; Student Management System</p>
+            </footer>
 
-    <!-- ========================================================= -->
-    <!-- Home Dashboard Section Ends -->
-    <!-- ========================================================= -->
+        </div>
+        <!-- /main-wrapper -->
+
+    </div>
+    <!-- /dashboard-container -->
 
 </body>
-
 </html>
