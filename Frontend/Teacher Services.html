@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- ========================================================= -->
+<!-- Teacher Services Section Starts -->
+<!-- ========================================================= -->
+
+<section id="teacher-services-section" class="dashboard-section">
+
+    <!-- Section Header -->
+
+    <div id="teacher-services-header" class="section-header">
+
+        <h2 id="teacher-services-title" class="section-title">
+            Teacher Services
+        </h2>
+
+        <p id="teacher-services-description" class="section-description">
+
+            Teacher Services provide students with a safe and school-monitored
+            platform to communicate with their teachers, ask academic questions,
+            receive guidance, and request help whenever needed.
+
+        </p>
+
+    </div>
+
+    <!-- Teacher Services Menu -->
+
+    <article id="teacher-services-menu-card" class="dashboard-card">
+
+        <div class="card-header">
+
+            <h3 class="card-title">
+                Teacher Services
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <ul id="teacher-services-list" class="service-list">
+
+                <li class="service-item">
+
+                    <a href="class-teachers.html"
+                       id="class-teachers-link"
+                       class="service-link">
+
+                        Class Teachers
+
+                    </a>
+
+                </li>
+
+                <li class="service-item">
+
+                    <a href="subject-teachers.html"
+                       id="subject-teachers-link"
+                       class="service-link">
+
+                        Subject Teachers
+
+                    </a>
+
+                </li>
+
+                <li class="service-item">
+
+                    <a href="contact-teacher.html"
+                       id="contact-teacher-link"
+                       class="service-link">
+
+                        Contact Teacher
+
+                    </a>
+
+                </li>
+
+                <li class="service-item">
+
+                    <a href="live-chat.html"
+                       id="live-chat-link"
+                       class="service-link">
+
+                        Live Chat
+
+                    </a>
+
+                </li>
+
+                <li class="service-item">
+
+                    <a href="message-teacher.html"
+                       id="message-teacher-link"
+                       class="service-link">
+
+                        Message Teacher
+
+                    </a>
+
+                </li>
+
+                <li class="service-item">
+
+                    <a href="ask-for-help.html"
+                       id="ask-help-link"
+                       class="service-link">
+
+                        Ask for Help
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </article>
+
+    <!-- Teacher Contact Form -->
+
+    <article id="contact-teacher-card" class="dashboard-card">
+
+        <div class="card-header">
+
+            <h3 class="card-title">
+                Contact Teacher
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <form id="teacher-contact-form"
+                  class="dashboard-form"
+                  action="#"
+                  method="post">
+
+                <!-- Student Name -->
+
+                <div class="form-group">
+
+                    <label for="student-name" class="form-label">
+                        Student Name
+                    </label>
+
+                    <input type="text"
+                           id="student-name"
+                           name="student_name"
+                           class="form-input"
+                           placeholder="Student Name"
+                           readonly>
+
+                </div>
+
+                <!-- Class -->
+
+                <div class="form-group">
+
+                    <label for="student-class" class="form-label">
+                        Class
+                    </label>
+
+                    <input type="text"
+                           id="student-class"
+                           name="student_class"
+                           class="form-input"
+                           placeholder="Class"
+                           readonly>
+
+                </div>
+
+                <!-- Teacher -->
+
+                <div class="form-group">
+
+                    <label for="teacher-name" class="form-label">
+                        Select Teacher
+                    </label>
+
+                    <select id="teacher-name"
+                            name="teacher_name"
+                            class="form-select">
+
+                        <option value="">Choose Teacher</option>
+
+                        <option>Class Teacher</option>
+
+                        <option>English Teacher</option>
+
+                        <option>Mathematics Teacher</option>
+
+                        <option>Science Teacher</option>
+
+                        <option>Computer Teacher</option>
+
+                        <option>Islamic Studies Teacher</option>
+
+                    </select>
+
+                </div>
+
+                <!-- Subject -->
+
+                <div class="form-group">
+
+                    <label for="subject" class="form-label">
+                        Subject
+                    </label>
+
+                    <input type="text"
+                           id="subject"
+                           name="subject"
+                           class="form-input"
+                           placeholder="Subject">
+
+                </div>
+
+                <!-- Message -->
+
+                <div class="form-group">
+
+                    <label for="teacher-message" class="form-label">
+                        Message
+                    </label>
+
+                    <textarea id="teacher-message"
+                              name="teacher_message"
+                              class="form-textarea"
+                              rows="6"
+                              placeholder="Write your message here..."></textarea>
+
+                </div>
+
+                <!-- Submit -->
+
+                <div class="form-group">
+
+                    <button type="submit"
+                            id="send-message-button"
+                            class="submit-button">
+
+                        Send Message
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </article>
+
+    <!-- Services Information -->
+
+    <article id="teacher-services-information-card"
+             class="dashboard-card">
+
+        <div class="card-header">
+
+            <h3 class="card-title">
+                Available Services
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <table id="teacher-services-table"
+                   class="dashboard-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th class="table-heading">
+                            Service
+                        </th>
+
+                        <th class="table-heading">
+                            Description
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td class="table-data">
+                            Class Teachers
+                        </td>
+
+                        <td class="table-data">
+                            View information and contact your class teacher.
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="table-data">
+                            Subject Teachers
+                        </td>
+
+                        <td class="table-data">
+                            Contact teachers for specific subjects.
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="table-data">
+                            Contact Teacher
+                        </td>
+
+                        <td class="table-data">
+                            Send academic questions or request guidance.
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="table-data">
+                            Live Chat
+                        </td>
+
+                        <td class="table-data">
+                            Real-time chat with teachers during school hours.
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="table-data">
+                            Message Teacher
+                        </td>
+
+                        <td class="table-data">
+                            Send private messages that teachers can reply to later.
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="table-data">
+                            Ask for Help
+                        </td>
+
+                        <td class="table-data">
+                            Request extra academic support or learning assistance.
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </article>
+
+    <!-- Safety Notice -->
+
+    <article id="teacher-safety-card" class="dashboard-card">
+
+        <div class="card-header">
+
+            <h3 class="card-title">
+                Safety Notice
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <ul id="teacher-safety-list" class="feature-list">
+
+                <li class="feature-item">
+                    All chats and messages are securely stored by the school system.
+                </li>
+
+                <li class="feature-item">
+                    Communication is monitored by school administration for student safety.
+                </li>
+
+                <li class="feature-item">
+                    Students can only contact teachers assigned to their class or subjects.
+                </li>
+
+                <li class="feature-item">
+                    Teachers can reply during school working hours.
+                </li>
+
+                <li class="feature-item">
+                    Parents and school administration can review communication if required.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </article>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- Teacher Services Section Ends -->
+<!-- ========================================================= -->
+</body>
+</html>
