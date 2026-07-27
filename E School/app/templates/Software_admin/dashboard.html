@@ -1,20 +1,62 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Software Admin Dashboard</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-<h1>Software Admin Dashboard</h1>
+{% block title %}
+Software Admin Dashboard
+{% endblock %}
 
-<p>Welcome {{ current_user.first_name }}</p>
+{% block content %}
 
-<a href="{{ url_for('software_admin.profile') }}">Profile</a><br>
-<a href="{{ url_for('software_admin.settings') }}">Settings</a><br>
-<a href="{{ url_for('software_admin.logout') }}">Logout</a>
-<a href="{{ url_for('software_admin.create_school') }}">Create School</a>
-<a href="{{ url_for('software_admin.manage_schools') }}">Manage School</a>
+<div class="card shadow">
+<div class="card-header bg-primary text-white">
+<h3 class="mb-0">Software Admin Dashboard</h3>
+</div>
 
+<div class="card-body">
 
-</body>
-</html>
+<h5>Welcome, {{ current_user.full_name }}</h5>
+
+<hr>
+
+<div class="list-group">
+
+<a href="{{ url_for('software_admin.profile') }}"
+class="list-group-item list-group-item-action">
+ Profile
+</a>
+
+<a href="{{ url_for('software_admin.settings') }}"
+class="list-group-item list-group-item-action">
+ Settings
+</a>
+
+<a href="{{ url_for('software_admin.create_school') }}"
+class="list-group-item list-group-item-action">
+ Create School
+</a>
+
+<a href="{{ url_for('software_admin.manage_schools') }}"
+class="list-group-item list-group-item-action">
+ Manage Schools
+</a>
+
+<a href="{{ url_for('software_admin.create_school_admin') }}"
+class="list-group-item list-group-item-action">
+Create School Admin
+</a>
+
+<a href="{{ url_for('software_admin.school_admins') }}"
+class="list-group-item list-group-item-action">
+ Manage School Admins
+</a>
+
+<a href="{{ url_for('auth.logout') }}"
+class="list-group-item list-group-item-action text-danger">
+ Logout
+</a>
+
+</div>
+
+</div>
+</div>
+
+{% endblock %}

@@ -19,6 +19,8 @@ def create_app():
     app.register_blueprint(auth)
     from app.blueprints.software_admin import software_admin
     app.register_blueprint(software_admin)
+    from app.blueprints.school_admin import school_admin
+    app.register_blueprint(school_admin,url_prefix="/school-admin")
     login_manager.login_view = "auth.login"
     login_manager.login_message_category = "warning"
     return app
