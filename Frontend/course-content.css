@@ -1,0 +1,134 @@
+/* ==========================================================================
+   Course Content Section
+   Reuses design tokens from dashboard.css — load dashboard.css BEFORE this
+   file in the HTML <head>, since this file relies on those CSS variables.
+   ========================================================================== */
+
+.dashboard-section {
+  padding: var(--space-5) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  align-self: flex-start;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-primary);
+  background: rgba(91, 79, 233, 0.08);
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.back-link:hover {
+  background: rgba(91, 79, 233, 0.15);
+  transform: translateX(-2px);
+}
+
+.back-icon {
+  font-size: 16px;
+}
+
+.section-header {
+  margin-bottom: var(--space-2);
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.section-description {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  max-width: 640px;
+}
+
+/* ---------- Subject List Card ---------- */
+.subject-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.subject-item {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.subject-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  transition: background var(--transition-fast), color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.subject-link:hover {
+  background: rgba(91, 79, 233, 0.1);
+  color: var(--color-primary);
+  transform: translateX(2px);
+}
+
+.subject-icon {
+  font-size: 18px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.subject-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ---------- Subject Resources Card ---------- */
+.resource-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-3);
+}
+
+.resource-item {
+  padding: var(--space-4);
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+  transition: box-shadow var(--transition-fast);
+}
+
+.resource-item:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.resource-title {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--space-1);
+}
+
+.resource-description {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 560px) {
+  .resource-list {
+    grid-template-columns: 1fr;
+  }
+}

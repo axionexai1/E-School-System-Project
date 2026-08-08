@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <!-- ========================================================= -->
+<!-- Extra Courses Section Starts -->
+<!-- ========================================================= -->
+
+<section id="extra-courses-section" class="dashboard-section">
+
+    <!-- Section Header -->
+
+    <div id="extra-courses-header" class="section-header">
+
+        <h2 id="extra-courses-title" class="section-title">
+            Extra Courses
+        </h2>
+
+        <p id="extra-courses-description" class="section-description">
+
+            Extra Courses are optional learning programs uploaded by the
+            School Administrator. Students can enroll in these courses to
+            improve their practical skills and learn beyond the regular
+            school curriculum.
+
+        </p>
+
+    </div>
+
+    <!-- Course Categories -->
+
+    <article id="course-category-card" class="dashboard-card">
+
+        <div class="card-header">
+
+            <h3 class="card-title">
+                Available Extra Courses
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <ul id="extra-course-list" class="course-list">
+
+                <li class="course-item">
+
+                    <a href="programming-course.html"
+                       id="programming-course-link"
+                       class="course-link">
+
+                        Programming
+
+                    </a>
+
+                </li>
+
+                <li class="course-item">
+
+                    <a href="robotics-course.html"
+                       id="robotics-course-link"
+                       class="course-link">
+
+                        Robotics
+
+                    </a>
+
+                </li>
+
+                <li class="course-item">
+
+                    <a href="ai-course.html"
+                       id="ai-course-link"
+                       class="course-link">
+
+                        Artificial Intelligence (AI)
+
+                    </a>
+
+                </li>
+
+                <li class="course-item">
+
+                    <a href="spoken-english-course.html"
+                       id="spoken-english-link"
+                       class="course-link">
+
+                        Spoken English
+
+                    </a>
+
+                </li>
+
+                <li class="course-item">
+
+                    <a href="graphic-design-course.html"
+                       id="graphic-design-link"
+                       class="course-link">
+
+                        Graphic Design
+
+                    </a>
+
+                </li>
+
+                <li class="course-item">
+
+                    <a href="more-courses.html"
+                       id="more-courses-link"
+                       class="course-link">
+
+                        More Courses
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </article>
+
+    <!-- Course Information -->
+
+    <article id="course-information-card" class="dashboard-card">
+
+        <div class="card-header">
+
+            <h3 class="card-title">
+                Course Information
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <table id="course-information-table"
+                   class="dashboard-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th class="table-heading">
+                            Course
+                        </th>
+
+                        <th class="table-heading">
+                            Description
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td class="table-data">
+                            Programming
+                        </td>
+
+                        <td class="table-data">
+                            Learn coding fundamentals, problem solving,
+                            HTML, CSS, JavaScript, Python, and C++.
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="table-data">
+                            Robotics
+                        </td>
+
+                        <td class="table-data">
+                            Build and program robots using sensors,
+                            motors, and microcontrollers.
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="table-data">
+                            Artificial Intelligence
+                        </td>
+
+                        <td class="table-data">
+                            Learn machine learning, AI concepts,
+                            automation, and intelligent systems.
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="table-data">
+                            Spoken English
+                        </td>
+
+                        <td class="table-data">
+                            Improve speaking, pronunciation,
+                            grammar, and communication skills.
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="table-data">
+                            Graphic Design
+                        </td>
+
+                        <td class="table-data">
+                            Learn Photoshop, Illustrator,
+                            Canva, logo design, and branding.
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </article>
+
+    <!-- Enroll Course -->
+
+    <article id="course-enrollment-card" class="dashboard-card">
+
+        <div class="card-header">
+
+            <h3 class="card-title">
+                Course Enrollment
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <form id="course-enrollment-form"
+                  class="dashboard-form"
+                  action="#"
+                  method="post">
+
+                <div class="form-group">
+
+                    <label for="student-name"
+                           class="form-label">
+
+                        Student Name
+
+                    </label>
+
+                    <input type="text"
+                           id="student-name"
+                           name="student_name"
+                           class="form-input"
+                           placeholder="Student Name"
+                           readonly>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="student-class"
+                           class="form-label">
+
+                        Class
+
+                    </label>
+
+                    <input type="text"
+                           id="student-class"
+                           name="student_class"
+                           class="form-input"
+                           placeholder="Class"
+                           readonly>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="course-selection"
+                           class="form-label">
+
+                        Select Course
+
+                    </label>
+
+                    <select id="course-selection"
+                            name="course_selection"
+                            class="form-select">
+
+                        <option value="">
+                            Select a Course
+                        </option>
+
+                        <option>
+                            Programming
+                        </option>
+
+                        <option>
+                            Robotics
+                        </option>
+
+                        <option>
+                            Artificial Intelligence
+                        </option>
+
+                        <option>
+                            Spoken English
+                        </option>
+
+                        <option>
+                            Graphic Design
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <button type="submit"
+                            id="course-enroll-button"
+                            class="submit-button">
+
+                        Enroll Now
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </article>
+
+    <!-- Course Features -->
+
+    <article id="course-features-card"
+             class="dashboard-card">
+
+        <div class="card-header">
+
+            <h3 class="card-title">
+                Course Features
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <ul id="course-feature-list"
+                class="feature-list">
+
+                <li class="feature-item">
+                    Courses are uploaded and managed by the School Administrator.
+                </li>
+
+                <li class="feature-item">
+                    Students can enroll in multiple extra courses.
+                </li>
+
+                <li class="feature-item">
+                    New courses can be added at any time without updating the website.
+                </li>
+
+                <li class="feature-item">
+                    Course notes, videos, assignments, and certificates can be provided.
+                </li>
+
+                <li class="feature-item">
+                    Students can monitor their learning progress after enrollment.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </article>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- Extra Courses Section Ends -->
+<!-- ========================================================= -->
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- ========================================================= -->
+<!-- Online Applications Section Starts -->
+<!-- ========================================================= -->
+
+<section id="online-applications-section" class="dashboard-section">
+
+    <!-- Section Header -->
+
+    <div id="online-applications-header" class="section-header">
+
+        <h2 id="online-applications-title" class="section-title">
+            Online Applications
+        </h2>
+
+        <p id="online-applications-description" class="section-description">
+
+            Students can apply for leave online without submitting
+            paper applications. The leave request is sent directly
+            to the Class Teacher or School Administration for approval.
+
+        </p>
+
+    </div>
+
+    <!-- Leave Types -->
+
+    <article id="leave-types-card" class="dashboard-card">
+
+        <div class="card-header">
+
+            <h3 class="card-title">
+                Leave Types
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <ul id="leave-type-list" class="leave-type-list">
+
+                <li class="leave-type-item">
+
+                    <a href="#" id="sick-leave-link" class="leave-type-link">
+                        Sick Leave
+                    </a>
+
+                </li>
+
+                <li class="leave-type-item">
+
+                    <a href="#" id="personal-work-link" class="leave-type-link">
+                        Urgent Personal Work
+                    </a>
+
+                </li>
+
+                <li class="leave-type-item">
+
+                    <a href="#" id="brother-wedding-link" class="leave-type-link">
+                        Brother's Wedding
+                    </a>
+
+                </li>
+
+                <li class="leave-type-item">
+
+                    <a href="#" id="sister-wedding-link" class="leave-type-link">
+                        Sister's Wedding
+                    </a>
+
+                </li>
+
+                <li class="leave-type-item">
+
+                    <a href="#" id="other-leave-link" class="leave-type-link">
+                        Other
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </article>
+
+    <!-- Leave Application Form -->
+
+    <article id="leave-form-card" class="dashboard-card">
+
+        <div class="card-header">
+
+            <h3 class="card-title">
+                Leave Application Form
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <form id="leave-application-form"
+                  class="dashboard-form"
+                  action="#"
+                  method="post"
+                  enctype="multipart/form-data">
+
+                <!-- Student Name -->
+
+                <div class="form-group">
+
+                    <label for="student-name" class="form-label">
+                        Student Name
+                    </label>
+
+                    <input type="text"
+                           id="student-name"
+                           name="student_name"
+                           class="form-input"
+                           placeholder="Student Name"
+                           readonly>
+
+                </div>
+
+                <!-- Father Name -->
+
+                <div class="form-group">
+
+                    <label for="father-name" class="form-label">
+                        Father Name
+                    </label>
+
+                    <input type="text"
+                           id="father-name"
+                           name="father_name"
+                           class="form-input"
+                           placeholder="Father Name"
+                           readonly>
+
+                </div>
+
+                <!-- Roll Number -->
+
+                <div class="form-group">
+
+                    <label for="roll-number" class="form-label">
+                        Roll Number
+                    </label>
+
+                    <input type="text"
+                           id="roll-number"
+                           name="roll_number"
+                           class="form-input"
+                           placeholder="Roll Number"
+                           readonly>
+
+                </div>
+
+                <!-- Class -->
+
+                <div class="form-group">
+
+                    <label for="student-class" class="form-label">
+                        Class
+                    </label>
+
+                    <input type="text"
+                           id="student-class"
+                           name="student_class"
+                           class="form-input"
+                           placeholder="Class"
+                           readonly>
+
+                </div>
+
+                <!-- Leave Type -->
+
+                <div class="form-group">
+
+                    <label for="leave-type" class="form-label">
+                        Leave Type
+                    </label>
+
+                    <select id="leave-type"
+                            name="leave_type"
+                            class="form-select">
+
+                        <option value="">Select Leave Type</option>
+
+                        <option>Sick Leave</option>
+
+                        <option>Urgent Personal Work</option>
+
+                        <option>Brother's Wedding</option>
+
+                        <option>Sister's Wedding</option>
+
+                        <option>Other</option>
+
+                    </select>
+
+                </div>
+
+                <!-- Leave Date -->
+
+                <div class="form-group">
+
+                    <label for="leave-date" class="form-label">
+                        Leave Date
+                    </label>
+
+                    <input type="date"
+                           id="leave-date"
+                           name="leave_date"
+                           class="form-input">
+
+                </div>
+
+                <!-- Reason -->
+
+                <div class="form-group">
+
+                    <label for="leave-reason" class="form-label">
+                        Reason
+                    </label>
+
+                    <textarea id="leave-reason"
+                              name="leave_reason"
+                              class="form-textarea"
+                              rows="5"
+                              placeholder="Write the reason for leave..."></textarea>
+
+                </div>
+
+                <!-- Attachment -->
+
+                <div class="form-group">
+
+                    <label for="leave-document" class="form-label">
+                        Attachment (Optional)
+                    </label>
+
+                    <input type="file"
+                           id="leave-document"
+                           name="leave_document"
+                           class="form-file">
+
+                </div>
+
+                <!-- Submit Button -->
+
+                <div class="form-group">
+
+                    <button type="submit"
+                            id="submit-leave-button"
+                            class="submit-button">
+
+                        Submit Application
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </article>
+
+    <!-- Information -->
+
+    <article id="leave-information-card" class="dashboard-card">
+
+        <div class="card-header">
+
+            <h3 class="card-title">
+                Application Information
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <ul id="leave-information-list"
+                class="feature-list">
+
+                <li class="feature-item">
+                    Student information is automatically filled from the profile.
+                </li>
+
+                <li class="feature-item">
+                    Students only need to select the leave type and write the reason.
+                </li>
+
+                <li class="feature-item">
+                    Medical certificates or supporting documents can be uploaded.
+                </li>
+
+                <li class="feature-item">
+                    The application is sent directly to the Class Teacher or School Administration.
+                </li>
+
+                <li class="feature-item">
+                    Students can later check whether the application is Approved, Pending, or Rejected.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </article>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- Online Applications Section Ends -->
+<!-- ========================================================= -->
+</body>
+</html>
