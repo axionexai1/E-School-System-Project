@@ -1,0 +1,190 @@
+{% extends "school_admin/base.html" %}
+
+{% block title %}Edit Teacher Subject{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+<!-- Page Header -->
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+<div>
+
+<h2 class="fw-bold mb-1">
+
+<i class="bi bi-pencil-square text-warning"></i>
+
+Edit Teacher Subject
+
+</h2>
+
+<p class="text-muted mb-0">
+
+Update teacher subject assignment information.
+
+</p>
+
+</div>
+
+<a href="{{ url_for('school_admin.manage_teacher_subjects') }}"
+class="btn btn-secondary">
+
+<i class="bi bi-arrow-left"></i>
+
+Back
+
+</a>
+
+</div>
+
+
+<!-- Form Card -->
+
+<div class="card shadow border-0">
+
+<div class="card-header bg-warning">
+
+<h5 class="mb-0 text-dark">
+
+<i class="bi bi-journal-bookmark-fill"></i>
+
+Assignment Information
+
+</h5>
+
+</div>
+
+<div class="card-body">
+
+<form method="POST">
+
+{{ form.hidden_tag() }}
+
+<div class="row">
+
+<!-- Teacher -->
+
+<div class="col-md-6 mb-3">
+
+{{ form.teacher_id.label(class="form-label fw-semibold") }}
+
+{{ form.teacher_id(class="form-select") }}
+
+{% for error in form.teacher_id.errors %}
+<small class="text-danger">{{ error }}</small>
+{% endfor %}
+
+</div>
+
+
+<!-- Class -->
+
+<div class="col-md-6 mb-3">
+
+{{ form.class_id.label(class="form-label fw-semibold") }}
+
+{{ form.class_id(class="form-select") }}
+
+{% for error in form.class_id.errors %}
+<small class="text-danger">{{ error }}</small>
+{% endfor %}
+
+</div>
+
+
+<!-- Section -->
+
+<div class="col-md-6 mb-3">
+
+{{ form.section_id.label(class="form-label fw-semibold") }}
+
+{{ form.section_id(class="form-select") }}
+
+{% for error in form.section_id.errors %}
+<small class="text-danger">{{ error }}</small>
+{% endfor %}
+
+</div>
+
+
+<!-- Subject -->
+
+<div class="col-md-6 mb-3">
+
+{{ form.subject_id.label(class="form-label fw-semibold") }}
+
+{{ form.subject_id(class="form-select") }}
+
+{% for error in form.subject_id.errors %}
+<small class="text-danger">{{ error }}</small>
+{% endfor %}
+
+</div>
+
+
+<!-- Academic Year -->
+
+<div class="col-md-6 mb-3">
+
+{{ form.academic_year.label(class="form-label fw-semibold") }}
+
+{{ form.academic_year(class="form-control") }}
+
+{% for error in form.academic_year.errors %}
+<small class="text-danger">{{ error }}</small>
+{% endfor %}
+
+</div>
+
+
+<!-- Status -->
+
+<div class="col-md-6 mb-3">
+
+{{ form.is_active.label(class="form-label fw-semibold") }}
+
+{{ form.is_active(class="form-select") }}
+
+{% for error in form.is_active.errors %}
+<small class="text-danger">{{ error }}</small>
+{% endfor %}
+
+</div>
+
+</div>
+
+<hr>
+
+<div class="d-flex justify-content-end">
+
+<a href="{{ url_for('school_admin.manage_teacher_subjects') }}"
+class="btn btn-secondary me-2">
+
+<i class="bi bi-x-circle"></i>
+
+Cancel
+
+</a>
+
+<button type="submit"
+class="btn btn-warning">
+
+<i class="bi bi-check-circle"></i>
+
+Save Changes
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

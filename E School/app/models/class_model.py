@@ -31,11 +31,12 @@ class Class(db.Model):
 
     # Relationships
     # ---------------------------------
+    teacher_subjects = db.relationship("TeacherSubject", back_populates = "classroom", cascade= "all, delete-orphan",lazy= True)  
     sections = db.relationship("Section",backref="class_room",lazy=True,cascade="all, delete-orphan")
     students = db.relationship("Student",backref="class_room",lazy=True,cascade="all, delete-orphan")
-    subjects = db.relationship("Subject",backref="class_room",lazy=True,cascade="all, delete-orphan")
-    teacher = db.relationship("Teacher",foreign_keys=[class_teacher_id],backref="managed_classes")
-
+   
+    class_teacher = db.relationship("Teacher",foreign_keys=[class_teacher_id],backref=db.backref("managed_class", uselist =False), uselist=False )
+    school = db.relationship("School",back_populates="classes")
     # String Representation
     # ---------------------------------
 

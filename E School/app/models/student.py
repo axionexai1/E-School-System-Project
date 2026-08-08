@@ -12,12 +12,12 @@ class Student(db.Model):
 
     # ---------------------------------
     #relationship
-
+    user = db.relationship("User", back_populates = "student")
     parents=db.relationship("ParentStudent",backref="student",lazy=True, cascade="all, delete-orphan")
 
     # Foreign Keys
     # ---------------------------------
-
+    school = db.relationship("School",back_populates="students")
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"),nullable=False,unique=True)
     school_id = db.Column(db.Integer,db.ForeignKey("schools.id"),nullable=False)
     class_id = db.Column(db.Integer,db.ForeignKey("classes.id"),nullable=False)

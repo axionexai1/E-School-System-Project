@@ -12,7 +12,7 @@ class Role(db.Model):
     updated_at = db.Column(db.DateTime,default=datetime.utcnow,onupdate=datetime.utcnow)
 
 # Relationship with User model
-    users = db.relationship("User",backref="role",lazy=True)
+    users = db.relationship("User",back_populates="role")
 
     def __repr__(self):
         return f"<Role {self.role_name}>"

@@ -1,0 +1,492 @@
+{% extends "school_admin/base.html" %}
+
+
+
+{% block title %}Subject Details{% endblock %}
+
+
+
+{% block content %}
+
+
+
+<div class="container-fluid">
+
+
+
+    <!-- ========================= -->
+
+    <!-- Page Header -->
+
+    <!-- ========================= -->
+
+
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+
+
+        <div>
+
+
+
+            <h2 class="fw-bold mb-1">
+
+
+
+                <i class="bi bi-book-fill text-primary"></i>
+
+
+
+                Subject Details
+
+
+
+            </h2>
+
+
+
+            <p class="text-muted mb-0">
+
+
+
+                View complete information about this subject.
+
+
+
+            </p>
+
+
+
+        </div>
+
+
+
+        <div>
+
+
+
+            <a href="{{ url_for('school_admin.manage_subjects') }}"
+
+               class="btn btn-secondary">
+
+
+
+                <i class="bi bi-arrow-left"></i>
+
+
+
+                Back
+
+
+
+            </a>
+
+
+
+            <a href="{{ url_for('school_admin.edit_subject', id=subject.id) }}"
+
+               class="btn btn-warning">
+
+
+
+                <i class="bi bi-pencil-square"></i>
+
+
+
+                Edit
+
+
+
+            </a>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <!-- ========================= -->
+
+    <!-- Subject Information Card -->
+
+    <!-- ========================= -->
+
+
+
+    <div class="card shadow border-0">
+
+
+
+        <div class="card-header bg-primary text-white">
+
+
+
+            <h5 class="mb-0">
+
+
+
+                <i class="bi bi-info-circle"></i>
+
+
+
+                Subject Information
+
+
+
+            </h5>
+
+
+
+        </div>
+
+
+
+        <div class="card-body">
+
+
+
+            <div class="row">
+
+
+
+                <!-- Subject Name -->
+
+
+
+                <div class="col-md-6 mb-4">
+
+
+
+                    <label class="form-label fw-bold">
+
+
+
+                        Subject Name
+
+
+
+                    </label>
+
+
+
+                    <div class="form-control bg-light">
+
+
+
+                        {{ subject.subject_name }}
+
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+                <!-- Subject Code -->
+
+
+
+                <div class="col-md-6 mb-4">
+
+
+
+                    <label class="form-label fw-bold">
+
+
+
+                        Subject Code
+
+
+
+                    </label>
+
+
+
+                    <div class="form-control bg-light">
+
+
+
+                        {{ subject.subject_code }}
+
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+                <!-- Status -->
+
+
+
+                <div class="col-md-6 mb-4">
+
+
+
+                    <label class="form-label fw-bold">
+
+
+
+                        Status
+
+
+
+                    </label>
+
+
+
+                    <div class="form-control bg-light">
+
+
+
+                        {% if subject.is_active %}
+
+
+
+                            <span class="badge bg-success">
+
+
+
+                                Active
+
+
+
+                            </span>
+
+
+
+                        {% else %}
+
+
+
+                            <span class="badge bg-danger">
+
+
+
+                                Inactive
+
+
+
+                            </span>
+
+
+
+                        {% endif %}
+
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+                <!-- Created Date -->
+
+
+
+                <div class="col-md-6 mb-4">
+
+
+
+                    <label class="form-label fw-bold">
+
+
+
+                        Created At
+
+
+
+                    </label>
+
+
+
+                    <div class="form-control bg-light">
+
+
+
+                        {{ subject.created_at.strftime('%d %B %Y, %I:%M %p') }}
+
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+                <!-- Updated Date -->
+
+
+
+                <div class="col-md-6 mb-4">
+
+
+
+                    <label class="form-label fw-bold">
+
+
+
+                        Updated At
+
+
+
+                    </label>
+
+
+
+                    <div class="form-control bg-light">
+
+
+
+                        {{ subject.updated_at.strftime('%d %B %Y, %I:%M %p') }}
+
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+                <!-- Description -->
+
+
+
+                <div class="col-12 mb-4">
+
+
+
+                    <label class="form-label fw-bold">
+
+
+
+                        Description
+
+
+
+                    </label>
+
+
+
+                    <div class="form-control bg-light" style="min-height:120px;">
+
+
+
+                        {% if subject.description %}
+
+
+
+                            {{ subject.description }}
+
+
+
+                        {% else %}
+
+
+
+                            <span class="text-muted">
+
+
+
+                                No description available.
+
+
+
+                            </span>
+
+
+
+                        {% endif %}
+
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+        <div class="card-footer text-end">
+
+
+
+            <a href="{{ url_for('school_admin.manage_subjects') }}"
+
+               class="btn btn-secondary">
+
+
+
+                <i class="bi bi-arrow-left-circle"></i>
+
+
+
+                Back
+
+
+
+            </a>
+
+
+
+            <a href="{{ url_for('school_admin.edit_subject', id=subject.id) }}"
+
+               class="btn btn-warning">
+
+
+
+                <i class="bi bi-pencil-square"></i>
+
+
+
+                Edit Subject
+
+
+
+            </a>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+{% endblock %}
+
+
+

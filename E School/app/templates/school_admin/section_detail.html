@@ -1,0 +1,152 @@
+{% extends "school_admin/base.html" %}
+
+{% block title %}Section Details{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+<!-- Page Header -->
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+<div>
+
+<h2 class="fw-bold">
+
+<i class="bi bi-diagram-3"></i>
+
+Section Details
+
+</h2>
+
+<p class="text-muted">
+
+View complete information about this section.
+
+</p>
+
+</div>
+
+<div>
+
+<a href="{{ url_for('school_admin.edit_section', id=section.id) }}"
+class="btn btn-warning">
+
+<i class="bi bi-pencil-square"></i>
+
+Edit
+
+</a>
+
+<a href="{{ url_for('school_admin.manage_sections') }}"
+class="btn btn-secondary">
+
+<i class="bi bi-arrow-left"></i>
+
+Back
+
+</a>
+
+</div>
+
+</div>
+
+<!-- Section Information Card -->
+
+<div class="card shadow border-0">
+
+<div class="card-header bg-primary text-white">
+
+<h5 class="mb-0">
+
+<i class="bi bi-info-circle"></i>
+
+Section Information
+
+</h5>
+
+</div>
+
+<div class="card-body">
+
+<!-- Class Name -->
+
+<div class="row mb-3">
+
+<div class="col-md-3 fw-bold">
+
+Class Name
+
+</div>
+
+<div class="col-md-9">
+
+{{ section.section_name }}
+
+</div>
+
+</div>
+
+<!-- Section Name -->
+
+<div class="row mb-3">
+
+<div class="col-md-3 fw-bold">
+
+Section Name
+
+</div>
+
+<div class="col-md-9">
+
+{{ section.section_name }}
+
+</div>
+
+</div>
+
+<!-- Description -->
+
+<div class="row mb-3">
+
+<div class="col-md-3 fw-bold">
+
+ Description
+
+</div>
+
+<div class="col-md-9">
+
+{{ section.description or "No description available." }}
+
+</div>
+
+</div>
+
+<!-- Created Date -->
+
+<div class="row mb-3">
+
+<div class="col-md-3 fw-bold">
+
+Created Date
+
+</div>
+
+<div class="col-md-9">
+
+{{ section.created_at.strftime('%d %B %Y') }}
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}
+

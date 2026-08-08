@@ -1,0 +1,299 @@
+{% extends "school_admin/base.html" %}
+
+{% block title %}Teacher Details{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+<!-- Page Header -->
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+<div>
+
+<h2 class="fw-bold mb-1">
+
+Teacher Details
+
+</h2>
+
+<p class="text-muted mb-0">
+
+View complete information about this teacher.
+
+</p>
+
+</div>
+
+<div>
+
+<a href="{{ url_for('school_admin.edit_teacher', id=teacher.id) }}"
+class="btn btn-warning me-2">
+
+<i class="bi bi-pencil-square"></i>
+
+Edit Teacher
+
+</a>
+
+<a href="{{ url_for('school_admin.manage_teachers') }}"
+class="btn btn-secondary">
+
+<i class="bi bi-arrow-left"></i>
+
+Back
+
+</a>
+
+</div>
+
+</div>
+
+<!-- Teacher Information Card -->
+
+<div class="card shadow border-0">
+
+<div class="card-header bg-primary text-white">
+
+<h5 class="mb-0">
+
+Teacher Information
+
+</h5>
+
+</div>
+
+<div class="card-body">
+
+<div class="row">
+
+<div class="col-md-6 mb-3">
+
+<strong>Teacher ID</strong>
+
+<p class="mb-0">
+
+{{ teacher.employee_number}}
+
+</p>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<strong> Full Name</strong>
+
+<p class="mb-0">
+
+{{ teacher.first_name }} {{ teacher.last_name }}
+
+</p>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<strong>Email</strong>
+
+<p class="mb-0">
+
+{{ teacher.email }}
+
+</p>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<strong> Phone</strong>
+
+<p class="mb-0">
+
+{{ teacher.phone }}
+
+</p>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<strong>Gender</strong>
+
+<p class="mb-0">
+
+{{ teacher.gender }}
+
+</p>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<strong> Date of Birth</strong>
+
+<p class="mb-0">
+
+{{ teacher.date_of_birth or "-" }}
+
+</p>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<strong>Qualification</strong>
+
+<p class="mb-0">
+
+{{ teacher.qualification or "-" }}
+
+</p>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<strong>Experience</strong>
+
+<p class="mb-0">
+
+{{ teacher.experience }} Years
+
+</p>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<strong>Joining Date</strong>
+
+<p class="mb-0">
+
+{{ teacher.joining_date }}
+
+</p>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<strong>Salary</strong>
+
+<p class="mb-0">
+
+{{ teacher.salary or "-" }}
+
+</p>
+
+</div>
+
+
+
+<div class="col-md-6 mb-3">
+
+<strong> Managed Class</strong>
+
+<p class="mb-0">
+
+{% if teacher.managed_class %}
+
+{{ teacher.managed_class.class_name }}
+
+{% else %}
+
+Not Assigned
+
+{% endif %}
+
+</p>
+
+</div>
+
+<div class="col-12 mb-3">
+
+<strong>Address</strong>
+
+<p class="mb-0">
+
+{{ teacher.address or "-" }}
+
+</p>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<strong> Status</strong>
+
+<p class="mb-0">
+
+{% if teacher.is_active %}
+
+<span class="badge bg-success">
+
+Active
+
+</span>
+
+{% else %}
+
+<span class="badge bg-danger">
+
+Inactive
+
+</span>
+
+{% endif %}
+
+</p>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<strong> Created Date</strong>
+
+<p class="mb-0">
+
+{{ teacher.created_at.strftime("%d %B %Y") }}
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card-footer bg-light">
+
+<div class="d-flex justify-content-end">
+
+<a href="{{ url_for('school_admin.edit_teacher', id=teacher.id) }}"
+class="btn btn-warning me-2">
+
+<i class="bi bi-pencil-square"></i>
+
+Edit Teacher
+
+</a>
+
+<a href="{{ url_for('school_admin.manage_teachers') }}"
+class="btn btn-secondary">
+
+<i class="bi bi-arrow-left"></i>
+
+Back to Teachers
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

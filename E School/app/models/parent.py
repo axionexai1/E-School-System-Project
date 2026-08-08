@@ -36,6 +36,8 @@ class Parent(db.Model):
     is_active = db.Column(db.Boolean,default=True)
     # ---------------------------------
     #RelationShip
+    user = db.relationship("User", back_populates = "parent")
+    school = db.relationship("School",back_populates="parents")
     students=db.relationship("ParentStudent",backref="parent",lazy=True,cascade="all, delete-orphan")
     # Timestamps
     # ---------------------------------
