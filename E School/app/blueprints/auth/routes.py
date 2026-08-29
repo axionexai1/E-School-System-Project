@@ -59,7 +59,7 @@ def redirect_dashboard(user):
         return redirect(url_for("school_admin.dashboard"))
 
     elif role == "teacher":
-        return redirect(url_for("teacher.dashboard"))
+        return redirect(url_for("teachers.dashboard"))
 
     elif role == "student":
         return redirect(url_for("student.dashboard"))

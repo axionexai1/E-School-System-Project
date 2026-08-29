@@ -32,10 +32,14 @@ class Class(db.Model):
     # Relationships
     # ---------------------------------
     teacher_subjects = db.relationship("TeacherSubject", back_populates = "classroom", cascade= "all, delete-orphan",lazy= True)  
-    sections = db.relationship("Section",backref="class_room",lazy=True,cascade="all, delete-orphan")
-    students = db.relationship("Student",backref="class_room",lazy=True,cascade="all, delete-orphan")
-   
-    class_teacher = db.relationship("Teacher",foreign_keys=[class_teacher_id],backref=db.backref("managed_class", uselist =False), uselist=False )
+    sections = db.relationship("Section",back_populates= "class_room",cascade="all, delete-orphan")
+    students = db.relationship("Student", back_populates= "class_room")
+    results=   db.relationship("Result", back_populates= "class_room")
+    exams = db.relationship("Exam", back_populates= "class_room",cascade="all, delete-orphan")
+    timetables = db.relationship("Timetable",back_populates= "class_room",cascade="all, delete-orphan")
+    assignments = db.relationship("Assignment",back_populates= "class_room",cascade="all, delete-orphan")
+    fee_structures = db.relationship("FeeStructure",back_populates= "class_room",cascade="all, delete-orphan")
+    class_teacher = db.relationship("Teacher",foreign_keys=[class_teacher_id],back_populates="managed_class", uselist=False )
     school = db.relationship("School",back_populates="classes")
     # String Representation
     # ---------------------------------

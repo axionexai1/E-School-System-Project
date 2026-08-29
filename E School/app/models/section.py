@@ -37,9 +37,13 @@ class Section(db.Model):
     # Relationships
     # ---------------------------------
     school = db.relationship("School",back_populates="sections")
+    class_room = db.relationship("Class",back_populates="sections")
+    exams = db.relationship("Exam",back_populates="sections")
+    timetables = db.relationship("Timetable",back_populates="section",cascade="all, delete-orphan")
+    assignments = db.relationship("Assignment",back_populates="sections",cascade="all, delete-orphan")
     teacher_subjects = db.relationship("TeacherSubject", back_populates = "section", cascade="all, delete-orphan")
-    students = db.relationship("Student",backref="section",lazy=True,cascade="all, delete-orphan")
-
+    students = db.relationship("Student",back_populates="section",cascade="all, delete-orphan")
+    results = db.relationship("Result",back_populates="section",cascade="all, delete-orphan")
 
     # ---------------------------------
     # String Representation

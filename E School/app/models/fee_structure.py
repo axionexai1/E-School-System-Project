@@ -17,7 +17,8 @@ class FeeStructure(db.Model):
     created_at = db.Column(db.DateTime,default=datetime.utcnow)
     updated_at = db.Column(db.DateTime,default=datetime.utcnow,onupdate=datetime.utcnow)
     school = db.relationship("School",backref=db.backref("fee_structures",lazy=True,cascade="all, delete-orphan"))
-    classroom = db.relationship("Class",backref=db.backref("fee_structures",lazy=True,cascade="all, delete-orphan"))
+    class_room = db.relationship("Class",back_populates="fee_structures")
+    fee_payments= db.relationship("FeePayment", back_populates= "fee_structure")
     __table_args__ = (db.UniqueConstraint("class_id","fee_type","academic_year",name="uq_fee_structure"),)
     def __repr__(self):
         return f"<FeeStructure {self.fee_type}>"

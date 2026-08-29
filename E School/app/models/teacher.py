@@ -46,7 +46,13 @@ class Teacher(db.Model):
     # Relationships
     user= db.relationship("User", back_populates= "teacher", uselist= False)
     teacher_subjects = db.relationship("TeacherSubject", back_populates ="teacher", cascade= "all, delete-orphan",lazy= True)
-    school = db.relationship("School", back_populates="teachers")
+    school = db.relationship("School", back_populates="teacher")
+    exams = db.relationship("Exam", back_populates="teacher")
+    results = db.relationship("Result", back_populates="teacher")
+    attendences = db.relationship("Attendance", back_populates="teacher")
+    assignments = db.relationship("Assignment", back_populates="teacher")
+    timetables = db.relationship("Timetable", back_populates="teacher")
+    managed_class= db.relationship("Class",foreign_keys ="Class.class_teacher_id" ,back_populates= "class_teacher", uselist= False)
    
  
 
