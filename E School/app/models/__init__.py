@@ -9,7 +9,7 @@ from .teacher import Teacher
 from .student import Student
 from .parent import Parent
 from .parent_student import ParentStudent
-from .teachersubject import TeacherSubject
+from .teacher_subject import TeacherSubject
 from .attendance import Attendance
 from .exam import Exam
 from .result import Result

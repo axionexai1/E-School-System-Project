@@ -23,11 +23,12 @@ class Exam(db.Model):
     is_active = db.Column(db.Boolean,default=True)
     created_at = db.Column(db.DateTime,default=datetime.utcnow)
     updated_at = db.Column(db.DateTime,default=datetime.utcnow,onupdate=datetime.utcnow)
-    school = db.relationship("School",backref=db.backref("exams",lazy=True))
-    subject = db.relationship("Subject",backref=db.backref("exams",lazy=True))
-    classroom = db.relationship("Class",backref=db.backref("exams",lazy=True))
-    section = db.relationship("Section",backref=db.backref("exams",lazy=True))
-    teacher = db.relationship("Teacher",backref=db.backref("exams",lazy=True))
+    school = db.relationship("School",back_populates="exams",lazy=True)
+    subject = db.relationship("Subject",back_populates="exams",lazy=True)
+    class_room = db.relationship("Class",back_populates="exams",lazy=True)
+    results = db.relationship("Result",back_populates="exams",lazy=True)
+    sections = db.relationship("Section",back_populates="exams",lazy=True)
+    teacher = db.relationship("Teacher",back_populates="exams",lazy=True)
     __table_args__ = (db.UniqueConstraint("exam_name","subject_id","class_id","section_id","academic_year",name="uq_exam_schedule"),)
     def __repr__(self):
         return f"<Exam {self.exam_name}>"

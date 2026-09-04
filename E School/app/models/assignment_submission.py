@@ -17,8 +17,8 @@ class AssignmentSubmission(db.Model):
     is_late_submission = db.Column(db.Boolean,default=False)
     created_at = db.Column(db.DateTime,default=datetime.utcnow)
     updated_at = db.Column(db.DateTime,default=datetime.utcnow,onupdate=datetime.utcnow)
-    assignment = db.relationship("Assignment",backref=db.backref("submissions",lazy=True,cascade="all, delete-orphan"))
-    student = db.relationship("Student",backref=db.backref("assignment_submissions",lazy=True,cascade="all, delete-orphan"))
+    assignments = db.relationship("Assignment",back_populates="submissions")
+    students = db.relationship("Student",back_populates="assignment_submissions",lazy=True)
     __table_args__ = (db.UniqueConstraint("assignment_id","student_id",name="uq_assignment_submission"),)
     def __repr__(self):
         return (f"<AssignmentSubmission "f"Assignment={self.assignment_id}, "f"Student={self.student_id}>")

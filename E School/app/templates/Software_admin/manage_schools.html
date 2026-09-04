@@ -95,13 +95,14 @@ Edit
 
 </a>
 
-<a href="{{ url_for('software_admin.delete_school', id=school.id) }}"
-class="btn btn-danger btn-sm"
-onclick="return confirm('Delete this School Admin?')">
-
-Delete
-
-</a>
+<form action="{{ url_for('software_admin.delete_school', id=school.id) }}"
+    method = "POST"
+    style="display:inline;">
+    <button type="submit"
+    class = "btn btn-danger btn-sm"
+    onclick="return confirm('Are you sure you want to delete this school')"
+    >Delete</button>
+</form>
 
 </td>
 

@@ -51,35 +51,42 @@ Dashboard
 </li>
 
 <li>
-<a href="#">
+<a href="{{ url_for('school_admin.manage_teachers') }}">
 <i class="bi bi-person-workspace"></i>
 Teachers
 </a>
 </li>
 
 <li>
-<a href="#">
+<a href="{{ url_for('school_admin.manage_students') }}">
 <i class="bi bi-mortarboard"></i>
 Students
 </a>
 </li>
 
 <li>
-<a href="#">
+<a href="{{ url_for('school_admin.manage_classes') }}">
 <i class="bi bi-building"></i>
 Classes
 </a>
 </li>
 
 <li>
-<a href="#">
+    <a href="{{ url_for('school_admin.manage_teacher_subjects') }}">
+    <i class="bi bi-building"></i>
+    Subject Teacher 
+    </a>
+    </li>
+
+<li>
+<a href="{{ url_for('school_admin.manage_sections') }}">
 <i class="bi bi-diagram-3"></i>
 Sections
 </a>
 </li>
 
 <li>
-<a href="#">
+<a href="{{ url_for('school_admin.manage_subjects') }}">
 <i class="bi bi-book"></i>
 Subjects
 </a>

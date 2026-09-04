@@ -19,11 +19,11 @@ class Timetable(db.Model):
     is_active = db.Column(db.Boolean,default=True)
     created_at = db.Column(db.DateTime,default=datetime.utcnow)
     updated_at = db.Column(db.DateTime,default=datetime.utcnow,onupdate=datetime.utcnow)
-    school = db.relationship("School",backref=db.backref("timetables",lazy=True))
-    classroom = db.relationship("Class",backref=db.backref("timetables",lazy=True))
-    section = db.relationship("Section",backref=db.backref("timetables",lazy=True))
-    subject = db.relationship("Subject",backref=db.backref("timetables",lazy=True))
-    teacher = db.relationship("Teacher",backref=db.backref("timetables",lazy=True))
+    school = db.relationship("School",back_populates ="timetables")
+    class_room = db.relationship("Class",back_populates ="timetables")
+    section = db.relationship("Section",back_populates ="timetables")
+    subject = db.relationship("Subject",back_populates ="timetables")
+    teacher = db.relationship("Teacher",back_populates ="timetables")
     __table_args__ = (db.UniqueConstraint("class_id","section_id","day_of_week","start_time",name="uq_class_timetable"),)
 
     def __repr__(self):

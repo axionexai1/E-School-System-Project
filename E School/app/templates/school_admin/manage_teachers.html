@@ -1,0 +1,386 @@
+{% extends "school_admin/base.html" %}
+
+{% block title %}Manage Teachers{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+<!-- Page Header -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+<div>
+<h2 class="fw-bold mb-1">
+Manage Teachers
+</h2>
+
+<p class="text-muted mb-0">
+View, manage and organize all teachers.
+</p>
+</div>
+
+<a href="{{ url_for('school_admin.create_teacher') }}"
+class="btn btn-success">
+
+<i class="bi bi-plus-circle"></i>
+
+Add New Teacher
+
+</a>
+
+</div>
+
+<!-- Search Card -->
+<div class="card shadow-sm border-0 mb-4">
+
+<div class="card-body">
+
+<form method="GET">
+
+<div class="row">
+
+<div class="col-md-6">
+
+<input
+type="text"
+name="search"
+class="form-control"
+placeholder="Search by Teacher ID, Name or Email..."
+value="{{ request.args.get('search', '') }}">
+
+</div>
+
+<div class="col-md-2">
+
+<button
+type="submit"
+class="btn btn-primary w-100">
+
+<i class="bi bi-search"></i>
+
+Search
+
+</button>
+
+</div>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+<!-- Teachers Table -->
+
+<div class="card shadow-sm border-0">
+
+<div class="card-header bg-primary text-white">
+
+<h5 class="mb-0">
+
+Teachers List
+
+</h5>
+
+</div>
+
+<div class="card-body p-0">
+
+{% if teachers %}
+
+<div class="table-responsive">
+
+<table class="table table-hover align-middle mb-0">
+
+<thead class="table-light">
+
+<tr>
+
+<th>Teacher ID</th>
+
+<th>Full Name</th>
+
+<th>Email</th>
+
+<th>Phone</th>
+
+<th>Qualification</th>
+
+<th>Managed Class</th>
+
+<th>Status</th>
+
+<th>Created Date</th>
+
+<th class="text-center">
+Actions
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for teacher in teachers %}
+
+<tr>
+
+<td>
+
+{{ teacher.employee_number }}
+
+</td>
+
+<td>
+
+{{ teacher.first_name }} 
+{{ teacher.last_name }}
+
+</td>
+
+<td>
+
+{{ teacher.email }}
+
+</td>
+
+<td>
+
+{{ teacher.phone }}
+
+</td>
+
+<td>
+
+{{ teacher.qualification or "-" }}
+
+</td>
+
+<td>
+
+{% if teacher.managed_class %}
+
+{{ teacher.managed_class.class_name }}
+
+{% else %}
+
+<span class="text-muted">
+
+Not Assigned
+
+</span>
+
+{% endif %}
+
+</td>
+
+<td>
+
+{% if teacher.is_active %}
+
+<span class="badge bg-success">
+
+Active
+
+</span>
+
+{% else %}
+
+<span class="badge bg-danger">
+
+Inactive
+
+</span>
+
+{% endif %}
+
+</td>
+
+<td>
+
+{{ teacher.created_at.strftime("%d %b %Y") }}
+
+</td>
+
+<td class="text-center">
+<div class="d-flex justify-content-center gap-2">
+
+<!-- View -->
+<a href="{{ url_for('school_admin.teacher_detail', id=teacher.id) }}"
+class="btn btn-sm btn-outline-primary"
+title="View Teacher">
+
+<i class="bi bi-eye"></i>
+
+</a>
+
+<!-- Edit -->
+<a href="{{ url_for('school_admin.edit_teacher', id=teacher.id) }}"
+class="btn btn-sm btn-outline-warning"
+title="Edit Teacher">
+
+<i class="bi bi-pencil-square"></i>
+
+</a>
+
+<!-- Delete -->
+<button
+type="button"
+class="btn btn-sm btn-outline-danger"
+data-bs-toggle="modal"
+data-bs-target="#deleteModal{{ teacher.id }}"
+title="Delete Teacher">
+
+<i class="bi bi-trash"></i>
+
+</button>
+
+</div>
+
+
+
+</td>
+
+</tr>
+<!-- Delete Teacher Modal -->
+
+<div class="modal fade"
+id="deleteModal{{ teacher.id }}"
+tabindex="-1"
+aria-hidden="true">
+
+<div class="modal-dialog">
+
+<div class="modal-content">
+
+<div class="modal-header bg-danger text-white">
+
+<h5 class="modal-title">
+
+Delete Teacher
+
+</h5>
+
+<button
+type="button"
+class="btn-close btn-close-white"
+data-bs-dismiss="modal">
+
+</button>
+
+</div>
+
+<div class="modal-body">
+
+<p>
+
+Are you sure you want to delete
+
+<strong>
+
+{{ teacher.full_name }}
+
+</strong>?
+
+</p>
+
+<p class="text-danger mb-0">
+
+This action cannot be undone.
+
+</p>
+
+</div>
+
+<div class="modal-footer">
+
+<button
+type="button"
+class="btn btn-secondary"
+data-bs-dismiss="modal">
+
+Cancel
+
+</button>
+
+<form method="POST"
+action="{{ url_for('school_admin.delete_teacher', id=teacher.id) }}">
+
+<button
+type="submit"
+class="btn btn-danger">
+
+<i class="bi bi-trash"></i>
+
+Delete Teacher
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% else %}
+
+<div class="text-center py-5">
+
+<i class="bi bi-person-workspace display-1 text-secondary"></i>
+
+<h4 class="mt-3">
+
+No teachers found
+
+</h4>
+
+<p class="text-muted">
+
+Click
+
+<strong>
+
+"Add New Teacher"
+
+</strong>
+
+to add your first teacher.
+
+</p>
+
+<a href="{{ url_for('school_admin.create_teacher') }}"
+class="btn btn-success">
+
+<i class="bi bi-plus-circle"></i>
+
+Add New Teacher
+
+</a>
+
+</div>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

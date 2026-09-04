@@ -261,7 +261,7 @@ Quick Actions
 
 <div class="card-body d-grid gap-2">
 
-<a href="#" class="btn btn-primary">
+<a href="{{ url_for('school_admin.create_student') }}" class="btn btn-primary">
 
 <i class="bi bi-person-plus-fill"></i>
 
@@ -269,7 +269,7 @@ Add Student
 
 </a>
 
-<a href="#" class="btn btn-success">
+<a href="{{ url_for('school_admin.create_teacher') }}" class="btn btn-success">
 
 <i class="bi bi-person-workspace"></i>
 
@@ -277,7 +277,7 @@ Add Teacher
 
 </a>
 
-<a href="#" class="btn btn-warning">
+<a href="{{ url_for('school_admin.create_class') }}" class="btn btn-warning">
 
 <i class="bi bi-building-add"></i>
 

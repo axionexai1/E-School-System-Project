@@ -1,0 +1,234 @@
+
+{% extends "school_admin/base.html" %}
+
+{% block title %}Class Details{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+<!-- Page Header -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+<div>
+<h2 class="fw-bold">
+<i class="bi bi-building"></i>
+Class Details
+</h2>
+
+<p class="text-muted">
+View complete information about this class.
+</p>
+</div>
+
+<div>
+
+<a href="{{ url_for('school_admin.edit_class', id=class_obj.id) }}"
+class="btn btn-warning">
+
+<i class="bi bi-pencil-square"></i>
+Edit
+
+</a>
+
+<a href="{{ url_for('school_admin.manage_classes') }}"
+class="btn btn-secondary">
+
+<i class="bi bi-arrow-left"></i>
+Back
+
+</a>
+
+</div>
+
+</div>
+
+<!-- Class Information -->
+
+<div class="card shadow border-0">
+
+<div class="card-header bg-primary text-white">
+
+<h5 class="mb-0">
+Class Information
+</h5>
+
+</div>
+
+<div class="card-body">
+
+<div class="row mb-3">
+
+<div class="col-md-3 fw-bold">
+Class Name
+</div>
+
+<div class="col-md-9">
+{{ class_obj.class_name }}
+</div>
+
+</div>
+
+<div class="row mb-3">
+
+<div class="col-md-3 fw-bold">
+Class Code
+</div>
+
+<div class="col-md-9">
+{{ class_obj.class_code }}
+</div>
+
+</div>
+
+<div class="row mb-3">
+
+<div class="col-md-3 fw-bold">
+Description
+</div>
+
+<div class="col-md-9">
+
+{{ class_obj.description or "No description available." }}
+
+</div>
+
+</div>
+
+<div class="row mb-3">
+
+<div class="col-md-3 fw-bold">
+Status
+</div>
+
+<div class="col-md-9">
+
+{% if class_obj.is_active %}
+
+<span class="badge bg-success">
+Active
+</span>
+
+{% else %}
+
+<span class="badge bg-danger">
+Inactive
+</span>
+
+{% endif %}
+
+</div>
+
+</div>
+
+<div class="row mb-3">
+
+<div class="col-md-3 fw-bold">
+Class Teacher
+</div>
+
+<div class="col-md-9">
+
+{% if class_obj.class_teacher %}
+
+{{ class_obj.class_teacher.first_name }}
+{{ class_obj.class_teacher.last_name }}
+{% else %}
+
+<span class="text-muted">
+Not Assigned
+</span>
+
+{% endif %}
+
+</div>
+
+</div>
+
+<div class="row mb-3">
+
+<div class="col-md-3 fw-bold">
+Created Date
+</div>
+
+<div class="col-md-9">
+
+{{ class_obj.created_at.strftime('%d %B %Y') }}
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Statistics -->
+
+<div class="row mt-4">
+
+<div class="col-md-4">
+
+<div class="card shadow-sm border-0 text-center">
+
+<div class="card-body">
+
+<h2 class="text-primary">
+
+{{ class_obj.sections|length }}
+
+</h2>
+
+<h6>Total Sections</h6>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card shadow-sm border-0 text-center">
+
+<div class="card-body">
+
+<h2 class="text-success">
+
+{{ class_obj.students|length }}
+
+</h2>
+
+<h6>Total Students</h6>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card shadow-sm border-0 text-center">
+
+<div class="card-body">
+
+<h2 class="text-warning">
+
+{{ class_obj.subjects|length }}
+
+</h2>
+
+<h6>Total Subjects</h6>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}
