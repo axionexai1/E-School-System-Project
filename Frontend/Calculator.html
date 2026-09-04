@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Calculator</title>
+</head>
+<body>
+<!-- ========================================================= -->
+<!-- Grade Calculator Section Starts -->
+<!-- ========================================================= -->
+
+<section id="calculator-section" class="dashboard-section">
+
+    <div id="calculator-header" class="section-header">
+        <h2 id="calculator-title" class="section-title">Grade Calculator</h2>
+        <p id="calculator-description" class="section-description">
+            Estimate your subject percentage and grade by entering your
+            obtained marks and total marks.
+        </p>
+    </div>
+
+    <article id="grade-calculator-card" class="dashboard-card">
+        <div class="card-header">
+            <h3 class="card-title">Calculate Your Grade</h3>
+        </div>
+        <div class="card-body">
+            <form id="grade-calculator-form" class="dashboard-form" action="#" method="post">
+
+                <div class="form-group">
+                    <label for="calc-subject" class="form-label">Subject</label>
+                    <input type="text" id="calc-subject" name="subject" class="form-input" placeholder="Subject Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="obtained-marks" class="form-label">Obtained Marks</label>
+                    <input type="number" id="obtained-marks" name="obtained_marks" class="form-input" placeholder="e.g. 85">
+                </div>
+
+                <div class="form-group">
+                    <label for="total-marks" class="form-label">Total Marks</label>
+                    <input type="number" id="total-marks" name="total_marks" class="form-input" placeholder="e.g. 100">
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" id="calculate-button" class="submit-button">Calculate</button>
+                </div>
+
+            </form>
+        </div>
+    </article>
+
+    <article id="grading-scale-card" class="dashboard-card">
+        <div class="card-header">
+            <h3 class="card-title">Grading Scale</h3>
+        </div>
+        <div class="card-body">
+            <table id="grading-scale-table" class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th class="table-heading">Percentage</th>
+                        <th class="table-heading">Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="table-data">90% - 100%</td><td class="table-data">A+</td></tr>
+                    <tr><td class="table-data">80% - 89%</td><td class="table-data">A</td></tr>
+                    <tr><td class="table-data">70% - 79%</td><td class="table-data">B</td></tr>
+                    <tr><td class="table-data">60% - 69%</td><td class="table-data">C</td></tr>
+                    <tr><td class="table-data">Below 60%</td><td class="table-data">D</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </article>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- Grade Calculator Section Ends -->
+<!-- ========================================================= -->
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center</title>
+</head>
+<body>
+<!-- ========================================================= -->
+<!-- Help Center Section Starts -->
+<!-- ========================================================= -->
+
+<section id="help-center-section" class="dashboard-section">
+
+    <div id="help-center-header" class="section-header">
+        <h2 id="help-center-title" class="section-title">Help Center</h2>
+        <p id="help-center-description" class="section-description">
+            Find answers to common questions or reach out to support if you
+            need further assistance.
+        </p>
+    </div>
+
+    <article id="faq-card" class="dashboard-card">
+        <div class="card-header">
+            <h3 class="card-title">Frequently Asked Questions</h3>
+        </div>
+        <div class="card-body">
+            <ul id="faq-list" class="faq-list">
+                <li class="faq-item">
+                    <p class="faq-question">How do I reset my password?</p>
+                    <p class="faq-answer">Go to Settings and select "Change Password" to reset it securely.</p>
+                </li>
+                <li class="faq-item">
+                    <p class="faq-question">How can I check my attendance?</p>
+                    <p class="faq-answer">Open the Attendance &amp; Percentage card from the dashboard.</p>
+                </li>
+                <li class="faq-item">
+                    <p class="faq-question">Who do I contact for fee issues?</p>
+                    <p class="faq-answer">Use the Contact with School page to reach the accounts office.</p>
+                </li>
+                <li class="faq-item">
+                    <p class="faq-question">How do I message a teacher?</p>
+                    <p class="faq-answer">Open the Contact with Teacher card and select the teacher you want to message.</p>
+                </li>
+            </ul>
+        </div>
+    </article>
+
+    <article id="help-support-form-card" class="dashboard-card">
+        <div class="card-header">
+            <h3 class="card-title">Contact Support</h3>
+        </div>
+        <div class="card-body">
+            <form id="help-support-form" class="dashboard-form" action="#" method="post">
+
+                <div class="form-group">
+                    <label for="support-topic" class="form-label">Topic</label>
+                    <select id="support-topic" name="support_topic" class="form-select">
+                        <option value="">Choose Topic</option>
+                        <option>Account Issue</option>
+                        <option>Technical Problem</option>
+                        <option>Fees Query</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="support-message" class="form-label">Message</label>
+                    <textarea id="support-message" name="support_message" class="form-textarea" rows="6" placeholder="Describe your issue..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" id="support-submit-button" class="submit-button">Submit Request</button>
+                </div>
+
+            </form>
+        </div>
+    </article>
+
+    <article id="help-resources-card" class="dashboard-card">
+        <div class="card-header">
+            <h3 class="card-title">Additional Resources</h3>
+        </div>
+        <div class="card-body">
+            <ul id="help-resources-list" class="feature-list">
+                <li class="feature-item">User Guide: step-by-step instructions for using the portal.</li>
+                <li class="feature-item">Video Tutorials: short walkthroughs of key features.</li>
+                <li class="feature-item">School Contact: reach the office directly for urgent matters.</li>
+            </ul>
+        </div>
+    </article>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- Help Center Section Ends -->
+<!-- ========================================================= -->
+</body>
+</html>
