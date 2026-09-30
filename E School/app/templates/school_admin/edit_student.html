@@ -1,0 +1,487 @@
+{% extends "school_admin/base.html" %}
+
+{% block title %}Edit Student{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+<!-- Page Header -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+<div>
+<h2 class="fw-bold mb-1">
+Edit Student
+</h2>
+
+<p class="text-muted mb-0">
+Update student information.
+</p>
+</div>
+
+<a
+href="{{ url_for(
+'school_admin.student_detail',
+id=student.id
+) }}"
+class="btn btn-secondary"
+>
+<i class="bi bi-arrow-left"></i>
+Back
+</a>
+
+</div>
+
+
+<!-- Form Card -->
+<div class="card shadow border-0">
+
+<div class="card-header bg-warning">
+
+<h5 class="mb-0">
+<i class="bi bi-pencil-square"></i>
+Student Information
+</h5>
+
+</div>
+
+
+<div class="card-body">
+
+<form method="POST">
+
+{{ form.hidden_tag() }}
+
+
+<!-- ========================= -->
+<!-- Personal Information -->
+<!-- ========================= -->
+
+<h5 class="fw-bold mb-3">
+Personal Information
+</h5>
+
+<div class="row">
+
+<!-- First Name -->
+<div class="col-md-6 mb-3">
+
+{{ form.first_name.label(
+class="form-label fw-semibold"
+) }}
+
+{{ form.first_name(
+class="form-control"
+) }}
+
+{% for error in form.first_name.errors %}
+
+<small class="text-danger">
+{{ error }}
+</small>
+
+{% endfor %}
+
+</div>
+
+
+<!-- Last Name -->
+<div class="col-md-6 mb-3">
+
+{{ form.last_name.label(
+class="form-label fw-semibold"
+) }}
+
+{{ form.last_name(
+class="form-control"
+) }}
+
+{% for error in form.last_name.errors %}
+
+<small class="text-danger">
+{{ error }}
+</small>
+
+{% endfor %}
+
+</div>
+
+
+<!-- Email -->
+<div class="col-md-6 mb-3">
+
+{{ form.email.label(
+class="form-label fw-semibold"
+) }}
+
+{{ form.email(
+class="form-control",
+type="email"
+) }}
+
+{% for error in form.email.errors %}
+
+<small class="text-danger">
+{{ error }}
+</small>
+
+{% endfor %}
+
+<small class="text-muted">
+This email is also used for student login.
+</small>
+
+</div>
+
+
+<!-- Phone -->
+<div class="col-md-6 mb-3">
+
+{{ form.phone.label(
+class="form-label fw-semibold"
+) }}
+
+{{ form.phone(
+class="form-control"
+) }}
+
+{% for error in form.phone.errors %}
+
+<small class="text-danger">
+{{ error }}
+</small>
+
+{% endfor %}
+
+</div>
+
+
+<!-- Gender -->
+<div class="col-md-6 mb-3">
+
+{{ form.gender.label(
+class="form-label fw-semibold"
+) }}
+
+{{ form.gender(
+class="form-select"
+) }}
+
+{% for error in form.gender.errors %}
+
+<small class="text-danger">
+{{ error }}
+</small>
+
+{% endfor %}
+
+</div>
+
+
+<!-- Date of Birth -->
+<div class="col-md-6 mb-3">
+
+{{ form.date_of_birth.label(
+class="form-label fw-semibold"
+) }}
+
+{{ form.date_of_birth(
+class="form-control"
+) }}
+
+{% for error in form.date_of_birth.errors %}
+
+<small class="text-danger">
+{{ error }}
+</small>
+
+{% endfor %}
+
+</div>
+
+
+<!-- CNIC -->
+<div class="col-md-6 mb-3">
+
+{{ form.cnic.label(
+class="form-label fw-semibold"
+) }}
+
+{{ form.cnic(
+class="form-control"
+) }}
+
+{% for error in form.cnic.errors %}
+
+<small class="text-danger">
+{{ error }}
+</small>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+
+<hr class="my-4">
+
+
+<!-- ========================= -->
+<!-- Academic Information -->
+<!-- ========================= -->
+
+<h5 class="fw-bold mb-3">
+Academic Information
+</h5>
+
+<div class="row">
+
+<!-- Admission Number -->
+<div class="col-md-6 mb-3">
+
+{{ form.admission_number.label(
+class="form-label fw-semibold"
+) }}
+
+{{ form.admission_number(
+class="form-control"
+) }}
+
+{% for error in form.admission_number.errors %}
+
+<small class="text-danger">
+{{ error }}
+</small>
+
+{% endfor %}
+
+</div>
+
+
+<!-- Roll Number -->
+<div class="col-md-6 mb-3">
+
+{{ form.roll_number.label(
+class="form-label fw-semibold"
+) }}
+
+{{ form.roll_number(
+class="form-control"
+) }}
+
+{% for error in form.roll_number.errors %}
+
+<small class="text-danger">
+{{ error }}
+</small>
+
+{% endfor %}
+
+</div>
+
+
+<!-- Class -->
+<div class="col-md-6 mb-3">
+
+{{ form.class_id.label(
+class="form-label fw-semibold"
+) }}
+
+{{ form.class_id(
+class="form-select"
+) }}
+
+{% for error in form.class_id.errors %}
+
+<small class="text-danger">
+{{ error }}
+</small>
+
+{% endfor %}
+
+</div>
+
+
+<!-- Section -->
+<div class="col-md-6 mb-3">
+
+{{ form.section_id.label(
+class="form-label fw-semibold"
+) }}
+
+{{ form.section_id(
+class="form-select"
+) }}
+
+{% for error in form.section_id.errors %}
+
+<small class="text-danger">
+{{ error }}
+</small>
+
+{% endfor %}
+
+</div>
+
+
+<!-- Admission Date -->
+<div class="col-md-6 mb-3">
+
+{{ form.admission_date.label(
+class="form-label fw-semibold"
+) }}
+
+{{ form.admission_date(
+class="form-control"
+) }}
+
+{% for error in form.admission_date.errors %}
+
+<small class="text-danger">
+{{ error }}
+</small>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+
+<hr class="my-4">
+
+
+<!-- ========================= -->
+<!-- Guardian Information -->
+<!-- ========================= -->
+
+<h5 class="fw-bold mb-3">
+Guardian Information
+</h5>
+
+<div class="row">
+
+<!-- Guardian Name -->
+<div class="col-md-6 mb-3">
+
+{{ form.guardian_name.label(
+class="form-label fw-semibold"
+) }}
+
+{{ form.guardian_name(
+class="form-control"
+) }}
+
+{% for error in form.guardian_name.errors %}
+
+<small class="text-danger">
+{{ error }}
+</small>
+
+{% endfor %}
+
+</div>
+
+
+<!-- Guardian Phone -->
+<div class="col-md-6 mb-3">
+
+{{ form.guardian_phone.label(
+class="form-label fw-semibold"
+) }}
+
+{{ form.guardian_phone(
+class="form-control"
+) }}
+
+{% for error in form.guardian_phone.errors %}
+
+<small class="text-danger">
+{{ error }}
+</small>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+
+<hr class="my-4">
+
+
+<!-- ========================= -->
+<!-- Address -->
+<!-- ========================= -->
+
+<h5 class="fw-bold mb-3">
+Address
+</h5>
+
+<div class="row">
+
+<div class="col-12 mb-3">
+
+{{ form.address.label(
+class="form-label fw-semibold"
+) }}
+
+{{ form.address(
+class="form-control",
+rows="4"
+) }}
+
+{% for error in form.address.errors %}
+
+<small class="text-danger">
+{{ error }}
+</small>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+
+<hr class="my-4">
+
+
+<!-- ========================= -->
+<!-- Buttons -->
+<!-- ========================= -->
+
+<div class="d-flex justify-content-end">
+
+<a
+href="{{ url_for(
+'school_admin.student_detail',
+id=student.id
+) }}"
+class="btn btn-secondary me-2"
+>
+<i class="bi bi-x-circle"></i>
+Cancel
+</a>
+
+
+<button
+type="submit"
+class="btn btn-warning"
+>
+<i class="bi bi-check-circle"></i>
+Save Changes
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -95,3 +95,44 @@ class SubjectForm(FlaskForm):
     is_active = SelectField( "Status",choices=[ (1, "Active"),(0, "Inactive")],
     coerce=int,validators=[DataRequired()])
     submit = SubmitField("Save Subject")
+
+
+
+# -------------------------------------------
+#   ------ Student Management Form ----------------
+# ---------------------------------------------
+
+class StudentForm(FlaskForm):
+
+# -------------------------
+# Personal Information
+# -------------------------
+
+    first_name = StringField("First Name",validators=[DataRequired(),Length(max=50)])
+    last_name = StringField("Last Name",validators=[DataRequired(),Length(max=50)])
+    email = StringField("Email",validators=[DataRequired(),Email(),Length(max=120)])
+    phone = StringField("Phone",validators=[Optional(),Length(max=30)])
+    gender = SelectField("Gender",choices=[("", "-- Select Gender --"),("Male", "Male"),("Female", "Female"),("Other", "Other")],validators=[DataRequired()])
+    date_of_birth = DateField("Date of Birth",format="%Y-%m-%d",validators=[Optional()])
+    cnic = StringField("CNIC",validators=[Optional(),Length(max=30)])
+    # -------------------------
+    # Academic Information
+    # -------------------------
+    admission_number = StringField("Admission Number",validators=[DataRequired(),Length(max=50)])
+    roll_number = StringField("Roll Number",validators=[Optional(),Length(max=30)])
+    class_id = SelectField("Class",coerce=int,choices=[],validators=[DataRequired()])
+    section_id = SelectField("Section",coerce=int,choices=[],validators=[DataRequired()])
+    admission_date = DateField("Admission Date",format="%Y-%m-%d",validators=[Optional()])
+    # -------------------------
+    # Parent / Guardian
+    # -------------------------
+    guardian_name = StringField("Guardian Name",validators=[Optional(),Length(max=100)])
+    guardian_phone = StringField("Guardian Phone",validators=[Optional(),Length(max=30)])
+    # -------------------------
+    # Address
+    # -------------------------
+    address = TextAreaField("Address",validators=[Optional(),Length(max=500)])
+    # -------------------------
+    # Submit
+    # -------------------------
+    submit = SubmitField("Save Student")

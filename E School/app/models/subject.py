@@ -12,6 +12,10 @@ class Subject(db.Model):
     # Relationships
     # ---------------------------------
     school = db.relationship("School",back_populates="subjects")
+    exams = db.relationship("Exam", back_populates= "subject", cascade= "all, delete-orphan")
+    timetables = db.relationship("Timetable", back_populates = "subject")
+    assignments = db.relationship("Assignment", back_populates = "subject")
+    results = db.relationship("Result", back_populates = "subject")
     teacher_subjects= db.relationship("TeacherSubject", back_populates = "subject", cascade ="all, delete-orphan",lazy = True)
     # School
     school_id = db.Column(db.Integer,db.ForeignKey("schools.id"),nullable=False)

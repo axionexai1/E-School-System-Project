@@ -1,4 +1,5 @@
 from app.extensions import db
+from app.extensions import bcrypt
 from flask import render_template, redirect,url_for, flash, request
 from flask_login import login_required, current_user
 from app.models.student import Student
@@ -9,10 +10,12 @@ from app.models.section import Section
 from app.models.subject import Subject
 from app.models.user import User
 from app.models.role import Role
+from app.models.student import Student
 from sqlalchemy import or_
 from . import school_admin
 from .forms import ClassForm
 from .forms import SectionForm
+from .forms import StudentForm
 from .forms import TeacherForm
 from .forms import TeacherSubjectForm
 from .forms import SubjectForm
@@ -290,11 +293,12 @@ def create_teacher():
             return redirect(url_for("school_admin.manage_teachers"))
 
         # 2. Generate Teacher ID
-        teacher_count = Teacher.query.filter_by(
-        school_id=current_user.school_id
-        ).count()
+        teacher_number = 1
 
-        teacher_id = f"TCH-{teacher_count + 1:04d}"
+        while Teacher.query.filter_by(school_id =current_user.school_id,employee_number =f"TCH-{teacher_number + 1:04d}").first():
+            teacher_number += 1
+
+        teacher_id = f"TCH-{teacher_number + 1:04d}"
 
         # 3. Generate Username
         username = form.email.data
@@ -415,8 +419,10 @@ def edit_teacher(id):
 
     if request.method == "GET":
 
-        if teacher.managed_class:
-            form.managed_class_id.data = teacher.managed_class_id
+        managed_class = Class.query.filter_by(class_teacher_id = teacher.id).first()
+
+        if managed_class:
+            form.managed_class_id.data = managed_class.id
 
         else:
             form.managed_class_id.data =0 
@@ -435,13 +441,14 @@ def edit_teacher(id):
             teacher.joining_date = form.joining_date.data
             teacher.address = form.address.data
             teacher.salary = form.salary.data
+            new_class_id = form.managed_class_id.data
             
             old_class = Class.query.filter_by(class_teacher_id=teacher.id).first()
             if old_class:
                 old_class.class_teacher_id = None
 
-            if form.managed_class_id.data != 0 :
-                new_class = Class.query.get(form.managed_class_id.data)
+            if new_class_id:
+                new_class = Class.query.get(new_class_id)
 
                 if new_class:
                     new_class.class_teacher_id =teacher.id
@@ -833,3 +840,449 @@ def delete_subject(id):
     db.session.commit()
     flash("Subject deleted successfully.","success")
     return redirect(url_for("school_admin.manage_subjects"))
+
+
+
+
+
+# -------------------------------------------
+#   ------ Student Management System ----------------
+# ---------------------------------------------
+ # For  Manage Section
+
+@school_admin.route("/create-student", methods=["GET", "POST"])
+@login_required
+def create_student():
+
+    form = StudentForm()
+
+    # Get current school
+    school_id = current_user.school_id
+
+    # -----------------------------
+    # Populate Class dropdown
+    # -----------------------------
+    classes = Class.query.filter_by(
+    school_id=school_id,
+    is_active=True
+    ).all()
+
+    form.class_id.choices = [
+    (c.id, c.class_name)
+    for c in classes
+    ]
+
+    # -----------------------------
+    # Populate Section dropdown
+    # -----------------------------
+    sections = Section.query.filter_by(
+    school_id=school_id
+    ).all()
+
+    form.section_id.choices = [
+    (s.id, s.section_name)
+    for s in sections
+    ]
+
+    # -----------------------------
+    # POST
+    # -----------------------------
+    if form.validate_on_submit():
+
+        try:
+
+            # =====================================
+            # 1. Check if email already exists
+            # =====================================
+
+            existing_user = User.query.filter_by(
+            email=form.email.data
+            ).first()
+
+            if existing_user:
+                flash("A user with this email already exists.", "danger")
+                return render_template(
+                "school_admin.create_student.html",
+                form=form
+                )
+
+            # =====================================
+            # 2. Get Student Role
+            # =====================================
+
+            student_role = Role.query.filter_by(
+            role_name="Student"
+            ).first()
+
+            if not student_role:
+                flash("Student role was not found.", "danger")
+                return render_template(
+                "school_admin.create_student.html",
+                form=form
+                )
+
+            # =====================================
+            # 3. Generate Student Password
+            # =====================================
+
+            generated_password = form.admission_number.data
+
+            # =====================================
+            # 4. Create User
+            # =====================================
+
+            user = User(
+            full_name=f"{form.first_name.data} {form.last_name.data}",
+
+            username=form.email.data,
+
+            email=form.email.data,
+
+            role_id=student_role.id,
+
+            school_id=school_id,
+
+            is_active=True,
+
+            is_verified=False
+            )
+
+            # Hash password
+            user.password_hash = bcrypt.generate_password_hash(
+            generated_password
+            ).decode("utf-8")
+
+            db.session.add(user)
+
+            # Get user.id
+            db.session.flush()
+
+            # =====================================
+            # 5. Create Student
+            # =====================================
+
+            student = Student(
+
+            # User relationship
+            user_id=user.id,
+
+            # School
+            school_id=school_id,
+
+            # Personal Information
+            first_name=form.first_name.data,
+            last_name=form.last_name.data,
+
+            gender=form.gender.data,
+
+            date_of_birth=form.date_of_birth.data,
+
+            phone=form.phone.data,
+
+            address=form.address.data,
+
+            # Academic Information
+            admission_number=form.admission_number.data,
+
+            roll_number=form.roll_number.data,
+
+            class_id=form.class_id.data,
+
+            section_id=form.section_id.data,
+
+            admission_date=form.admission_date.data,
+            cnic = form.cnic.data,
+
+            # Guardian
+            guardian_name=form.guardian_name.data,
+
+            guardian_phone=form.guardian_phone.data
+            )
+
+            db.session.add(student)
+
+            # =====================================
+            # 6. Commit Everything
+            # =====================================
+
+            db.session.commit()
+
+            print("STUDENT CREATED SUCCESSFULLY!")
+
+            # =====================================
+            # 7. Show Credentials Page
+            # =====================================
+
+            return render_template(
+            "school_admin/student_credentials.html",
+
+            student=student,
+
+            email=user.email,
+
+            password=generated_password
+            )
+
+        except Exception as e:
+
+            db.session.rollback()
+
+            print("ERROR CREATING STUDENT:", e)
+
+            flash(
+            "An error occurred while creating the student.",
+            "danger"
+            )
+
+            return render_template(
+            "school_admin/create_student.html",
+            form=form
+            )
+
+    return render_template(
+    "school_admin/create_student.html",
+    form=form
+    )
+
+@school_admin.route("/manage-students")
+@login_required
+def manage_students():
+
+    students = Student.query.filter_by(
+    school_id=current_user.school_id
+    ).order_by(
+    Student.id.desc()
+    ).all()
+
+    return render_template(
+    "school_admin/manage_students.html",
+    students=students
+    )
+
+
+@school_admin.route("/student/<int:id>")
+@login_required
+def student_detail(id):
+
+    student = Student.query.filter_by(
+    id=id,
+    school_id=current_user.school_id
+    ).first_or_404()
+    print("CNIC: ", student.cnic)
+    return render_template(
+    "school_admin/student_detail.html",
+    student=student
+    )
+
+@school_admin.route("/student/<int:id>/edit", methods=["GET", "POST"])
+@login_required
+def edit_student(id):
+
+    student = Student.query.filter_by(
+    id=id,
+    school_id=current_user.school_id
+    ).first_or_404()
+
+    form = StudentForm(obj=student)
+
+    # --------------------------------------------------
+    # Classes
+    # --------------------------------------------------
+
+    classes = Class.query.filter_by(
+    school_id=current_user.school_id,
+    is_active=True
+    ).all()
+
+    form.class_id.choices = [
+    (0, "-- Select Class --")
+    ] + [
+    (c.id, c.class_name)
+    for c in classes
+    ]
+
+    # --------------------------------------------------
+    # Sections
+    # --------------------------------------------------
+
+    sections = Section.query.filter_by(
+    school_id=current_user.school_id
+    ).all()
+
+    form.section_id.choices = [
+    (0, "-- Select Section --")
+    ] + [
+    (s.id, s.section_name)
+    for s in sections
+    ]
+
+    # --------------------------------------------------
+    # Submit
+    # --------------------------------------------------
+
+    if form.validate_on_submit():
+
+    # ----------------------------------------------
+    # Check duplicate email
+    # ----------------------------------------------
+
+        existing_user = User.query.filter(
+        User.email == form.email.data.strip().lower(),
+        User.id != student.user_id
+        ).first()
+
+        if existing_user:
+
+            flash(
+            "This email is already being used by another user.",
+            "danger"
+            )
+
+            return render_template(
+            "school_admin/edit_student.html",
+            form=form,
+            student=student
+            )
+
+    # ----------------------------------------------
+    # Check duplicate admission number
+    # ----------------------------------------------
+
+        existing_student = Student.query.filter(
+        Student.admission_number ==
+        form.admission_number.data.strip(),
+        Student.id != student.id,
+        Student.school_id ==current_user.school_id).first()
+        if existing_student:
+            flash(
+            "This admission number already exists.",
+            "danger"
+            )
+            return render_template(
+            "school_admin/edit_student.html",
+            form=form,
+            student=student
+            )
+
+    # ----------------------------------------------
+    # Update User
+    # ----------------------------------------------
+
+        user = student.user
+
+        email = form.email.data.strip().lower()
+
+        user.email = email
+        user.username = email
+
+        # ----------------------------------------------
+        # Update Student
+        # ----------------------------------------------
+
+        student.first_name = form.first_name.data.strip()
+        student.last_name = form.last_name.data.strip()
+
+        student.email = email
+
+        student.phone = (
+        form.phone.data.strip()
+        if form.phone.data
+        else None
+        )
+
+        student.gender = form.gender.data
+
+        student.date_of_birth = form.date_of_birth.data
+
+        student.cnic = (
+        form.cnic.data.strip()
+        if form.cnic.data
+        else None
+        )
+
+        student.admission_number = (
+        form.admission_number.data.strip()
+        )
+
+        student.roll_number = (
+        form.roll_number.data.strip()
+        if form.roll_number.data
+        else None
+        )
+        if request.method=="GET":
+            student.class_id = form.class_id.data
+            student.section_id = form.section_id.data
+        student.admission_date = form.admission_date.data
+        student.guardian_name = (
+        form.guardian_name.data.strip()
+        if form.guardian_name.data
+        else None
+        )
+
+        student.guardian_phone = (
+        form.guardian_phone.data.strip()
+        if form.guardian_phone.data
+        else None
+        )
+
+        student.address = (
+        form.address.data.strip()
+        if form.address.data
+        else None
+        )
+
+        # ----------------------------------------------
+        # Save
+        # ----------------------------------------------
+
+        try:
+
+            db.session.commit()
+            flash("Student updated successfully.","success")
+            return redirect(url_for("school_admin.student_detail",id=student.id))
+        except Exception as e:
+            db.session.rollback()
+            print("ERROR UPDATING STUDENT:", e)
+            flash("An error occurred while updating the student.","danger")
+
+    return render_template("school_admin/edit_student.html",form=form,student=student)
+
+
+
+
+
+
+@school_admin.route("/student/<int:id>/delete", methods=["POST"])
+@login_required
+def delete_student(id):
+
+        student = Student.query.filter_by(
+        id=id,
+        school_id=current_user.school_id
+        ).first_or_404()
+
+        try:
+
+            db.session.delete(student)
+
+            db.session.commit()
+
+            flash(
+            "Student deleted successfully.",
+            "success"
+            )
+
+        except Exception as e:
+
+            db.session.rollback()
+
+            print("ERROR DELETING STUDENT:", e)
+
+            flash(
+            "Unable to delete student.",
+            "danger"
+            )
+
+        return redirect(
+        url_for("school_admin.manage_students")
+        )

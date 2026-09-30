@@ -21,9 +21,10 @@ class Assignment(db.Model):
     created_at = db.Column(db.DateTime,default=datetime.utcnow)
     updated_at = db.Column(db.DateTime,default=datetime.utcnow,onupdate=datetime.utcnow)
     school = db.relationship("School",backref=db.backref("assignments",lazy=True))
-    teacher = db.relationship("Teacher",backref=db.backref("assignments",lazy=True))
-    subject = db.relationship("Subject",backref=db.backref("assignments",lazy=True))
-    classroom = db.relationship("Class",backref=db.backref("assignments",lazy=True))
-    section = db.relationship("Section",backref=db.backref("assignments",lazy=True))
+    teacher = db.relationship("Teacher",back_populates="assignments")
+    subject = db.relationship("Subject",back_populates="assignments")
+    class_room = db.relationship("Class",back_populates="assignments")
+    sections = db.relationship("Section",back_populates="assignments")
+    submissions = db.relationship("AssignmentSubmission",back_populates="assignments")
     def __repr__(self):
         return f"<Assignment {self.title}>"

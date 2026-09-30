@@ -34,14 +34,17 @@ class School(db.Model):
     # --------------------------
 
     users = db.relationship("User",back_populates="school",lazy=True,cascade="all, delete-orphan")
+    exams = db.relationship("Exam",back_populates="school",lazy=True,cascade="all, delete-orphan")
     sections = db.relationship("Section",back_populates="school",lazy=True,cascade="all, delete-orphan")
     school_admins = db.relationship("SchoolAdmin",back_populates="school",lazy=True,cascade="all, delete-orphan")
     classes = db.relationship("Class",back_populates="school",lazy=True,cascade="all, delete-orphan")
-    teachers = db.relationship("Teacher",back_populates="school",lazy=True,cascade="all, delete-orphan")
+    timetables = db.relationship("Timetable",back_populates="school",lazy=True,cascade="all, delete-orphan")
+    teacher = db.relationship("Teacher",back_populates="school",lazy=True,cascade="all, delete-orphan")
     students = db.relationship("Student",back_populates="school",lazy=True,cascade="all, delete-orphan")
     subjects= db.relationship("Subject",back_populates="school",lazy=True,cascade="all, delete-orphan")
     parents= db.relationship("Parent",back_populates="school",lazy=True,cascade="all, delete-orphan")
     teacher_subjects = db.relationship("TeacherSubject", back_populates = "school", cascade="all, delete-orphan")
+    notices  = db.relationship("Notice", back_populates = "school", cascade="all, delete-orphan")
 
     def __repr__(self):
         return f"<School {self.school_name}>"

@@ -17,7 +17,7 @@ class Notice(db.Model):
     is_active = db.Column(db.Boolean,default=True)
     created_at = db.Column(db.DateTime,default=datetime.utcnow)
     updated_at = db.Column(db.DateTime,default=datetime.utcnow,onupdate=datetime.utcnow)
-    school = db.relationship("School",backref=db.backref("notices",lazy=True,cascade="all, delete-orphan"))
+    school = db.relationship("School",back_populates="notices",lazy=True)
     school_admin = db.relationship("SchoolAdmin",backref=db.backref("notices",lazy=True,cascade="all, delete-orphan"))
     def __repr__(self):
         return f"<Notice {self.title}>"

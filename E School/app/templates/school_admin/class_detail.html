@@ -131,8 +131,8 @@ Class Teacher
 
 {% if class_obj.class_teacher %}
 
-{{ class_obj.class_teacher.full_name }}
-
+{{ class_obj.class_teacher.first_name }}
+{{ class_obj.class_teacher.last_name }}
 {% else %}
 
 <span class="text-muted">

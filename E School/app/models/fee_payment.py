@@ -19,8 +19,8 @@ class FeePayment(db.Model):
     remarks = db.Column(db.Text,nullable=True)
     created_at = db.Column(db.DateTime,default=datetime.utcnow)
     updated_at = db.Column(db.DateTime,default=datetime.utcnow,onupdate=datetime.utcnow)
-    student = db.relationship("Student",backref=db.backref("fee_payments",lazy=True,cascade="all, delete-orphan"))
-    fee_structure = db.relationship("FeeStructure",backref=db.backref("payments",lazy=True))
+    student = db.relationship("Student",back_populates="fee_payments")
+    fee_structure =db.relationship("FeeStructure",back_populates="fee_payments")
     classroom = db.relationship("Class",backref=db.backref("fee_payments",lazy=True))
     school_admin = db.relationship("SchoolAdmin",backref=db.backref("fee_payments",lazy=True))
     def __repr__(self):

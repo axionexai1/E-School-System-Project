@@ -1,0 +1,338 @@
+{% extends "student/base.html" %}
+
+{% block title %}Student Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+<!-- Welcome -->
+
+<div class="mb-4">
+
+<h2 class="fw-bold">
+
+Welcome,
+{{ student.first_name }}
+{{ student.last_name }}
+👋
+
+</h2>
+
+<p class="text-muted">
+Welcome to your Student Dashboard.
+</p>
+
+</div>
+
+
+<!-- Statistics -->
+
+<div class="row g-4 mb-4">
+
+
+<!-- Attendance -->
+
+<div class="col-md-6 col-xl-3">
+
+<div class="card border-0 shadow-sm h-100">
+
+<div class="card-body">
+
+<div class="d-flex justify-content-between">
+
+<div>
+
+<p class="text-muted mb-1">
+Attendance
+</p>
+
+<h3 class="fw-bold">
+—
+</h3>
+
+</div>
+
+<i class="bi bi-calendar-check fs-1 text-secondary"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Subjects -->
+
+<div class="col-md-6 col-xl-3">
+
+<div class="card border-0 shadow-sm h-100">
+
+<div class="card-body">
+
+<div class="d-flex justify-content-between">
+
+<div>
+
+<p class="text-muted mb-1">
+Subjects
+</p>
+
+<h3 class="fw-bold">
+0
+</h3>
+
+</div>
+
+<i class="bi bi-book fs-1 text-secondary"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Assignments -->
+
+<div class="col-md-6 col-xl-3">
+
+<div class="card border-0 shadow-sm h-100">
+
+<div class="card-body">
+
+<div class="d-flex justify-content-between">
+
+<div>
+
+<p class="text-muted mb-1">
+Assignments
+</p>
+
+<h3 class="fw-bold">
+0
+</h3>
+
+</div>
+
+<i class="bi bi-journal-text fs-1 text-secondary"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Results -->
+
+<div class="col-md-6 col-xl-3">
+
+<div class="card border-0 shadow-sm h-100">
+
+<div class="card-body">
+
+<div class="d-flex justify-content-between">
+
+<div>
+
+<p class="text-muted mb-1">
+Results
+</p>
+
+<h3 class="fw-bold">
+—
+</h3>
+
+</div>
+
+<i class="bi bi-bar-chart fs-1 text-secondary"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Student Information -->
+
+<div class="card border-0 shadow-sm">
+
+<div class="card-header bg-white py-3">
+
+<h5 class="mb-0 fw-semibold">
+
+<i class="bi bi-person-badge me-2"></i>
+
+Student Information
+
+</h5>
+
+</div>
+
+
+<div class="card-body">
+
+<div class="row g-4">
+
+
+<!-- Name -->
+
+<div class="col-md-6">
+
+<label class="text-muted">
+Full Name
+</label>
+
+<h6 class="fw-semibold">
+
+{{ student.first_name }}
+{{ student.last_name }}
+
+</h6>
+
+</div>
+
+
+<!-- Admission Number -->
+
+<div class="col-md-6">
+
+<label class="text-muted">
+Admission Number
+</label>
+
+<h6 class="fw-semibold">
+
+{{ student.admission_number }}
+
+</h6>
+
+</div>
+
+
+<!-- Roll Number -->
+
+<div class="col-md-6">
+
+<label class="text-muted">
+Roll Number
+</label>
+
+<h6 class="fw-semibold">
+
+{{ student.roll_number or "-" }}
+
+</h6>
+
+</div>
+
+
+<!-- Class -->
+
+<div class="col-md-6">
+
+<label class="text-muted">
+Class
+</label>
+
+<h6 class="fw-semibold">
+
+{{ student.class_room.class_name
+if student.class_room
+else "-" }}
+
+</h6>
+
+</div>
+
+
+<!-- Section -->
+
+<div class="col-md-6">
+
+<label class="text-muted">
+Section
+</label>
+
+<h6 class="fw-semibold">
+
+{{ student.section.section_name
+if student.section
+else "-" }}
+
+</h6>
+
+</div>
+
+
+<!-- Phone -->
+
+<div class="col-md-6">
+
+<label class="text-muted">
+Phone
+</label>
+
+<h6 class="fw-semibold">
+
+{{ student.phone or "-" }}
+
+</h6>
+
+</div>
+
+
+<!-- CNIC -->
+
+<div class="col-md-6">
+
+<label class="text-muted">
+CNIC
+</label>
+
+<h6 class="fw-semibold">
+
+{{ student.cnic or "-" }}
+
+</h6>
+
+</div>
+
+
+<!-- Gender -->
+
+<div class="col-md-6">
+
+<label class="text-muted">
+Gender
+</label>
+
+<h6 class="fw-semibold">
+
+{{ student.gender or "-" }}
+
+</h6>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}
