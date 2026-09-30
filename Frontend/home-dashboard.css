@@ -1,15 +1,33 @@
 /* ==========================================================================
-   Student Management System — Core Stylesheet
-   Design system: purple-teal gradient theme, system fonts, simple & clean
-   Reuse this same file across Student / Teacher / Parent / Admin dashboards
+   Student Management System — Core Stylesheet (Design System v2)
+   ONE consistent theme for the entire project — every other CSS file
+   should reuse these variables (--accent-1 .. --accent-6) instead of
+   hardcoding its own colors, so nothing looks "different" page to page.
    ========================================================================== */
 
 /* ---------- 1. Design Tokens ---------- */
 :root {
-  /* Brand gradient */
+  /* Brand gradient (used for header, top accent bars, primary buttons) */
   --color-primary: #5b4fe9;
   --color-secondary: #00c2a8;
   --gradient-brand: linear-gradient(135deg, #5b4fe9 0%, #00c2a8 100%);
+
+  /* Multi-color accent system — color-theory based, evenly spaced hues.
+     Every list of items (subjects, classes, categories, cards, etc.)
+     cycles through these SAME six colors in the SAME order, everywhere. */
+  --accent-1: #5b4fe9; /* indigo   */
+  --accent-2: #00b4a6; /* teal     */
+  --accent-3: #f59e0b; /* amber    */
+  --accent-4: #16a34a; /* green    */
+  --accent-5: #e0457b; /* pink     */
+  --accent-6: #2563eb; /* blue     */
+
+  --accent-1-soft: rgba(91, 79, 233, 0.12);
+  --accent-2-soft: rgba(0, 180, 166, 0.12);
+  --accent-3-soft: rgba(245, 158, 11, 0.14);
+  --accent-4-soft: rgba(22, 163, 74, 0.12);
+  --accent-5-soft: rgba(224, 69, 123, 0.12);
+  --accent-6-soft: rgba(37, 99, 235, 0.12);
 
   /* Neutrals */
   --color-bg: #f5f6fa;
@@ -40,8 +58,8 @@
   --radius-md: 14px;
   --radius-lg: 20px;
   --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
-  --shadow-md: 0 4px 16px rgba(16, 24, 40, 0.08);
-  --shadow-lg: 0 12px 32px rgba(16, 24, 40, 0.12);
+  --shadow-md: 0 6px 20px rgba(16, 24, 40, 0.1);
+  --shadow-lg: 0 16px 40px rgba(16, 24, 40, 0.16);
 
   /* Motion */
   --transition-fast: 150ms ease;
@@ -96,7 +114,6 @@ input {
   font-family: inherit;
 }
 
-/* Respect users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
@@ -104,7 +121,6 @@ input {
   }
 }
 
-/* Visible keyboard focus everywhere */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible {
@@ -113,7 +129,19 @@ input:focus-visible {
   border-radius: var(--radius-sm);
 }
 
-/* ---------- 3. Page Layout ---------- */
+/* ---------- 3. Shared entrance animation ---------- */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- 4. Page Layout ---------- */
 .dashboard-container {
   display: flex;
   min-height: 100vh;
@@ -133,7 +161,7 @@ input:focus-visible {
   margin-left: var(--sidebar-width-collapsed);
 }
 
-/* ---------- 4. Sidebar ---------- */
+/* ---------- 5. Sidebar ---------- */
 .sidebar {
   position: fixed;
   top: 0;
@@ -243,7 +271,7 @@ input:focus-visible {
 
 .sidebar-item.active .sidebar-link,
 .sidebar-link[aria-current="page"] {
-  background: rgba(91, 79, 233, 0.1);
+  background: var(--accent-1-soft);
   color: var(--color-primary);
 }
 
@@ -254,6 +282,7 @@ input:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 16px;
 }
 
 .sidebar-icon img {
@@ -272,7 +301,7 @@ input:focus-visible {
   border-top: 1px solid var(--color-border);
 }
 
-/* ---------- 5. Top Navbar ---------- */
+/* ---------- 6. Top Navbar ---------- */
 .top-navbar {
   display: flex;
   align-items: center;
@@ -306,29 +335,41 @@ input:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  padding: var(--space-2) var(--space-4);
+  padding: var(--space-3) var(--space-5);
   border-radius: 999px;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.14);
-  transition: background var(--transition-fast);
+  background: rgba(255, 255, 255, 0.16);
+  transition: background var(--transition-fast), transform var(--transition-fast);
 }
 
 .navbar-link:hover {
-  background: rgba(255, 255, 255, 0.26);
+  background: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
 }
 
 .announcement-badge {
   background: #ffffff;
   color: var(--color-primary);
-  font-size: 11px;
-  font-weight: 700;
-  padding: 1px 7px;
+  font-size: 13px;
+  font-weight: 800;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 7px;
   border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulseBadge 2s ease-in-out infinite;
 }
 
-/* ---------- 6. Search Section ---------- */
+@keyframes pulseBadge {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+/* ---------- 7. Search Section ---------- */
 .search-section {
   padding: var(--space-5) var(--space-6) 0;
 }
@@ -359,14 +400,14 @@ input:focus-visible {
 .search-input:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(91, 79, 233, 0.15);
+  box-shadow: 0 0 0 3px var(--accent-1-soft);
 }
 
 .search-input::placeholder {
   color: var(--color-text-muted);
 }
 
-/* ---------- 7. Dashboard Grid & Cards ---------- */
+/* ---------- 8. Dashboard Grid & Cards ---------- */
 .dashboard-content {
   flex: 1;
   padding: var(--space-5) var(--space-6) var(--space-6);
@@ -378,7 +419,24 @@ input:focus-visible {
   gap: var(--space-5);
 }
 
+.dashboard-card-link {
+  display: block;
+  border-radius: var(--radius-lg);
+  animation: fadeSlideIn var(--transition-base) both;
+}
+
+.dashboard-grid .dashboard-card-link:nth-child(1) { animation-delay: 0ms; }
+.dashboard-grid .dashboard-card-link:nth-child(2) { animation-delay: 40ms; }
+.dashboard-grid .dashboard-card-link:nth-child(3) { animation-delay: 80ms; }
+.dashboard-grid .dashboard-card-link:nth-child(4) { animation-delay: 120ms; }
+.dashboard-grid .dashboard-card-link:nth-child(5) { animation-delay: 160ms; }
+.dashboard-grid .dashboard-card-link:nth-child(6) { animation-delay: 200ms; }
+.dashboard-grid .dashboard-card-link:nth-child(7) { animation-delay: 240ms; }
+.dashboard-grid .dashboard-card-link:nth-child(8) { animation-delay: 280ms; }
+
 .dashboard-card {
+  position: relative;
+  overflow: hidden;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -387,21 +445,60 @@ input:focus-visible {
   min-height: 160px;
   display: flex;
   flex-direction: column;
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  transition: transform var(--transition-base), box-shadow var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.dashboard-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-brand);
 }
 
 .dashboard-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: var(--shadow-lg);
+  border-color: transparent;
 }
 
 .card-header {
   display: flex;
   align-items: center;
+  gap: var(--space-3);
   margin-bottom: var(--space-3);
   padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--color-border);
 }
+
+.card-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #ffffff;
+  transition: transform var(--transition-fast);
+}
+
+.dashboard-card:hover .card-icon {
+  transform: scale(1.08) rotate(-4deg);
+}
+
+/* Cycle the SAME six accent colors, in the SAME order, on every card
+   grid across the whole project — this is the one pattern to reuse. */
+.dashboard-grid .dashboard-card-link:nth-child(6n+1) .card-icon { background: var(--accent-1); }
+.dashboard-grid .dashboard-card-link:nth-child(6n+2) .card-icon { background: var(--accent-2); }
+.dashboard-grid .dashboard-card-link:nth-child(6n+3) .card-icon { background: var(--accent-3); }
+.dashboard-grid .dashboard-card-link:nth-child(6n+4) .card-icon { background: var(--accent-4); }
+.dashboard-grid .dashboard-card-link:nth-child(6n+5) .card-icon { background: var(--accent-5); }
+.dashboard-grid .dashboard-card-link:nth-child(6n+6) .card-icon { background: var(--accent-6); }
 
 .card-title {
   font-size: 15px;
@@ -415,7 +512,7 @@ input:focus-visible {
   font-size: 13px;
 }
 
-/* ---------- 8. Footer ---------- */
+/* ---------- 9. Footer ---------- */
 .footer {
   padding: var(--space-4) var(--space-6);
   border-top: 1px solid var(--color-border);
@@ -427,7 +524,61 @@ input:focus-visible {
   color: var(--color-text-muted);
 }
 
-/* ---------- 9. Responsive ---------- */
+/* ---------- 10. Floating AI Assistant button ---------- */
+.ai-assistant-fab {
+  position: fixed;
+  right: var(--space-6);
+  bottom: var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  z-index: 50;
+}
+
+.ai-assistant-fab-button {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--gradient-brand);
+  color: #ffffff;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  animation: aiPulse 2.4s ease-in-out infinite;
+  transition: transform var(--transition-fast);
+}
+
+.ai-assistant-fab:hover .ai-assistant-fab-button {
+  transform: scale(1.08);
+}
+
+.ai-assistant-fab-label {
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 700;
+  padding: var(--space-2) var(--space-4);
+  border-radius: 999px;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transform: translateX(6px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  white-space: nowrap;
+}
+
+.ai-assistant-fab:hover .ai-assistant-fab-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@keyframes aiPulse {
+  0%, 100% { box-shadow: var(--shadow-lg), 0 0 0 0 var(--accent-1-soft); }
+  50% { box-shadow: var(--shadow-lg), 0 0 0 10px transparent; }
+}
+
+/* ---------- 11. Responsive ---------- */
 @media (max-width: 900px) {
   .sidebar {
     width: var(--sidebar-width-collapsed);
@@ -454,5 +605,8 @@ input:focus-visible {
   }
   .dashboard-grid {
     grid-template-columns: 1fr;
+  }
+  .ai-assistant-fab-label {
+    display: none;
   }
 }
