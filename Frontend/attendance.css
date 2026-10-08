@@ -1,0 +1,218 @@
+/* ==========================================================================
+   Attendance Section
+   Reuses design tokens from home-dashboard.css — load that file BEFORE
+   this one in the HTML <head>, since this file relies on those variables.
+   ========================================================================== */
+
+.dashboard-section {
+  padding: var(--space-5) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  align-self: flex-start;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-primary);
+  background: rgba(91, 79, 233, 0.08);
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.back-link:hover {
+  background: rgba(91, 79, 233, 0.15);
+  transform: translateX(-2px);
+}
+
+.back-icon {
+  font-size: 16px;
+}
+
+.section-header {
+  margin-bottom: var(--space-2);
+  padding-bottom: var(--space-4);
+  border-bottom: 2px solid var(--color-border);
+  position: relative;
+}
+
+.section-header::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 64px;
+  height: 2px;
+  background: var(--gradient-brand);
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+  letter-spacing: -0.01em;
+}
+
+.section-description {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  max-width: 640px;
+}
+
+/* Colored top accent bar for every card in this section */
+#attendance-section .dashboard-card {
+  position: relative;
+  overflow: hidden;
+}
+
+#attendance-section .dashboard-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-brand);
+}
+
+#attendance-section .card-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+#attendance-section .card-title::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+}
+
+/* ---------- Attendance Categories ---------- */
+.attendance-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-3);
+}
+
+.attendance-item {
+  border-radius: var(--radius-sm);
+}
+
+.attendance-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.attendance-link:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+  transform: translateX(3px);
+}
+
+.attendance-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: var(--gradient-brand);
+}
+
+.attendance-item:nth-child(1) .attendance-icon { background: linear-gradient(135deg, #5b4fe9, #8b7ff0); }
+.attendance-item:nth-child(2) .attendance-icon { background: linear-gradient(135deg, #00c2a8, #4fe0cb); }
+.attendance-item:nth-child(3) .attendance-icon { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+.attendance-item:nth-child(4) .attendance-icon { background: linear-gradient(135deg, #16a34a, #4ade80); }
+.attendance-item:nth-child(5) .attendance-icon { background: linear-gradient(135deg, #dc2626, #f87171); }
+.attendance-item:nth-child(6) .attendance-icon { background: var(--gradient-brand); }
+
+/* ---------- Class Record ---------- */
+.class-record-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: var(--space-3);
+}
+
+.class-record-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.class-record-link:hover {
+  border-color: var(--color-secondary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* ---------- Attendance Information ---------- */
+.information-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.information-item {
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-secondary);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  font-size: 13px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.information-item:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.information-item strong {
+  color: var(--color-text);
+  margin-right: var(--space-1);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 560px) {
+  .attendance-list {
+    grid-template-columns: 1fr;
+  }
+  .class-record-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
