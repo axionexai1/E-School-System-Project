@@ -3,190 +3,280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Fees &amp; Challans</title>
+
+    <!-- Font and icons (same as the dashboard) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Shared template first, then this page's own styles -->
     <link rel="stylesheet" href="home-dashboard.css">
     <link rel="stylesheet" href="fees.css">
 </head>
 <body>
-    <!-- ========================================================= -->
-    <!-- Fees & Challans Section Starts -->
-    <!-- ========================================================= -->
 
-    <section id="fees-challans-section" class="dashboard-section">
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-        <!-- Back to Dashboard -->
-        <a href="dashboard1.html" id="back-to-dashboard" class="back-link">
-            <span class="back-icon" aria-hidden="true">←</span>
-            Back to Dashboard
-        </a>
+    <div class="dashboard-container">
 
-        <!-- Section Header -->
-        <div id="fees-header" class="section-header">
+        <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
 
-            <h2 id="fees-title" class="section-title">
-                Fees & Challans
-            </h2>
+        <!-- ============================= -->
+        <!-- SIDEBAR (identical on every page) -->
+        <!-- ============================= -->
+        <aside class="sidebar" id="sidebar" aria-label="Sidebar">
 
-            <p id="fees-description" class="section-description">
-                Shows all fee-related information so students and parents
-                always know what has been paid and what is still due.
-            </p>
-
-        </div>
-
-        <!-- Fees Categories Card -->
-        <article id="fees-category-card" class="dashboard-card">
-
-            <div class="card-header">
-                <h3 class="card-title">Fees & Challans</h3>
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="logo.png" alt="School Logo" class="sidebar-logo-img">
+                    <span class="sidebar-logo-text">SMS Portal</span>
+                </div>
             </div>
 
-            <div class="card-body">
+            <nav class="sidebar-menu" aria-label="Primary navigation">
 
-                <ul id="fees-category-list" class="fees-list">
+                <p class="sidebar-label">Menu</p>
 
-                    <li class="fees-item">
-                        <a href="admission-fee.html" id="admission-fee-link" class="fees-link">
-                            <span class="fees-icon" aria-hidden="true">🎓</span>
-                            Admission Fee
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-grid-1x2"></i></span>
+                            <span class="sidebar-text">Dashboard</span>
                         </a>
                     </li>
 
-                    <li class="fees-item">
-                        <a href="monthly-fee.html" id="monthly-fee-link" class="fees-link">
-                            <span class="fees-icon" aria-hidden="true">📅</span>
-                            Monthly Fee
+                    <li class="sidebar-item">
+                        <a href="myprofile.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-person"></i></span>
+                            <span class="sidebar-text">My Profile</span>
                         </a>
                     </li>
 
-                    <li class="fees-item">
-                        <a href="annual-fee.html" id="annual-fee-link" class="fees-link">
-                            <span class="fees-icon" aria-hidden="true">📆</span>
-                            Annual Fee
+                    <li class="sidebar-item">
+                        <a href="calendar.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calendar3"></i></span>
+                            <span class="sidebar-text">Calendar</span>
                         </a>
                     </li>
 
-                    <li class="fees-item">
-                        <a href="challan-history.html" id="challan-history-link" class="fees-link">
-                            <span class="fees-icon" aria-hidden="true">🧾</span>
-                            Challan History
+                    <li class="sidebar-item">
+                        <a href="Calculator.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calculator"></i></span>
+                            <span class="sidebar-text">Calculator</span>
                         </a>
                     </li>
 
-                    <li class="fees-item">
-                        <a href="paid-fees.html" id="paid-fees-link" class="fees-link">
-                            <span class="fees-icon" aria-hidden="true">✅</span>
-                            Paid Fees
-                        </a>
-                    </li>
-
-                    <li class="fees-item">
-                        <a href="pending-fees.html" id="pending-fees-link" class="fees-link">
-                            <span class="fees-icon" aria-hidden="true">⏳</span>
-                            Pending Fees
-                        </a>
-                    </li>
-
-                    <li class="fees-item">
-                        <a href="due-date.html" id="due-date-link" class="fees-link">
-                            <span class="fees-icon" aria-hidden="true">⏰</span>
-                            Due Date
-                        </a>
-                    </li>
-
-                    <li class="fees-item">
-                        <a href="payment-status.html" id="payment-status-link" class="fees-link">
-                            <span class="fees-icon" aria-hidden="true">💳</span>
-                            Payment Status
+                    <li class="sidebar-item">
+                        <a href="Extra Courses.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-hourglass-split"></i></span>
+                            <span class="sidebar-text">Coming Soon</span>
                         </a>
                     </li>
 
                 </ul>
 
+                <p class="sidebar-label sidebar-label--spaced">Support</p>
+
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="contact with school.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-building"></i></span>
+                            <span class="sidebar-text">Contact with School</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="aboutus.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-info-circle"></i></span>
+                            <span class="sidebar-text">About Us</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="news and updates.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-newspaper"></i></span>
+                            <span class="sidebar-text">News &amp; Updates</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="helpcenter.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
+                            <span class="sidebar-text">Help Center</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="privacy-policy.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-shield-lock"></i></span>
+                            <span class="sidebar-text">Privacy Policy</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="terms-conditions.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-file-earmark-text"></i></span>
+                            <span class="sidebar-text">Terms &amp; Conditions</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="settings.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-gear"></i></span>
+                            <span class="sidebar-text">Settings</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="logout.html" class="sidebar-link sidebar-link--danger">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-box-arrow-right"></i></span>
+                            <span class="sidebar-text">Logout</span>
+                        </a>
+                    </li>
+
+                </ul>
             </div>
 
-        </article>
+        </aside>
 
-        <!-- Fee History Information -->
-        <article id="fee-history-card" class="dashboard-card">
+        <div class="main-wrapper">
 
-            <div class="card-header">
-                <h3 class="card-title">Complete Fee History</h3>
-            </div>
+            <!-- ============================= -->
+            <!-- TOP NAVIGATION BAR              -->
+            <!-- On inner pages the title is the page name. -->
+            <!-- ============================= -->
+            <header class="top-navbar">
 
-            <div class="card-body">
+                <button class="menu-toggle" id="menu-toggle" type="button"
+                        aria-label="Toggle sidebar menu" aria-controls="sidebar"
+                        aria-expanded="true" data-ripple>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                </button>
 
-                <p id="fee-history-description" class="card-text">
-                    This section stores the student's complete fee history
-                    from the admission date until the current academic year.
-                    No payment record is deleted, allowing students and
-                    parents to review previous payments whenever required.
+                <div class="navbar-left">
+                    <h1 class="page-title">Fees &amp; Challans</h1>
+                    <p class="page-subtitle">Student Portal</p>
+                </div>
+
+                <nav class="navbar-right" aria-label="Top navigation">
+                    <ul class="navbar-menu">
+
+                        <li class="navbar-item">
+                            <a href="#announcement" class="navbar-link" data-ripple>
+                                <i class="bi bi-bell navbar-link-icon" aria-hidden="true"></i>
+                                <span class="navbar-link-text">Announcements</span>
+                                <span class="announcement-badge" id="announcement-badge">0</span>
+                            </a>
+                        </li>
+
+                        <li class="navbar-item">
+                            <a href="myprofile.html" class="avatar-link" aria-label="My Profile" data-ripple>
+                                <i class="bi bi-person-circle" aria-hidden="true"></i>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+            </header>
+
+            <!-- ============================= -->
+            <!-- PAGE CONTENT                    -->
+            <!-- ============================= -->
+            <main class="dashboard-content page-content" id="main-content">
+
+                <!-- Back to Dashboard -->
+                <a href="dashboard.html" id="back-to-dashboard" class="back-link">
+                    <i class="bi bi-arrow-left back-icon" aria-hidden="true"></i>
+                    Back to Dashboard
+                </a>
+
+                <p class="page-intro">
+                    Everything related to fees in one place.
                 </p>
 
-            </div>
+                <!-- Only the real fee categories are listed here.
+                     Paid / pending status and due date are not separate options:
+                     they belong inside each fee or challan record. -->
+                <article class="panel" id="fees-category-card" aria-labelledby="fees-category-title">
 
-        </article>
+                    <header class="panel-header">
+                        <h2 class="panel-title" id="fees-category-title">Fees &amp; Challans</h2>
+                    </header>
 
-        <!-- Fee Details Table -->
-        <article id="fee-details-card" class="dashboard-card">
+                    <div class="panel-body">
 
-            <div class="card-header">
-                <h3 class="card-title">Fee Details</h3>
-            </div>
+                        <ul id="fees-category-list" class="fees-list">
 
-            <div class="card-body">
+                            <li class="fees-item" style="--i:0">
+                                <a href="admission-fee.html" id="admission-fee-link" class="fees-link">
+                                    <span class="fees-icon" aria-hidden="true"><i class="bi bi-mortarboard"></i></span>
+                                    <span class="fees-name">Admission Fee</span>
+                                    <i class="bi bi-arrow-right fees-arrow" aria-hidden="true"></i>
+                                </a>
+                            </li>
 
-                <table id="fee-details-table" class="dashboard-table">
+                            <li class="fees-item" style="--i:1">
+                                <a href="monthly-fee.html" id="monthly-fee-link" class="fees-link">
+                                    <span class="fees-icon" aria-hidden="true"><i class="bi bi-cash-coin"></i></span>
+                                    <span class="fees-name">Monthly Fee</span>
+                                    <i class="bi bi-arrow-right fees-arrow" aria-hidden="true"></i>
+                                </a>
+                            </li>
 
-                    <thead>
-                        <tr>
-                            <th class="table-heading">Fee Type</th>
-                            <th class="table-heading">Description</th>
-                        </tr>
-                    </thead>
+                            <li class="fees-item" style="--i:2">
+                                <a href="annual-fee.html" id="annual-fee-link" class="fees-link">
+                                    <span class="fees-icon" aria-hidden="true"><i class="bi bi-cash-stack"></i></span>
+                                    <span class="fees-name">Annual Fee</span>
+                                    <i class="bi bi-arrow-right fees-arrow" aria-hidden="true"></i>
+                                </a>
+                            </li>
 
-                    <tbody>
+                            <li class="fees-item" style="--i:3">
+                                <a href="challan-history.html" id="challan-history-link" class="fees-link">
+                                    <span class="fees-icon" aria-hidden="true"><i class="bi bi-receipt"></i></span>
+                                    <span class="fees-name">Challan History</span>
+                                    <i class="bi bi-arrow-right fees-arrow" aria-hidden="true"></i>
+                                </a>
+                            </li>
 
-                        <tr>
-                            <td class="table-data">Admission Fee</td>
-                            <td class="table-data">One-time fee paid when the student is admitted.</td>
-                        </tr>
+                        </ul>
 
-                        <tr>
-                            <td class="table-data">Monthly Fee</td>
-                            <td class="table-data">Regular tuition fee collected every month.</td>
-                        </tr>
+                    </div>
 
-                        <tr>
-                            <td class="table-data">Annual Fee</td>
-                            <td class="table-data">Fee charged once every academic year.</td>
-                        </tr>
+                </article>
 
-                        <tr>
-                            <td class="table-data">Challan History</td>
-                            <td class="table-data">Displays every challan generated for the student.</td>
-                        </tr>
+            </main>
 
-                        <tr>
-                            <td class="table-data">Payment Status</td>
-                            <td class="table-data">
-                                Clearly shows whether the fee is Paid or Pending,
-                                along with the Due Date.
-                            </td>
-                        </tr>
+            <footer class="footer">
+                <p class="footer-text">&copy; Student Management System</p>
+            </footer>
 
-                    </tbody>
+        </div>
+        <!-- /main-wrapper -->
 
-                </table>
+    </div>
+    <!-- /dashboard-container -->
 
-            </div>
+    <!-- Floating AI assistant (same on every page) -->
+    <a href="AIStudyAssistant.html" class="ai-assistant-fab" aria-label="Open AI Assistant">
+        <span class="ai-assistant-fab-label">AI Assistant</span>
+        <span class="ai-assistant-fab-button" data-ripple aria-hidden="true"><i class="bi bi-robot"></i></span>
+    </a>
 
-        </article>
-
-    </section>
-
-    <!-- ========================================================= -->
-    <!-- Fees & Challans Section Ends -->
-    <!-- ========================================================= -->
+    <script src="dashboard.js"></script>
 </body>
 </html>

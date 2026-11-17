@@ -1,223 +1,107 @@
 /* ==========================================================================
-   Fees & Challans Section
-   Reuses design tokens from home-dashboard.css — load that file BEFORE
-   this one in the HTML <head>, since this file relies on those variables.
+   fees.css
+   Styles that belong only to the Fees & Challans page: the category list
+   (Admission Fee, Monthly Fee, Annual Fee, Challan History).
+   Everything shared (sidebar, top bar, back button, panel) comes from
+   home-dashboard.css, which must be linked BEFORE this file because the
+   list reuses its tokens and its card-enter animation.
    ========================================================================== */
 
-.dashboard-section {
-  padding: var(--space-5) var(--space-6);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
-}
-
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  align-self: flex-start;
-  padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-sm);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-primary);
-  background: rgba(91, 79, 233, 0.08);
-  transition: background var(--transition-fast), transform var(--transition-fast);
-}
-
-.back-link:hover {
-  background: rgba(91, 79, 233, 0.15);
-  transform: translateX(-2px);
-}
-
-.back-icon {
-  font-size: 16px;
-}
-
-.section-header {
-  margin-bottom: var(--space-2);
-  padding-bottom: var(--space-4);
-  border-bottom: 2px solid var(--color-border);
-  position: relative;
-}
-
-.section-header::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 64px;
-  height: 2px;
-  background: var(--gradient-brand);
-}
-
-.section-title {
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--color-text);
-  margin-bottom: var(--space-2);
-  letter-spacing: -0.01em;
-}
-
-.section-description {
-  font-size: 14px;
-  color: var(--color-text-muted);
-  max-width: 640px;
-}
-
-/* Colored top accent bar + dotted card title, same pattern as attendance.css */
-#fees-challans-section .dashboard-card {
-  position: relative;
-  overflow: hidden;
-}
-
-#fees-challans-section .dashboard-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--gradient-brand);
-}
-
-#fees-challans-section .card-title {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-
-#fees-challans-section .card-title::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-secondary);
-}
-
-/* ---------- Fees Categories ---------- */
+/* As many columns as fit, minimum 240px each */
 .fees-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: var(--space-3);
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
 }
 
+/* Items fade up one after another. The delay comes from the --i value
+   written inline on each <li> in the HTML. */
 .fees-item {
-  border-radius: var(--radius-sm);
+  animation: card-enter var(--duration-slow) var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 60ms);
 }
+
+/* Colors cycle through five tones by position, so an item added later
+   gets its color automatically. */
+.fees-item:nth-child(5n + 1) { --tone: var(--primary); --tone-light: var(--primary-light); }
+.fees-item:nth-child(5n + 2) { --tone: var(--green);   --tone-light: var(--green-light); }
+.fees-item:nth-child(5n + 3) { --tone: var(--teal);    --tone-light: var(--teal-light); }
+.fees-item:nth-child(5n + 4) { --tone: var(--sky);     --tone-light: var(--sky-light); }
+.fees-item:nth-child(5n + 5) { --tone: var(--indigo);  --tone-light: var(--indigo-light); }
 
 .fees-link {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-3) var(--space-4);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-text);
-  box-shadow: var(--shadow-sm);
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast),
-    transform var(--transition-fast);
+  gap: 16px;
+  min-height: 76px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  transition: transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
 }
 
-.fees-link:hover {
-  border-color: var(--color-primary);
-  box-shadow: var(--shadow-md);
-  transform: translateX(3px);
-}
-
+/* Each category has its own icon, in a soft tinted box */
 .fees-icon {
-  font-size: 16px;
+  display: grid;
+  place-items: center;
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-sm);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--tone-light);
+  color: var(--tone);
+  font-size: 22px;
+  transition: background var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-spring);
 }
 
-.fees-item:nth-child(1) .fees-icon { background: linear-gradient(135deg, #5b4fe9, #8b7ff0); }
-.fees-item:nth-child(2) .fees-icon { background: linear-gradient(135deg, #00c2a8, #4fe0cb); }
-.fees-item:nth-child(3) .fees-icon { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
-.fees-item:nth-child(4) .fees-icon { background: linear-gradient(135deg, #6b7280, #9ca3af); }
-.fees-item:nth-child(5) .fees-icon { background: linear-gradient(135deg, #16a34a, #4ade80); }
-.fees-item:nth-child(6) .fees-icon { background: linear-gradient(135deg, #dc2626, #f87171); }
-.fees-item:nth-child(7) .fees-icon { background: linear-gradient(135deg, #d97706, #fbbf24); }
-.fees-item:nth-child(8) .fees-icon { background: var(--gradient-brand); }
-
-/* ---------- Fee History text card ---------- */
-.card-text {
-  font-size: 14px;
-  color: var(--color-text-muted);
-  line-height: 1.7;
+.fees-name {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+  color: var(--text);
 }
 
-/* ---------- Fee Details Table ---------- */
-.dashboard-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
+.fees-arrow {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-spring);
 }
 
-.table-heading {
-  text-align: left;
-  padding: var(--space-3) var(--space-4);
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-weight: 700;
-  border-bottom: 2px solid var(--color-border);
+/* Hover effects only on devices that really hover (not touch screens) */
+@media (hover: hover) {
+  .fees-link:hover {
+    transform: translateY(-3px);
+    border-color: var(--tone);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Icon box fills with the item color and the icon turns white */
+  .fees-link:hover .fees-icon {
+    background: var(--tone);
+    color: #ffffff;
+    transform: scale(1.06);
+  }
+
+  .fees-link:hover .fees-arrow {
+    color: var(--tone);
+    transform: translateX(3px);
+  }
 }
 
-.table-heading:first-child {
-  border-top-left-radius: var(--radius-sm);
+.fees-link:active {
+  transform: scale(0.99);
 }
 
-.table-heading:last-child {
-  border-top-right-radius: var(--radius-sm);
-}
-
-.table-data {
-  padding: var(--space-3) var(--space-4);
-  border-bottom: 1px solid var(--color-border);
-  color: var(--color-text-muted);
-  line-height: 1.5;
-}
-
-.dashboard-table tbody tr:last-child .table-data {
-  border-bottom: none;
-}
-
-.dashboard-table tbody tr:hover .table-data {
-  background: var(--color-bg);
-  color: var(--color-text);
-}
-
-/* ---------- Responsive ---------- */
-@media (max-width: 560px) {
+/* Phones: one item per row, so names never get squeezed */
+@media (max-width: 575.98px) {
   .fees-list {
     grid-template-columns: 1fr;
-  }
-  .dashboard-table,
-  .dashboard-table thead,
-  .dashboard-table tbody,
-  .dashboard-table th,
-  .dashboard-table td,
-  .dashboard-table tr {
-    display: block;
-  }
-  .table-heading {
-    display: none;
-  }
-  .table-data {
-    border-bottom: none;
-    padding: var(--space-2) var(--space-4);
-  }
-  .dashboard-table tbody tr {
-    margin-bottom: var(--space-3);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
+    gap: 12px;
   }
 }

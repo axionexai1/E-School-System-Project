@@ -4,329 +4,359 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Management System Dashboard</title>
+ 
+    <!-- Font: Poppins (needs internet when the page loads) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+ 
+    <!-- Icons: Bootstrap Icons. Used as <i class="bi bi-NAME"></i> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+ 
+    <!-- Project styles -->
     <link rel="stylesheet" href="home-dashboard.css">
-    <link rel="stylesheet" href="course-content.css">
 </head>
 <body>
-
+ 
+    <!-- Lets keyboard users jump past the sidebar -->
+    <a class="skip-link" href="#main-content">Skip to content</a>
+ 
     <!-- ============================= -->
     <!-- MAIN DASHBOARD CONTAINER       -->
+    <!-- dashboard.js adds state classes here:                  -->
+    <!--   is-sidebar-collapsed (desktop), is-sidebar-open (mobile) -->
     <!-- ============================= -->
     <div class="dashboard-container">
-
+ 
+        <!-- Dimmed page behind the sidebar on mobile. Click closes the drawer. -->
+        <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+ 
         <!-- ============================= -->
         <!-- LEFT SIDEBAR                   -->
         <!-- ============================= -->
-        <aside class="sidebar sidebar-expanded" id="sidebar">
-
-            <!-- Sidebar Header: Logo + Menu Toggle -->
+        <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+ 
+            <!-- Logo -->
             <div class="sidebar-header">
                 <div class="sidebar-logo">
                     <img src="logo.png" alt="School Logo" class="sidebar-logo-img">
                     <span class="sidebar-logo-text">SMS Portal</span>
                 </div>
-
-                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle sidebar menu">
-                    <span class="menu-toggle-line"></span>
-                    <span class="menu-toggle-line"></span>
-                    <span class="menu-toggle-line"></span>
-                </button>
             </div>
-
-            <!-- Sidebar Navigation Menu -->
-            <nav class="sidebar-menu" aria-label="Primary sidebar navigation">
-
-                <!-- Primary section -->
-                <ul class="sidebar-list sidebar-list-primary">
-
+ 
+            <!-- Navigation -->
+            <nav class="sidebar-menu" aria-label="Primary navigation">
+ 
+                <p class="sidebar-label">Menu</p>
+ 
+                <ul class="sidebar-list">
+ 
                     <li class="sidebar-item">
-                        <a href="dashboard.html" class="sidebar-link" aria-label="Dashboard">
-                            <span class="sidebar-icon" aria-hidden="true">📊</span>
+                        <a href="dashboard.html" class="sidebar-link" aria-current="page">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-grid-1x2"></i></span>
                             <span class="sidebar-text">Dashboard</span>
                         </a>
                     </li>
-
+ 
                     <li class="sidebar-item">
-                        <a href="myprofile.html" class="sidebar-link" aria-label="My Profile">
-                            <span class="sidebar-icon" aria-hidden="true">👤</span>
+                        <a href="myprofile.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-person"></i></span>
                             <span class="sidebar-text">My Profile</span>
                         </a>
                     </li>
-
+ 
                     <li class="sidebar-item">
-                        <a href="calendar.html" class="sidebar-link" aria-label="Calendar">
-                            <span class="sidebar-icon" aria-hidden="true">📅</span>
+                        <a href="calendar.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calendar3"></i></span>
                             <span class="sidebar-text">Calendar</span>
                         </a>
                     </li>
-
+ 
                     <li class="sidebar-item">
-                        <a href="Calculator.html" class="sidebar-link" aria-label="Calculator">
-                            <span class="sidebar-icon" aria-hidden="true">🧮</span>
+                        <a href="Calculator.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calculator"></i></span>
                             <span class="sidebar-text">Calculator</span>
                         </a>
                     </li>
-
+ 
                     <li class="sidebar-item">
-                        <a href="Extra Courses.html" class="sidebar-link" aria-label="Extra Courses">
-                            <span class="sidebar-icon" aria-hidden="true">📚</span>
+                        <a href="Extra Courses.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-hourglass-split"></i></span>
                             <span class="sidebar-text">Coming Soon</span>
                         </a>
                     </li>
-
+ 
                 </ul>
-
-                <!-- Divider -->
-                <div class="sidebar-divider" role="separator"></div>
-
-                <!-- Info & support section -->
-                <ul class="sidebar-list sidebar-list-info">
-
+ 
+                <p class="sidebar-label sidebar-label--spaced">Support</p>
+ 
+                <ul class="sidebar-list">
+ 
                     <li class="sidebar-item">
-                        <a href="contact with school.html" class="sidebar-link" aria-label="Contact with School">
-                            <span class="sidebar-icon" aria-hidden="true">🏫</span>
+                        <a href="contact with school.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-building"></i></span>
                             <span class="sidebar-text">Contact with School</span>
                         </a>
                     </li>
-
+ 
                     <li class="sidebar-item">
-                        <a href="aboutus.html" class="sidebar-link" aria-label="About Us">
-                            <span class="sidebar-icon" aria-hidden="true">ℹ️</span>
+                        <a href="aboutus.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-info-circle"></i></span>
                             <span class="sidebar-text">About Us</span>
                         </a>
                     </li>
-
+ 
                     <li class="sidebar-item">
-                        <a href="news and updates.html" class="sidebar-link" aria-label="News and Updates">
-                            <span class="sidebar-icon" aria-hidden="true">📰</span>
+                        <a href="news and updates.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-newspaper"></i></span>
                             <span class="sidebar-text">News &amp; Updates</span>
                         </a>
                     </li>
-
+ 
                     <li class="sidebar-item">
-                        <a href="helpcenter.html" class="sidebar-link" aria-label="Help Center">
-                            <span class="sidebar-icon" aria-hidden="true">❓</span>
+                        <a href="helpcenter.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
                             <span class="sidebar-text">Help Center</span>
                         </a>
                     </li>
-
+ 
                     <li class="sidebar-item">
-                        <a href="privacy-policy.html" class="sidebar-link" aria-label="Privacy Policy">
-                            <span class="sidebar-icon" aria-hidden="true">🔒</span>
+                        <a href="privacy-policy.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-shield-lock"></i></span>
                             <span class="sidebar-text">Privacy Policy</span>
                         </a>
                     </li>
-
+ 
                     <li class="sidebar-item">
-                        <a href="terms-conditions.html" class="sidebar-link" aria-label="Terms and Conditions">
-                            <span class="sidebar-icon" aria-hidden="true">📄</span>
+                        <a href="terms-conditions.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-file-earmark-text"></i></span>
                             <span class="sidebar-text">Terms &amp; Conditions</span>
                         </a>
                     </li>
-
+ 
                 </ul>
-
-                <!-- Divider -->
-                <div class="sidebar-divider" role="separator"></div>
-
+ 
             </nav>
-
-            <!-- Sidebar Footer: Settings + Logout -->
+ 
+            <!-- Settings + Logout -->
             <div class="sidebar-footer">
-                <ul class="sidebar-list sidebar-list-footer">
-
+                <ul class="sidebar-list">
+ 
                     <li class="sidebar-item">
-                        <a href="settings.html" class="sidebar-link" aria-label="Settings">
-                            <span class="sidebar-icon" aria-hidden="true">⚙️</span>
+                        <a href="settings.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-gear"></i></span>
                             <span class="sidebar-text">Settings</span>
                         </a>
                     </li>
-
+ 
                     <li class="sidebar-item">
-                        <a href="logout.html" class="sidebar-link" aria-label="Logout">
-                            <span class="sidebar-icon" aria-hidden="true">🚪</span>
+                        <a href="logout.html" class="sidebar-link sidebar-link--danger">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-box-arrow-right"></i></span>
                             <span class="sidebar-text">Logout</span>
                         </a>
                     </li>
-
+ 
                 </ul>
             </div>
-
+ 
         </aside>
-
+ 
         <!-- ============================= -->
         <!-- MAIN WRAPPER                   -->
         <!-- ============================= -->
         <div class="main-wrapper">
-
+ 
             <!-- ============================= -->
             <!-- TOP NAVIGATION BAR             -->
             <!-- ============================= -->
             <header class="top-navbar">
-
-                <!-- Navbar Left: Title and Subtitle -->
+ 
+                <!-- Desktop: collapses the sidebar. Mobile: opens the drawer. -->
+                <button class="menu-toggle" id="menu-toggle" type="button"
+                        aria-label="Toggle sidebar menu" aria-controls="sidebar"
+                        aria-expanded="true" data-ripple>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                </button>
+ 
                 <div class="navbar-left">
                     <h1 class="page-title">Student Portal</h1>
                     <p class="page-subtitle">Welcome to your learning dashboard</p>
                 </div>
-
-                <!-- Navbar Right: Navigation Items -->
+ 
                 <nav class="navbar-right" aria-label="Top navigation">
                     <ul class="navbar-menu">
-
-                        <li class="navbar-item navbar-item-announcement">
-                            <a href="#announcement" class="navbar-link" aria-label="Announcement">
-                                Announcement
+ 
+                        <li class="navbar-item">
+                            <a href="#announcement" class="navbar-link" data-ripple>
+                                <i class="bi bi-bell navbar-link-icon" aria-hidden="true"></i>
+                                <span class="navbar-link-text">Announcements</span>
+                                <!-- Hidden automatically when the count is 0 -->
                                 <span class="announcement-badge" id="announcement-badge">0</span>
                             </a>
                         </li>
-
+ 
+                        <li class="navbar-item">
+                            <a href="myprofile.html" class="avatar-link" aria-label="My Profile" data-ripple>
+                                <i class="bi bi-person-circle" aria-hidden="true"></i>
+                            </a>
+                        </li>
+ 
                     </ul>
                 </nav>
-
+ 
             </header>
-
+ 
             <!-- ============================= -->
-            <!-- SEARCH BAR SECTION             -->
+            <!-- SEARCH                         -->
             <!-- ============================= -->
             <section class="search-section" aria-label="Search">
                 <form class="search-form" role="search">
-                    <label for="search-input" class="search-label">Search</label>
+                    <label for="search-input" class="visually-hidden">Search</label>
+                    <i class="bi bi-search search-icon" aria-hidden="true"></i>
                     <input
                         type="search"
                         id="search-input"
                         name="search"
                         class="search-input"
                         placeholder="Search announcements, assignments, fees, reports..."
-                        aria-label="Search announcements, assignments, fees, reports"
                     >
                 </form>
             </section>
-
+ 
             <!-- ============================= -->
             <!-- DASHBOARD CONTENT               -->
+            <!-- Each card has a tone-* class (its color) and an --i value  -->
+            <!-- (its position, used for the staggered entrance animation). -->
             <!-- ============================= -->
-            <main class="dashboard-content">
-
-                <!-- Dashboard Cards Grid -->
+            <main class="dashboard-content" id="main-content">
+ 
                 <section class="dashboard-grid" id="dashboard-grid" aria-label="Dashboard overview cards">
-
+ 
                     <!-- Card 1: My Course Content -->
-                    <a href="CourseContent.html" class="dashboard-card-link" aria-label="Open My Course Content">
+                    <a href="CourseContent.html" class="dashboard-card-link tone-blue" style="--i:0">
                         <article class="dashboard-card">
+                            <span class="card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
                             <header class="card-header">
-                                <span class="card-icon" aria-hidden="true">📘</span>
+                                <span class="card-icon" aria-hidden="true"><i class="bi bi-book"></i></span>
                                 <h2 class="card-title">My Course Content</h2>
                             </header>
-                            <div class="card-body"></div>
+                            <div class="card-body">Notes, videos and downloads</div>
                         </article>
                     </a>
-
+ 
                     <!-- Card 2: Attendance & Percentage -->
-                    <a href="Attendance & Percentage.html" class="dashboard-card-link" aria-label="Open Attendance & Percentage">
+                    <a href="Attendance &amp; Percentage.html" class="dashboard-card-link tone-green" style="--i:1">
                         <article class="dashboard-card">
+                            <span class="card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
                             <header class="card-header">
-                                <span class="card-icon" aria-hidden="true">📅</span>
+                                <span class="card-icon" aria-hidden="true"><i class="bi bi-calendar-check"></i></span>
                                 <h2 class="card-title">Attendance &amp; Percentage</h2>
                             </header>
-                            <div class="card-body"></div>
+                            <div class="card-body">Monthly and annual records</div>
                         </article>
                     </a>
-
+ 
                     <!-- Card 3: Fees / Challans -->
-                    <a href="Fees & Challans.html" class="dashboard-card-link" aria-label="Open Fees / Challans">
+                    <a href="Fees &amp; Challans.html" class="dashboard-card-link tone-teal" style="--i:2">
                         <article class="dashboard-card">
+                            <span class="card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
                             <header class="card-header">
-                                <span class="card-icon" aria-hidden="true">💰</span>
+                                <span class="card-icon" aria-hidden="true"><i class="bi bi-wallet2"></i></span>
                                 <h2 class="card-title">Fees / Challans</h2>
                             </header>
-                            <div class="card-body"></div>
+                            <div class="card-body">Paid, pending and due dates</div>
                         </article>
                     </a>
-
+ 
                     <!-- Card 4: Assignments / Homework -->
-                    <a href="assignments.html" class="dashboard-card-link" aria-label="Open Assignments / Homework">
+                    <a href="assignments.html" class="dashboard-card-link tone-indigo" style="--i:3">
                         <article class="dashboard-card">
+                            <span class="card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
                             <header class="card-header">
-                                <span class="card-icon" aria-hidden="true">📝</span>
+                                <span class="card-icon" aria-hidden="true"><i class="bi bi-journal-text"></i></span>
                                 <h2 class="card-title">Assignments / Homework</h2>
                             </header>
-                            <div class="card-body"></div>
+                            <div class="card-body">Submitted and pending tasks</div>
                         </article>
                     </a>
-
+ 
                     <!-- Card 5: Upcoming Exams -->
-                    <a href="UpcomingExams.html" class="dashboard-card-link" aria-label="Open Upcoming Exams">
+                    <a href="UpcomingExams.html" class="dashboard-card-link tone-sky" style="--i:4">
                         <article class="dashboard-card">
+                            <span class="card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
                             <header class="card-header">
-                                <span class="card-icon" aria-hidden="true">🗓️</span>
+                                <span class="card-icon" aria-hidden="true"><i class="bi bi-calendar-event"></i></span>
                                 <h2 class="card-title">Upcoming Exams</h2>
                             </header>
-                            <div class="card-body"></div>
+                            <div class="card-body">Date sheet and schedules</div>
                         </article>
                     </a>
-
+ 
                     <!-- Card 6: Daily Time Table -->
-                    <a href="timetable.html" class="dashboard-card-link" aria-label="Open Daily Time Table">
+                    <a href="timetable.html" class="dashboard-card-link tone-blue" style="--i:5">
                         <article class="dashboard-card">
+                            <span class="card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
                             <header class="card-header">
-                                <span class="card-icon" aria-hidden="true">⏰</span>
+                                <span class="card-icon" aria-hidden="true"><i class="bi bi-clock"></i></span>
                                 <h2 class="card-title">Daily Time Table</h2>
                             </header>
-                            <div class="card-body"></div>
+                            <div class="card-body">Today's classes and rooms</div>
                         </article>
                     </a>
-
+ 
                     <!-- Card 7: Exam & Test Results -->
-                    <a href="TestResults.html" class="dashboard-card-link" aria-label="Open Exam & Test Results">
+                    <a href="TestResults.html" class="dashboard-card-link tone-green" style="--i:6">
                         <article class="dashboard-card">
+                            <span class="card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
                             <header class="card-header">
-                                <span class="card-icon" aria-hidden="true">🏆</span>
+                                <span class="card-icon" aria-hidden="true"><i class="bi bi-award"></i></span>
                                 <h2 class="card-title">Exam &amp; Test Results</h2>
                             </header>
-                            <div class="card-body"></div>
+                            <div class="card-body">Marks and class-wise results</div>
                         </article>
                     </a>
-
+ 
                     <!-- Card 8: Online Applications -->
-                    <a href="applications.html" class="dashboard-card-link" aria-label="Open Online Applications">
+                    <a href="applications.html" class="dashboard-card-link tone-teal" style="--i:7">
                         <article class="dashboard-card">
+                            <span class="card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
                             <header class="card-header">
-                                <span class="card-icon" aria-hidden="true">📋</span>
+                                <span class="card-icon" aria-hidden="true"><i class="bi bi-envelope-paper"></i></span>
                                 <h2 class="card-title">Online Applications</h2>
                             </header>
-                            <div class="card-body"></div>
+                            <div class="card-body">Leave and other requests</div>
                         </article>
                     </a>
-
+ 
                 </section>
-
+ 
             </main>
-
+ 
             <!-- ============================= -->
             <!-- FOOTER                         -->
             <!-- ============================= -->
             <footer class="footer">
                 <p class="footer-text">&copy; Student Management System</p>
             </footer>
-
+ 
         </div>
         <!-- /main-wrapper -->
-
+ 
     </div>
     <!-- /dashboard-container -->
-
+ 
     <!-- ============================= -->
     <!-- FLOATING AI ASSISTANT BUTTON   -->
-    <!-- (moved out of the grid, now a persistent bottom-right button) -->
     <!-- ============================= -->
     <a href="AIStudyAssistant.html" class="ai-assistant-fab" aria-label="Open AI Assistant">
         <span class="ai-assistant-fab-label">AI Assistant</span>
-        <span class="ai-assistant-fab-button" aria-hidden="true">🤖</span>
+        <span class="ai-assistant-fab-button" data-ripple aria-hidden="true"><i class="bi bi-robot"></i></span>
     </a>
-
-    <script src="data-store.js"></script>
-    <script src="templates.js"></script>
-    <script src="page-init.js"></script>
+ 
+    <script src="dashboard.js"></script>
 </body>
 </html>
+ 
+Claude finished the response

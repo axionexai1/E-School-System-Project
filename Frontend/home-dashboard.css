@@ -1,97 +1,135 @@
 /* ==========================================================================
-   Student Management System — Core Stylesheet (Design System v2)
-   ONE consistent theme for the entire project — every other CSS file
-   should reuse these variables (--accent-1 .. --accent-6) instead of
-   hardcoding its own colors, so nothing looks "different" page to page.
+   home-dashboard.css
+   Student Management System — core stylesheet (v4)
+   --------------------------------------------------------------------------
+   Look: clean white surfaces, one primary blue, green only for positive
+   status. No gradients, no emoji. Icons come from Bootstrap Icons, the
+   font is Poppins (both linked in the HTML <head>).
+
+   How this file is organised:
+     1. Design tokens (every color / size / timing lives here)
+     2. Reset and base
+     3. Layout shell
+     4. Sidebar (+ collapsed state, tooltip, mobile drawer)
+     5. Top navbar
+     6. Search
+     7. Dashboard cards
+     7B. Inner-page components (back button, intro text, panels)
+     8. Floating AI assistant button
+     9. Small utilities (ripple, skip link, keyframes)
+    10. Responsive rules
+    11. Reduced motion
+
+   RULE FOR THE REST OF THE PROJECT: other pages must reuse the tokens
+   below instead of inventing colors. That is what keeps every page
+   looking like one product.
    ========================================================================== */
 
-/* ---------- 1. Design Tokens ---------- */
+
+/* ==========================================================================
+   1. DESIGN TOKENS
+   ========================================================================== */
 :root {
-  /* Brand gradient (used for header, top accent bars, primary buttons) */
-  --color-primary: #5b4fe9;
-  --color-secondary: #00c2a8;
-  --gradient-brand: linear-gradient(135deg, #5b4fe9 0%, #00c2a8 100%);
+  /* Typography */
+  --font-sans: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
 
-  /* Multi-color accent system — color-theory based, evenly spaced hues.
-     Every list of items (subjects, classes, categories, cards, etc.)
-     cycles through these SAME six colors in the SAME order, everywhere. */
-  --accent-1: #5b4fe9; /* indigo   */
-  --accent-2: #00b4a6; /* teal     */
-  --accent-3: #f59e0b; /* amber    */
-  --accent-4: #16a34a; /* green    */
-  --accent-5: #e0457b; /* pink     */
-  --accent-6: #2563eb; /* blue     */
+  /* Brand blue — buttons, active menu item, links, focus rings.
+     To re-theme the whole project, change only these four values. */
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --primary-light: #eff6ff;
+  --primary-ring: rgba(37, 99, 235, 0.22);
 
-  --accent-1-soft: rgba(91, 79, 233, 0.12);
-  --accent-2-soft: rgba(0, 180, 166, 0.12);
-  --accent-3-soft: rgba(245, 158, 11, 0.14);
-  --accent-4-soft: rgba(22, 163, 74, 0.12);
-  --accent-5-soft: rgba(224, 69, 123, 0.12);
-  --accent-6-soft: rgba(37, 99, 235, 0.12);
+  /* Supporting hues for card icons (all from the blue-green family) */
+  --green: #16a34a;
+  --green-light: #ecfdf5;
+  --teal: #0d9488;
+  --teal-light: #f0fdfa;
+  --sky: #0284c7;
+  --sky-light: #f0f9ff;
+  --indigo: #4f46e5;
+  --indigo-light: #eef2ff;
+
+  /* Status colors — used for meaning only (paid, pending, overdue) */
+  --success: #16a34a;
+  --success-light: #ecfdf5;
+  --warning: #f59e0b;
+  --warning-light: #fffbeb;
+  --danger: #dc2626;
+  --danger-light: #fef2f2;
 
   /* Neutrals */
-  --color-bg: #f5f6fa;
-  --color-surface: #ffffff;
-  --color-text: #1f2430;
-  --color-text-muted: #6b7280;
-  --color-border: #e7e9f0;
+  --bg: #f5f8ff;
+  --surface: #ffffff;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
 
-  /* Feedback colors */
-  --color-success: #16a34a;
-  --color-warning: #d97706;
-  --color-danger: #dc2626;
-
-  /* Typography — system fonts w/ fallbacks so every device renders natively */
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-
-  /* Spacing scale */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 24px;
-  --space-6: 32px;
-
-  /* Radius & shadow */
+  /* Shape */
   --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
-  --shadow-md: 0 6px 20px rgba(16, 24, 40, 0.1);
-  --shadow-lg: 0 16px 40px rgba(16, 24, 40, 0.16);
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  /* Elevation (shadows are tinted blue-grey, never black) */
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 14px 30px -10px rgba(37, 99, 235, 0.25);
+  --shadow-topbar: 0 4px 16px rgba(15, 23, 42, 0.06);
 
   /* Motion */
-  --transition-fast: 150ms ease;
-  --transition-base: 220ms ease;
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 160ms;
+  --duration-base: 260ms;
+  --duration-slow: 460ms;
 
-  --sidebar-width: 260px;
-  --sidebar-width-collapsed: 76px;
+  /* Layout */
+  --sidebar-width: 264px;
+  --sidebar-width-collapsed: 80px;
+  --topbar-height: 68px;
+  --tap-target: 44px; /* comfortable minimum touch size on phones */
 }
 
-/* ---------- 2. Reset ---------- */
-* {
+
+/* ==========================================================================
+   2. RESET AND BASE
+   ========================================================================== */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+* {
   margin: 0;
   padding: 0;
 }
 
 html {
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+/* Added by JS while the mobile drawer is open so the page behind it
+   does not scroll. */
+html.is-scroll-locked {
+  overflow: hidden;
 }
 
 body {
   font-family: var(--font-sans);
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-size: 15px;
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 
 ul {
@@ -99,514 +137,1006 @@ ul {
 }
 
 img {
-  max-width: 100%;
   display: block;
+  max-width: 100%;
 }
 
 button {
-  font-family: inherit;
-  border: none;
+  font: inherit;
+  color: inherit;
   background: none;
+  border: 0;
   cursor: pointer;
 }
 
 input {
-  font-family: inherit;
+  font: inherit;
+  color: inherit;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  * {
-    transition: none !important;
-    animation: none !important;
-  }
-}
-
-a:focus-visible,
-button:focus-visible,
-input:focus-visible {
-  outline: 2px solid var(--color-primary);
+:focus-visible {
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Skip link: invisible until a keyboard user tabs to it. */
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 100;
+  padding: 10px 16px;
   border-radius: var(--radius-sm);
+  background: var(--primary);
+  color: #ffffff;
+  font-weight: 500;
+  transform: translateY(-200%);
+  transition: transform var(--duration-fast) var(--ease-out);
 }
 
-/* ---------- 3. Shared entrance animation ---------- */
-@keyframes fadeSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.skip-link:focus {
+  transform: translateY(0);
 }
 
-/* ---------- 4. Page Layout ---------- */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+
+/* ==========================================================================
+   3. LAYOUT SHELL
+   State classes are set on .dashboard-container by dashboard.js:
+     .is-sidebar-collapsed  desktop: icon-only sidebar
+     .is-sidebar-open       mobile:  drawer is open
+     .is-preload            set for a moment on load so the saved state
+                            applies without playing a transition
+   ========================================================================== */
 .dashboard-container {
-  display: flex;
   min-height: 100vh;
 }
 
-.main-wrapper {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  margin-left: var(--sidebar-width);
-  transition: margin-left var(--transition-base);
+.dashboard-container.is-preload * {
+  transition: none !important;
 }
 
-.sidebar-collapsed ~ .main-wrapper,
-.sidebar-collapsed + .main-wrapper {
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin-left: var(--sidebar-width);
+  transition: margin-left var(--duration-base) var(--ease-out);
+}
+
+.dashboard-container.is-sidebar-collapsed .main-wrapper {
   margin-left: var(--sidebar-width-collapsed);
 }
 
-/* ---------- 5. Sidebar ---------- */
+
+/* ==========================================================================
+   4. SIDEBAR
+   ========================================================================== */
 .sidebar {
   position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: var(--sidebar-width);
-  background: var(--color-surface);
-  border-right: 1px solid var(--color-border);
+  inset: 0 auto 0 0;
+  z-index: 40;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  overflow-x: hidden;
-  z-index: 20;
-  transition: width var(--transition-base);
-}
-
-.sidebar-collapsed {
-  width: var(--sidebar-width-collapsed);
+  width: var(--sidebar-width);
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  transition: width var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
 }
 
 .sidebar-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: var(--space-4) var(--space-4);
-  border-bottom: 1px solid var(--color-border);
-  min-height: 68px;
+  flex-shrink: 0;
+  height: var(--topbar-height);
+  padding: 0 20px;
+  border-bottom: 1px solid var(--border);
 }
 
 .sidebar-logo {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: 12px;
   min-width: 0;
 }
 
 .sidebar-logo-img {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-sm);
-  object-fit: cover;
   flex-shrink: 0;
-  background: var(--gradient-brand);
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
 }
 
 .sidebar-logo-text {
+  font-size: 17px;
   font-weight: 700;
-  font-size: 16px;
+  letter-spacing: -0.01em;
+  color: var(--text);
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.menu-toggle {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: var(--space-2);
-  border-radius: var(--radius-sm);
-  transition: background var(--transition-fast);
-  flex-shrink: 0;
-}
-
-.menu-toggle:hover {
-  background: var(--color-bg);
-}
-
-.menu-toggle-line {
-  width: 18px;
-  height: 2px;
-  background: var(--color-text);
-  border-radius: 2px;
+  transition: opacity var(--duration-fast) var(--ease-out);
 }
 
 .sidebar-menu {
   flex: 1;
-  padding: var(--space-3) var(--space-2);
+  padding: 16px 12px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
-.sidebar-divider {
-  height: 1px;
-  background: var(--color-border);
-  margin: var(--space-3) var(--space-2);
+/* Small uppercase group titles ("Menu", "Support") */
+.sidebar-label {
+  margin: 4px 0 8px;
+  padding: 0 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
 }
 
-.sidebar-item {
-  margin-bottom: 2px;
+.sidebar-label--spaced {
+  margin-top: 22px;
+}
+
+.sidebar-item + .sidebar-item {
+  margin-top: 2px;
 }
 
 .sidebar-link {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-3) var(--space-3);
-  border-radius: var(--radius-sm);
-  color: var(--color-text-muted);
-  font-size: 14px;
+  gap: 12px;
+  height: var(--tap-target);
+  padding: 0 12px;
+  border-radius: var(--radius-md);
   font-weight: 500;
+  color: var(--text-muted);
   white-space: nowrap;
-  transition: background var(--transition-fast), color var(--transition-fast);
+  transition: background var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+/* Blue indicator bar on the left edge. It grows in on hover and stays
+   at full height for the current page. */
+.sidebar-link::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  width: 4px;
+  height: 0;
+  border-radius: 0 4px 4px 0;
+  background: var(--primary);
+  transform: translateY(-50%);
+  transition: height var(--duration-base) var(--ease-spring);
 }
 
 .sidebar-link:hover {
-  background: var(--color-bg);
-  color: var(--color-text);
+  background: var(--primary-light);
+  color: var(--primary);
 }
 
-.sidebar-item.active .sidebar-link,
+.sidebar-link:hover::before {
+  height: 14px;
+}
+
 .sidebar-link[aria-current="page"] {
-  background: var(--accent-1-soft);
-  color: var(--color-primary);
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.sidebar-link[aria-current="page"]::before {
+  height: 26px;
 }
 
 .sidebar-icon {
-  width: 20px;
-  height: 20px;
+  display: grid;
+  place-items: center;
   flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
+  width: 22px;
+  font-size: 19px;
+  transition: transform var(--duration-fast) var(--ease-spring);
 }
 
-.sidebar-icon img {
-  width: 100%;
-  height: 100%;
-  opacity: 0.85;
+.sidebar-link:hover .sidebar-icon {
+  transform: scale(1.12);
 }
 
-.sidebar-collapsed .sidebar-text,
-.sidebar-collapsed .sidebar-logo-text {
-  display: none;
+.sidebar-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: opacity var(--duration-fast) var(--ease-out);
 }
 
 .sidebar-footer {
-  padding: var(--space-2);
-  border-top: 1px solid var(--color-border);
+  flex-shrink: 0;
+  padding: 12px;
+  border-top: 1px solid var(--border);
 }
 
-/* ---------- 6. Top Navbar ---------- */
+/* Logout turns red on hover so it reads as a different kind of action */
+.sidebar-link--danger:hover {
+  background: var(--danger-light);
+  color: var(--danger);
+}
+
+.sidebar-link--danger::before {
+  background: var(--danger);
+}
+
+/* Tooltip shown by JS next to an icon when the sidebar is collapsed */
+.sidebar-tooltip {
+  position: fixed;
+  z-index: 60;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--text);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-6px, -50%);
+  transition: opacity var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.sidebar-tooltip.is-visible {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+.sidebar-tooltip::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: inherit;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* Collapsed sidebar — desktop only */
+@media (min-width: 992px) {
+  .dashboard-container.is-sidebar-collapsed .sidebar {
+    width: var(--sidebar-width-collapsed);
+  }
+
+  .is-sidebar-collapsed .sidebar-header {
+    justify-content: center;
+    padding: 0;
+  }
+
+  .is-sidebar-collapsed .sidebar-logo-text,
+  .is-sidebar-collapsed .sidebar-text {
+    width: 0;
+    opacity: 0;
+  }
+
+  .is-sidebar-collapsed .sidebar-link {
+    justify-content: center;
+    gap: 0;
+    padding: 0;
+  }
+
+  /* Group titles turn into thin divider lines */
+  .is-sidebar-collapsed .sidebar-label {
+    height: 1px;
+    margin: 14px 16px;
+    padding: 0;
+    overflow: hidden;
+    font-size: 0;
+    background: var(--border);
+  }
+}
+
+/* Dimmed page behind the mobile drawer */
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 35;
+  background: rgba(15, 23, 42, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--duration-base) var(--ease-out),
+    visibility var(--duration-base);
+}
+
+/* Mobile and tablet: the sidebar becomes an off-canvas drawer */
+@media (max-width: 991.98px) {
+  .sidebar {
+    width: min(86vw, var(--sidebar-width));
+    transform: translateX(-100%);
+  }
+
+  .dashboard-container.is-sidebar-open .sidebar {
+    transform: translateX(0);
+    box-shadow: 0 0 40px rgba(15, 23, 42, 0.25);
+  }
+
+  .dashboard-container.is-sidebar-open .sidebar-backdrop {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .main-wrapper,
+  .dashboard-container.is-sidebar-collapsed .main-wrapper {
+    margin-left: 0;
+  }
+}
+
+
+/* ==========================================================================
+   5. TOP NAVBAR
+   ========================================================================== */
 .top-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: var(--space-5) var(--space-6);
-  background: var(--gradient-brand);
-  color: #ffffff;
-  gap: var(--space-4);
-  flex-wrap: wrap;
+  gap: 16px;
+  height: var(--topbar-height);
+  padding: 0 28px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow var(--duration-base) var(--ease-out);
+}
+
+/* JS adds this once the page has scrolled, so the bar lifts off the content */
+.top-navbar.is-scrolled {
+  box-shadow: var(--shadow-topbar);
+}
+
+/* Hamburger. The three lines morph depending on state:
+   - desktop collapsed: middle line shortens
+   - mobile open: lines cross into an X */
+.menu-toggle {
+  position: relative;
+  display: grid;
+  place-content: center;
+  justify-items: start;
+  flex-shrink: 0;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+.menu-toggle:hover {
+  background: var(--primary-light);
+}
+
+.menu-toggle-line {
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--text);
+  transition: width var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out),
+    opacity var(--duration-fast) var(--ease-out);
+}
+
+.is-sidebar-collapsed .menu-toggle-line:nth-child(2) {
+  width: 12px;
+}
+
+.is-sidebar-open .menu-toggle-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.is-sidebar-open .menu-toggle-line:nth-child(2) {
+  opacity: 0;
+}
+
+.is-sidebar-open .menu-toggle-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.navbar-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
 }
 
 .page-title {
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--text);
 }
 
 .page-subtitle {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.85);
-  margin-top: 2px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.navbar-right {
+  margin-left: auto;
 }
 
 .navbar-menu {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: 8px;
 }
 
 .navbar-link {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-3) var(--space-5);
-  border-radius: 999px;
-  font-size: 15px;
-  font-weight: 700;
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.16);
-  transition: background var(--transition-fast), transform var(--transition-fast);
+  gap: 10px;
+  height: 42px;
+  padding: 0 14px;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: background var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
 }
 
 .navbar-link:hover {
-  background: rgba(255, 255, 255, 0.28);
-  transform: translateY(-1px);
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.navbar-link-icon {
+  display: inline-block;
+  font-size: 18px;
+  transform-origin: 50% 0;
+}
+
+/* The bell swings once when you hover the announcements link */
+.navbar-link:hover .navbar-link-icon {
+  animation: bell-ring 700ms var(--ease-out);
 }
 
 .announcement-badge {
-  background: #ffffff;
-  color: var(--color-primary);
-  font-size: 13px;
-  font-weight: 800;
-  min-width: 22px;
-  height: 22px;
-  padding: 0 7px;
-  border-radius: 999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  animation: pulseBadge 2s ease-in-out infinite;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--danger);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
 }
 
-@keyframes pulseBadge {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.12); }
+.announcement-badge[hidden] {
+  display: none;
 }
 
-/* ---------- 7. Search Section ---------- */
+/* Round profile button */
+.avatar-link {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 22px;
+  transition: background var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.avatar-link:hover {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+
+/* ==========================================================================
+   6. SEARCH
+   ========================================================================== */
 .search-section {
-  padding: var(--space-5) var(--space-6) 0;
+  padding: 24px 28px 0;
 }
 
 .search-form {
   position: relative;
 }
 
-.search-label {
+.search-icon {
   position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
+  left: 16px;
+  top: 50%;
+  font-size: 16px;
+  color: var(--text-muted);
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.search-form:focus-within .search-icon {
+  color: var(--primary);
 }
 
 .search-input {
   width: 100%;
-  padding: var(--space-3) var(--space-4);
-  border: 1px solid var(--color-border);
+  height: 48px;
+  padding: 0 16px 0 46px;
+  border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  background: var(--color-surface);
-  font-size: 14px;
-  box-shadow: var(--shadow-sm);
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  background: var(--surface);
+  box-shadow: var(--shadow-xs);
+  transition: border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
 }
 
 .search-input:focus {
   outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px var(--accent-1-soft);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-ring);
 }
 
-.search-input::placeholder {
-  color: var(--color-text-muted);
-}
 
-/* ---------- 8. Dashboard Grid & Cards ---------- */
+/* ==========================================================================
+   7. DASHBOARD CARDS
+   Each card picks its color from a tone class (tone-blue, tone-green, ...).
+   The tone sets two variables, --tone and --tone-light, and everything
+   inside the card (icon box, border on hover, arrow) uses them.
+   ========================================================================== */
+.tone-blue   { --tone: var(--primary); --tone-light: var(--primary-light); }
+.tone-green  { --tone: var(--green);   --tone-light: var(--green-light); }
+.tone-teal   { --tone: var(--teal);    --tone-light: var(--teal-light); }
+.tone-sky    { --tone: var(--sky);     --tone-light: var(--sky-light); }
+.tone-indigo { --tone: var(--indigo);  --tone-light: var(--indigo-light); }
+
 .dashboard-content {
   flex: 1;
-  padding: var(--space-5) var(--space-6) var(--space-6);
+  padding: 24px 28px 96px; /* extra bottom space so the AI button never covers a card */
 }
 
 .dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: var(--space-5);
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
 }
 
+/* Cards fade up one after another when the page loads. The delay comes
+   from the --i value written inline on each card in the HTML. */
 .dashboard-card-link {
   display: block;
+  height: 100%;
   border-radius: var(--radius-lg);
-  animation: fadeSlideIn var(--transition-base) both;
+  animation: card-enter var(--duration-slow) var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 60ms);
 }
 
-.dashboard-grid .dashboard-card-link:nth-child(1) { animation-delay: 0ms; }
-.dashboard-grid .dashboard-card-link:nth-child(2) { animation-delay: 40ms; }
-.dashboard-grid .dashboard-card-link:nth-child(3) { animation-delay: 80ms; }
-.dashboard-grid .dashboard-card-link:nth-child(4) { animation-delay: 120ms; }
-.dashboard-grid .dashboard-card-link:nth-child(5) { animation-delay: 160ms; }
-.dashboard-grid .dashboard-card-link:nth-child(6) { animation-delay: 200ms; }
-.dashboard-grid .dashboard-card-link:nth-child(7) { animation-delay: 240ms; }
-.dashboard-grid .dashboard-card-link:nth-child(8) { animation-delay: 280ms; }
-
-.dashboard-card {
+.dashboard-grid .dashboard-card {
   position: relative;
-  overflow: hidden;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  padding: var(--space-5);
-  min-height: 160px;
   display: flex;
   flex-direction: column;
-  transition: transform var(--transition-base), box-shadow var(--transition-base),
-    border-color var(--transition-base);
+  gap: 6px;
+  height: 100%;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-xs);
+  transition: transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
 }
 
-.dashboard-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--gradient-brand);
-}
-
-.dashboard-card:hover {
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: var(--shadow-lg);
-  border-color: transparent;
-}
-
-.card-header {
+.dashboard-grid .card-header {
   display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  margin-bottom: var(--space-3);
-  padding-bottom: var(--space-3);
-  border-bottom: 1px solid var(--color-border);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
 }
 
+/* Large icon box at the top of the card */
 .card-icon {
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  color: #ffffff;
-  transition: transform var(--transition-fast);
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-lg);
+  background: var(--tone-light);
+  color: var(--tone);
+  font-size: 28px;
+  transition: background var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-spring);
 }
-
-.dashboard-card:hover .card-icon {
-  transform: scale(1.08) rotate(-4deg);
-}
-
-/* Cycle the SAME six accent colors, in the SAME order, on every card
-   grid across the whole project — this is the one pattern to reuse. */
-.dashboard-grid .dashboard-card-link:nth-child(6n+1) .card-icon { background: var(--accent-1); }
-.dashboard-grid .dashboard-card-link:nth-child(6n+2) .card-icon { background: var(--accent-2); }
-.dashboard-grid .dashboard-card-link:nth-child(6n+3) .card-icon { background: var(--accent-3); }
-.dashboard-grid .dashboard-card-link:nth-child(6n+4) .card-icon { background: var(--accent-4); }
-.dashboard-grid .dashboard-card-link:nth-child(6n+5) .card-icon { background: var(--accent-5); }
-.dashboard-grid .dashboard-card-link:nth-child(6n+6) .card-icon { background: var(--accent-6); }
 
 .card-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--color-text);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text);
 }
 
-.card-body {
-  flex: 1;
-  color: var(--color-text-muted);
+.dashboard-grid .card-body {
   font-size: 13px;
+  color: var(--text-muted);
 }
 
-/* ---------- 9. Footer ---------- */
+/* Small round arrow in the top-right corner */
+.card-arrow {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--text-muted);
+  font-size: 14px;
+  transition: background var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-spring);
+}
+
+/* Hover effects only on devices that really hover (not touch screens) */
+@media (hover: hover) {
+  .dashboard-card-link:hover .dashboard-card {
+    transform: translateY(-4px);
+    border-color: var(--tone);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Icon box fills with the tone color, icon turns white */
+  .dashboard-card-link:hover .card-icon {
+    background: var(--tone);
+    color: #ffffff;
+    transform: scale(1.06);
+  }
+
+  .dashboard-card-link:hover .card-arrow {
+    background: var(--tone);
+    color: #ffffff;
+    transform: translateX(3px);
+  }
+}
+
+.dashboard-card-link:active .dashboard-card {
+  transform: translateY(-1px) scale(0.99);
+}
+
 .footer {
-  padding: var(--space-4) var(--space-6);
-  border-top: 1px solid var(--color-border);
+  padding: 18px 28px;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
   text-align: center;
 }
 
 .footer-text {
   font-size: 12px;
-  color: var(--color-text-muted);
+  color: var(--text-muted);
 }
 
-/* ---------- 10. Floating AI Assistant button ---------- */
-.ai-assistant-fab {
-  position: fixed;
-  right: var(--space-6);
-  bottom: var(--space-6);
+
+/* ==========================================================================
+   7B. INNER-PAGE COMPONENTS
+   Shared by every page except the dashboard (Course Content, Fees,
+   Attendance, ...). Pages keep the same sidebar and top bar as the
+   dashboard; only the content area changes.
+     .page-content  vertical stack: back button, intro text, panels
+     .back-link     "Back to Dashboard" button
+     .page-intro    one short line of text under the back button
+     .panel         white card that holds a list or a table
+   Page-specific styles (for example the subject tiles) live in that
+   page's own CSS file and reuse --tone / --tone-light from section 7.
+   ========================================================================== */
+.page-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Back button. On phones it stretches across the screen so it is easy
+   to hit with a thumb (see the responsive rules below). */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 8px;
+  height: var(--tap-target);
+  padding: 0 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-xs);
+  font-weight: 500;
+  color: var(--text);
+  transition: color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.back-icon {
+  display: inline-block;
+  transition: transform var(--duration-base) var(--ease-spring);
+}
+
+.back-link:hover {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.back-link:hover .back-icon {
+  transform: translateX(-3px);
+}
+
+.page-intro {
+  max-width: 680px;
+  color: var(--text-muted);
+}
+
+.panel {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-xs);
+  animation: card-enter var(--duration-slow) var(--ease-out) both;
+}
+
+.panel-header {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  z-index: 50;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.panel-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.panel-body {
+  padding: 24px;
+}
+
+@media (max-width: 575.98px) {
+  .back-link {
+    align-self: stretch;
+  }
+
+  .panel-header {
+    padding: 16px;
+  }
+
+  .panel-body {
+    padding: 16px;
+  }
+}
+
+
+/* ==========================================================================
+   8. FLOATING AI ASSISTANT BUTTON
+   ========================================================================== */
+.ai-assistant-fab {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .ai-assistant-fab-button {
+  display: grid;
+  place-items: center;
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: var(--gradient-brand);
+  background: var(--primary);
   color: #ffffff;
   font-size: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-lg);
-  animation: aiPulse 2.4s ease-in-out infinite;
-  transition: transform var(--transition-fast);
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.35);
+  transition: background var(--duration-fast) var(--ease-out),
+    transform var(--duration-base) var(--ease-spring);
 }
 
-.ai-assistant-fab:hover .ai-assistant-fab-button {
-  transform: scale(1.08);
-}
-
+/* Text label slides out to the left of the button on hover / keyboard focus */
 .ai-assistant-fab-label {
-  background: var(--color-surface);
-  color: var(--color-text);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--text);
+  color: #ffffff;
   font-size: 13px;
-  font-weight: 700;
-  padding: var(--space-2) var(--space-4);
-  border-radius: 999px;
-  box-shadow: var(--shadow-md);
-  opacity: 0;
-  transform: translateX(6px);
-  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  font-weight: 500;
   white-space: nowrap;
+  opacity: 0;
+  transform: translateX(8px);
+  pointer-events: none;
+  transition: opacity var(--duration-fast) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
 }
 
-.ai-assistant-fab:hover .ai-assistant-fab-label {
+.ai-assistant-fab:hover .ai-assistant-fab-label,
+.ai-assistant-fab:focus-visible .ai-assistant-fab-label {
   opacity: 1;
   transform: translateX(0);
 }
 
-@keyframes aiPulse {
-  0%, 100% { box-shadow: var(--shadow-lg), 0 0 0 0 var(--accent-1-soft); }
-  50% { box-shadow: var(--shadow-lg), 0 0 0 10px transparent; }
+.ai-assistant-fab:hover .ai-assistant-fab-button {
+  background: var(--primary-dark);
+  transform: scale(1.06);
 }
 
-/* ---------- 11. Responsive ---------- */
-@media (max-width: 900px) {
-  .sidebar {
-    width: var(--sidebar-width-collapsed);
+
+/* ==========================================================================
+   9. SMALL UTILITIES
+   ========================================================================== */
+
+/* Click ripple. dashboard.js adds a <span class="ripple"> inside any
+   element that has the data-ripple attribute. */
+[data-ripple] {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.18;
+  transform: scale(0);
+  pointer-events: none;
+  animation: ripple 600ms var(--ease-out);
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(1);
+    opacity: 0;
   }
-  .sidebar .sidebar-text,
-  .sidebar .sidebar-logo-text {
+}
+
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes bell-ring {
+  0%   { transform: rotate(0); }
+  20%  { transform: rotate(14deg); }
+  40%  { transform: rotate(-12deg); }
+  60%  { transform: rotate(8deg); }
+  80%  { transform: rotate(-4deg); }
+  100% { transform: rotate(0); }
+}
+
+
+/* ==========================================================================
+   10. RESPONSIVE
+   (The sidebar drawer rules live in section 4.)
+   ========================================================================== */
+@media (max-width: 991.98px) {
+  .top-navbar {
+    padding: 0 16px;
+  }
+
+  .search-section {
+    padding: 16px 16px 0;
+  }
+
+  .dashboard-content {
+    padding: 16px 16px 96px;
+  }
+
+  .footer {
+    padding: 16px;
+  }
+}
+
+/* Phones: two compact tiles per row, like a mobile app home screen */
+@media (max-width: 575.98px) {
+  .page-subtitle,
+  .navbar-link-text {
     display: none;
   }
-  .main-wrapper {
-    margin-left: var(--sidebar-width-collapsed);
+
+  .navbar-link {
+    padding: 0 10px;
   }
-  .top-navbar {
-    padding: var(--space-4);
+
+  .dashboard-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
   }
-  .dashboard-content {
-    padding: var(--space-4);
+
+  .dashboard-grid .dashboard-card {
+    gap: 4px;
+    padding: 16px;
+  }
+
+  .dashboard-grid .card-header {
+    gap: 12px;
+  }
+
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
+    border-radius: var(--radius-md);
+  }
+
+  .card-title {
+    font-size: 14px;
+  }
+
+  .dashboard-grid .card-body,
+  .card-arrow {
+    display: none;
+  }
+
+  .ai-assistant-fab {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .ai-assistant-fab-label {
+    display: none;
   }
 }
 
-@media (max-width: 560px) {
-  .top-navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+/* Very small phones: one tile per row */
+@media (max-width: 339.98px) {
   .dashboard-grid {
     grid-template-columns: 1fr;
   }
-  .ai-assistant-fab-label {
-    display: none;
+}
+
+
+/* ==========================================================================
+   11. REDUCED MOTION
+   People who turn on "reduce motion" in their system settings get no
+   animations or transitions.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

@@ -1,147 +1,106 @@
 /* ==========================================================================
-   Course Content Section
-   Reuses design tokens from dashboard.css — load dashboard.css BEFORE this
-   file in the HTML <head>, since this file relies on those CSS variables.
+   course-content.css
+   Styles that belong only to the Course Content page: the subject list.
+   Everything shared (sidebar, top bar, back button, panel) comes from
+   home-dashboard.css, which must be linked BEFORE this file because the
+   subject list reuses its tokens and its card-enter animation.
    ========================================================================== */
 
-.dashboard-section {
-  padding: var(--space-5) var(--space-6);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
-}
-
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  align-self: flex-start;
-  padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-sm);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-primary);
-  background: rgba(91, 79, 233, 0.08);
-  transition: background var(--transition-fast), transform var(--transition-fast);
-}
-
-.back-link:hover {
-  background: rgba(91, 79, 233, 0.15);
-  transform: translateX(-2px);
-}
-
-.back-icon {
-  font-size: 16px;
-}
-
-.section-header {
-  margin-bottom: var(--space-2);
-}
-
-.section-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: var(--space-2);
-}
-
-.section-description {
-  font-size: 14px;
-  color: var(--color-text-muted);
-  max-width: 640px;
-}
-
-/* ---------- Subject List Card ---------- */
+/* As many columns as fit, minimum 240px each */
 .subject-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
 }
 
+/* Items fade up one after another. The delay comes from the --i value
+   written inline on each <li> in the HTML. */
 .subject-item {
-  border-radius: var(--radius-sm);
-  overflow: hidden;
+  animation: card-enter var(--duration-slow) var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 60ms);
 }
+
+/* Colors cycle through five tones by position. Because this uses
+   :nth-child, a subject the Admin adds later gets its color automatically. */
+.subject-item:nth-child(5n + 1) { --tone: var(--primary); --tone-light: var(--primary-light); }
+.subject-item:nth-child(5n + 2) { --tone: var(--green);   --tone-light: var(--green-light); }
+.subject-item:nth-child(5n + 3) { --tone: var(--teal);    --tone-light: var(--teal-light); }
+.subject-item:nth-child(5n + 4) { --tone: var(--sky);     --tone-light: var(--sky-light); }
+.subject-item:nth-child(5n + 5) { --tone: var(--indigo);  --tone-light: var(--indigo-light); }
 
 .subject-link {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-3) var(--space-4);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-text);
-  box-shadow: var(--shadow-sm);
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast),
-    transform var(--transition-fast);
+  gap: 16px;
+  min-height: 76px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  transition: transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
 }
 
-.subject-link:hover {
-  border-color: var(--color-primary);
-  box-shadow: var(--shadow-md);
-  transform: translateX(3px);
-}
-
+/* Same book icon for every subject, in a soft tinted box */
 .subject-icon {
-  font-size: 18px;
-  line-height: 1;
+  display: grid;
+  place-items: center;
   flex-shrink: 0;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-sm);
-  background: var(--gradient-brand);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--tone-light);
+  color: var(--tone);
+  font-size: 22px;
+  transition: background var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-spring);
 }
 
 .subject-name {
-  font-size: 14px;
+  flex: 1;
+  min-width: 0;
   font-weight: 600;
+  color: var(--text);
 }
 
-/* ---------- Subject Resources Card ---------- */
-.resource-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: var(--space-3);
+.subject-arrow {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-spring);
 }
 
-.resource-item {
-  padding: var(--space-4);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-left: 3px solid var(--color-secondary);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+/* Hover effects only on devices that really hover (not touch screens) */
+@media (hover: hover) {
+  .subject-link:hover {
+    transform: translateY(-3px);
+    border-color: var(--tone);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Icon box fills with the item color and the icon turns white */
+  .subject-link:hover .subject-icon {
+    background: var(--tone);
+    color: #ffffff;
+    transform: scale(1.06);
+  }
+
+  .subject-link:hover .subject-arrow {
+    color: var(--tone);
+    transform: translateX(3px);
+  }
 }
 
-.resource-item:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+.subject-link:active {
+  transform: scale(0.99);
 }
 
-.resource-title {
-  display: block;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--color-primary);
-  margin-bottom: var(--space-1);
-}
-
-.resource-description {
-  font-size: 13px;
-  color: var(--color-text-muted);
-  line-height: 1.5;
-}
-
-/* ---------- Responsive ---------- */
-@media (max-width: 560px) {
-  .resource-list {
+/* Phones: one item per row, so names never get squeezed */
+@media (max-width: 575.98px) {
+  .subject-list {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 }
