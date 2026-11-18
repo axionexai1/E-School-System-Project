@@ -3,271 +3,293 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Assignments &amp; Homework</title>
+
+    <!-- Font: Poppins (needs internet when the page loads) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+
+    <!-- Icons: Bootstrap Icons. Used as <i class="bi bi-NAME"></i> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Shared styles first, then this page's own styles -->
+    <link rel="stylesheet" href="home-dashboard.css">
+    <link rel="stylesheet" href="assignments.css">
 </head>
 <body>
-    <!-- ========================================================= -->
-<!-- Assignments & Homework Section Starts -->
-<!-- ========================================================= -->
 
-<section id="assignments-section" class="dashboard-section">
+    <!-- Lets keyboard users jump past the sidebar -->
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <!-- Section Header -->
-    <div id="assignments-header" class="section-header">
+    <div class="dashboard-container">
 
-        <h2 id="assignments-title" class="section-title">
-            Assignments & Homework
-        </h2>
+        <!-- Dimmed page behind the sidebar on mobile. Click closes the drawer. -->
+        <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
 
-        <p id="assignments-description" class="section-description">
-            Keeps track of all homework, assignments, and project work
-            assigned by teachers.
-        </p>
+        <!-- ============================= -->
+        <!-- LEFT SIDEBAR                   -->
+        <!-- ============================= -->
+        <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="logo.png" alt="School Logo" class="sidebar-logo-img">
+                    <span class="sidebar-logo-text">SMS Portal</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu" aria-label="Primary navigation">
+
+                <p class="sidebar-label">Menu</p>
+
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-grid-1x2"></i></span>
+                            <span class="sidebar-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="myprofile.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-person"></i></span>
+                            <span class="sidebar-text">My Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="calendar.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calendar3"></i></span>
+                            <span class="sidebar-text">Calendar</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="Calculator.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calculator"></i></span>
+                            <span class="sidebar-text">Calculator</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="Extra Courses.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-hourglass-split"></i></span>
+                            <span class="sidebar-text">Coming Soon</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <p class="sidebar-label sidebar-label--spaced">Support</p>
+
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="contact with school.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-building"></i></span>
+                            <span class="sidebar-text">Contact with School</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="aboutus.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-info-circle"></i></span>
+                            <span class="sidebar-text">About Us</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="news and updates.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-newspaper"></i></span>
+                            <span class="sidebar-text">News &amp; Updates</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="helpcenter.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
+                            <span class="sidebar-text">Help Center</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="privacy-policy.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-shield-lock"></i></span>
+                            <span class="sidebar-text">Privacy Policy</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="terms-conditions.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-file-earmark-text"></i></span>
+                            <span class="sidebar-text">Terms &amp; Conditions</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="settings.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-gear"></i></span>
+                            <span class="sidebar-text">Settings</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="logout.html" class="sidebar-link sidebar-link--danger">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-box-arrow-right"></i></span>
+                            <span class="sidebar-text">Logout</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </aside>
+
+        <!-- ============================= -->
+        <!-- MAIN WRAPPER                   -->
+        <!-- ============================= -->
+        <div class="main-wrapper">
+
+            <header class="top-navbar">
+
+                <button class="menu-toggle" id="menu-toggle" type="button"
+                        aria-label="Toggle sidebar menu" aria-controls="sidebar"
+                        aria-expanded="true" data-ripple>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                </button>
+
+                <div class="navbar-left">
+                    <h1 class="page-title">Assignments &amp; Homework</h1>
+                    <p class="page-subtitle">Homework, assignments and project work</p>
+                </div>
+
+                <nav class="navbar-right" aria-label="Top navigation">
+                    <ul class="navbar-menu">
+
+                        <li class="navbar-item">
+                            <a href="#announcement" class="navbar-link" data-ripple>
+                                <i class="bi bi-bell navbar-link-icon" aria-hidden="true"></i>
+                                <span class="navbar-link-text">Announcements</span>
+                                <span class="announcement-badge" id="announcement-badge">0</span>
+                            </a>
+                        </li>
+
+                        <li class="navbar-item">
+                            <a href="myprofile.html" class="avatar-link" aria-label="My Profile" data-ripple>
+                                <i class="bi bi-person-circle" aria-hidden="true"></i>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+            </header>
+
+            <!-- ============================= -->
+            <!-- PAGE CONTENT                   -->
+            <!-- ============================= -->
+            <main class="dashboard-content page-content" id="main-content">
+
+                <!-- Back button -->
+                <a href="dashboard.html" class="back-link" data-ripple>
+                    <i class="bi bi-arrow-left back-icon" aria-hidden="true"></i>
+                    <span>Back to Dashboard</span>
+                </a>
+
+                <!-- Intro text -->
+                <p class="page-intro" id="assignments-description">
+                    Keeps track of all homework, assignments, and project work
+                    assigned by teachers.
+                </p>
+
+                <!-- Assignment Categories -->
+                <section class="panel" id="assignment-category-card" aria-labelledby="assignments-title">
+
+                    <header class="panel-header">
+                        <h2 class="panel-title" id="assignments-title">Assignment Categories</h2>
+                    </header>
+
+                    <div class="panel-body">
+
+                        <ul class="assignment-list" id="assignment-category-list">
+
+                            <li class="assignment-item" style="--i:0">
+                                <a href="homework.html" id="homework-link" class="assignment-link">
+                                    <span class="assignment-icon" aria-hidden="true"><i class="bi bi-pencil-square"></i></span>
+                                    <span class="assignment-name">Homework</span>
+                                    <i class="bi bi-arrow-right assignment-arrow" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
+                            <li class="assignment-item" style="--i:1">
+                                <a href="assignments.html" id="assignment-link" class="assignment-link">
+                                    <span class="assignment-icon" aria-hidden="true"><i class="bi bi-journal-text"></i></span>
+                                    <span class="assignment-name">Assignments</span>
+                                    <i class="bi bi-arrow-right assignment-arrow" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
+                            <li class="assignment-item" style="--i:2">
+                                <a href="project-work.html" id="project-work-link" class="assignment-link">
+                                    <span class="assignment-icon" aria-hidden="true"><i class="bi bi-kanban"></i></span>
+                                    <span class="assignment-name">Project Work</span>
+                                    <i class="bi bi-arrow-right assignment-arrow" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
+                            <li class="assignment-item" style="--i:3">
+                                <a href="submitted-work.html" id="submitted-link" class="assignment-link">
+                                    <span class="assignment-icon" aria-hidden="true"><i class="bi bi-check-circle"></i></span>
+                                    <span class="assignment-name">Submitted</span>
+                                    <i class="bi bi-arrow-right assignment-arrow" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
+                            <li class="assignment-item" style="--i:4">
+                                <a href="pending-work.html" id="pending-link" class="assignment-link">
+                                    <span class="assignment-icon" aria-hidden="true"><i class="bi bi-clock-history"></i></span>
+                                    <span class="assignment-name">Pending</span>
+                                    <i class="bi bi-arrow-right assignment-arrow" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
+                            <li class="assignment-item" style="--i:5">
+                                <a href="due-dates.html" id="due-date-link" class="assignment-link">
+                                    <span class="assignment-icon" aria-hidden="true"><i class="bi bi-calendar-event"></i></span>
+                                    <span class="assignment-name">Due Date</span>
+                                    <i class="bi bi-arrow-right assignment-arrow" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </section>
+
+            </main>
+
+            <footer class="footer">
+                <p class="footer-text">&copy; Student Management System</p>
+            </footer>
+
+        </div>
+        <!-- /main-wrapper -->
 
     </div>
+    <!-- /dashboard-container -->
 
-    <!-- Assignment Categories -->
-    <article id="assignment-category-card" class="dashboard-card">
-
-        <div class="card-header">
-
-            <h3 class="card-title">
-                Assignment Categories
-            </h3>
-
-        </div>
-
-        <div class="card-body">
-
-            <ul id="assignment-category-list" class="assignment-list">
-
-                <li class="assignment-item">
-
-                    <a href="homework.html"
-                       id="homework-link"
-                       class="assignment-link">
-                        Homework
-                    </a>
-
-                </li>
-
-                <li class="assignment-item">
-
-                    <a href="assignments.html"
-                       id="assignment-link"
-                       class="assignment-link">
-                        Assignments
-                    </a>
-
-                </li>
-
-                <li class="assignment-item">
-
-                    <a href="project-work.html"
-                       id="project-work-link"
-                       class="assignment-link">
-                        Project Work
-                    </a>
-
-                </li>
-
-                <li class="assignment-item">
-
-                    <a href="submitted-work.html"
-                       id="submitted-link"
-                       class="assignment-link">
-                        Submitted
-                    </a>
-
-                </li>
-
-                <li class="assignment-item">
-
-                    <a href="pending-work.html"
-                       id="pending-link"
-                       class="assignment-link">
-                        Pending
-                    </a>
-
-                </li>
-
-                <li class="assignment-item">
-
-                    <a href="due-dates.html"
-                       id="due-date-link"
-                       class="assignment-link">
-                        Due Date
-                    </a>
-
-                </li>
-
-            </ul>
-
-        </div>
-
-    </article>
-
-    <!-- Assignment Information -->
-    <article id="assignment-information-card" class="dashboard-card">
-
-        <div class="card-header">
-
-            <h3 class="card-title">
-                Assignment Information
-            </h3>
-
-        </div>
-
-        <div class="card-body">
-
-            <table id="assignment-information-table" class="dashboard-table">
-
-                <thead>
-
-                    <tr>
-
-                        <th class="table-heading">
-                            Task Type
-                        </th>
-
-                        <th class="table-heading">
-                            Description
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td class="table-data">
-                            Homework
-                        </td>
-
-                        <td class="table-data">
-                            Daily homework assigned by the teacher.
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="table-data">
-                            Assignments
-                        </td>
-
-                        <td class="table-data">
-                            Subject assignments with submission deadlines.
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="table-data">
-                            Project Work
-                        </td>
-
-                        <td class="table-data">
-                            Individual or group projects assigned during the semester.
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="table-data">
-                            Submitted
-                        </td>
-
-                        <td class="table-data">
-                            Displays all completed and submitted tasks.
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="table-data">
-                            Pending
-                        </td>
-
-                        <td class="table-data">
-                            Displays tasks that are yet to be completed.
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="table-data">
-                            Due Date
-                        </td>
-
-                        <td class="table-data">
-                            Shows the submission deadline for each task.
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </article>
-
-    <!-- Important Features -->
-    <article id="assignment-feature-card" class="dashboard-card">
-
-        <div class="card-header">
-
-            <h3 class="card-title">
-                Assignment Features
-            </h3>
-
-        </div>
-
-        <div class="card-body">
-
-            <ul id="assignment-feature-list" class="feature-list">
-
-                <li class="feature-item">
-                    Every task clearly displays whether it is
-                    <strong>Submitted</strong> or
-                    <strong>Pending</strong>.
-                </li>
-
-                <li class="feature-item">
-                    Every task includes its
-                    <strong>Due Date</strong>
-                    so students can manage their time.
-                </li>
-
-                <li class="feature-item">
-                    Once a teacher marks a task as completed,
-                    it is automatically removed from the
-                    Pending list.
-                </li>
-
-                <li class="feature-item">
-                    This keeps the student's task list clean,
-                    organized, and stress-free.
-                </li>
-
-            </ul>
-
-        </div>
-
-    </article>
-
-</section>
-
-<!-- ========================================================= -->
-<!-- Assignments & Homework Section Ends -->
-<!-- ========================================================= -->
+    <script src="dashboard.js"></script>
 </body>
 </html>

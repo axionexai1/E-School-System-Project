@@ -1,0 +1,98 @@
+/* ==========================================================================
+   upcoming-exams.css
+   Styles that belong only to the Upcoming Exams page: the exam category list.
+   Linked after home-dashboard.css to reuse global tokens and animations.
+   ========================================================================== */
+
+.exam-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.exam-item {
+  animation: card-enter var(--duration-slow) var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+
+/* Cyclic color assignments matching the design system */
+.exam-item:nth-child(5n + 1) { --tone: var(--primary); --tone-light: var(--primary-light); }
+.exam-item:nth-child(5n + 2) { --tone: var(--green);   --tone-light: var(--green-light); }
+.exam-item:nth-child(5n + 3) { --tone: var(--teal);    --tone-light: var(--teal-light); }
+.exam-item:nth-child(5n + 4) { --tone: var(--sky);     --tone-light: var(--sky-light); }
+.exam-item:nth-child(5n + 5) { --tone: var(--indigo);  --tone-light: var(--indigo-light); }
+
+.exam-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 76px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  transition: transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+}
+
+.exam-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--tone-light);
+  color: var(--tone);
+  font-size: 22px;
+  transition: background var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-spring);
+}
+
+.exam-name {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.exam-arrow {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-spring);
+}
+
+/* Hover effects for hover-capable devices */
+@media (hover: hover) {
+  .exam-link:hover {
+    transform: translateY(-3px);
+    border-color: var(--tone);
+    box-shadow: var(--shadow-md);
+  }
+
+  .exam-link:hover .exam-icon {
+    background: var(--tone);
+    color: #ffffff;
+    transform: scale(1.06);
+  }
+
+  .exam-link:hover .exam-arrow {
+    color: var(--tone);
+    transform: translateX(3px);
+  }
+}
+
+.exam-link:active {
+  transform: scale(0.99);
+}
+
+/* Phones: single column layout */
+@media (max-width: 575.98px) {
+  .exam-list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}

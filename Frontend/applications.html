@@ -3,324 +3,427 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Online Applications</title>
+
+    <!-- Font: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+
+    <!-- Icons: Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Shared styles -->
+    <link rel="stylesheet" href="home-dashboard.css">
+    <link rel="stylesheet" href="course-content.css">
+
+    <!-- Form Specific Styling Tying into Tokens -->
+    <style>
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+        .form-label {
+            font-weight: 500;
+            font-size: 13.5px;
+            color: var(--text);
+        }
+        .form-input,
+        .form-select,
+        .form-textarea,
+        .form-file {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            background: var(--surface);
+            font-family: var(--font-sans);
+            font-size: 14px;
+            color: var(--text);
+            transition: border-color var(--duration-fast) var(--ease-out),
+                        box-shadow var(--duration-fast) var(--ease-out);
+        }
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px var(--primary-ring);
+        }
+        .form-input[readonly] {
+            background: var(--bg);
+            color: var(--text-muted);
+            cursor: not-allowed;
+        }
+        .submit-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 48px;
+            padding: 0 28px;
+            border-radius: var(--radius-md);
+            background: var(--primary);
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: var(--shadow-sm);
+            transition: background var(--duration-fast) var(--ease-out),
+                        transform var(--duration-base) var(--ease-spring);
+        }
+        .submit-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        .info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            color: var(--text-muted);
+            font-size: 13.5px;
+            padding-left: 18px;
+        }
+        .info-list li {
+            list-style-type: disc;
+        }
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- ========================================================= -->
-<!-- Online Applications Section Starts -->
-<!-- ========================================================= -->
 
-<section id="online-applications-section" class="dashboard-section">
+    <!-- Skip link for accessibility -->
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <!-- Section Header -->
+    <div class="dashboard-container">
 
-    <div id="online-applications-header" class="section-header">
+        <!-- Dimmed page backdrop on mobile -->
+        <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
 
-        <h2 id="online-applications-title" class="section-title">
-            Online Applications
-        </h2>
+        <!-- ============================= -->
+        <!-- LEFT SIDEBAR                   -->
+        <!-- ============================= -->
+        <aside class="sidebar" id="sidebar" aria-label="Sidebar">
 
-        <p id="online-applications-description" class="section-description">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="logo.png" alt="School Logo" class="sidebar-logo-img">
+                    <span class="sidebar-logo-text">SMS Portal</span>
+                </div>
+            </div>
 
-            Students can apply for leave online without submitting
-            paper applications. The leave request is sent directly
-            to the Class Teacher or School Administration for approval.
+            <nav class="sidebar-menu" aria-label="Primary navigation">
 
-        </p>
+                <p class="sidebar-label">Menu</p>
+
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-grid-1x2"></i></span>
+                            <span class="sidebar-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="myprofile.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-person"></i></span>
+                            <span class="sidebar-text">My Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="calendar.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calendar3"></i></span>
+                            <span class="sidebar-text">Calendar</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="Calculator.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calculator"></i></span>
+                            <span class="sidebar-text">Calculator</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="Extra Courses.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-hourglass-split"></i></span>
+                            <span class="sidebar-text">Coming Soon</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <p class="sidebar-label sidebar-label--spaced">Support</p>
+
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="contact with school.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-building"></i></span>
+                            <span class="sidebar-text">Contact with School</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="aboutus.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-info-circle"></i></span>
+                            <span class="sidebar-text">About Us</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="news and updates.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-newspaper"></i></span>
+                            <span class="sidebar-text">News &amp; Updates</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="helpcenter.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
+                            <span class="sidebar-text">Help Center</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="privacy-policy.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-shield-lock"></i></span>
+                            <span class="sidebar-text">Privacy Policy</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="terms-conditions.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-file-earmark-text"></i></span>
+                            <span class="sidebar-text">Terms &amp; Conditions</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="settings.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-gear"></i></span>
+                            <span class="sidebar-text">Settings</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="logout.html" class="sidebar-link sidebar-link--danger">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-box-arrow-right"></i></span>
+                            <span class="sidebar-text">Logout</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </aside>
+
+        <!-- ============================= -->
+        <!-- MAIN WRAPPER                   -->
+        <!-- ============================= -->
+        <div class="main-wrapper">
+
+            <header class="top-navbar">
+
+                <button class="menu-toggle" id="menu-toggle" type="button"
+                        aria-label="Toggle sidebar menu" aria-controls="sidebar"
+                        aria-expanded="true" data-ripple>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                </button>
+
+                <div class="navbar-left">
+                    <h1 class="page-title">Online Applications</h1>
+                    <p class="page-subtitle">Submit and track leave requests</p>
+                </div>
+
+                <nav class="navbar-right" aria-label="Top navigation">
+                    <ul class="navbar-menu">
+
+                        <li class="navbar-item">
+                            <a href="#announcement" class="navbar-link" data-ripple>
+                                <i class="bi bi-bell navbar-link-icon" aria-hidden="true"></i>
+                                <span class="navbar-link-text">Announcements</span>
+                                <span class="announcement-badge" id="announcement-badge">0</span>
+                            </a>
+                        </li>
+
+                        <li class="navbar-item">
+                            <a href="myprofile.html" class="avatar-link" aria-label="My Profile" data-ripple>
+                                <i class="bi bi-person-circle" aria-hidden="true"></i>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+            </header>
+
+            <!-- ============================= -->
+            <!-- PAGE CONTENT                   -->
+            <!-- ============================= -->
+            <main class="dashboard-content page-content" id="main-content">
+
+                <!-- Back button -->
+                <a href="dashboard.html" class="back-link" data-ripple>
+                    <i class="bi bi-arrow-left back-icon" aria-hidden="true"></i>
+                    <span>Back to Dashboard</span>
+                </a>
+
+                <!-- Intro text -->
+                <p class="page-intro" id="online-applications-description">
+                    Students can apply for leave online without submitting paper applications. Leave requests are sent directly to the Class Teacher or School Administration for approval.
+                </p>
+
+                <!-- Leave Types Grid -->
+                <section class="panel" aria-labelledby="leave-types-title">
+                    <header class="panel-header">
+                        <h2 class="panel-title" id="leave-types-title">Leave Categories</h2>
+                    </header>
+                    <div class="panel-body">
+                        <ul id="subject-list" class="subject-list">
+                            <li class="subject-item" style="--i:0">
+                                <a href="#leave-form-card" class="subject-link">
+                                    <span class="subject-icon" aria-hidden="true"><i class="bi bi-thermometer-half"></i></span>
+                                    <span class="subject-name">Sick Leave</span>
+                                    <i class="bi bi-arrow-down subject-arrow" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li class="subject-item" style="--i:1">
+                                <a href="#leave-form-card" class="subject-link">
+                                    <span class="subject-icon" aria-hidden="true"><i class="bi bi-briefcase"></i></span>
+                                    <span class="subject-name">Urgent Personal Work</span>
+                                    <i class="bi bi-arrow-down subject-arrow" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li class="subject-item" style="--i:2">
+                                <a href="#leave-form-card" class="subject-link">
+                                    <span class="subject-icon" aria-hidden="true"><i class="bi bi-people"></i></span>
+                                    <span class="subject-name">Brother's / Sister's Wedding</span>
+                                    <i class="bi bi-arrow-down subject-arrow" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li class="subject-item" style="--i:3">
+                                <a href="#leave-form-card" class="subject-link">
+                                    <span class="subject-icon" aria-hidden="true"><i class="bi bi-file-earmark-text"></i></span>
+                                    <span class="subject-name">Other Leave</span>
+                                    <i class="bi bi-arrow-down subject-arrow" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Leave Application Form Panel -->
+                <section class="panel" id="leave-form-card" aria-labelledby="leave-form-title">
+                    <header class="panel-header">
+                        <h2 class="panel-title" id="leave-form-title">Leave Application Form</h2>
+                    </header>
+                    <div class="panel-body">
+                        <form id="leave-application-form" action="#" method="post" enctype="multipart/form-data">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="student-name" class="form-label">Student Name</label>
+                                    <input type="text" id="student-name" name="student_name" class="form-input" placeholder="Student Name" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="father-name" class="form-label">Father Name</label>
+                                    <input type="text" id="father-name" name="father_name" class="form-input" placeholder="Father Name" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="roll-number" class="form-label">Roll Number</label>
+                                    <input type="text" id="roll-number" name="roll_number" class="form-input" placeholder="Roll Number" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="student-class" class="form-label">Class</label>
+                                    <input type="text" id="student-class" name="student_class" class="form-input" placeholder="Class" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="leave-type" class="form-label">Leave Type</label>
+                                    <select id="leave-type" name="leave_type" class="form-select">
+                                        <option value="">Select Leave Type</option>
+                                        <option>Sick Leave</option>
+                                        <option>Urgent Personal Work</option>
+                                        <option>Brother's Wedding</option>
+                                        <option>Sister's Wedding</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="leave-date" class="form-label">Leave Date</label>
+                                    <input type="date" id="leave-date" name="leave_date" class="form-input">
+                                </div>
+                                <div class="form-group full-width">
+                                    <label for="leave-reason" class="form-label">Reason</label>
+                                    <textarea id="leave-reason" name="leave_reason" class="form-textarea" rows="4" placeholder="Write the reason for leave..."></textarea>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label for="leave-document" class="form-label">Attachment (Optional - Medical Certificate / Supporting Doc)</label>
+                                    <input type="file" id="leave-document" name="leave_document" class="form-file">
+                                </div>
+                                <div class="form-group full-width">
+                                    <button type="submit" id="submit-leave-button" class="submit-button" data-ripple>
+                                        Submit Application
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Application Information Panel -->
+                <section class="panel" aria-labelledby="leave-info-title">
+                    <header class="panel-header">
+                        <h2 class="panel-title" id="leave-info-title">Application Guidelines</h2>
+                    </header>
+                    <div class="panel-body">
+                        <ul class="info-list">
+                            <li>Student information is automatically filled from the profile.</li>
+                            <li>Students only need to select the leave type and write the reason.</li>
+                            <li>Medical certificates or supporting documents can be attached if needed.</li>
+                            <li>Applications are sent directly to the Class Teacher or School Administration.</li>
+                            <li>Students can later check whether their status is Approved, Pending, or Rejected.</li>
+                        </ul>
+                    </div>
+                </section>
+
+            </main>
+
+            <footer class="footer">
+                <p class="footer-text">&copy; Student Management System</p>
+            </footer>
+
+        </div>
+        <!-- /main-wrapper -->
 
     </div>
+    <!-- /dashboard-container -->
 
-    <!-- Leave Types -->
-
-    <article id="leave-types-card" class="dashboard-card">
-
-        <div class="card-header">
-
-            <h3 class="card-title">
-                Leave Types
-            </h3>
-
-        </div>
-
-        <div class="card-body">
-
-            <ul id="leave-type-list" class="leave-type-list">
-
-                <li class="leave-type-item">
-
-                    <a href="#" id="sick-leave-link" class="leave-type-link">
-                        Sick Leave
-                    </a>
-
-                </li>
-
-                <li class="leave-type-item">
-
-                    <a href="#" id="personal-work-link" class="leave-type-link">
-                        Urgent Personal Work
-                    </a>
-
-                </li>
-
-                <li class="leave-type-item">
-
-                    <a href="#" id="brother-wedding-link" class="leave-type-link">
-                        Brother's Wedding
-                    </a>
-
-                </li>
-
-                <li class="leave-type-item">
-
-                    <a href="#" id="sister-wedding-link" class="leave-type-link">
-                        Sister's Wedding
-                    </a>
-
-                </li>
-
-                <li class="leave-type-item">
-
-                    <a href="#" id="other-leave-link" class="leave-type-link">
-                        Other
-                    </a>
-
-                </li>
-
-            </ul>
-
-        </div>
-
-    </article>
-
-    <!-- Leave Application Form -->
-
-    <article id="leave-form-card" class="dashboard-card">
-
-        <div class="card-header">
-
-            <h3 class="card-title">
-                Leave Application Form
-            </h3>
-
-        </div>
-
-        <div class="card-body">
-
-            <form id="leave-application-form"
-                  class="dashboard-form"
-                  action="#"
-                  method="post"
-                  enctype="multipart/form-data">
-
-                <!-- Student Name -->
-
-                <div class="form-group">
-
-                    <label for="student-name" class="form-label">
-                        Student Name
-                    </label>
-
-                    <input type="text"
-                           id="student-name"
-                           name="student_name"
-                           class="form-input"
-                           placeholder="Student Name"
-                           readonly>
-
-                </div>
-
-                <!-- Father Name -->
-
-                <div class="form-group">
-
-                    <label for="father-name" class="form-label">
-                        Father Name
-                    </label>
-
-                    <input type="text"
-                           id="father-name"
-                           name="father_name"
-                           class="form-input"
-                           placeholder="Father Name"
-                           readonly>
-
-                </div>
-
-                <!-- Roll Number -->
-
-                <div class="form-group">
-
-                    <label for="roll-number" class="form-label">
-                        Roll Number
-                    </label>
-
-                    <input type="text"
-                           id="roll-number"
-                           name="roll_number"
-                           class="form-input"
-                           placeholder="Roll Number"
-                           readonly>
-
-                </div>
-
-                <!-- Class -->
-
-                <div class="form-group">
-
-                    <label for="student-class" class="form-label">
-                        Class
-                    </label>
-
-                    <input type="text"
-                           id="student-class"
-                           name="student_class"
-                           class="form-input"
-                           placeholder="Class"
-                           readonly>
-
-                </div>
-
-                <!-- Leave Type -->
-
-                <div class="form-group">
-
-                    <label for="leave-type" class="form-label">
-                        Leave Type
-                    </label>
-
-                    <select id="leave-type"
-                            name="leave_type"
-                            class="form-select">
-
-                        <option value="">Select Leave Type</option>
-
-                        <option>Sick Leave</option>
-
-                        <option>Urgent Personal Work</option>
-
-                        <option>Brother's Wedding</option>
-
-                        <option>Sister's Wedding</option>
-
-                        <option>Other</option>
-
-                    </select>
-
-                </div>
-
-                <!-- Leave Date -->
-
-                <div class="form-group">
-
-                    <label for="leave-date" class="form-label">
-                        Leave Date
-                    </label>
-
-                    <input type="date"
-                           id="leave-date"
-                           name="leave_date"
-                           class="form-input">
-
-                </div>
-
-                <!-- Reason -->
-
-                <div class="form-group">
-
-                    <label for="leave-reason" class="form-label">
-                        Reason
-                    </label>
-
-                    <textarea id="leave-reason"
-                              name="leave_reason"
-                              class="form-textarea"
-                              rows="5"
-                              placeholder="Write the reason for leave..."></textarea>
-
-                </div>
-
-                <!-- Attachment -->
-
-                <div class="form-group">
-
-                    <label for="leave-document" class="form-label">
-                        Attachment (Optional)
-                    </label>
-
-                    <input type="file"
-                           id="leave-document"
-                           name="leave_document"
-                           class="form-file">
-
-                </div>
-
-                <!-- Submit Button -->
-
-                <div class="form-group">
-
-                    <button type="submit"
-                            id="submit-leave-button"
-                            class="submit-button">
-
-                        Submit Application
-
-                    </button>
-
-                </div>
-
-            </form>
-
-        </div>
-
-    </article>
-
-    <!-- Information -->
-
-    <article id="leave-information-card" class="dashboard-card">
-
-        <div class="card-header">
-
-            <h3 class="card-title">
-                Application Information
-            </h3>
-
-        </div>
-
-        <div class="card-body">
-
-            <ul id="leave-information-list"
-                class="feature-list">
-
-                <li class="feature-item">
-                    Student information is automatically filled from the profile.
-                </li>
-
-                <li class="feature-item">
-                    Students only need to select the leave type and write the reason.
-                </li>
-
-                <li class="feature-item">
-                    Medical certificates or supporting documents can be uploaded.
-                </li>
-
-                <li class="feature-item">
-                    The application is sent directly to the Class Teacher or School Administration.
-                </li>
-
-                <li class="feature-item">
-                    Students can later check whether the application is Approved, Pending, or Rejected.
-                </li>
-
-            </ul>
-
-        </div>
-
-    </article>
-
-</section>
-
-<!-- ========================================================= -->
-<!-- Online Applications Section Ends -->
-<!-- ========================================================= -->
+    <script src="dashboard.js"></script>
 </body>
 </html>

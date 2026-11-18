@@ -1,0 +1,106 @@
+/* ==========================================================================
+   assignments.css
+   Styles that belong only to the Assignments & Homework page: the category
+   list. Everything shared (sidebar, top bar, back button, panel) comes from
+   home-dashboard.css, which must be linked BEFORE this file because the
+   list reuses its tokens and its card-enter animation.
+   ========================================================================== */
+
+/* As many columns as fit, minimum 240px each */
+.assignment-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+/* Items fade up one after another. The delay comes from the --i value
+   written inline on each <li> in the HTML. */
+.assignment-item {
+  animation: card-enter var(--duration-slow) var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+
+/* Colors cycle through five tones by position. Because this uses
+   :nth-child, a category added later gets its color automatically. */
+.assignment-item:nth-child(5n + 1) { --tone: var(--primary); --tone-light: var(--primary-light); }
+.assignment-item:nth-child(5n + 2) { --tone: var(--green);   --tone-light: var(--green-light); }
+.assignment-item:nth-child(5n + 3) { --tone: var(--teal);    --tone-light: var(--teal-light); }
+.assignment-item:nth-child(5n + 4) { --tone: var(--sky);     --tone-light: var(--sky-light); }
+.assignment-item:nth-child(5n + 5) { --tone: var(--indigo);  --tone-light: var(--indigo-light); }
+
+.assignment-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 76px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  transition: transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+}
+
+/* Each category has its own icon, in a soft tinted box */
+.assignment-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--tone-light);
+  color: var(--tone);
+  font-size: 22px;
+  transition: background var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-spring);
+}
+
+.assignment-name {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.assignment-arrow {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-spring);
+}
+
+/* Hover effects only on devices that really hover (not touch screens) */
+@media (hover: hover) {
+  .assignment-link:hover {
+    transform: translateY(-3px);
+    border-color: var(--tone);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Icon box fills with the item color and the icon turns white */
+  .assignment-link:hover .assignment-icon {
+    background: var(--tone);
+    color: #ffffff;
+    transform: scale(1.06);
+  }
+
+  .assignment-link:hover .assignment-arrow {
+    color: var(--tone);
+    transform: translateX(3px);
+  }
+}
+
+.assignment-link:active {
+  transform: scale(0.99);
+}
+
+/* Phones: one item per row, so names never get squeezed */
+@media (max-width: 575.98px) {
+  .assignment-list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}

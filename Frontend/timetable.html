@@ -3,224 +3,486 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Class Schedule</title>
+
+    <!-- Font: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+
+    <!-- Icons: Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Shared styles -->
+    <link rel="stylesheet" href="home-dashboard.css">
+
+    <!-- Matrix Timetable Styling -->
+    <style>
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            font-size: 13px;
+        }
+        .matrix-table th,
+        .matrix-table td {
+            padding: 14px 12px;
+            border: 1px solid var(--border);
+            vertical-align: middle;
+        }
+        .matrix-table th {
+            background: var(--primary-light);
+            color: var(--primary);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .matrix-table td.time-cell {
+            background: var(--bg);
+            font-weight: 600;
+            color: var(--text);
+            white-space: nowrap;
+        }
+        .matrix-table td.break-row {
+            background: var(--warning-light);
+            color: var(--warning);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .class-cell {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .class-subject {
+            font-weight: 600;
+            color: var(--text);
+        }
+        .class-info {
+            font-size: 11.5px;
+            color: var(--text-muted);
+        }
+    </style>
 </head>
 <body>
-    <!-- ========================================================= -->
-<!-- Class Schedule Section Starts -->
-<!-- ========================================================= -->
 
-<section id="class-schedule-section" class="dashboard-section">
+    <!-- Skip link for accessibility -->
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <!-- Section Header -->
-    <div id="class-schedule-header" class="section-header">
+    <div class="dashboard-container">
 
-        <h2 id="class-schedule-title" class="section-title">
-            Class Schedule
-        </h2>
+        <!-- Dimmed page backdrop on mobile -->
+        <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
 
-        <p id="class-schedule-description" class="section-description">
-            Shows the student's weekly timetable, organized day by day.
-        </p>
+        <!-- ============================= -->
+        <!-- LEFT SIDEBAR                   -->
+        <!-- ============================= -->
+        <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="logo.png" alt="School Logo" class="sidebar-logo-img">
+                    <span class="sidebar-logo-text">SMS Portal</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu" aria-label="Primary navigation">
+
+                <p class="sidebar-label">Menu</p>
+
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-grid-1x2"></i></span>
+                            <span class="sidebar-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="myprofile.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-person"></i></span>
+                            <span class="sidebar-text">My Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="calendar.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calendar3"></i></span>
+                            <span class="sidebar-text">Calendar</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="Calculator.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calculator"></i></span>
+                            <span class="sidebar-text">Calculator</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="Extra Courses.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-hourglass-split"></i></span>
+                            <span class="sidebar-text">Coming Soon</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <p class="sidebar-label sidebar-label--spaced">Support</p>
+
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="contact with school.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-building"></i></span>
+                            <span class="sidebar-text">Contact with School</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="aboutus.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-info-circle"></i></span>
+                            <span class="sidebar-text">About Us</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="news and updates.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-newspaper"></i></span>
+                            <span class="sidebar-text">News &amp; Updates</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="helpcenter.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
+                            <span class="sidebar-text">Help Center</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="privacy-policy.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-shield-lock"></i></span>
+                            <span class="sidebar-text">Privacy Policy</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="terms-conditions.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-file-earmark-text"></i></span>
+                            <span class="sidebar-text">Terms &amp; Conditions</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="settings.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-gear"></i></span>
+                            <span class="sidebar-text">Settings</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="logout.html" class="sidebar-link sidebar-link--danger">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-box-arrow-right"></i></span>
+                            <span class="sidebar-text">Logout</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </aside>
+
+        <!-- ============================= -->
+        <!-- MAIN WRAPPER                   -->
+        <!-- ============================= -->
+        <div class="main-wrapper">
+
+            <header class="top-navbar">
+
+                <button class="menu-toggle" id="menu-toggle" type="button"
+                        aria-label="Toggle sidebar menu" aria-controls="sidebar"
+                        aria-expanded="true" data-ripple>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                </button>
+
+                <div class="navbar-left">
+                    <h1 class="page-title">Daily Time Table</h1>
+                    <p class="page-subtitle">School-style master weekly matrix timetable</p>
+                </div>
+
+                <nav class="navbar-right" aria-label="Top navigation">
+                    <ul class="navbar-menu">
+
+                        <li class="navbar-item">
+                            <a href="#announcement" class="navbar-link" data-ripple>
+                                <i class="bi bi-bell navbar-link-icon" aria-hidden="true"></i>
+                                <span class="navbar-link-text">Announcements</span>
+                                <span class="announcement-badge" id="announcement-badge">0</span>
+                            </a>
+                        </li>
+
+                        <li class="navbar-item">
+                            <a href="myprofile.html" class="avatar-link" aria-label="My Profile" data-ripple>
+                                <i class="bi bi-person-circle" aria-hidden="true"></i>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+            </header>
+
+            <!-- ============================= -->
+            <!-- PAGE CONTENT (Matrix Timetable) -->
+            <!-- ============================= -->
+            <main class="dashboard-content page-content" id="main-content">
+
+                <!-- Back button -->
+                <a href="dashboard.html" class="back-link" data-ripple>
+                    <i class="bi bi-arrow-left back-icon" aria-hidden="true"></i>
+                    <span>Back to Dashboard</span>
+                </a>
+
+            
+
+                <!-- Timetable Panel -->
+                <section class="panel" aria-labelledby="timetable-title">
+
+                    <header class="panel-header">
+                        <h2 class="panel-title" id="timetable-title">Master Time Table</h2>
+                    </header>
+
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="matrix-table">
+                                <thead>
+                                    <tr>
+                                        <th>Period / Time</th>
+                                        <th>Monday</th>
+                                        <th>Tuesday</th>
+                                        <th>Wednesday</th>
+                                        <th>Thursday</th>
+                                        <th>Friday</th>
+                                        <th>Saturday</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Period 1 -->
+                                    <tr>
+                                        <td class="time-cell">
+                                            <strong>Period 1</strong><br>
+                                            <span style="font-size: 11px; color: var(--text-muted);">08:00 AM - 08:45 AM</span>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">Mathematics</span>
+                                                <span class="class-info">Mr. Ahmed (101)</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">English</span>
+                                                <span class="class-info">Mr. John (103)</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">Physics</span>
+                                                <span class="class-info">Dr. Tariq (Lab 1)</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">Chemistry</span>
+                                                <span class="class-info">Ms. Hina (Lab 2)</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">Computer</span>
+                                                <span class="class-info">Mr. Bilal (Lab 3)</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">Urdu</span>
+                                                <span class="class-info">Mr. Zeeshan (102)</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Period 2 -->
+                                    <tr>
+                                        <td class="time-cell">
+                                            <strong>Period 2</strong><br>
+                                            <span style="font-size: 11px; color: var(--text-muted);">08:45 AM - 09:30 AM</span>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">Programming</span>
+                                                <span class="class-info">Ms. Fatima (Lab 2)</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">Mathematics</span>
+                                                <span class="class-info">Mr. Ahmed (101)</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">English</span>
+                                                <span class="class-info">Mr. John (103)</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">Physics</span>
+                                                <span class="class-info">Dr. Tariq (Lab 1)</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">Islamiyat</span>
+                                                <span class="class-info">Qari Sahib (105)</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">Mathematics</span>
+                                                <span class="class-info">Mr. Ahmed (101)</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Break -->
+                                    <tr>
+                                        <td class="time-cell">09:30 AM - 10:00 AM</td>
+                                        <td colspan="6" class="break-row">Short Break / Refreshment</td>
+                                    </tr>
+
+                                    <!-- Period 3 -->
+                                    <tr>
+                                        <td class="time-cell">
+                                            <strong>Period 3</strong><br>
+                                            <span style="font-size: 11px; color: var(--text-muted);">10:00 AM - 10:45 AM</span>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">English</span>
+                                                <span class="class-info">Mr. John (103)</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">Computer</span>
+                                                <span class="class-info">Mr. Bilal (Lab 3)</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">Urdu</span>
+                                                <span class="class-info">Mr. Zeeshan (102)</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">Mathematics</span>
+                                                <span class="class-info">Mr. Ahmed (101)</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">Chemistry</span>
+                                                <span class="class-info">Ms. Hina (Lab 2)</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">Physics</span>
+                                                <span class="class-info">Dr. Tariq (Lab 1)</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Period 4 -->
+                                    <tr>
+                                        <td class="time-cell">
+                                            <strong>Period 4</strong><br>
+                                            <span style="font-size: 11px; color: var(--text-muted);">10:45 AM - 11:30 AM</span>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">Physics</span>
+                                                <span class="class-info">Dr. Tariq (Lab 1)</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">Chemistry</span>
+                                                <span class="class-info">Ms. Hina (Lab 2)</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">Programming</span>
+                                                <span class="class-info">Ms. Fatima (Lab 2)</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">English</span>
+                                                <span class="class-info">Mr. John (103)</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">Mathematics</span>
+                                                <span class="class-info">Mr. Ahmed (101)</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="class-cell">
+                                                <span class="class-subject">Sports / Games</span>
+                                                <span class="class-info">Coach (Ground)</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </section>
+
+            </main>
+
+            <footer class="footer">
+                <p class="footer-text">&copy; Student Management System</p>
+            </footer>
+
+        </div>
+        <!-- /main-wrapper -->
 
     </div>
+    <!-- /dashboard-container -->
 
-    <!-- Weekly Schedule Card -->
-    <article id="weekly-schedule-card" class="dashboard-card">
-
-        <div class="card-header">
-
-            <h3 class="card-title">
-                Weekly Class Schedule
-            </h3>
-
-        </div>
-
-        <div class="card-body">
-
-            <ul id="week-days-list" class="schedule-list">
-
-                <li class="schedule-item">
-                    <a href="monday.html"
-                       id="monday-link"
-                       class="schedule-link">
-                        Monday
-                    </a>
-                </li>
-
-                <li class="schedule-item">
-                    <a href="tuesday.html"
-                       id="tuesday-link"
-                       class="schedule-link">
-                        Tuesday
-                    </a>
-                </li>
-
-                <li class="schedule-item">
-                    <a href="wednesday.html"
-                       id="wednesday-link"
-                       class="schedule-link">
-                        Wednesday
-                    </a>
-                </li>
-
-                <li class="schedule-item">
-                    <a href="thursday.html"
-                       id="thursday-link"
-                       class="schedule-link">
-                        Thursday
-                    </a>
-                </li>
-
-                <li class="schedule-item">
-                    <a href="friday.html"
-                       id="friday-link"
-                       class="schedule-link">
-                        Friday
-                    </a>
-                </li>
-
-                <li class="schedule-item">
-                    <a href="saturday.html"
-                       id="saturday-link"
-                       class="schedule-link">
-                        Saturday
-                    </a>
-                </li>
-
-            </ul>
-
-        </div>
-
-    </article>
-
-    <!-- Class Entry Information -->
-    <article id="class-entry-card" class="dashboard-card">
-
-        <div class="card-header">
-
-            <h3 class="card-title">
-                Each Class Entry Contains
-            </h3>
-
-        </div>
-
-        <div class="card-body">
-
-            <table id="class-entry-table" class="dashboard-table">
-
-                <thead>
-
-                    <tr>
-
-                        <th class="table-heading">
-                            Field
-                        </th>
-
-                        <th class="table-heading">
-                            Description
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td class="table-data">
-                            Subject
-                        </td>
-
-                        <td class="table-data">
-                            Name of the subject (e.g., Mathematics, Programming).
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="table-data">
-                            Teacher
-                        </td>
-
-                        <td class="table-data">
-                            Name of the teacher conducting the class.
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="table-data">
-                            Room
-                        </td>
-
-                        <td class="table-data">
-                            Classroom or laboratory number.
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="table-data">
-                            Start Time
-                        </td>
-
-                        <td class="table-data">
-                            Time when the class begins.
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="table-data">
-                            End Time
-                        </td>
-
-                        <td class="table-data">
-                            Time when the class ends.
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </article>
-
-    <!-- Important Note -->
-    <article id="schedule-note-card" class="dashboard-card">
-
-        <div class="card-header">
-
-            <h3 class="card-title">
-                Important Note
-            </h3>
-
-        </div>
-
-        <div class="card-body">
-
-            <p id="schedule-note" class="note-text">
-                Highlight the current ongoing class and the next upcoming class
-                so students can quickly see what is happening now.
-            </p>
-
-        </div>
-
-    </article>
-
-</section>
-
-<!-- ========================================================= -->
-<!-- Class Schedule Section Ends -->
-<!-- ========================================================= -->
+    <script src="dashboard.js"></script>
 </body>
 </html>

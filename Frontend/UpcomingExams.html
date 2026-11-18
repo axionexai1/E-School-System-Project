@@ -3,259 +3,292 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Upcoming Exams</title>
+
+    <!-- Font: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+
+    <!-- Icons: Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Shared styles -->
+    <link rel="stylesheet" href="home-dashboard.css">
 </head>
 <body>
-    <!-- ========================================================= -->
-<!-- Upcoming Exams Section Starts -->
-<!-- ========================================================= -->
 
-<section id="upcoming-exams-section" class="dashboard-section">
+    <!-- Skip link for accessibility -->
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <!-- Section Header -->
-    <div id="upcoming-exams-header" class="section-header">
+    <div class="dashboard-container">
 
-        <h2 id="upcoming-exams-title" class="section-title">
-            Upcoming Exams
-        </h2>
+        <!-- Dimmed page backdrop on mobile -->
+        <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
 
-        <p id="upcoming-exams-description" class="section-description">
-            Shows upcoming examination schedules in advance so students
-            can prepare early and manage their study plans.
-        </p>
+        <!-- ============================= -->
+        <!-- LEFT SIDEBAR                   -->
+        <!-- ============================= -->
+        <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="logo.png" alt="School Logo" class="sidebar-logo-img">
+                    <span class="sidebar-logo-text">SMS Portal</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu" aria-label="Primary navigation">
+
+                <p class="sidebar-label">Menu</p>
+
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-grid-1x2"></i></span>
+                            <span class="sidebar-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="myprofile.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-person"></i></span>
+                            <span class="sidebar-text">My Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="calendar.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calendar3"></i></span>
+                            <span class="sidebar-text">Calendar</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="Calculator.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calculator"></i></span>
+                            <span class="sidebar-text">Calculator</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="Extra Courses.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-hourglass-split"></i></span>
+                            <span class="sidebar-text">Coming Soon</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <p class="sidebar-label sidebar-label--spaced">Support</p>
+
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="contact with school.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-building"></i></span>
+                            <span class="sidebar-text">Contact with School</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="aboutus.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-info-circle"></i></span>
+                            <span class="sidebar-text">About Us</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="news and updates.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-newspaper"></i></span>
+                            <span class="sidebar-text">News &amp; Updates</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="helpcenter.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
+                            <span class="sidebar-text">Help Center</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="privacy-policy.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-shield-lock"></i></span>
+                            <span class="sidebar-text">Privacy Policy</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="terms-conditions.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-file-earmark-text"></i></span>
+                            <span class="sidebar-text">Terms &amp; Conditions</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="settings.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-gear"></i></span>
+                            <span class="sidebar-text">Settings</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="logout.html" class="sidebar-link sidebar-link--danger">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-box-arrow-right"></i></span>
+                            <span class="sidebar-text">Logout</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </aside>
+
+        <!-- ============================= -->
+        <!-- MAIN WRAPPER                   -->
+        <!-- ============================= -->
+        <div class="main-wrapper">
+
+            <header class="top-navbar">
+
+                <button class="menu-toggle" id="menu-toggle" type="button"
+                        aria-label="Toggle sidebar menu" aria-controls="sidebar"
+                        aria-expanded="true" data-ripple>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                </button>
+
+                <div class="navbar-left">
+                    <h1 class="page-title">Upcoming Exams</h1>
+                    <p class="page-subtitle">Examination schedules in advance</p>
+                </div>
+
+                <nav class="navbar-right" aria-label="Top navigation">
+                    <ul class="navbar-menu">
+
+                        <li class="navbar-item">
+                            <a href="#announcement" class="navbar-link" data-ripple>
+                                <i class="bi bi-bell navbar-link-icon" aria-hidden="true"></i>
+                                <span class="navbar-link-text">Announcements</span>
+                                <span class="announcement-badge" id="announcement-badge">0</span>
+                            </a>
+                        </li>
+
+                        <li class="navbar-item">
+                            <a href="myprofile.html" class="avatar-link" aria-label="My Profile" data-ripple>
+                                <i class="bi bi-person-circle" aria-hidden="true"></i>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+            </header>
+
+            <!-- ============================= -->
+            <!-- PAGE CONTENT (Card Grid)       -->
+            <!-- ============================= -->
+            <main class="dashboard-content page-content" id="main-content">
+
+                <!-- Back button -->
+                <a href="dashboard.html" class="back-link" data-ripple>
+                    <i class="bi bi-arrow-left back-icon" aria-hidden="true"></i>
+                    <span>Back to Dashboard</span>
+                </a>
+
+                <!-- Intro text -->
+                <p class="page-intro" id="upcoming-exams-description">
+                    Shows upcoming examination schedules in advance so students
+                    can prepare early and manage their study plans.
+                </p>
+
+                <!-- Exam Cards Grid -->
+                <section class="dashboard-grid" id="dashboard-grid" aria-label="Exam categories cards">
+
+                    <!-- Card 1: First Term -->
+                    <a href="first-term.html" class="dashboard-card-link tone-blue" style="--i:0">
+                        <article class="dashboard-card">
+                            <span class="card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+                            <header class="card-header">
+                                <span class="card-icon" aria-hidden="true"><i class="bi bi-journal-bookmark"></i></span>
+                                <h2 class="card-title">First Term</h2>
+                            </header>
+                            <div class="card-body">Schedules and syllabus details</div>
+                        </article>
+                    </a>
+
+                    <!-- Card 2: Mid Term -->
+                    <a href="mid-term.html" class="dashboard-card-link tone-green" style="--i:1">
+                        <article class="dashboard-card">
+                            <span class="card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+                            <header class="card-header">
+                                <span class="card-icon" aria-hidden="true"><i class="bi bi-bookmark-check"></i></span>
+                                <h2 class="card-title">Mid Term</h2>
+                            </header>
+                            <div class="card-body">Mid-semester exam timetable</div>
+                        </article>
+                    </a>
+
+                    <!-- Card 3: Final Term -->
+                    <a href="final-term.html" class="dashboard-card-link tone-teal" style="--i:2">
+                        <article class="dashboard-card">
+                            <span class="card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+                            <header class="card-header">
+                                <span class="card-icon" aria-hidden="true"><i class="bi bi-award"></i></span>
+                                <h2 class="card-title">Final Term</h2>
+                            </header>
+                            <div class="card-body">Annual final exam schedules</div>
+                        </article>
+                    </a>
+
+                    <!-- Card 4: Practical Exams -->
+                    <a href="practical-exams.html" class="dashboard-card-link tone-sky" style="--i:3">
+                        <article class="dashboard-card">
+                            <span class="card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+                            <header class="card-header">
+                                <span class="card-icon" aria-hidden="true"><i class="bi bi-clipboard-check"></i></span>
+                                <h2 class="card-title">Practical Exams</h2>
+                            </header>
+                            <div class="card-body">Lab tests and viva schedules</div>
+                        </article>
+                    </a>
+
+                    <!-- Card 5: Date Sheet -->
+                    <a href="date-sheet.html" class="dashboard-card-link tone-indigo" style="--i:4">
+                        <article class="dashboard-card">
+                            <span class="card-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+                            <header class="card-header">
+                                <span class="card-icon" aria-hidden="true"><i class="bi bi-calendar-event"></i></span>
+                                <h2 class="card-title">Date Sheet</h2>
+                            </header>
+                            <div class="card-body">Master date sheet download</div>
+                        </article>
+                    </a>
+
+                </section>
+
+            </main>
+
+            <footer class="footer">
+                <p class="footer-text">&copy; Student Management System</p>
+            </footer>
+
+        </div>
+        <!-- /main-wrapper -->
 
     </div>
+    <!-- /dashboard-container -->
 
-    <!-- Exam Categories Card -->
-
-    <article id="exam-category-card" class="dashboard-card">
-
-        <div class="card-header">
-
-            <h3 class="card-title">
-                Exam Categories
-            </h3>
-
-        </div>
-
-        <div class="card-body">
-
-            <ul id="exam-category-list" class="exam-list">
-
-                <li class="exam-item">
-
-                    <a href="first-term.html"
-                       id="first-term-link"
-                       class="exam-link">
-
-                        First Term
-
-                    </a>
-
-                </li>
-
-                <li class="exam-item">
-
-                    <a href="mid-term.html"
-                       id="mid-term-link"
-                       class="exam-link">
-
-                        Mid Term
-
-                    </a>
-
-                </li>
-
-                <li class="exam-item">
-
-                    <a href="final-term.html"
-                       id="final-term-link"
-                       class="exam-link">
-
-                        Final Term
-
-                    </a>
-
-                </li>
-
-                <li class="exam-item">
-
-                    <a href="practical-exams.html"
-                       id="practical-exams-link"
-                       class="exam-link">
-
-                        Practical Exams
-
-                    </a>
-
-                </li>
-
-                <li class="exam-item">
-
-                    <a href="date-sheet.html"
-                       id="date-sheet-link"
-                       class="exam-link">
-
-                        Date Sheet
-
-                    </a>
-
-                </li>
-
-            </ul>
-
-        </div>
-
-    </article>
-
-    <!-- Exam Information Table -->
-
-    <article id="exam-information-card" class="dashboard-card">
-
-        <div class="card-header">
-
-            <h3 class="card-title">
-                Each Exam Entry Shows
-            </h3>
-
-        </div>
-
-        <div class="card-body">
-
-            <table id="exam-information-table"
-                   class="dashboard-table">
-
-                <thead>
-
-                    <tr>
-
-                        <th class="table-heading">
-                            Field
-                        </th>
-
-                        <th class="table-heading">
-                            Description
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td class="table-data">
-                            Subject
-                        </td>
-
-                        <td class="table-data">
-                            Displays the subject for which the exam will be conducted.
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="table-data">
-                            Date
-                        </td>
-
-                        <td class="table-data">
-                            Shows the scheduled examination date.
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="table-data">
-                            Time
-                        </td>
-
-                        <td class="table-data">
-                            Displays the exam starting time.
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="table-data">
-                            Exam Hall
-                        </td>
-
-                        <td class="table-data">
-                            Shows the classroom or examination hall where the exam will take place.
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </article>
-
-    <!-- Important Notes -->
-
-    <article id="exam-note-card" class="dashboard-card">
-
-        <div class="card-header">
-
-            <h3 class="card-title">
-                Important Information
-            </h3>
-
-        </div>
-
-        <div class="card-body">
-
-            <ul id="exam-note-list"
-                class="feature-list">
-
-                <li class="feature-item">
-
-                    Students can view all upcoming exams in one place.
-
-                </li>
-
-                <li class="feature-item">
-
-                    The latest Date Sheet is available for download.
-
-                </li>
-
-                <li class="feature-item">
-
-                    Practical and theory examinations are listed separately.
-
-                </li>
-
-                <li class="feature-item">
-
-                    Exam dates are updated whenever the school publishes a new schedule.
-
-                </li>
-
-                <li class="feature-item">
-
-                    Students can prepare early by checking upcoming exams regularly.
-
-                </li>
-
-            </ul>
-
-        </div>
-
-    </article>
-
-</section>
-
-<!-- ========================================================= -->
-<!-- Upcoming Exams Section Ends -->
-<!-- ========================================================= -->
+    <script src="dashboard.js"></script>
 </body>
 </html>
