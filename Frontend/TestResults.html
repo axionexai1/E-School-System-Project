@@ -3,260 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Exam & Test Results</title>
+
+    <!-- Font: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+
+    <!-- Icons: Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Shared styles -->
+    <link rel="stylesheet" href="home-dashboard.css">
+    <link rel="stylesheet" href="course-content.css">
 </head>
 <body>
-    <!-- ========================================================= -->
-<!-- Test Results Section Starts -->
-<!-- ========================================================= -->
 
-<section id="test-results-section" class="dashboard-section">
+    <!-- Skip link for accessibility -->
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <!-- Section Header -->
+    <div class="dashboard-container">
 
-    <div id="test-results-header" class="section-header">
+        <!-- Dimmed page backdrop on mobile -->
+        <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
 
-        <h2 id="test-results-title" class="section-title">
-            Test Results
-        </h2>
+        <!-- ============================= -->
+        <!-- LEFT SIDEBAR                   -->
+        <!-- ============================= -->
+        <aside class="sidebar" id="sidebar" aria-label="Sidebar">
 
-        <p id="test-results-description" class="section-description">
-            Displays results of regular classroom tests conducted by teachers.
-            This section also reminds students about upcoming tests before
-            they take place.
-        </p>
-
-    </div>
-
-    <!-- Test Categories -->
-
-    <article id="test-category-card" class="dashboard-card">
-
-        <div class="card-header">
-
-            <h3 class="card-title">
-                Test Categories
-            </h3>
-
-        </div>
-
-        <div class="card-body">
-
-            <ul id="test-category-list" class="test-list">
-
-                <li class="test-item">
-
-                    <a href="class-tests.html"
-                       id="class-tests-link"
-                       class="test-link">
-
-                        Class Tests
-
-                    </a>
-
-                </li>
-
-                <li class="test-item">
-
-                    <a href="quiz-results.html"
-                       id="quiz-results-link"
-                       class="test-link">
-
-                        Quiz Results
-
-                    </a>
-
-                </li>
-
-                <li class="test-item">
-
-                    <a href="upcoming-tests.html"
-                       id="upcoming-tests-link"
-                       class="test-link">
-
-                        Upcoming Tests
-
-                    </a>
-
-                </li>
-
-                <li class="test-item">
-
-                    <a href="teacher-feedback.html"
-                       id="teacher-feedback-link"
-                       class="test-link">
-
-                        Teacher Feedback
-
-                    </a>
-
-                </li>
-
-            </ul>
-
-        </div>
-
-    </article>
-
-    <!-- Test Result Table -->
-
-    <article id="test-result-table-card" class="dashboard-card">
-
-        <div class="card-header">
-
-            <h3 class="card-title">
-                Test Result Details
-            </h3>
-
-        </div>
-
-        <div class="card-body">
-
-            <table id="test-result-table"
-                   class="dashboard-table">
-
-                <thead>
-
-                    <tr>
-
-                        <th class="table-heading">Student Name</th>
-                        <th class="table-heading">Subject</th>
-                        <th class="table-heading">Topic</th>
-                        <th class="table-heading">Test Date</th>
-                        <th class="table-heading">Marks</th>
-                        <th class="table-heading">Total Marks</th>
-                        <th class="table-heading">Teacher Remarks</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td class="table-data">Ali Khan</td>
-                        <td class="table-data">Mathematics</td>
-                        <td class="table-data">Algebra</td>
-                        <td class="table-data">20 July 2026</td>
-                        <td class="table-data">18</td>
-                        <td class="table-data">20</td>
-                        <td class="table-data">Good Work</td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </article>
-
-    <!-- Upcoming Test Reminder -->
-
-    <article id="upcoming-test-reminder-card" class="dashboard-card">
-
-        <div class="card-header">
-
-            <h3 class="card-title">
-                Upcoming Test Reminder
-            </h3>
-
-        </div>
-
-        <div class="card-body">
-
-            <div id="test-reminder-box"
-                 class="reminder-box">
-
-                <h4 class="reminder-title">
-
-                    Next Test
-
-                </h4>
-
-                <p class="reminder-text">
-
-                    Subject:
-                    <strong>Computer Science</strong>
-
-                </p>
-
-                <p class="reminder-text">
-
-                    Topic:
-                    <strong>HTML Forms</strong>
-
-                </p>
-
-                <p class="reminder-text">
-
-                    Date:
-                    <strong>25 July 2026</strong>
-
-                </p>
-
-                <p class="reminder-text">
-
-                    Time:
-                    <strong>10:00 AM</strong>
-
-                </p>
-
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="logo.png" alt="School Logo" class="sidebar-logo-img">
+                    <span class="sidebar-logo-text">SMS Portal</span>
+                </div>
             </div>
 
+            <nav class="sidebar-menu" aria-label="Primary navigation">
+
+                <p class="sidebar-label">Menu</p>
+
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-grid-1x2"></i></span>
+                            <span class="sidebar-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="myprofile.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-person"></i></span>
+                            <span class="sidebar-text">My Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="calendar.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calendar3"></i></span>
+                            <span class="sidebar-text">Calendar</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="Calculator.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calculator"></i></span>
+                            <span class="sidebar-text">Calculator</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="Extra Courses.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-hourglass-split"></i></span>
+                            <span class="sidebar-text">Coming Soon</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <p class="sidebar-label sidebar-label--spaced">Support</p>
+
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="contact with school.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-building"></i></span>
+                            <span class="sidebar-text">Contact with School</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="aboutus.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-info-circle"></i></span>
+                            <span class="sidebar-text">About Us</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="news and updates.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-newspaper"></i></span>
+                            <span class="sidebar-text">News &amp; Updates</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="helpcenter.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
+                            <span class="sidebar-text">Help Center</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="privacy-policy.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-shield-lock"></i></span>
+                            <span class="sidebar-text">Privacy Policy</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="terms-conditions.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-file-earmark-text"></i></span>
+                            <span class="sidebar-text">Terms &amp; Conditions</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="settings.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-gear"></i></span>
+                            <span class="sidebar-text">Settings</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="logout.html" class="sidebar-link sidebar-link--danger">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-box-arrow-right"></i></span>
+                            <span class="sidebar-text">Logout</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </aside>
+
+        <!-- ============================= -->
+        <!-- MAIN WRAPPER                   -->
+        <!-- ============================= -->
+        <div class="main-wrapper">
+
+            <header class="top-navbar">
+
+                <button class="menu-toggle" id="menu-toggle" type="button"
+                        aria-label="Toggle sidebar menu" aria-controls="sidebar"
+                        aria-expanded="true" data-ripple>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                </button>
+
+                <div class="navbar-left">
+                    <h1 class="page-title">Exam &amp; Test Results</h1>
+                    <p class="page-subtitle">Marks and academic records</p>
+                </div>
+
+                <nav class="navbar-right" aria-label="Top navigation">
+                    <ul class="navbar-menu">
+
+                        <li class="navbar-item">
+                            <a href="#announcement" class="navbar-link" data-ripple>
+                                <i class="bi bi-bell navbar-link-icon" aria-hidden="true"></i>
+                                <span class="navbar-link-text">Announcements</span>
+                                <span class="announcement-badge" id="announcement-badge">0</span>
+                            </a>
+                        </li>
+
+                        <li class="navbar-item">
+                            <a href="myprofile.html" class="avatar-link" aria-label="My Profile" data-ripple>
+                                <i class="bi bi-person-circle" aria-hidden="true"></i>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+            </header>
+
+            <!-- ============================= -->
+            <!-- PAGE CONTENT                   -->
+            <!-- ============================= -->
+            <main class="dashboard-content page-content" id="main-content">
+
+                <!-- Back button -->
+                <a href="dashboard.html" class="back-link" data-ripple>
+                    <i class="bi bi-arrow-left back-icon" aria-hidden="true"></i>
+                    <span>Back to Dashboard</span>
+                </a>
+
+                <!-- Intro text -->
+                <p class="page-intro" id="exam-results-description">
+                    Shows results for all examinations the student has taken, including term-wise marks, grades, percentages, and previous academic records.
+                </p>
+
+                <!-- Result Categories Panel -->
+                <section class="panel" aria-labelledby="result-categories-title">
+
+                    <header class="panel-header">
+                        <h2 class="panel-title" id="result-categories-title">Result Categories</h2>
+                    </header>
+
+                    <div class="panel-body">
+
+                        <ul id="subject-list" class="subject-list">
+
+                            <li class="subject-item" style="--i:0">
+                                <a href="first-term-result.html" class="subject-link">
+                                    <span class="subject-icon" aria-hidden="true"><i class="bi bi-journal-check"></i></span>
+                                    <span class="subject-name">First Term</span>
+                                    <i class="bi bi-arrow-right subject-arrow" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
+                            <li class="subject-item" style="--i:1">
+                                <a href="mid-term-result.html" class="subject-link">
+                                    <span class="subject-icon" aria-hidden="true"><i class="bi bi-journal-text"></i></span>
+                                    <span class="subject-name">Mid Term</span>
+                                    <i class="bi bi-arrow-right subject-arrow" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
+                            <li class="subject-item" style="--i:2">
+                                <a href="final-term-result.html" class="subject-link">
+                                    <span class="subject-icon" aria-hidden="true"><i class="bi bi-award"></i></span>
+                                    <span class="subject-name">Final Term</span>
+                                    <i class="bi bi-arrow-right subject-arrow" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
+                            <li class="subject-item" style="--i:3">
+                                <a href="previous-results.html" class="subject-link">
+                                    <span class="subject-icon" aria-hidden="true"><i class="bi bi-clock-history"></i></span>
+                                    <span class="subject-name">Previous Classes Results</span>
+                                    <i class="bi bi-arrow-right subject-arrow" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
+                            <li class="subject-item" style="--i:4">
+                                <a href="subject-wise-result.html" class="subject-link">
+                                    <span class="subject-icon" aria-hidden="true"><i class="bi bi-journal-bookmark"></i></span>
+                                    <span class="subject-name">Subject Wise</span>
+                                    <i class="bi bi-arrow-right subject-arrow" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
+                            <li class="subject-item" style="--i:5">
+                                <a href="overall-result.html" class="subject-link">
+                                    <span class="subject-icon" aria-hidden="true"><i class="bi bi-bar-chart-line"></i></span>
+                                    <span class="subject-name">Overall Result</span>
+                                    <i class="bi bi-arrow-right subject-arrow" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
+                            <li class="subject-item" style="--i:6">
+                                <a href="grade.html" class="subject-link">
+                                    <span class="subject-icon" aria-hidden="true"><i class="bi bi-patch-check"></i></span>
+                                    <span class="subject-name">Grade</span>
+                                    <i class="bi bi-arrow-right subject-arrow" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
+                            <li class="subject-item" style="--i:7">
+                                <a href="percentage.html" class="subject-link">
+                                    <span class="subject-icon" aria-hidden="true"><i class="bi bi-percent"></i></span>
+                                    <span class="subject-name">Percentage</span>
+                                    <i class="bi bi-arrow-right subject-arrow" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </section>
+
+            </main>
+
+            <footer class="footer">
+                <p class="footer-text">&copy; Student Management System</p>
+            </footer>
+
         </div>
+        <!-- /main-wrapper -->
 
-    </article>
+    </div>
+    <!-- /dashboard-container -->
 
-    <!-- Important Features -->
-
-    <article id="test-features-card" class="dashboard-card">
-
-        <div class="card-header">
-
-            <h3 class="card-title">
-                Features
-            </h3>
-
-        </div>
-
-        <div class="card-body">
-
-            <ul id="test-feature-list"
-                class="feature-list">
-
-                <li class="feature-item">
-                    Displays all classroom test results.
-                </li>
-
-                <li class="feature-item">
-                    Shows teacher remarks for every test.
-                </li>
-
-                <li class="feature-item">
-                    Keeps a complete history of all tests.
-                </li>
-
-                <li class="feature-item">
-                    Sends reminders before upcoming tests.
-                </li>
-
-                <li class="feature-item">
-                    Helps students prepare in advance.
-                </li>
-
-            </ul>
-
-        </div>
-
-    </article>
-
-</section>
-
-<!-- ========================================================= -->
-<!-- Test Results Section Ends -->
-<!-- ========================================================= -->
+    <script src="dashboard.js"></script>
 </body>
 </html>
