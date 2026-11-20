@@ -6,6 +6,7 @@ from app.models.student import Student
 from app.models.teacher_subject import TeacherSubject
 from app.models.teacher import Teacher
 from app.models.class_model import Class
+from app.models import Timetable
 from app.models.section import Section 
 from app.models.subject import Subject
 from app.models.user import User
@@ -19,6 +20,9 @@ from .forms import StudentForm
 from .forms import TeacherForm
 from .forms import TeacherSubjectForm
 from .forms import SubjectForm
+from .forms import TimetableForm
+
+from datetime import datetime
 import secrets
 @school_admin.route("/dashboard")
 @login_required
@@ -1286,3 +1290,322 @@ def delete_student(id):
         return redirect(
         url_for("school_admin.manage_students")
         )
+
+
+
+
+
+# -------------------------------------------
+#   ------ TimeTable Management System ----------------
+# ---------------------------------------------
+
+@school_admin.route("/create-timetable", methods=["GET", "POST"])
+@login_required
+def create_timetable():
+
+    teacher_id = request.args.get("teacher_id", type=int)
+    teacher = None
+    if teacher_id:
+        teacher = Teacher.query.get_or_404(teacher_id)
+        form = TimetableForm()
+        form.teacher_id.data = teacher.id
+    else:
+        form = TimetableForm()
+
+    # ----------------------------------
+    # Load dropdown choices
+    # ----------------------------------
+
+    form.class_id.choices = [
+    (c.id, c.class_name)
+    for c in Class.query.order_by(Class.class_name).all()
+    ]
+
+    form.section_id.choices = [
+    (s.id, s.section_name)
+    for s in Section.query.order_by(Section.section_name).all()
+    ]
+
+    form.subject_id.choices = [
+    (s.id, s.subject_name)
+    for s in Subject.query.order_by(Subject.subject_name).all()
+    ]
+
+    form.teacher_id.choices = [
+    (
+    t.id,
+    f"{t.first_name} {t.last_name}"
+    )
+    for t in Teacher.query.order_by(Teacher.first_name).all()
+    ]
+
+    # ----------------------------------
+    # Specific Teacher
+    # ----------------------------------
+
+    teacher = None
+
+    if teacher_id:
+
+        teacher = Teacher.query.filter_by(
+        id=teacher_id,
+        school_id=current_user.school_id
+        ).first_or_404()
+
+        # Automatically select this teacher
+        form.teacher_id.data = teacher.id
+
+    # ----------------------------------
+    # Submit
+    # ----------------------------------
+
+    if form.validate_on_submit():
+
+        try:
+
+            timetable = Timetable(
+                school_id=current_user.school_id,
+
+                class_id=form.class_id.data,
+                section_id=form.section_id.data,
+                subject_id=form.subject_id.data,
+
+                # Use selected/specific teacher
+                teacher_id=(
+                teacher.id
+                if teacher
+                else form.teacher_id.data
+                ),
+
+                day_of_week=form.day_of_week.data,
+                start_time=form.start_time.data,
+                end_time=form.end_time.data,
+
+                room_number=form.room.data,
+                academic_year=form.academic_year.data
+                )
+
+            db.session.add(timetable)
+            db.session.commit()
+
+            flash(
+            "Timetable created successfully.",
+            "success"
+            )
+
+        # Return to specific teacher timetable
+            if teacher:
+                return redirect(
+                url_for(
+                "school_admin.teacher_timetable",
+                teacher_id=teacher.id
+                )
+                )
+
+            return redirect(
+                url_for("school_admin.manage_timetable")
+                )
+
+        except Exception as e:
+
+            db.session.rollback()
+
+            print("ERROR CREATING TIMETABLE:", e)
+
+            flash(
+            "An error occurred while creating the timetable.",
+            "danger"
+            )
+
+    return render_template(
+    "school_admin/timetable/create_timetable.html",
+    form=form,
+    teacher=teacher
+    )
+
+
+
+
+
+@school_admin.route("/manage-timetable")
+@login_required
+def manage_timetable():
+
+    timetables = Timetable.query.filter_by(
+    school_id=current_user.school_id
+    ).order_by(
+    Timetable.day_of_week,
+    Timetable.start_time
+    ).all()
+
+    return render_template(
+    "school_admin/timetable/manage_timetable.html",
+    timetables=timetables
+    )
+
+
+
+@school_admin.route("/timetable/<int:id>")
+@login_required
+def timetable_detail(id):
+
+    timetable = Timetable.query.filter_by(
+    id=id,
+    school_id=current_user.school_id
+    ).first_or_404()
+
+    return render_template(
+    "school_admin/timetable/timetable_detail.html",
+    timetable=timetable
+    )
+
+
+
+
+@school_admin.route("/timetable/<int:id>/edit", methods=["GET", "POST"])
+@login_required
+def edit_timetable(id):
+
+    timetable = Timetable.query.filter_by(
+    id=id,
+    school_id=current_user.school_id
+    ).first_or_404()
+
+    form = TimetableForm(obj=timetable)
+
+    # ----------------------------------
+    # Load dropdown choices
+    # ----------------------------------
+
+    form.class_id.choices = [
+    (c.id, c.class_name)
+    for c in Class.query.order_by(Class.class_name).all()
+    ]
+
+    form.section_id.choices = [
+    (s.id, s.section_name)
+    for s in Section.query.order_by(Section.section_name).all()
+    ]
+
+    form.subject_id.choices = [
+    (s.id, s.subject_name)
+    for s in Subject.query.order_by(Subject.subject_name).all()
+    ]
+
+    form.teacher_id.choices = [
+    (
+    t.id,
+    f"{t.first_name} {t.last_name}"
+    )
+    for t in Teacher.query.order_by(Teacher.first_name).all()
+    ]
+
+    if form.validate_on_submit():
+
+        try:
+
+            timetable.class_id = form.class_id.data
+            timetable.section_id = form.section_id.data
+            timetable.subject_id = form.subject_id.data
+            timetable.teacher_id = form.teacher_id.data
+
+            timetable.day_of_week = form.day_of_week.data
+            timetable.start_time = form.start_time.data
+            timetable.end_time = form.end_time.data
+
+            timetable.room_number = form.room.data
+
+            db.session.commit()
+
+            flash(
+            "Timetable updated successfully.",
+            "success"
+            )
+
+            return redirect(
+            url_for(
+            "school_admin.manage_timetable"
+            )
+            )
+
+        except Exception as e:
+
+            db.session.rollback()
+
+            print("ERROR UPDATING TIMETABLE:", e)
+
+            flash(
+            "An error occurred while updating the timetable.",
+            "danger"
+            )
+
+    return render_template(
+    "school_admin/timetable/edit_timetable.html",
+    form=form,
+    timetable=timetable
+    )
+
+
+
+
+@school_admin.route(
+"/timetable/<int:id>/delete",
+methods=["POST"]
+)
+@login_required
+def delete_timetable(id):
+
+    timetable = Timetable.query.filter_by(
+    id=id,
+    school_id=current_user.school_id
+    ).first_or_404()
+    try:
+        db.session.delete(timetable)
+        db.session.commit()
+        flash(
+        "Timetable deleted successfully.",
+        "success"
+        )
+    except Exception as e:
+        db.session.rollback()
+        print("ERROR DELETING TIMETABLE:", e)
+        flash(
+        "An error occurred while deleting the timetable.",
+        "danger"
+        )
+    return redirect(
+    url_for("school_admin.manage_timetable")
+    )
+# for Assigning Time Table to teacher
+
+@school_admin.route("/manage-timetabe/teachers")
+@login_required
+def timetable_teachers():
+    teachers = Teacher.query.filter_by(school_id =current_user.school_id).all()
+
+    return render_template("school_admin/timetable/teachers.html", teachers=teachers)
+
+# for View Timetable of concern teacher
+@school_admin.route("/manage-timetable/teacher/<int:teacher_id>")
+@login_required
+def teacher_timetable(teacher_id):
+
+    teacher = Teacher.query.filter_by(
+    id=teacher_id,
+    school_id=current_user.school_id
+    ).first_or_404()
+
+    timetables = Timetable.query.filter_by(
+    teacher_id=teacher.id,
+    school_id=current_user.school_id,
+    is_active=True
+    ).order_by(
+    Timetable.day_of_week,
+    Timetable.start_time
+    ).all()
+
+    return render_template(
+    "school_admin/timetable/teacher_timetable.html",
+    teacher=teacher,
+    timetables=timetables
+    )

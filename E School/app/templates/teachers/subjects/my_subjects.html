@@ -1,0 +1,441 @@
+
+{% extends "teachers/base.html" %}
+
+{% block title %}My Subjects | Teacher Portal{% endblock %}
+
+{% block content %}
+
+<style>
+/* Main Layout */
+.subject-page {
+padding-bottom: 30px;
+}
+
+/* Page Header */
+.subject-header {
+background: linear-gradient(135deg, #1e3a8a, #2563eb);
+color: white;
+border-radius: 16px;
+padding: 28px;
+margin-bottom: 28px;
+position: relative;
+overflow: hidden;
+}
+
+.subject-header h2 {
+font-weight: 700;
+margin-bottom: 8px;
+}
+
+.subject-header p {
+margin-bottom: 0;
+color: #dbeafe;
+}
+
+.header-icon {
+font-size: 65px;
+opacity: 0.2;
+position: absolute;
+right: 35px;
+top: 20px;
+}
+
+/* Summary Card */
+.summary-card {
+background: white;
+border: 1px solid #e5e7eb;
+border-radius: 14px;
+padding: 20px;
+height: 100%;
+box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+}
+
+.summary-icon {
+width: 48px;
+height: 48px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 12px;
+font-size: 23px;
+background: #eff6ff;
+color: #2563eb;
+}
+
+.summary-card h3 {
+font-size: 27px;
+font-weight: 700;
+margin-top: 12px;
+margin-bottom: 3px;
+color: #111827;
+}
+
+.summary-card p {
+color: #6b7280;
+margin: 0;
+font-size: 14px;
+}
+
+/* Subject Cards */
+.subject-card {
+background: white;
+border: 1px solid #e5e7eb;
+border-radius: 16px;
+height: 100%;
+overflow: hidden;
+transition: all 0.25s ease;
+}
+
+.subject-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+border-color: #bfdbfe;
+}
+
+.subject-card-top {
+padding: 22px;
+background: linear-gradient(135deg, #f8fafc, #eff6ff);
+border-bottom: 1px solid #e5e7eb;
+}
+
+.subject-icon {
+width: 50px;
+height: 50px;
+background: #dbeafe;
+color: #1d4ed8;
+border-radius: 13px;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 24px;
+margin-bottom: 15px;
+}
+
+.subject-name {
+font-size: 19px;
+font-weight: 700;
+color: #1e293b;
+margin-bottom: 8px;
+}
+
+.subject-code {
+display: inline-block;
+background: #dbeafe;
+color: #1d4ed8;
+padding: 5px 11px;
+border-radius: 7px;
+font-size: 12px;
+font-weight: 700;
+}
+
+.subject-card-body {
+padding: 22px;
+}
+
+.subject-detail {
+display: flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 14px;
+color: #475569;
+font-size: 14px;
+}
+
+.subject-detail i {
+color: #2563eb;
+font-size: 17px;
+width: 20px;
+}
+
+.section-heading {
+font-size: 13px;
+font-weight: 700;
+color: #64748b;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+margin-bottom: 12px;
+}
+
+.class-badge {
+display: inline-block;
+background: #f1f5f9;
+color: #334155;
+border: 1px solid #e2e8f0;
+border-radius: 8px;
+padding: 7px 10px;
+margin: 0 5px 7px 0;
+font-size: 12px;
+font-weight: 600;
+}
+
+.active-status {
+color: #15803d;
+background: #dcfce7;
+border-radius: 20px;
+padding: 5px 10px;
+font-size: 11px;
+font-weight: 700;
+}
+
+/* Empty State */
+.empty-state {
+background: white;
+border: 1px dashed #cbd5e1;
+border-radius: 16px;
+padding: 60px 20px;
+text-align: center;
+}
+
+.empty-state i {
+font-size: 55px;
+color: #94a3b8;
+}
+
+.empty-state h5 {
+font-weight: 700;
+color: #334155;
+margin-top: 18px;
+}
+
+.empty-state p {
+color: #64748b;
+margin-bottom: 0;
+}
+
+@media (max-width: 576px) {
+.subject-header {
+padding: 22px;
+}
+
+.header-icon {
+font-size: 45px;
+right: 15px;
+}
+}
+</style>
+
+
+<div class="container-fluid subject-page">
+
+<!-- Page Header -->
+<div class="subject-header">
+
+<i class="bi bi-book-half header-icon"></i>
+
+<h2>
+<i class="bi bi-journal-bookmark me-2"></i>
+My Subjects
+</h2>
+
+<p>
+View your assigned subjects, classes and academic details.
+</p>
+
+</div>
+
+
+<!-- Summary -->
+<div class="row g-3 mb-4">
+
+<div class="col-md-6">
+
+<div class="summary-card">
+
+<div class="summary-icon">
+<i class="bi bi-book"></i>
+</div>
+
+<h3>
+{{ assignments|groupby('subject_id')|list|length }}
+</h3>
+
+<p>Total Assigned Subjects</p>
+
+</div>
+
+</div>
+
+
+<div class="col-md-6">
+
+<div class="summary-card">
+
+<div class="summary-icon">
+<i class="bi bi-people"></i>
+</div>
+
+<h3>
+{{ assignments|length }}
+</h3>
+
+<p>Total Teaching Assignments</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Subject Section -->
+<div class="d-flex justify-content-between align-items-center mb-3">
+
+<div>
+<h4 class="fw-bold mb-1">Assigned Subjects</h4>
+
+<p class="text-muted small mb-0">
+Your subjects and their assigned classes.
+</p>
+</div>
+
+<span class="badge bg-primary px-3 py-2">
+{{ assignments|groupby('subject_id')|list|length }} Subjects
+</span>
+
+</div>
+
+
+{% if assignments %}
+
+<div class="row g-4">
+
+{% for subject_id, subject_assignments in assignments|groupby('subject_id') %}
+
+{% set subject = subject_assignments[0].subject %}
+
+<div class="col-md-6 col-xl-4">
+
+<div class="subject-card">
+
+<!-- Subject Header -->
+<div class="subject-card-top">
+
+<div class="d-flex justify-content-between align-items-start">
+
+<div class="subject-icon">
+<i class="bi bi-journal-text"></i>
+</div>
+
+<span class="active-status">
+<i class="bi bi-check-circle me-1"></i>
+Active
+</span>
+
+</div>
+
+<h5 class="subject-name">
+{{ subject.subject_name }}
+</h5>
+
+<span class="subject-code">
+{{ subject.subject_code }}
+</span>
+
+</div>
+
+
+<!-- Subject Details -->
+<div class="subject-card-body">
+
+<div class="subject-detail">
+
+<i class="bi bi-clock-history"></i>
+
+<span>
+Credit Hours:
+<strong>
+{{ subject.credit_hours if subject.credit_hours is not none else 'Not specified' }}
+</strong>
+</span>
+
+</div>
+
+
+<div class="subject-detail">
+
+<i class="bi bi-calendar3"></i>
+
+<span>
+Academic Year:
+<strong>
+{{ subject_assignments[0].academic_year }}
+</strong>
+</span>
+
+</div>
+
+
+<hr class="my-3">
+
+
+<!-- Assigned Classes -->
+<div class="section-heading">
+<i class="bi bi-mortarboard me-1"></i>
+Assigned Classes & Sections
+</div>
+
+<div>
+
+{% for assignment in subject_assignments %}
+
+<span class="class-badge">
+
+<i class="bi bi-building me-1"></i>
+
+{{ assignment.classroom.class_name }}
+
+-
+
+{{ assignment.section.section_name }}
+
+</span>
+
+{% endfor %}
+
+</div>
+
+
+<!-- Class Teacher Status -->
+{% if subject_assignments|selectattr('is_class_teacher')|list|length > 0 %}
+
+<div class="mt-3">
+<span class="badge bg-success-subtle text-success">
+<i class="bi bi-person-check me-1"></i>
+Class Teacher Assigned
+</span>
+</div>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+
+{% else %}
+
+<!-- Empty State -->
+<div class="empty-state">
+
+<i class="bi bi-journal-x"></i>
+
+<h5>No Subjects Assigned Yet</h5>
+
+<p>
+Your assigned subjects will appear here once
+the School Admin assigns them.
+</p>
+
+</div>
+
+{% endif %}
+
+</div>
+
+{% endblock %}

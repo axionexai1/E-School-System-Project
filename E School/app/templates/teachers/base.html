@@ -128,14 +128,21 @@ margin-left: 70px;
 <span>Dashboard</span>
 </a>
 
-<a href="#">
+<a href="{{ url_for('teachers.my_subjects') }}">
 <i class="bi bi-book"></i>
 <span>My Subjects</span>
 </a>
 
-<a href="#">
+
+<a href="{{ url_for('teachers.my_classes') }}">
 <i class="bi bi-people"></i>
 <span>My Classes</span>
+</a>
+
+
+<a href="{{ url_for('teachers.my_timetable') }}">
+    <i class="bi bi-calendar-week"></i>
+    My Timetable
 </a>
 
 <a href="#">

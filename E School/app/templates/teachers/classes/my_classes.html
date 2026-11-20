@@ -1,0 +1,434 @@
+{% extends "teachers/base.html" %}
+
+{% block title %}My Classes | Teacher Portal{% endblock %}
+
+{% block content %}
+
+<style>
+.classes-page {
+padding-bottom: 30px;
+}
+
+/* Header */
+.classes-header {
+background: linear-gradient(135deg, #172554, #2563eb);
+color: white;
+padding: 28px;
+border-radius: 16px;
+margin-bottom: 25px;
+position: relative;
+overflow: hidden;
+}
+
+.classes-header h2 {
+font-weight: 700;
+margin-bottom: 8px;
+}
+
+.classes-header p {
+color: #dbeafe;
+margin-bottom: 0;
+}
+
+.header-icon {
+position: absolute;
+right: 35px;
+top: 20px;
+font-size: 65px;
+opacity: .2;
+}
+
+/* Statistics */
+.stat-card {
+background: white;
+border: 1px solid #e5e7eb;
+border-radius: 14px;
+padding: 20px;
+height: 100%;
+box-shadow: 0 3px 12px rgba(0,0,0,.04);
+}
+
+.stat-icon {
+width: 48px;
+height: 48px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 12px;
+background: #eff6ff;
+color: #2563eb;
+font-size: 23px;
+}
+
+.stat-card h3 {
+font-size: 28px;
+font-weight: 700;
+margin: 12px 0 3px;
+color: #111827;
+}
+
+.stat-card p {
+color: #64748b;
+margin: 0;
+font-size: 14px;
+}
+
+/* Class Card */
+.class-card {
+background: white;
+border: 1px solid #e5e7eb;
+border-radius: 16px;
+height: 100%;
+overflow: hidden;
+transition: .25s ease;
+}
+
+.class-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px rgba(0,0,0,.08);
+border-color: #bfdbfe;
+}
+
+.class-card-header {
+padding: 22px;
+background: linear-gradient(135deg, #f8fafc, #eff6ff);
+border-bottom: 1px solid #e5e7eb;
+}
+
+.class-icon {
+width: 50px;
+height: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
+background: #dbeafe;
+color: #1d4ed8;
+border-radius: 13px;
+font-size: 24px;
+margin-bottom: 15px;
+}
+
+.class-name {
+font-size: 20px;
+font-weight: 700;
+color: #1e293b;
+margin-bottom: 5px;
+}
+
+.class-subtitle {
+color: #64748b;
+font-size: 13px;
+}
+
+.class-card-body {
+padding: 22px;
+}
+
+.detail-heading {
+font-size: 12px;
+font-weight: 700;
+color: #64748b;
+text-transform: uppercase;
+letter-spacing: .5px;
+margin-bottom: 12px;
+}
+
+.section-item {
+background: #f8fafc;
+border: 1px solid #e2e8f0;
+border-radius: 10px;
+padding: 13px;
+margin-bottom: 12px;
+}
+
+.section-title {
+font-weight: 700;
+color: #334155;
+font-size: 14px;
+margin-bottom: 10px;
+}
+
+.subject-badge {
+display: inline-block;
+background: #dbeafe;
+color: #1d4ed8;
+border-radius: 7px;
+padding: 6px 9px;
+margin: 0 5px 5px 0;
+font-size: 12px;
+font-weight: 600;
+}
+
+.academic-year {
+color: #64748b;
+font-size: 13px;
+}
+
+.class-teacher-badge {
+background: #dcfce7;
+color: #15803d;
+border-radius: 20px;
+padding: 5px 10px;
+font-size: 11px;
+font-weight: 700;
+}
+
+/* Empty State */
+.empty-state {
+background: white;
+border: 1px dashed #cbd5e1;
+border-radius: 16px;
+text-align: center;
+padding: 60px 20px;
+}
+
+.empty-state i {
+font-size: 55px;
+color: #94a3b8;
+}
+
+.empty-state h5 {
+font-weight: 700;
+margin-top: 18px;
+color: #334155;
+}
+
+.empty-state p {
+color: #64748b;
+margin-bottom: 0;
+}
+
+@media(max-width:576px) {
+.classes-header {
+padding: 22px;
+}
+
+.header-icon {
+right: 15px;
+font-size: 45px;
+}
+}
+</style>
+
+
+<div class="container-fluid classes-page">
+
+<!-- Page Header -->
+<div class="classes-header">
+
+<i class="bi bi-mortarboard-fill header-icon"></i>
+
+<h2>
+<i class="bi bi-people me-2"></i>
+My Classes
+</h2>
+
+<p>
+View your assigned classes, sections and teaching subjects.
+</p>
+
+</div>
+
+
+<!-- Statistics -->
+<div class="row g-3 mb-4">
+
+<div class="col-md-6">
+
+<div class="stat-card">
+
+<div class="stat-icon">
+<i class="bi bi-building"></i>
+</div>
+
+<h3>{{ total_classes }}</h3>
+
+<p>Total Assigned Classes</p>
+
+</div>
+
+</div>
+
+
+<div class="col-md-6">
+
+<div class="stat-card">
+
+<div class="stat-icon">
+<i class="bi bi-collection"></i>
+</div>
+
+<h3>{{ total_sections }}</h3>
+
+<p>Total Assigned Sections</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Section Heading -->
+<div class="d-flex justify-content-between align-items-center mb-3">
+
+<div>
+<h4 class="fw-bold mb-1">Assigned Classes</h4>
+
+<p class="text-muted small mb-0">
+Classes and sections allocated to you.
+</p>
+</div>
+
+<span class="badge bg-primary px-3 py-2">
+{{ total_classes }} Classes
+</span>
+
+</div>
+
+
+{% if assignments %}
+
+<div class="row g-4">
+
+{% for class_id, class_assignments in assignments|groupby('class_id') %}
+
+{% set classroom = class_assignments[0].classroom %}
+
+<div class="col-md-6 col-xl-4">
+
+<div class="class-card">
+
+<!-- Class Header -->
+<div class="class-card-header">
+
+<div class="d-flex justify-content-between align-items-start">
+
+<div class="class-icon">
+<i class="bi bi-building"></i>
+</div>
+
+<span class="badge bg-success-subtle text-success">
+<i class="bi bi-check-circle me-1"></i>
+Assigned
+</span>
+
+</div>
+
+<h5 class="class-name">
+{{ classroom.class_name }}
+</h5>
+
+<div class="class-subtitle">
+Class Code: {{ classroom.class_code }}
+</div>
+
+</div>
+
+
+<!-- Class Details -->
+<div class="class-card-body">
+
+<div class="detail-heading">
+<i class="bi bi-diagram-3 me-1"></i>
+Sections & Subjects
+</div>
+
+
+{% for section_id, section_assignments in class_assignments|groupby('section_id') %}
+
+{% set section = section_assignments[0].section %}
+
+<div class="section-item">
+
+<div class="section-title">
+
+<i class="bi bi-door-open me-1 text-primary"></i>
+
+Section {{ section.section_name }}
+
+</div>
+
+<div>
+
+{% for assignment in section_assignments %}
+
+<span class="subject-badge">
+<i class="bi bi-book me-1"></i>
+{{ assignment.subject.subject_name }}
+</span>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+{% endfor %}
+
+
+<hr class="my-3">
+
+
+<!-- Academic Year -->
+<div class="academic-year mb-3">
+
+<i class="bi bi-calendar3 me-2"></i>
+
+Academic Year:
+
+<strong>
+{{ class_assignments[0].academic_year }}
+</strong>
+
+</div>
+
+
+<!-- Class Teacher Status -->
+{% if class_assignments|selectattr('is_class_teacher')|list|length > 0 %}
+
+<span class="class-teacher-badge">
+<i class="bi bi-person-check me-1"></i>
+Class Teacher
+</span>
+
+{% else %}
+
+<span class="badge bg-secondary-subtle text-secondary">
+Subject Teacher
+</span>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+
+{% else %}
+
+<!-- Empty State -->
+<div class="empty-state">
+
+<i class="bi bi-building-x"></i>
+
+<h5>No Classes Assigned Yet</h5>
+
+<p>
+Your assigned classes will appear here once
+the School Admin assigns them.
+</p>
+
+</div>
+
+{% endif %}
+
+</div>
+
+{% endblock %}

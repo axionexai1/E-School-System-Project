@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, SubmitField, BooleanField, SelectField,DateField, IntegerField,DecimalField
+from wtforms import (StringField, TimeField,TextAreaField, SubmitField, BooleanField, SelectField,DateField, IntegerField,DecimalField)
 from wtforms.validators import DataRequired, Length,Optional, NumberRange , Email
 
 
@@ -136,3 +136,34 @@ class StudentForm(FlaskForm):
     # Submit
     # -------------------------
     submit = SubmitField("Save Student")
+
+
+
+# -------------------------------------------
+#   ------ TimeTable Management Form ----------------
+# ---------------------------------------------
+class TimetableForm(FlaskForm):
+    # Class
+    class_id = SelectField("Class",coerce=int,choices=[],validators=[DataRequired()])
+    # Section
+    section_id = SelectField("Section",coerce=int,choices=[],validators=[DataRequired()])
+    # Subject
+    subject_id = SelectField("Subject",coerce=int,choices=[],validators=[DataRequired()])
+    # Teacher
+    teacher_id = SelectField("Teacher",coerce=int,choices=[],validators=[DataRequired()])
+    # Day
+    day_of_week = SelectField("Day",choices=[
+    ("Monday", "Monday"),("Tuesday", "Tuesday"),
+    ("Wednesday", "Wednesday"),("Thursday", "Thursday"),
+    ("Friday", "Friday"),("Saturday", "Saturday"),("Sunday", "Sunday")],validators=[DataRequired()])
+    # Start Time
+    # -----------------------------
+    start_time = TimeField("Start Time",validators=[DataRequired()])
+    # End Time
+    end_time = TimeField("End Time",validators=[DataRequired()])
+    # Room
+    room = StringField("Room",validators=[Optional(),Length(max=50)])
+    academic_year =StringField("Academic Year", validators=[DataRequired()])
+    # Submit
+    submit = SubmitField("Save Timetable")
+

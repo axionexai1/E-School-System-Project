@@ -1,5 +1,5 @@
 
-from flask import render_template, redirect, url_for, flash
+from flask import render_template, redirect, url_for, flash,request
 from flask_login import login_required
 from app.extensions import db
 from .forms import CreateSchoolForm
@@ -181,15 +181,29 @@ def school_admins():
 def create_school_admin():
 
     form = CreateSchoolAdmin()
+    
 
     # Load all schools into dropdown
     form.school.choices = [
     (school.id, school.school_name)
     for school in School.query.order_by(School.school_name).all()]
+    if request.method == "POST":
+        print("SCHOOL ADMIN DEBUG")
+        print("FROM DATA: ",request.form)
 
-    if form.validate_on_submit():
+        is_valid = form.validate_on_submit
+
+        print("FORM ERROR: ", form.errors)
+        print("VALIDATE ON SUBMIT: ", is_valid)
+    else:
+        is_valid = False
+   
+    if is_valid:
         # Get School Admin role
         school_admin_role = Role.query.filter_by(role_name="School Admin" ).first()
+        print("_____ROLE CHECK")
+        print("_____SCHOOL ADMIN ROLE:  ", school_admin_role)
+
         if not school_admin_role:
             flash("School Admin role not found.", "danger")
             return redirect(url_for("software_admin.create_school_admin"))

@@ -1,0 +1,265 @@
+{% extends "school_admin/base.html" %}
+
+{% block title %}Timetable Details{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+<!-- Header -->
+<div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+
+<div>
+
+<h2 class="fw-bold mb-1">
+<i class="bi bi-calendar-event me-2"></i>
+Timetable Details
+</h2>
+
+<p class="text-muted mb-0">
+View complete schedule information.
+</p>
+
+</div>
+
+
+<div class="d-flex gap-2">
+
+<a href="{{ url_for('school_admin.manage_timetable') }}"
+class="btn btn-outline-secondary">
+
+<i class="bi bi-arrow-left me-1"></i>
+Back
+
+</a>
+
+
+<a href="{{ url_for(
+'school_admin.edit_timetable',
+id=timetable.id
+) }}"
+class="btn btn-primary">
+
+<i class="bi bi-pencil me-1"></i>
+Edit
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- Main Card -->
+<div class="card border-0 shadow-sm">
+
+<div class="card-header bg-white py-3">
+
+<h5 class="mb-0 fw-semibold">
+Schedule Information
+</h5>
+
+</div>
+
+
+<div class="card-body p-4">
+
+<div class="row g-4">
+
+
+<!-- Day -->
+<div class="col-md-6">
+
+<label class="text-muted small">
+Day
+</label>
+
+<h5 class="fw-semibold">
+
+<span class="badge bg-primary-subtle text-primary">
+{{ timetable.day_of_week }}
+</span>
+
+</h5>
+
+</div>
+
+
+<!-- Time -->
+<div class="col-md-6">
+
+<label class="text-muted small">
+Time
+</label>
+
+<h5 class="fw-semibold">
+
+{{ timetable.start_time.strftime('%I:%M %p') }}
+
+-
+
+{{ timetable.end_time.strftime('%I:%M %p') }}
+
+</h5>
+
+</div>
+
+
+<!-- Class -->
+<div class="col-md-6">
+
+<label class="text-muted small">
+Class
+</label>
+
+<h5 class="fw-semibold">
+
+{% if timetable.class_room %}
+
+{{ timetable.class_room.class_name }}
+
+{% else %}
+
+<span class="text-muted">
+Not Assigned
+</span>
+
+{% endif %}
+
+</h5>
+
+</div>
+
+
+<!-- Section -->
+<div class="col-md-6">
+
+<label class="text-muted small">
+Section
+</label>
+
+<h5 class="fw-semibold">
+
+{% if timetable.section %}
+
+{{ timetable.section.section_name }}
+
+{% else %}
+
+<span class="text-muted">
+Not Assigned
+</span>
+
+{% endif %}
+
+</h5>
+
+</div>
+
+
+<!-- Subject -->
+<div class="col-md-6">
+
+<label class="text-muted small">
+Subject
+</label>
+
+<h5 class="fw-semibold">
+
+{% if timetable.subject %}
+
+{{ timetable.subject.subject_name }}
+
+{% else %}
+
+<span class="text-muted">
+Not Assigned
+</span>
+
+{% endif %}
+
+</h5>
+
+</div>
+
+
+<!-- Teacher -->
+<div class="col-md-6">
+
+<label class="text-muted small">
+Teacher
+</label>
+
+<h5 class="fw-semibold">
+
+{% if timetable.teacher %}
+
+{{ timetable.teacher.first_name }}
+{{ timetable.teacher.last_name }}
+
+{% else %}
+
+<span class="text-muted">
+Not Assigned
+</span>
+
+{% endif %}
+
+</h5>
+
+</div>
+
+
+<!-- Room -->
+<div class="col-md-6">
+
+<label class="text-muted small">
+Room
+</label>
+
+<h5 class="fw-semibold">
+
+{{ timetable.room_number or "Not provided" }}
+
+</h5>
+
+</div>
+
+
+<!-- Status -->
+<div class="col-md-6">
+
+<label class="text-muted small">
+Status
+</label>
+
+<h5>
+
+{% if timetable.is_active %}
+
+<span class="badge bg-success">
+Active
+</span>
+
+{% else %}
+
+<span class="badge bg-secondary">
+Inactive
+</span>
+
+{% endif %}
+
+</h5>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

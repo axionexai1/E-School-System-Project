@@ -13,6 +13,7 @@ class Timetable(db.Model):
     teacher_id = db.Column(db.Integer,db.ForeignKey("teachers.id"),nullable=False)
     day_of_week = db.Column(db.String(20),nullable=False)
     start_time = db.Column(db.Time,nullable=False)
+    room_number = db.Column(db.String(20),nullable=True)
     end_time = db.Column(db.Time,nullable=False)
     room_number = db.Column(db.String(20),nullable=True)
     academic_year = db.Column(db.String(20),nullable=False)
