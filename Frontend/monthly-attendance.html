@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Attendance</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="home-dashboard.css">
+    <link rel="stylesheet" href="attendance-details.css">
+</head>
+<body>
+
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <div class="dashboard-container">
+        <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="logo.png" alt="School Logo" class="sidebar-logo-img">
+                    <span class="sidebar-logo-text">SMS Portal</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu" aria-label="Primary navigation">
+                <p class="sidebar-label">Menu</p>
+                <ul class="sidebar-list">
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-grid-1x2"></i></span>
+                            <span class="sidebar-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="myprofile.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-person"></i></span>
+                            <span class="sidebar-text">My Profile</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="calendar.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calendar3"></i></span>
+                            <span class="sidebar-text">Calendar</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="Calculator.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calculator"></i></span>
+                            <span class="sidebar-text">Calculator</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="Extra Courses.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-hourglass-split"></i></span>
+                            <span class="sidebar-text">Coming Soon</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <p class="sidebar-label sidebar-label--spaced">Support</p>
+                <ul class="sidebar-list">
+                    <li class="sidebar-item">
+                        <a href="contact with school.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-building"></i></span>
+                            <span class="sidebar-text">Contact with School</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="aboutus.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-info-circle"></i></span>
+                            <span class="sidebar-text">About Us</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="news and updates.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-newspaper"></i></span>
+                            <span class="sidebar-text">News &amp; Updates</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="helpcenter.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
+                            <span class="sidebar-text">Help Center</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="privacy-policy.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-shield-lock"></i></span>
+                            <span class="sidebar-text">Privacy Policy</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="terms-conditions.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-file-earmark-text"></i></span>
+                            <span class="sidebar-text">Terms &amp; Conditions</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <ul class="sidebar-list">
+                    <li class="sidebar-item">
+                        <a href="settings.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-gear"></i></span>
+                            <span class="sidebar-text">Settings</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="logout.html" class="sidebar-link sidebar-link--danger">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-box-arrow-right"></i></span>
+                            <span class="sidebar-text">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <!-- TOP NAVBAR -->
+            <header class="top-navbar">
+                <button class="menu-toggle" id="menu-toggle" type="button"
+                        aria-label="Toggle sidebar menu" aria-controls="sidebar"
+                        aria-expanded="true" data-ripple>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                </button>
+
+                <div class="navbar-left">
+                    <h1 class="page-title">Monthly Attendance</h1>
+                    <p class="page-subtitle">Student Portal</p>
+                </div>
+
+                <nav class="navbar-right" aria-label="Top navigation">
+                    <ul class="navbar-menu">
+                        <li class="navbar-item">
+                            <a href="#announcement" class="navbar-link" data-ripple>
+                                <i class="bi bi-bell navbar-link-icon" aria-hidden="true"></i>
+                                <span class="navbar-link-text">Announcements</span>
+                                <span class="announcement-badge" id="announcement-badge">0</span>
+                            </a>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="myprofile.html" class="avatar-link" aria-label="My Profile" data-ripple>
+                                <i class="bi bi-person-circle" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!-- PAGE CONTENT -->
+            <main class="dashboard-content page-content" id="main-content">
+
+                <a href="Attendance & Percentage.html" class="back-link">
+                    <i class="bi bi-arrow-left" aria-hidden="true"></i>
+                    Back to Attendance
+                </a>
+
+                <p class="page-intro">
+                    View your day-by-day attendance record, check-in times, and monthly summary.
+                </p>
+
+                <!-- Month Filter -->
+                <div class="filter-bar">
+                    <div class="filter-group">
+                        <label for="month-select" class="filter-label">Select Month:</label>
+                        <select id="month-select" class="filter-select">
+                            <option value="nov-2026" selected>November 2026</option>
+                            <option value="oct-2026">October 2026</option>
+                            <option value="sep-2026">September 2026</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="status-filter" class="filter-label">Filter Status:</label>
+                        <select id="status-filter" class="filter-select">
+                            <option value="all" selected>All Records</option>
+                            <option value="Present">Present</option>
+                            <option value="Absent">Absent</option>
+                            <option value="Late">Late</option>
+                            <option value="Holiday">Holiday</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Summary Stats -->
+                <section class="stats-grid" aria-label="Monthly summary">
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--blue"><i class="bi bi-calendar-check"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-working">0</span>
+                            <span class="stat-label">Working Days</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--green"><i class="bi bi-check-circle"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-present">0</span>
+                            <span class="stat-label">Days Present</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--red"><i class="bi bi-x-circle"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-absent">0</span>
+                            <span class="stat-label">Days Absent</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--amber"><i class="bi bi-clock-history"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-late">0</span>
+                            <span class="stat-label">Late Arrivals</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Daily Log Table -->
+                <article class="panel">
+                    <header class="panel-header">
+                        <h2 class="panel-title" id="table-month-title">Daily Log — November 2026</h2>
+                    </header>
+
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Day</th>
+                                    <th>Status</th>
+                                    <th>Check-In</th>
+                                    <th>Remarks</th>
+                                </tr>
+                            </thead>
+                            <tbody id="monthly-tbody"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </main>
+
+            <footer class="footer">
+                <p class="footer-text">&copy; Student Management System</p>
+            </footer>
+        </div>
+    </div>
+
+    <a href="AIStudyAssistant.html" class="ai-assistant-fab" aria-label="Open AI Assistant">
+        <span class="ai-assistant-fab-label">AI Assistant</span>
+        <span class="ai-assistant-fab-button" data-ripple aria-hidden="true"><i class="bi bi-robot"></i></span>
+    </a>
+
+    <script src="dashboard.js"></script>
+    <script>
+        const monthlyData = {
+            "nov-2026": {
+                title: "November 2026",
+                records: [
+                    { date: "2026-11-02", day: "Monday",    status: "Present", time: "07:52 AM", remarks: "On time" },
+                    { date: "2026-11-03", day: "Tuesday",   status: "Present", time: "07:55 AM", remarks: "On time" },
+                    { date: "2026-11-04", day: "Wednesday", status: "Late",    time: "08:18 AM", remarks: "Traffic delay" },
+                    { date: "2026-11-05", day: "Thursday",  status: "Present", time: "07:50 AM", remarks: "On time" },
+                    { date: "2026-11-06", day: "Friday",    status: "Present", time: "07:48 AM", remarks: "On time" },
+                    { date: "2026-11-09", day: "Monday",    status: "Holiday", time: "—",        remarks: "Iqbal Day Holiday" },
+                    { date: "2026-11-10", day: "Tuesday",   status: "Present", time: "07:54 AM", remarks: "On time" },
+                    { date: "2026-11-11", day: "Wednesday", status: "Absent",  time: "—",        remarks: "Medical leave submitted" },
+                    { date: "2026-11-12", day: "Thursday",  status: "Present", time: "07:51 AM", remarks: "On time" },
+                    { date: "2026-11-13", day: "Friday",    status: "Present", time: "07:49 AM", remarks: "On time" },
+                    { date: "2026-11-16", day: "Monday",    status: "Present", time: "07:55 AM", remarks: "On time" },
+                    { date: "2026-11-17", day: "Tuesday",   status: "Present", time: "07:53 AM", remarks: "On time" },
+                    { date: "2026-11-18", day: "Wednesday", status: "Present", time: "07:50 AM", remarks: "On time" },
+                    { date: "2026-11-19", day: "Thursday",  status: "Present", time: "07:56 AM", remarks: "On time" },
+                    { date: "2026-11-20", day: "Friday",    status: "Present", time: "07:47 AM", remarks: "On time" }
+                ]
+            },
+            "oct-2026": {
+                title: "October 2026",
+                records: [
+                    { date: "2026-10-01", day: "Thursday",  status: "Present", time: "07:50 AM", remarks: "On time" },
+                    { date: "2026-10-02", day: "Friday",    status: "Present", time: "07:52 AM", remarks: "On time" },
+                    { date: "2026-10-05", day: "Monday",    status: "Present", time: "07:55 AM", remarks: "On time" },
+                    { date: "2026-10-06", day: "Tuesday",   status: "Absent",  time: "—",        remarks: "Family event" },
+                    { date: "2026-10-07", day: "Wednesday", status: "Absent",  time: "—",        remarks: "Family event" },
+                    { date: "2026-10-08", day: "Thursday",  status: "Present", time: "07:51 AM", remarks: "On time" },
+                    { date: "2026-10-09", day: "Friday",    status: "Late",    time: "08:12 AM", remarks: "Bus delay" },
+                    { date: "2026-10-12", day: "Monday",    status: "Present", time: "07:49 AM", remarks: "On time" }
+                ]
+            },
+            "sep-2026": {
+                title: "September 2026",
+                records: [
+                    { date: "2026-09-01", day: "Tuesday",   status: "Present", time: "07:48 AM", remarks: "First day of term" },
+                    { date: "2026-09-02", day: "Wednesday", status: "Present", time: "07:50 AM", remarks: "On time" },
+                    { date: "2026-09-03", day: "Thursday",  status: "Present", time: "07:53 AM", remarks: "On time" },
+                    { date: "2026-09-04", day: "Friday",    status: "Present", time: "07:51 AM", remarks: "On time" },
+                    { date: "2026-09-06", day: "Sunday",    status: "Holiday", time: "—",        remarks: "Defence Day" },
+                    { date: "2026-09-07", day: "Monday",    status: "Present", time: "07:54 AM", remarks: "On time" }
+                ]
+            }
+        };
+
+        const monthSelect  = document.getElementById("month-select");
+        const statusFilter = document.getElementById("status-filter");
+        const tbody        = document.getElementById("monthly-tbody");
+
+        function renderMonthly() {
+            const selected = monthlyData[monthSelect.value];
+            const filter   = statusFilter.value;
+
+            document.getElementById("table-month-title").textContent = "Daily Log — " + selected.title;
+
+            let working = 0, present = 0, absent = 0, late = 0;
+            selected.records.forEach(r => {
+                if (r.status !== "Holiday") working++;
+                if (r.status === "Present") present++;
+                if (r.status === "Absent")  absent++;
+                if (r.status === "Late")    { late++; present++; }
+            });
+
+            document.getElementById("stat-working").textContent = working;
+            document.getElementById("stat-present").textContent = present;
+            document.getElementById("stat-absent").textContent  = absent;
+            document.getElementById("stat-late").textContent    = late;
+
+            const filtered = filter === "all"
+                ? selected.records
+                : selected.records.filter(r => r.status === filter);
+
+            tbody.innerHTML = filtered.length
+                ? filtered.map(r => `
+                    <tr>
+                        <td>${r.date}</td>
+                        <td>${r.day}</td>
+                        <td><span class="status-badge status-${r.status.toLowerCase()}">${r.status}</span></td>
+                        <td>${r.time}</td>
+                        <td>${r.remarks}</td>
+                    </tr>
+                `).join("")
+                : `<tr><td colspan="5" style="text-align:center;color:#64748b;">No records match the selected filter.</td></tr>`;
+        }
+
+        monthSelect.addEventListener("change", renderMonthly);
+        statusFilter.addEventListener("change", renderMonthly);
+        renderMonthly();
+    </script>
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="home-dashboard.css">
+    <link rel="stylesheet" href="homework-assignments.css">
+</head>
+<body>
+
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <div class="dashboard-container">
+        <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="logo.png" alt="School Logo" class="sidebar-logo-img">
+                    <span class="sidebar-logo-text">SMS Portal</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu" aria-label="Primary navigation">
+                <p class="sidebar-label">Menu</p>
+                <ul class="sidebar-list">
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-grid-1x2"></i></span>
+                            <span class="sidebar-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="myprofile.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-person"></i></span>
+                            <span class="sidebar-text">My Profile</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="calendar.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calendar3"></i></span>
+                            <span class="sidebar-text">Calendar</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="Calculator.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calculator"></i></span>
+                            <span class="sidebar-text">Calculator</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="Extra Courses.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-hourglass-split"></i></span>
+                            <span class="sidebar-text">Coming Soon</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <p class="sidebar-label sidebar-label--spaced">Support</p>
+                <ul class="sidebar-list">
+                    <li class="sidebar-item">
+                        <a href="contact with school.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-building"></i></span>
+                            <span class="sidebar-text">Contact with School</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="aboutus.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-info-circle"></i></span>
+                            <span class="sidebar-text">About Us</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="news and updates.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-newspaper"></i></span>
+                            <span class="sidebar-text">News &amp; Updates</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="helpcenter.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
+                            <span class="sidebar-text">Help Center</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="privacy-policy.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-shield-lock"></i></span>
+                            <span class="sidebar-text">Privacy Policy</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="terms-conditions.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-file-earmark-text"></i></span>
+                            <span class="sidebar-text">Terms &amp; Conditions</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <ul class="sidebar-list">
+                    <li class="sidebar-item">
+                        <a href="settings.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-gear"></i></span>
+                            <span class="sidebar-text">Settings</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="logout.html" class="sidebar-link sidebar-link--danger">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-box-arrow-right"></i></span>
+                            <span class="sidebar-text">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper">
+            <header class="top-navbar">
+                <button class="menu-toggle" id="menu-toggle" type="button"
+                        aria-label="Toggle sidebar menu" aria-controls="sidebar"
+                        aria-expanded="true" data-ripple>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                </button>
+
+                <div class="navbar-left">
+                    <h1 class="page-title">Homework</h1>
+                    <p class="page-subtitle">Pending date, submitted date &amp; due date tracker</p>
+                </div>
+
+                <nav class="navbar-right" aria-label="Top navigation">
+                    <ul class="navbar-menu">
+                        <li class="navbar-item">
+                            <a href="#announcement" class="navbar-link" data-ripple>
+                                <i class="bi bi-bell navbar-link-icon" aria-hidden="true"></i>
+                                <span class="navbar-link-text">Announcements</span>
+                                <span class="announcement-badge" id="announcement-badge">0</span>
+                            </a>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="myprofile.html" class="avatar-link" aria-label="My Profile" data-ripple>
+                                <i class="bi bi-person-circle" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!-- PAGE CONTENT -->
+            <main class="dashboard-content page-content" id="main-content">
+
+                <a href="assignments.html" class="back-link" data-ripple>
+                    <i class="bi bi-arrow-left back-icon" aria-hidden="true"></i>
+                    <span>Back to Assignments &amp; Homework</span>
+                </a>
+
+                <p class="page-intro">
+                    Track all daily homework tasks with their pending date, submitted date, and due date.
+                </p>
+
+                <!-- Summary Cards -->
+                <section class="stats-grid" aria-label="Homework summary">
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--blue"><i class="bi bi-journal-check"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="hw-total">0</span>
+                            <span class="stat-label">Total Homework</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--amber"><i class="bi bi-hourglass-split"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="hw-pending">0</span>
+                            <span class="stat-label">Pending</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--green"><i class="bi bi-check2-circle"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="hw-submitted">0</span>
+                            <span class="stat-label">Submitted</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--red"><i class="bi bi-exclamation-triangle"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="hw-overdue">0</span>
+                            <span class="stat-label">Overdue</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Filter & Search -->
+                <div class="filter-bar">
+                    <div class="filter-group">
+                        <label for="hw-status-filter" class="filter-label">Status:</label>
+                        <select id="hw-status-filter" class="filter-select">
+                            <option value="all" selected>All</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Submitted">Submitted</option>
+                            <option value="Overdue">Overdue</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="hw-search" class="filter-label">Search:</label>
+                        <input type="text" id="hw-search" class="filter-input" placeholder="Subject or topic...">
+                    </div>
+                </div>
+
+                <!-- Homework Table with Pending Date, Submitted Date & Due Date -->
+                <section class="panel">
+                    <header class="panel-header">
+                        <h2 class="panel-title">Homework Schedule &amp; Dates</h2>
+                    </header>
+
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Homework Topic</th>
+                                    <th>Pending Date</th>
+                                    <th>Submitted Date</th>
+                                    <th>Due Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="homework-tbody"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+            </main>
+
+            <footer class="footer">
+                <p class="footer-text">&copy; Student Management System</p>
+            </footer>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script>
+        const homeworkList = [
+            {
+                subject: "Mathematics",
+                topic: "Quadratic Equations — Exercise 4.2 (Q1–Q10)",
+                pendingDate: "2026-11-18",
+                submittedDate: "—",
+                dueDate: "2026-11-22",
+                status: "Pending"
+            },
+            {
+                subject: "English",
+                topic: "Essay Writing: Role of Technology in Education",
+                pendingDate: "2026-11-14",
+                submittedDate: "2026-11-17",
+                dueDate: "2026-11-18",
+                status: "Submitted"
+            },
+            {
+                subject: "Physics",
+                topic: "Newton's Laws Worksheet & Numericals",
+                pendingDate: "2026-11-12",
+                submittedDate: "—",
+                dueDate: "2026-11-16",
+                status: "Overdue"
+            },
+            {
+                subject: "Computer Science",
+                topic: "HTML & CSS Flexbox Layout Practice",
+                pendingDate: "2026-11-19",
+                submittedDate: "—",
+                dueDate: "2026-11-24",
+                status: "Pending"
+            },
+            {
+                subject: "Chemistry",
+                topic: "Periodic Table Trends Short Questions",
+                pendingDate: "2026-11-10",
+                submittedDate: "2026-11-13",
+                dueDate: "2026-11-14",
+                status: "Submitted"
+            }
+        ];
+
+        const statusFilter = document.getElementById("hw-status-filter");
+        const searchInput  = document.getElementById("hw-search");
+        const tbody        = document.getElementById("homework-tbody");
+
+        function renderHomework() {
+            const statusVal = statusFilter.value;
+            const queryVal  = searchInput.value.trim().toLowerCase();
+
+            let pendingCount = 0, submittedCount = 0, overdueCount = 0;
+            homeworkList.forEach(item => {
+                if (item.status === "Pending")   pendingCount++;
+                if (item.status === "Submitted") submittedCount++;
+                if (item.status === "Overdue")   overdueCount++;
+            });
+
+            document.getElementById("hw-total").textContent     = homeworkList.length;
+            document.getElementById("hw-pending").textContent   = pendingCount;
+            document.getElementById("hw-submitted").textContent = submittedCount;
+            document.getElementById("hw-overdue").textContent   = overdueCount;
+
+            const filtered = homeworkList.filter(item => {
+                const matchesStatus = statusVal === "all" || item.status === statusVal;
+                const matchesQuery  = !queryVal ||
+                    item.subject.toLowerCase().includes(queryVal) ||
+                    item.topic.toLowerCase().includes(queryVal);
+                return matchesStatus && matchesQuery;
+            });
+
+            tbody.innerHTML = filtered.length
+                ? filtered.map(item => `
+                    <tr>
+                        <td><strong>${item.subject}</strong></td>
+                        <td>${item.topic}</td>
+                        <td>
+                            ${item.status === "Pending" || item.status === "Overdue"
+                                ? `<span class="date-pill">${item.pendingDate}</span>`
+                                : `<span class="date-muted">${item.pendingDate}</span>`}
+                        </td>
+                        <td>
+                            ${item.submittedDate !== "—"
+                                ? `<span class="date-pill">${item.submittedDate}</span>`
+                                : `<span class="date-muted">Not submitted</span>`}
+                        </td>
+                        <td><span class="date-pill"><strong>${item.dueDate}</strong></span></td>
+                        <td><span class="status-badge status-${item.status.toLowerCase()}">${item.status}</span></td>
+                    </tr>
+                `).join("")
+                : `<tr><td colspan="6" style="text-align:center;color:#64748b;">No homework records found.</td></tr>`;
+        }
+
+        statusFilter.addEventListener("change", renderHomework);
+        searchInput.addEventListener("input", renderHomework);
+        renderHomework();
+    </script>
+</body>
+</html>

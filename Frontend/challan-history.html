@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challan History</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="home-dashboard.css">
+    <link rel="stylesheet" href="fees-details.css">
+</head>
+<body>
+
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <div class="dashboard-container">
+        <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="logo.png" alt="School Logo" class="sidebar-logo-img">
+                    <span class="sidebar-logo-text">SMS Portal</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu" aria-label="Primary navigation">
+                <p class="sidebar-label">Menu</p>
+                <ul class="sidebar-list">
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-grid-1x2"></i></span>
+                            <span class="sidebar-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="myprofile.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-person"></i></span>
+                            <span class="sidebar-text">My Profile</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="calendar.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calendar3"></i></span>
+                            <span class="sidebar-text">Calendar</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="Calculator.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calculator"></i></span>
+                            <span class="sidebar-text">Calculator</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="Extra Courses.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-hourglass-split"></i></span>
+                            <span class="sidebar-text">Coming Soon</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <p class="sidebar-label sidebar-label--spaced">Support</p>
+                <ul class="sidebar-list">
+                    <li class="sidebar-item">
+                        <a href="contact with school.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-building"></i></span>
+                            <span class="sidebar-text">Contact with School</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="aboutus.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-info-circle"></i></span>
+                            <span class="sidebar-text">About Us</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="news and updates.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-newspaper"></i></span>
+                            <span class="sidebar-text">News &amp; Updates</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="helpcenter.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
+                            <span class="sidebar-text">Help Center</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="privacy-policy.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-shield-lock"></i></span>
+                            <span class="sidebar-text">Privacy Policy</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="terms-conditions.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-file-earmark-text"></i></span>
+                            <span class="sidebar-text">Terms &amp; Conditions</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <ul class="sidebar-list">
+                    <li class="sidebar-item">
+                        <a href="settings.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-gear"></i></span>
+                            <span class="sidebar-text">Settings</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="logout.html" class="sidebar-link sidebar-link--danger">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-box-arrow-right"></i></span>
+                            <span class="sidebar-text">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <!-- TOP NAVBAR -->
+            <header class="top-navbar">
+                <button class="menu-toggle" id="menu-toggle" type="button"
+                        aria-label="Toggle sidebar menu" aria-controls="sidebar"
+                        aria-expanded="true" data-ripple>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                </button>
+
+                <div class="navbar-left">
+                    <h1 class="page-title">Challan History</h1>
+                    <p class="page-subtitle">Student Portal</p>
+                </div>
+
+                <nav class="navbar-right" aria-label="Top navigation">
+                    <ul class="navbar-menu">
+                        <li class="navbar-item">
+                            <a href="#announcement" class="navbar-link" data-ripple>
+                                <i class="bi bi-bell navbar-link-icon" aria-hidden="true"></i>
+                                <span class="navbar-link-text">Announcements</span>
+                                <span class="announcement-badge" id="announcement-badge">0</span>
+                            </a>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="myprofile.html" class="avatar-link" aria-label="My Profile" data-ripple>
+                                <i class="bi bi-person-circle" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!-- PAGE CONTENT -->
+            <main class="dashboard-content page-content" id="main-content">
+
+                <a href="Fees & Challans.html" class="back-link">
+                    <i class="bi bi-arrow-left" aria-hidden="true"></i>
+                    Back to Fees &amp; Challans
+                </a>
+
+                <p class="page-intro">
+                    Complete record of all issued fee challans, due dates, paid receipts, and pending balances.
+                </p>
+
+                <!-- KPI Summary Cards -->
+                <section class="stats-grid" aria-label="Challan summary">
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--blue"><i class="bi bi-receipt-cutoff"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="total-billed">PKR 45,000</span>
+                            <span class="stat-label">Total Billed</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--green"><i class="bi bi-check2-circle"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="total-paid">PKR 25,000</span>
+                            <span class="stat-label">Total Paid</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--amber"><i class="bi bi-exclamation-circle"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="total-pending">PKR 20,000</span>
+                            <span class="stat-label">Pending / Overdue</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Filter Bar -->
+                <div class="filter-bar no-print">
+                    <div class="filter-group">
+                        <label for="challan-status-filter" class="filter-label">Filter by Status:</label>
+                        <select id="challan-status-filter" class="filter-select">
+                            <option value="all" selected>All Challans</option>
+                            <option value="Paid">Paid</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Overdue">Overdue</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn-action" onclick="window.print()">
+                        <i class="bi bi-printer"></i> Print Statement
+                    </button>
+                </div>
+
+                <!-- Challan History Table -->
+                <article class="panel">
+                    <header class="panel-header">
+                        <h2 class="panel-title">Issued Challans</h2>
+                    </header>
+
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Challan ID</th>
+                                    <th>Fee Category</th>
+                                    <th>Billing Month</th>
+                                    <th>Amount (PKR)</th>
+                                    <th>Due Date</th>
+                                    <th>Paid Date</th>
+                                    <th>Status</th>
+                                    <th class="no-print">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="challan-tbody"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </main>
+
+            <footer class="footer">
+                <p class="footer-text">&copy; Student Management System</p>
+            </footer>
+        </div>
+    </div>
+
+    <a href="AIStudyAssistant.html" class="ai-assistant-fab" aria-label="Open AI Assistant">
+        <span class="ai-assistant-fab-label">AI Assistant</span>
+        <span class="ai-assistant-fab-button" data-ripple aria-hidden="true"><i class="bi bi-robot"></i></span>
+    </a>
+
+    <script src="dashboard.js"></script>
+    <script>
+        const challanRecords = [
+            {
+                id: "CH-2026-1204",
+                category: "Monthly Fee",
+                month: "December 2026",
+                amount: 10000,
+                dueDate: "2026-12-25",
+                paidDate: "—",
+                status: "Pending",
+                link: "monthly-fee.html"
+            },
+            {
+                id: "CH-2026-1104",
+                category: "Monthly Fee",
+                month: "November 2026",
+                amount: 10000,
+                dueDate: "2026-11-15",
+                paidDate: "—",
+                status: "Overdue",
+                link: "monthly-fee.html"
+            },
+            {
+                id: "CH-2026-1004",
+                category: "Monthly Fee",
+                month: "October 2026",
+                amount: 10000,
+                dueDate: "2026-10-25",
+                paidDate: "2026-10-21",
+                status: "Paid",
+                link: "monthly-fee.html"
+            },
+            {
+                id: "CH-2026-0904",
+                category: "Monthly Fee",
+                month: "September 2026",
+                amount: 10000,
+                dueDate: "2026-09-25",
+                paidDate: "2026-09-19",
+                status: "Paid",
+                link: "monthly-fee.html"
+            },
+            {
+                id: "ADM-2026-001",
+                category: "Admission Fee",
+                month: "August 2026",
+                amount: 5000,
+                dueDate: "2026-08-20",
+                paidDate: "2026-08-15",
+                status: "Paid",
+                link: "admission-fee.html"
+            }
+        ];
+
+        const statusFilter = document.getElementById("challan-status-filter");
+        const tbody        = document.getElementById("challan-tbody");
+
+        function renderChallans() {
+            const filter = statusFilter.value;
+
+            let billed = 0, paid = 0, pending = 0;
+            challanRecords.forEach(c => {
+                billed += c.amount;
+                if (c.status === "Paid") paid += c.amount;
+                else pending += c.amount;
+            });
+
+            document.getElementById("total-billed").textContent  = "PKR " + billed.toLocaleString();
+            document.getElementById("total-paid").textContent    = "PKR " + paid.toLocaleString();
+            document.getElementById("total-pending").textContent = "PKR " + pending.toLocaleString();
+
+            const filtered = filter === "all"
+                ? challanRecords
+                : challanRecords.filter(c => c.status === filter);
+
+            tbody.innerHTML = filtered.length
+                ? filtered.map(c => `
+                    <tr>
+                        <td><strong>${c.id}</strong></td>
+                        <td>${c.category}</td>
+                        <td>${c.month}</td>
+                        <td>PKR ${c.amount.toLocaleString()}</td>
+                        <td>${c.dueDate}</td>
+                        <td>${c.paidDate}</td>
+                        <td><span class="status-badge status-${c.status.toLowerCase()}">${c.status}</span></td>
+                        <td class="no-print">
+                            <a href="${c.link}" class="btn-action" style="text-decoration:none;">
+                                <i class="bi bi-eye"></i> ${c.status === "Paid" ? "Receipt" : "View Challan"}
+                            </a>
+                        </td>
+                    </tr>
+                `).join("")
+                : `<tr><td colspan="8" style="text-align:center;color:#64748b;">No challans found for this status.</td></tr>`;
+        }
+
+        statusFilter.addEventListener("change", renderChallans);
+        renderChallans();
+    </script>
+</body>
+</html>

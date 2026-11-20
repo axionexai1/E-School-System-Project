@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result Percentage</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="home-dashboard.css">
+    <link rel="stylesheet" href="results-details.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <div class="dashboard-container">
+        <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+
+        <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="logo.png" alt="School Logo" class="sidebar-logo-img">
+                    <span class="sidebar-logo-text">SMS Portal</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu" aria-label="Primary navigation">
+                <p class="sidebar-label">Menu</p>
+                <ul class="sidebar-list">
+                    <li class="sidebar-item"><a href="dashboard.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-grid-1x2"></i></span><span class="sidebar-text">Dashboard</span></a></li>
+                    <li class="sidebar-item"><a href="myprofile.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-person"></i></span><span class="sidebar-text">My Profile</span></a></li>
+                    <li class="sidebar-item"><a href="calendar.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-calendar3"></i></span><span class="sidebar-text">Calendar</span></a></li>
+                    <li class="sidebar-item"><a href="Calculator.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-calculator"></i></span><span class="sidebar-text">Calculator</span></a></li>
+                    <li class="sidebar-item"><a href="Extra Courses.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-hourglass-split"></i></span><span class="sidebar-text">Coming Soon</span></a></li>
+                </ul>
+
+                <p class="sidebar-label sidebar-label--spaced">Support</p>
+                <ul class="sidebar-list">
+                    <li class="sidebar-item"><a href="contact with school.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-building"></i></span><span class="sidebar-text">Contact with School</span></a></li>
+                    <li class="sidebar-item"><a href="aboutus.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-info-circle"></i></span><span class="sidebar-text">About Us</span></a></li>
+                    <li class="sidebar-item"><a href="news and updates.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-newspaper"></i></span><span class="sidebar-text">News &amp; Updates</span></a></li>
+                    <li class="sidebar-item"><a href="helpcenter.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-question-circle"></i></span><span class="sidebar-text">Help Center</span></a></li>
+                    <li class="sidebar-item"><a href="privacy-policy.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-shield-lock"></i></span><span class="sidebar-text">Privacy Policy</span></a></li>
+                    <li class="sidebar-item"><a href="terms-conditions.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-file-earmark-text"></i></span><span class="sidebar-text">Terms &amp; Conditions</span></a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <ul class="sidebar-list">
+                    <li class="sidebar-item"><a href="settings.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-gear"></i></span><span class="sidebar-text">Settings</span></a></li>
+                    <li class="sidebar-item"><a href="logout.html" class="sidebar-link sidebar-link--danger"><span class="sidebar-icon"><i class="bi bi-box-arrow-right"></i></span><span class="sidebar-text">Logout</span></a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <header class="top-navbar">
+                <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Toggle sidebar menu" aria-controls="sidebar" aria-expanded="true" data-ripple>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                </button>
+                <div class="navbar-left">
+                    <h1 class="page-title">Result Percentage</h1>
+                    <p class="page-subtitle">Overall &amp; term-wise percentage</p>
+                </div>
+                <nav class="navbar-right" aria-label="Top navigation">
+                    <ul class="navbar-menu">
+                        <li class="navbar-item">
+                            <a href="#announcement" class="navbar-link" data-ripple>
+                                <i class="bi bi-bell navbar-link-icon"></i>
+                                <span class="navbar-link-text">Announcements</span>
+                                <span class="announcement-badge" id="announcement-badge">0</span>
+                            </a>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="myprofile.html" class="avatar-link" aria-label="My Profile" data-ripple>
+                                <i class="bi bi-person-circle"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+            <main class="dashboard-content page-content" id="main-content">
+                <a href="TestResults.html" class="back-link" data-ripple>
+                    <i class="bi bi-arrow-left back-icon"></i>
+                    <span>Back to Exam &amp; Test Results</span>
+                </a>
+
+                <p class="page-intro">Overall academic percentage and term-by-term progress.</p>
+
+                <!-- Overall Percentage Gauge -->
+                <section class="panel">
+                    <div class="ring-box">
+                        <div class="ring-container">
+                            <svg class="ring-svg" viewBox="0 0 180 180">
+                                <circle class="ring-bg" cx="90" cy="90" r="76"></circle>
+                                <circle class="ring-progress" cx="90" cy="90" r="76"></circle>
+                            </svg>
+                            <div class="ring-center">
+                                <span class="ring-percent">86.3%</span>
+                                <span class="ring-sub">Aggregate</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 class="panel-title" style="margin-bottom:0.4rem;">Overall Session Percentage</h2>
+                            <p style="color:#475569;font-size:0.92rem;margin:0;">
+                                Total Aggregate Marks: <strong>1,295 / 1,500</strong> across First Term, Mid Term, and Final Term examinations.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Term Percentage Table -->
+                <section class="panel">
+                    <header class="panel-header">
+                        <h2 class="panel-title">Term-Wise Percentage Breakdown</h2>
+                    </header>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Examination Term</th>
+                                    <th>Total Marks</th>
+                                    <th>Obtained Marks</th>
+                                    <th>Percentage</th>
+                                    <th>Grade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>First Term</strong></td>
+                                    <td>500</td>
+                                    <td>432</td>
+                                    <td>
+                                        <div class="progress-wrap">
+                                            <div class="progress-track"><div class="progress-fill" style="width:86.4%"></div></div>
+                                            <strong>86.4%</strong>
+                                        </div>
+                                    </td>
+                                    <td><span class="grade-badge grade-aplus">A+</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Mid Term</strong></td>
+                                    <td>500</td>
+                                    <td>418</td>
+                                    <td>
+                                        <div class="progress-wrap">
+                                            <div class="progress-track"><div class="progress-fill" style="width:83.6%"></div></div>
+                                            <strong>83.6%</strong>
+                                        </div>
+                                    </td>
+                                    <td><span class="grade-badge grade-a">A</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Final Term</strong></td>
+                                    <td>500</td>
+                                    <td>445</td>
+                                    <td>
+                                        <div class="progress-wrap">
+                                            <div class="progress-track"><div class="progress-fill" style="width:89.0%"></div></div>
+                                            <strong>89.0%</strong>
+                                        </div>
+                                    </td>
+                                    <td><span class="grade-badge grade-aplus">A+</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+
+            <footer class="footer"><p class="footer-text">&copy; Student Management System</p></footer>
+        </div>
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+</html>

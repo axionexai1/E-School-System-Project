@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Term Result &amp; DMC</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="home-dashboard.css">
+    <link rel="stylesheet" href="results-details.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <div class="dashboard-container">
+        <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+
+        <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="logo.png" alt="School Logo" class="sidebar-logo-img">
+                    <span class="sidebar-logo-text">SMS Portal</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu" aria-label="Primary navigation">
+                <p class="sidebar-label">Menu</p>
+                <ul class="sidebar-list">
+                    <li class="sidebar-item"><a href="dashboard.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-grid-1x2"></i></span><span class="sidebar-text">Dashboard</span></a></li>
+                    <li class="sidebar-item"><a href="myprofile.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-person"></i></span><span class="sidebar-text">My Profile</span></a></li>
+                    <li class="sidebar-item"><a href="calendar.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-calendar3"></i></span><span class="sidebar-text">Calendar</span></a></li>
+                    <li class="sidebar-item"><a href="Calculator.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-calculator"></i></span><span class="sidebar-text">Calculator</span></a></li>
+                    <li class="sidebar-item"><a href="Extra Courses.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-hourglass-split"></i></span><span class="sidebar-text">Coming Soon</span></a></li>
+                </ul>
+
+                <p class="sidebar-label sidebar-label--spaced">Support</p>
+                <ul class="sidebar-list">
+                    <li class="sidebar-item"><a href="contact with school.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-building"></i></span><span class="sidebar-text">Contact with School</span></a></li>
+                    <li class="sidebar-item"><a href="aboutus.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-info-circle"></i></span><span class="sidebar-text">About Us</span></a></li>
+                    <li class="sidebar-item"><a href="news and updates.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-newspaper"></i></span><span class="sidebar-text">News &amp; Updates</span></a></li>
+                    <li class="sidebar-item"><a href="helpcenter.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-question-circle"></i></span><span class="sidebar-text">Help Center</span></a></li>
+                    <li class="sidebar-item"><a href="privacy-policy.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-shield-lock"></i></span><span class="sidebar-text">Privacy Policy</span></a></li>
+                    <li class="sidebar-item"><a href="terms-conditions.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-file-earmark-text"></i></span><span class="sidebar-text">Terms &amp; Conditions</span></a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <ul class="sidebar-list">
+                    <li class="sidebar-item"><a href="settings.html" class="sidebar-link"><span class="sidebar-icon"><i class="bi bi-gear"></i></span><span class="sidebar-text">Settings</span></a></li>
+                    <li class="sidebar-item"><a href="logout.html" class="sidebar-link sidebar-link--danger"><span class="sidebar-icon"><i class="bi bi-box-arrow-right"></i></span><span class="sidebar-text">Logout</span></a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <header class="top-navbar">
+                <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Toggle sidebar menu" aria-controls="sidebar" aria-expanded="true" data-ripple>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                </button>
+                <div class="navbar-left">
+                    <h1 class="page-title">First Term Result</h1>
+                    <p class="page-subtitle">Detailed Marks Certificate (DMC)</p>
+                </div>
+                <nav class="navbar-right" aria-label="Top navigation">
+                    <ul class="navbar-menu">
+                        <li class="navbar-item">
+                            <a href="#announcement" class="navbar-link" data-ripple>
+                                <i class="bi bi-bell navbar-link-icon"></i>
+                                <span class="navbar-link-text">Announcements</span>
+                                <span class="announcement-badge" id="announcement-badge">0</span>
+                            </a>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="myprofile.html" class="avatar-link" aria-label="My Profile" data-ripple>
+                                <i class="bi bi-person-circle"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+            <main class="dashboard-content page-content" id="main-content">
+                <a href="TestResults.html" class="back-link" data-ripple>
+                    <i class="bi bi-arrow-left back-icon"></i>
+                    <span>Back to Exam &amp; Test Results</span>
+                </a>
+
+                <p class="page-intro">Official First Term examination result and Detailed Marks Certificate (DMC).</p>
+
+                <section class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--blue"><i class="bi bi-trophy"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value">432 / 500</span>
+                            <span class="stat-label">Obtained Marks</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--green"><i class="bi bi-percent"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value">86.4%</span>
+                            <span class="stat-label">Percentage</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--purple"><i class="bi bi-patch-check"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value">A+</span>
+                            <span class="stat-label">Overall Grade</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--amber"><i class="bi bi-check-circle"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value">Passed</span>
+                            <span class="stat-label">Result Status</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- DMC Panel -->
+                <section class="panel">
+                    <header class="panel-header">
+                        <h2 class="panel-title">Detailed Marks Certificate (DMC) — First Term</h2>
+                        <button type="button" class="btn-primary no-print" onclick="window.print()">
+                            <i class="bi bi-printer"></i> Print DMC
+                        </button>
+                    </header>
+
+                    <div class="dmc-header-box">
+                        <div class="dmc-school-title">
+                            <h3>STUDENT MANAGEMENT SYSTEM — OFFICIAL DMC</h3>
+                            <p>First Term Examination (Session 2026 – 2027)</p>
+                        </div>
+                        <div class="dmc-meta-grid">
+                            <div class="dmc-meta-item"><span>Student Name</span><strong>Muhammad Sherjil Shah</strong></div>
+                            <div class="dmc-meta-item"><span>Roll Number</span><strong>SMS-2026-104</strong></div>
+                            <div class="dmc-meta-item"><span>Class / Section</span><strong>10th — Section A</strong></div>
+                            <div class="dmc-meta-item"><span>DMC Serial No.</span><strong>DMC-FT-2026-884</strong></div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Total Marks</th>
+                                    <th>Passing Marks</th>
+                                    <th>Obtained Marks</th>
+                                    <th>Percentage</th>
+                                    <th>Grade</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Mathematics</strong></td><td>100</td><td>33</td><td>92</td><td>92.0%</td><td><span class="grade-badge grade-aplus">A+</span></td><td><span class="status-pass">Pass</span></td></tr>
+                                <tr><td><strong>Physics</strong></td><td>100</td><td>33</td><td>86</td><td>86.0%</td><td><span class="grade-badge grade-aplus">A+</span></td><td><span class="status-pass">Pass</span></td></tr>
+                                <tr><td><strong>Computer Science</strong></td><td>100</td><td>33</td><td>94</td><td>94.0%</td><td><span class="grade-badge grade-aplus">A+</span></td><td><span class="status-pass">Pass</span></td></tr>
+                                <tr><td><strong>English</strong></td><td>100</td><td>33</td><td>78</td><td>78.0%</td><td><span class="grade-badge grade-a">A</span></td><td><span class="status-pass">Pass</span></td></tr>
+                                <tr><td><strong>Chemistry</strong></td><td>100</td><td>33</td><td>82</td><td>82.0%</td><td><span class="grade-badge grade-a">A</span></td><td><span class="status-pass">Pass</span></td></tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td>Grand Total</td>
+                                    <td>500</td>
+                                    <td>165</td>
+                                    <td>432</td>
+                                    <td>86.4%</td>
+                                    <td>A+</td>
+                                    <td>Promoted</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </section>
+            </main>
+
+            <footer class="footer"><p class="footer-text">&copy; Student Management System</p></footer>
+        </div>
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+</html>

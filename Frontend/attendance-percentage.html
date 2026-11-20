@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Percentage</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="home-dashboard.css">
+    <link rel="stylesheet" href="attendance-details.css">
+</head>
+<body>
+
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <div class="dashboard-container">
+        <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="logo.png" alt="School Logo" class="sidebar-logo-img">
+                    <span class="sidebar-logo-text">SMS Portal</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu" aria-label="Primary navigation">
+                <p class="sidebar-label">Menu</p>
+                <ul class="sidebar-list">
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-grid-1x2"></i></span>
+                            <span class="sidebar-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="myprofile.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-person"></i></span>
+                            <span class="sidebar-text">My Profile</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="calendar.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calendar3"></i></span>
+                            <span class="sidebar-text">Calendar</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="Calculator.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calculator"></i></span>
+                            <span class="sidebar-text">Calculator</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="Extra Courses.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-hourglass-split"></i></span>
+                            <span class="sidebar-text">Coming Soon</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <p class="sidebar-label sidebar-label--spaced">Support</p>
+                <ul class="sidebar-list">
+                    <li class="sidebar-item">
+                        <a href="contact with school.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-building"></i></span>
+                            <span class="sidebar-text">Contact with School</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="aboutus.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-info-circle"></i></span>
+                            <span class="sidebar-text">About Us</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="news and updates.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-newspaper"></i></span>
+                            <span class="sidebar-text">News &amp; Updates</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="helpcenter.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
+                            <span class="sidebar-text">Help Center</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="privacy-policy.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-shield-lock"></i></span>
+                            <span class="sidebar-text">Privacy Policy</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="terms-conditions.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-file-earmark-text"></i></span>
+                            <span class="sidebar-text">Terms &amp; Conditions</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <ul class="sidebar-list">
+                    <li class="sidebar-item">
+                        <a href="settings.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-gear"></i></span>
+                            <span class="sidebar-text">Settings</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="logout.html" class="sidebar-link sidebar-link--danger">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-box-arrow-right"></i></span>
+                            <span class="sidebar-text">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <!-- TOP NAVBAR -->
+            <header class="top-navbar">
+                <button class="menu-toggle" id="menu-toggle" type="button"
+                        aria-label="Toggle sidebar menu" aria-controls="sidebar"
+                        aria-expanded="true" data-ripple>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                </button>
+
+                <div class="navbar-left">
+                    <h1 class="page-title">Attendance Percentage</h1>
+                    <p class="page-subtitle">Student Portal</p>
+                </div>
+
+                <nav class="navbar-right" aria-label="Top navigation">
+                    <ul class="navbar-menu">
+                        <li class="navbar-item">
+                            <a href="#announcement" class="navbar-link" data-ripple>
+                                <i class="bi bi-bell navbar-link-icon" aria-hidden="true"></i>
+                                <span class="navbar-link-text">Announcements</span>
+                                <span class="announcement-badge" id="announcement-badge">0</span>
+                            </a>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="myprofile.html" class="avatar-link" aria-label="My Profile" data-ripple>
+                                <i class="bi bi-person-circle" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!-- PAGE CONTENT -->
+            <main class="dashboard-content page-content" id="main-content">
+
+                <a href="Attendance & Percentage.html" class="back-link">
+                    <i class="bi bi-arrow-left" aria-hidden="true"></i>
+                    Back to Attendance
+                </a>
+
+                <p class="page-intro">
+                    Overall attendance percentage, exam eligibility status, and subject-wise breakdown.
+                </p>
+
+                <!-- Overall Percentage Overview -->
+                <article class="panel">
+                    <div class="percentage-hero">
+                        <div class="ring-container">
+                            <svg class="ring-svg" viewBox="0 0 190 190">
+                                <circle class="ring-bg" cx="95" cy="95" r="80"></circle>
+                                <circle class="ring-progress" id="ring-progress" cx="95" cy="95" r="80"></circle>
+                            </svg>
+                            <div class="ring-center">
+                                <span class="ring-percent" id="overall-percent">92.3%</span>
+                                <span class="ring-sub">Overall Rate</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h2 class="panel-title" style="margin-bottom:0.5rem;">Exam Eligibility Standing</h2>
+                            <p style="color:#475569;font-size:0.92rem;margin:0;">
+                                You have attended <strong>72 out of 78</strong> total school days in the current session.
+                                The minimum required attendance for final exam eligibility is <strong>75%</strong>.
+                            </p>
+
+                            <div class="eligibility-box" id="eligibility-box">
+                                <strong>Eligible for Exams:</strong> Your attendance is <strong>17.3%</strong> above the required 75% threshold. You can miss up to <strong>18</strong> upcoming days and still remain eligible.
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Subject-Wise Percentage -->
+                <article class="panel">
+                    <header class="panel-header">
+                        <h2 class="panel-title">Subject-Wise Attendance Percentage</h2>
+                    </header>
+
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Classes Held</th>
+                                    <th>Attended</th>
+                                    <th>Missed</th>
+                                    <th>Percentage</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="subject-tbody"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <!-- Interactive Attendance Simulator -->
+                <article class="panel">
+                    <header class="panel-header">
+                        <h2 class="panel-title">Attendance Goal Simulator</h2>
+                    </header>
+
+                    <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:end;">
+                        <div>
+                            <label for="sim-attend" class="filter-label" style="display:block;margin-bottom:0.35rem;">Next Days Attended:</label>
+                            <input type="number" id="sim-attend" class="filter-select" value="5" min="0" max="100" style="width:140px;">
+                        </div>
+                        <div>
+                            <label for="sim-miss" class="filter-label" style="display:block;margin-bottom:0.35rem;">Next Days Missed:</label>
+                            <input type="number" id="sim-miss" class="filter-select" value="0" min="0" max="100" style="width:140px;">
+                        </div>
+                        <div style="padding:0.55rem 1rem;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;font-size:0.92rem;">
+                            Projected Percentage: <strong id="sim-result" style="color:#2563eb;font-size:1.05rem;">92.8%</strong>
+                        </div>
+                    </div>
+                </article>
+
+            </main>
+
+            <footer class="footer">
+                <p class="footer-text">&copy; Student Management System</p>
+            </footer>
+        </div>
+    </div>
+
+    <a href="AIStudyAssistant.html" class="ai-assistant-fab" aria-label="Open AI Assistant">
+        <span class="ai-assistant-fab-label">AI Assistant</span>
+        <span class="ai-assistant-fab-button" data-ripple aria-hidden="true"><i class="bi bi-robot"></i></span>
+    </a>
+
+    <script src="dashboard.js"></script>
+    <script>
+        const currentAttended = 72;
+        const currentTotal    = 78;
+        const currentPercent  = (currentAttended / currentTotal) * 100;
+
+        // Animate circular SVG progress ring
+        const ring = document.getElementById("ring-progress");
+        const circumference = 2 * Math.PI * 80; // r = 80
+        const offset = circumference - (currentPercent / 100) * circumference;
+
+        setTimeout(() => {
+            ring.style.strokeDashoffset = offset;
+            ring.style.stroke = currentPercent >= 85 ? "#10b981" : currentPercent >= 75 ? "#f59e0b" : "#ef4444";
+        }, 100);
+
+        document.getElementById("overall-percent").textContent = currentPercent.toFixed(1) + "%";
+
+        // Subject-wise table data
+        const subjects = [
+            { name: "Mathematics",      held: 42, attended: 40 },
+            { name: "Physics",          held: 38, attended: 35 },
+            { name: "Computer Science", held: 36, attended: 35 },
+            { name: "English",          held: 34, attended: 30 },
+            { name: "Chemistry",        held: 35, attended: 26 }
+        ];
+
+        document.getElementById("subject-tbody").innerHTML = subjects.map(s => {
+            const pct = ((s.attended / s.held) * 100).toFixed(1);
+            const missed = s.held - s.attended;
+            const fillClass = pct >= 85 ? "fill-good" : pct >= 75 ? "fill-warning" : "fill-danger";
+            const badgeClass = pct >= 75 ? "status-present" : "status-absent";
+            const badgeText  = pct >= 75 ? "Good Standing" : "Low Attendance";
+
+            return `
+                <tr>
+                    <td><strong>${s.name}</strong></td>
+                    <td>${s.held}</td>
+                    <td>${s.attended}</td>
+                    <td>${missed}</td>
+                    <td>
+                        <div class="progress-wrap">
+                            <div class="progress-track">
+                                <div class="progress-fill ${fillClass}" style="width:${pct}%"></div>
+                            </div>
+                            <span class="progress-text">${pct}%</span>
+                        </div>
+                    </td>
+                    <td><span class="status-badge ${badgeClass}">${badgeText}</span></td>
+                </tr>
+            `;
+        }).join("");
+
+        // Interactive Goal Simulator
+        const simAttend = document.getElementById("sim-attend");
+        const simMiss   = document.getElementById("sim-miss");
+        const simResult = document.getElementById("sim-result");
+
+        function updateSimulator() {
+            const addPresent = Math.max(0, parseInt(simAttend.value, 10) || 0);
+            const addMiss    = Math.max(0, parseInt(simMiss.value, 10) || 0);
+            const newTotal   = currentTotal + addPresent + addMiss;
+            const newPresent = currentAttended + addPresent;
+            const projected  = ((newPresent / newTotal) * 100).toFixed(1);
+
+            simResult.textContent = projected + "%";
+            simResult.style.color = projected >= 75 ? "#059669" : "#dc2626";
+        }
+
+        simAttend.addEventListener("input", updateSimulator);
+        simMiss.addEventListener("input", updateSimulator);
+        updateSimulator();
+    </script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annual Attendance</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="home-dashboard.css">
+    <link rel="stylesheet" href="attendance-details.css">
+</head>
+<body>
+
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <div class="dashboard-container">
+        <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="logo.png" alt="School Logo" class="sidebar-logo-img">
+                    <span class="sidebar-logo-text">SMS Portal</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu" aria-label="Primary navigation">
+                <p class="sidebar-label">Menu</p>
+                <ul class="sidebar-list">
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-grid-1x2"></i></span>
+                            <span class="sidebar-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="myprofile.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-person"></i></span>
+                            <span class="sidebar-text">My Profile</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="calendar.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calendar3"></i></span>
+                            <span class="sidebar-text">Calendar</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="Calculator.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calculator"></i></span>
+                            <span class="sidebar-text">Calculator</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="Extra Courses.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-hourglass-split"></i></span>
+                            <span class="sidebar-text">Coming Soon</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <p class="sidebar-label sidebar-label--spaced">Support</p>
+                <ul class="sidebar-list">
+                    <li class="sidebar-item">
+                        <a href="contact with school.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-building"></i></span>
+                            <span class="sidebar-text">Contact with School</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="aboutus.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-info-circle"></i></span>
+                            <span class="sidebar-text">About Us</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="news and updates.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-newspaper"></i></span>
+                            <span class="sidebar-text">News &amp; Updates</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="helpcenter.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
+                            <span class="sidebar-text">Help Center</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="privacy-policy.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-shield-lock"></i></span>
+                            <span class="sidebar-text">Privacy Policy</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="terms-conditions.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-file-earmark-text"></i></span>
+                            <span class="sidebar-text">Terms &amp; Conditions</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <ul class="sidebar-list">
+                    <li class="sidebar-item">
+                        <a href="settings.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-gear"></i></span>
+                            <span class="sidebar-text">Settings</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="logout.html" class="sidebar-link sidebar-link--danger">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-box-arrow-right"></i></span>
+                            <span class="sidebar-text">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <!-- TOP NAVBAR -->
+            <header class="top-navbar">
+                <button class="menu-toggle" id="menu-toggle" type="button"
+                        aria-label="Toggle sidebar menu" aria-controls="sidebar"
+                        aria-expanded="true" data-ripple>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                </button>
+
+                <div class="navbar-left">
+                    <h1 class="page-title">Annual Attendance</h1>
+                    <p class="page-subtitle">Student Portal</p>
+                </div>
+
+                <nav class="navbar-right" aria-label="Top navigation">
+                    <ul class="navbar-menu">
+                        <li class="navbar-item">
+                            <a href="#announcement" class="navbar-link" data-ripple>
+                                <i class="bi bi-bell navbar-link-icon" aria-hidden="true"></i>
+                                <span class="navbar-link-text">Announcements</span>
+                                <span class="announcement-badge" id="announcement-badge">0</span>
+                            </a>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="myprofile.html" class="avatar-link" aria-label="My Profile" data-ripple>
+                                <i class="bi bi-person-circle" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!-- PAGE CONTENT -->
+            <main class="dashboard-content page-content" id="main-content">
+
+                <a href="Attendance & Percentage.html" class="back-link">
+                    <i class="bi bi-arrow-left" aria-hidden="true"></i>
+                    Back to Attendance
+                </a>
+
+                <p class="page-intro">
+                    Complete academic year attendance summary broken down month by month.
+                </p>
+
+                <!-- Academic Session Selector -->
+                <div class="filter-bar">
+                    <div class="filter-group">
+                        <label for="session-select" class="filter-label">Academic Session:</label>
+                        <select id="session-select" class="filter-select">
+                            <option value="2026-2027" selected>2026 – 2027 (Current)</option>
+                            <option value="2025-2026">2025 – 2026</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Annual KPI Cards -->
+                <section class="stats-grid" aria-label="Annual summary">
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--blue"><i class="bi bi-calendar3"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="annual-total">0</span>
+                            <span class="stat-label">Total School Days</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--green"><i class="bi bi-person-check"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="annual-present">0</span>
+                            <span class="stat-label">Total Present</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--red"><i class="bi bi-person-x"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="annual-absent">0</span>
+                            <span class="stat-label">Total Absent</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--amber"><i class="bi bi-graph-up-arrow"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="annual-rate">0%</span>
+                            <span class="stat-label">Annual Rate</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Month-by-Month Breakdown -->
+                <article class="panel">
+                    <header class="panel-header">
+                        <h2 class="panel-title" id="annual-table-title">Session 2026 – 2027 Breakdown</h2>
+                    </header>
+
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Month</th>
+                                    <th>Working Days</th>
+                                    <th>Present</th>
+                                    <th>Absent</th>
+                                    <th>Leaves</th>
+                                    <th>Attendance Rate</th>
+                                </tr>
+                            </thead>
+                            <tbody id="annual-tbody"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </main>
+
+            <footer class="footer">
+                <p class="footer-text">&copy; Student Management System</p>
+            </footer>
+        </div>
+    </div>
+
+    <a href="AIStudyAssistant.html" class="ai-assistant-fab" aria-label="Open AI Assistant">
+        <span class="ai-assistant-fab-label">AI Assistant</span>
+        <span class="ai-assistant-fab-button" data-ripple aria-hidden="true"><i class="bi bi-robot"></i></span>
+    </a>
+
+    <script src="dashboard.js"></script>
+    <script>
+        const annualData = {
+            "2026-2027": [
+                { month: "August 2026",    working: 21, present: 20, absent: 1, leaves: 1 },
+                { month: "September 2026", working: 21, present: 19, absent: 2, leaves: 1 },
+                { month: "October 2026",   working: 22, present: 20, absent: 2, leaves: 2 },
+                { month: "November 2026",  working: 14, present: 13, absent: 1, leaves: 1 }
+            ],
+            "2025-2026": [
+                { month: "August 2025",    working: 20, present: 19, absent: 1, leaves: 1 },
+                { month: "September 2025", working: 22, present: 21, absent: 1, leaves: 0 },
+                { month: "October 2025",   working: 23, present: 22, absent: 1, leaves: 1 },
+                { month: "November 2025",  working: 20, present: 18, absent: 2, leaves: 2 },
+                { month: "December 2025",  working: 16, present: 15, absent: 1, leaves: 1 },
+                { month: "January 2026",   working: 21, present: 20, absent: 1, leaves: 0 },
+                { month: "February 2026",  working: 20, present: 19, absent: 1, leaves: 1 },
+                { month: "March 2026",     working: 21, present: 20, absent: 1, leaves: 1 },
+                { month: "April 2026",     working: 22, present: 21, absent: 1, leaves: 0 },
+                { month: "May 2026",       working: 18, present: 17, absent: 1, leaves: 1 }
+            ]
+        };
+
+        const sessionSelect = document.getElementById("session-select");
+        const annualTbody   = document.getElementById("annual-tbody");
+
+        function renderAnnual() {
+            const rows = annualData[sessionSelect.value];
+            document.getElementById("annual-table-title").textContent = "Session " + sessionSelect.value + " Breakdown";
+
+            let totalWorking = 0, totalPresent = 0, totalAbsent = 0;
+
+            annualTbody.innerHTML = rows.map(r => {
+                totalWorking += r.working;
+                totalPresent += r.present;
+                totalAbsent  += r.absent;
+
+                const pct = ((r.present / r.working) * 100).toFixed(1);
+                const fillClass = pct >= 85 ? "fill-good" : pct >= 75 ? "fill-warning" : "fill-danger";
+
+                return `
+                    <tr>
+                        <td><strong>${r.month}</strong></td>
+                        <td>${r.working}</td>
+                        <td>${r.present}</td>
+                        <td>${r.absent}</td>
+                        <td>${r.leaves}</td>
+                        <td>
+                            <div class="progress-wrap">
+                                <div class="progress-track">
+                                    <div class="progress-fill ${fillClass}" style="width:${pct}%"></div>
+                                </div>
+                                <span class="progress-text">${pct}%</span>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join("");
+
+            const overallPct = totalWorking ? ((totalPresent / totalWorking) * 100).toFixed(1) : 0;
+            document.getElementById("annual-total").textContent   = totalWorking;
+            document.getElementById("annual-present").textContent = totalPresent;
+            document.getElementById("annual-absent").textContent  = totalAbsent;
+            document.getElementById("annual-rate").textContent    = overallPct + "%";
+        }
+
+        sessionSelect.addEventListener("change", renderAnnual);
+        renderAnnual();
+    </script>
+</body>
+</html>

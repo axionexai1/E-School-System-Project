@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Fee</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="home-dashboard.css">
+    <link rel="stylesheet" href="fees-details.css">
+</head>
+<body>
+
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <div class="dashboard-container">
+        <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="logo.png" alt="School Logo" class="sidebar-logo-img">
+                    <span class="sidebar-logo-text">SMS Portal</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu" aria-label="Primary navigation">
+                <p class="sidebar-label">Menu</p>
+                <ul class="sidebar-list">
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-grid-1x2"></i></span>
+                            <span class="sidebar-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="myprofile.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-person"></i></span>
+                            <span class="sidebar-text">My Profile</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="calendar.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calendar3"></i></span>
+                            <span class="sidebar-text">Calendar</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="Calculator.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calculator"></i></span>
+                            <span class="sidebar-text">Calculator</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="Extra Courses.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-hourglass-split"></i></span>
+                            <span class="sidebar-text">Coming Soon</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <p class="sidebar-label sidebar-label--spaced">Support</p>
+                <ul class="sidebar-list">
+                    <li class="sidebar-item">
+                        <a href="contact with school.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-building"></i></span>
+                            <span class="sidebar-text">Contact with School</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="aboutus.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-info-circle"></i></span>
+                            <span class="sidebar-text">About Us</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="news and updates.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-newspaper"></i></span>
+                            <span class="sidebar-text">News &amp; Updates</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="helpcenter.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
+                            <span class="sidebar-text">Help Center</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="privacy-policy.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-shield-lock"></i></span>
+                            <span class="sidebar-text">Privacy Policy</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="terms-conditions.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-file-earmark-text"></i></span>
+                            <span class="sidebar-text">Terms &amp; Conditions</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <ul class="sidebar-list">
+                    <li class="sidebar-item">
+                        <a href="settings.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-gear"></i></span>
+                            <span class="sidebar-text">Settings</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="logout.html" class="sidebar-link sidebar-link--danger">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-box-arrow-right"></i></span>
+                            <span class="sidebar-text">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <div class="main-wrapper">
+            <!-- TOP NAVBAR -->
+            <header class="top-navbar">
+                <button class="menu-toggle" id="menu-toggle" type="button"
+                        aria-label="Toggle sidebar menu" aria-controls="sidebar"
+                        aria-expanded="true" data-ripple>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                </button>
+
+                <div class="navbar-left">
+                    <h1 class="page-title">Monthly Fee</h1>
+                    <p class="page-subtitle">Student Portal</p>
+                </div>
+
+                <nav class="navbar-right" aria-label="Top navigation">
+                    <ul class="navbar-menu">
+                        <li class="navbar-item">
+                            <a href="#announcement" class="navbar-link" data-ripple>
+                                <i class="bi bi-bell navbar-link-icon" aria-hidden="true"></i>
+                                <span class="navbar-link-text">Announcements</span>
+                                <span class="announcement-badge" id="announcement-badge">0</span>
+                            </a>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="myprofile.html" class="avatar-link" aria-label="My Profile" data-ripple>
+                                <i class="bi bi-person-circle" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!-- PAGE CONTENT -->
+            <main class="dashboard-content page-content" id="main-content">
+
+                <a href="Fees & Challans.html" class="back-link">
+                    <i class="bi bi-arrow-left" aria-hidden="true"></i>
+                    Back to Fees &amp; Challans
+                </a>
+
+                <p class="page-intro">
+                    Regular monthly tuition fee details, due dates, and downloadable challan voucher.
+                </p>
+
+                <!-- Month Selector -->
+                <div class="filter-bar no-print">
+                    <div class="filter-group">
+                        <label for="fee-month-select" class="filter-label">Billing Month:</label>
+                        <select id="fee-month-select" class="filter-select">
+                            <option value="nov-2026" selected>November 2026 (Current)</option>
+                            <option value="oct-2026">October 2026</option>
+                            <option value="sep-2026">September 2026</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn-action btn-primary" onclick="window.print()">
+                        <i class="bi bi-printer"></i> Print Monthly Challan
+                    </button>
+                </div>
+
+                <!-- KPI Cards -->
+                <section class="stats-grid" aria-label="Monthly fee summary">
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--blue"><i class="bi bi-cash-coin"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value">PKR 10,000</span>
+                            <span class="stat-label">Monthly Fee Amount</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--amber" id="status-icon-box"><i class="bi bi-hourglass-split"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="fee-status-text">Pending</span>
+                            <span class="stat-label">Payment Status</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon--red"><i class="bi bi-calendar-event"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="fee-due-date">Nov 25, 2026</span>
+                            <span class="stat-label">Due Date</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Challan Voucher Details -->
+                <article class="panel">
+                    <header class="panel-header">
+                        <h2 class="panel-title" id="challan-heading">Fee Challan — November 2026</h2>
+                    </header>
+
+                    <div class="challan-box" style="margin-bottom: 1.25rem;">
+                        <div class="challan-grid">
+                            <div class="challan-field">
+                                <span>Challan Number</span>
+                                <strong id="challan-no">CH-2026-1104</strong>
+                            </div>
+                            <div class="challan-field">
+                                <span>Billing Period</span>
+                                <strong id="challan-period">November 2026</strong>
+                            </div>
+                            <div class="challan-field">
+                                <span>Due Date</span>
+                                <strong id="challan-due">November 25, 2026</strong>
+                            </div>
+                            <div class="challan-field">
+                                <span>Status</span>
+                                <strong id="challan-badge-wrap"><span class="status-badge status-pending">Pending</span></strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Fee Component</th>
+                                    <th>Details</th>
+                                    <th>Amount (PKR)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Monthly Tuition Fee</strong></td>
+                                    <td>Regular academic classes &amp; instruction</td>
+                                    <td>8,500</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Computer &amp; Science Lab Fee</strong></td>
+                                    <td>Monthly lab &amp; digital portal maintenance</td>
+                                    <td>1,000</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Examination &amp; Activity Fund</strong></td>
+                                    <td>Monthly assessments &amp; student activities</td>
+                                    <td>500</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2">Total Monthly Fee Payable</td>
+                                    <td>PKR 10,000</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </article>
+
+            </main>
+
+            <footer class="footer">
+                <p class="footer-text">&copy; Student Management System</p>
+            </footer>
+        </div>
+    </div>
+
+    <a href="AIStudyAssistant.html" class="ai-assistant-fab" aria-label="Open AI Assistant">
+        <span class="ai-assistant-fab-label">AI Assistant</span>
+        <span class="ai-assistant-fab-button" data-ripple aria-hidden="true"><i class="bi bi-robot"></i></span>
+    </a>
+
+    <script src="dashboard.js"></script>
+    <script>
+        const monthlyFees = {
+            "nov-2026": {
+                period: "November 2026",
+                challanNo: "CH-2026-1104",
+                dueShort: "Nov 25, 2026",
+                dueLong: "November 25, 2026",
+                status: "Pending"
+            },
+            "oct-2026": {
+                period: "October 2026",
+                challanNo: "CH-2026-1004",
+                dueShort: "Oct 25, 2026",
+                dueLong: "October 25, 2026 (Paid Oct 21)",
+                status: "Paid"
+            },
+            "sep-2026": {
+                period: "September 2026",
+                challanNo: "CH-2026-0904",
+                dueShort: "Sep 25, 2026",
+                dueLong: "September 25, 2026 (Paid Sep 19)",
+                status: "Paid"
+            }
+        };
+
+        const selectEl = document.getElementById("fee-month-select");
+
+        selectEl.addEventListener("change", () => {
+            const data = monthlyFees[selectEl.value];
+            const isPaid = data.status === "Paid";
+
+            document.getElementById("fee-status-text").textContent = data.status;
+            document.getElementById("fee-due-date").textContent    = data.dueShort;
+            document.getElementById("challan-heading").textContent = "Fee Challan — " + data.period;
+            document.getElementById("challan-no").textContent      = data.challanNo;
+            document.getElementById("challan-period").textContent  = data.period;
+            document.getElementById("challan-due").textContent     = data.dueLong;
+
+            const iconBox = document.getElementById("status-icon-box");
+            iconBox.className = "stat-icon " + (isPaid ? "stat-icon--green" : "stat-icon--amber");
+            iconBox.innerHTML = isPaid ? '<i class="bi bi-check-circle"></i>' : '<i class="bi bi-hourglass-split"></i>';
+
+            document.getElementById("challan-badge-wrap").innerHTML =
+                `<span class="status-badge ${isPaid ? "status-paid" : "status-pending"}">${data.status}</span>`;
+        });
+    </script>
+</body>
+</html>
