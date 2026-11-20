@@ -4,67 +4,328 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
+
+    <!-- Font: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+
+    <!-- Icons: Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Shared styles first, then page styles -->
+    <link rel="stylesheet" href="home-dashboard.css">
+    <link rel="stylesheet" href="about-us.css">
 </head>
 <body>
-<!-- ========================================================= -->
-<!-- About Us Section Starts -->
-<!-- ========================================================= -->
 
-<section id="about-us-section" class="dashboard-section">
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <div id="about-us-header" class="section-header">
-        <h2 id="about-us-title" class="section-title">About Us</h2>
-        <p id="about-us-description" class="section-description">
-            Learn more about our school's mission, values, and the
-            learning experience we provide our students.
-        </p>
+    <div class="dashboard-container">
+
+        <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+
+        <!-- ============================= -->
+        <!-- LEFT SIDEBAR                   -->
+        <!-- ============================= -->
+        <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="logo.png" alt="School Logo" class="sidebar-logo-img">
+                    <span class="sidebar-logo-text">SMS Portal</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu" aria-label="Primary navigation">
+
+                <p class="sidebar-label">Menu</p>
+
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-grid-1x2"></i></span>
+                            <span class="sidebar-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="myprofile.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-person"></i></span>
+                            <span class="sidebar-text">My Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="calendar.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calendar3"></i></span>
+                            <span class="sidebar-text">Calendar</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="Calculator.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calculator"></i></span>
+                            <span class="sidebar-text">Calculator</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="Extra Courses.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-hourglass-split"></i></span>
+                            <span class="sidebar-text">Coming Soon</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <p class="sidebar-label sidebar-label--spaced">Support</p>
+
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="contact with school.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-building"></i></span>
+                            <span class="sidebar-text">Contact with School</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="aboutus.html" class="sidebar-link" aria-current="page">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-info-circle"></i></span>
+                            <span class="sidebar-text">About Us</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="news and updates.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-newspaper"></i></span>
+                            <span class="sidebar-text">News &amp; Updates</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="helpcenter.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
+                            <span class="sidebar-text">Help Center</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="privacy-policy.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-shield-lock"></i></span>
+                            <span class="sidebar-text">Privacy Policy</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="terms-conditions.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-file-earmark-text"></i></span>
+                            <span class="sidebar-text">Terms &amp; Conditions</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="settings.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-gear"></i></span>
+                            <span class="sidebar-text">Settings</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="logout.html" class="sidebar-link sidebar-link--danger">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-box-arrow-right"></i></span>
+                            <span class="sidebar-text">Logout</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </aside>
+
+        <!-- ============================= -->
+        <!-- MAIN WRAPPER                   -->
+        <!-- ============================= -->
+        <div class="main-wrapper">
+
+            <header class="top-navbar">
+
+                <button class="menu-toggle" id="menu-toggle" type="button"
+                        aria-label="Toggle sidebar menu" aria-controls="sidebar"
+                        aria-expanded="true" data-ripple>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                </button>
+
+                <div class="navbar-left">
+                    <h1 class="page-title">About Us</h1>
+                    <p class="page-subtitle">Our mission, values &amp; academic heritage</p>
+                </div>
+
+                <nav class="navbar-right" aria-label="Top navigation">
+                    <ul class="navbar-menu">
+
+                        <li class="navbar-item">
+                            <a href="#announcement" class="navbar-link" data-ripple>
+                                <i class="bi bi-bell navbar-link-icon" aria-hidden="true"></i>
+                                <span class="navbar-link-text">Announcements</span>
+                                <span class="announcement-badge" id="announcement-badge">0</span>
+                            </a>
+                        </li>
+
+                        <li class="navbar-item">
+                            <a href="myprofile.html" class="avatar-link" aria-label="My Profile" data-ripple>
+                                <i class="bi bi-person-circle" aria-hidden="true"></i>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+            </header>
+
+            <!-- ============================= -->
+            <!-- PAGE CONTENT                   -->
+            <!-- ============================= -->
+            <main class="dashboard-content page-content" id="main-content">
+
+                <a href="dashboard.html" class="back-link" data-ripple>
+                    <i class="bi bi-arrow-left back-icon" aria-hidden="true"></i>
+                    <span>Back to Dashboard</span>
+                </a>
+
+                <p class="page-intro" id="about-us-description">
+                    Learn more about Axiom Academy's mission, core values, and the modern learning experience we provide our students from Playgroup through Class 12.
+                </p>
+
+                <!-- 1. Quick Facts -->
+                <section class="panel" id="quick-facts-card" aria-labelledby="quick-facts-heading">
+                    <header class="panel-header">
+                        <h2 class="panel-title" id="quick-facts-heading">Quick Facts</h2>
+                    </header>
+
+                    <div class="panel-body">
+                        <div class="facts-grid">
+
+                            <div class="fact-box">
+                                <span class="fact-icon" aria-hidden="true"><i class="bi bi-calendar-check"></i></span>
+                                <div class="fact-content">
+                                    <span class="fact-number">2010</span>
+                                    <span class="fact-label">Established</span>
+                                </div>
+                            </div>
+
+                            <div class="fact-box">
+                                <span class="fact-icon fact-icon--green" aria-hidden="true"><i class="bi bi-people"></i></span>
+                                <div class="fact-content">
+                                    <span class="fact-number">1,200+</span>
+                                    <span class="fact-label">Enrolled Students</span>
+                                </div>
+                            </div>
+
+                            <div class="fact-box">
+                                <span class="fact-icon fact-icon--teal" aria-hidden="true"><i class="bi bi-person-workspace"></i></span>
+                                <div class="fact-content">
+                                    <span class="fact-number">80+</span>
+                                    <span class="fact-label">Qualified Teachers</span>
+                                </div>
+                            </div>
+
+                            <div class="fact-box">
+                                <span class="fact-icon fact-icon--indigo" aria-hidden="true"><i class="bi bi-buildings"></i></span>
+                                <div class="fact-content">
+                                    <span class="fact-number">3</span>
+                                    <span class="fact-label">Active Campuses</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. Mission & Vision -->
+                <section class="panel" id="mission-vision-card" aria-labelledby="mission-vision-heading">
+                    <header class="panel-header">
+                        <h2 class="panel-title" id="mission-vision-heading">Mission &amp; Vision</h2>
+                    </header>
+
+                    <div class="panel-body">
+                        <div class="mv-grid">
+
+                            <div class="mv-card">
+                                <div class="mv-header">
+                                    <i class="bi bi-bullseye" aria-hidden="true"></i>
+                                    <h3>Our Mission</h3>
+                                </div>
+                                <p class="mv-text">
+                                    To nurture confident, capable, and responsible learners by combining strong academic foundations with ethical values, critical thinking, and modern digital tools.
+                                </p>
+                            </div>
+
+                            <div class="mv-card mv-card--vision">
+                                <div class="mv-header">
+                                    <i class="bi bi-eye" aria-hidden="true"></i>
+                                    <h3>Our Vision</h3>
+                                </div>
+                                <p class="mv-text">
+                                    To be a leading educational institution recognized for academic excellence, innovation in learning, and the holistic development of every student.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. Our Story & Key Highlights -->
+                <section class="panel" id="our-story-card" aria-labelledby="our-story-heading">
+                    <header class="panel-header">
+                        <h2 class="panel-title" id="our-story-heading">Our Story &amp; Commitment</h2>
+                    </header>
+
+                    <div class="panel-body">
+                        <ul id="our-story-list" class="story-list">
+                            <li class="story-item">
+                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                                <span>Founded in 2010 to provide accessible, high-quality, and student-centered education.</span>
+                            </li>
+                            <li class="story-item">
+                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                                <span>Committed to both academic excellence and strong moral character building.</span>
+                            </li>
+                            <li class="story-item">
+                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                                <span>Serving learners across all stages from Playgroup through Higher Secondary (Class 12).</span>
+                            </li>
+                            <li class="story-item">
+                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+                                <span>Equipped with modern science &amp; computer laboratories, digital portal tracking, and co-curricular clubs.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+            </main>
+
+            <footer class="footer">
+                <p class="footer-text">&copy; Student Management System</p>
+            </footer>
+
+        </div>
+        <!-- /main-wrapper -->
+
     </div>
+    <!-- /dashboard-container -->
 
-    <article id="our-story-card" class="dashboard-card">
-        <div class="card-header">
-            <h3 class="card-title">Our Story</h3>
-        </div>
-        <div class="card-body">
-            <ul id="our-story-list" class="feature-list">
-                <li class="feature-item">Founded to provide quality, student-centered education.</li>
-                <li class="feature-item">Committed to academic excellence and character building.</li>
-                <li class="feature-item">Serving students from Playgroup through Class 12.</li>
-            </ul>
-        </div>
-    </article>
-
-    <article id="quick-facts-card" class="dashboard-card">
-        <div class="card-header">
-            <h3 class="card-title">Quick Facts</h3>
-        </div>
-        <div class="card-body">
-            <table id="quick-facts-table" class="dashboard-table">
-                <tbody>
-                    <tr><th class="table-heading">Established</th><td class="table-data">2010</td></tr>
-                    <tr><th class="table-heading">Students</th><td class="table-data">1,200+</td></tr>
-                    <tr><th class="table-heading">Faculty</th><td class="table-data">80+ Teachers</td></tr>
-                    <tr><th class="table-heading">Campuses</th><td class="table-data">3</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </article>
-
-    <article id="mission-vision-card" class="dashboard-card">
-        <div class="card-header">
-            <h3 class="card-title">Mission &amp; Vision</h3>
-        </div>
-        <div class="card-body">
-            <ul id="mission-vision-list" class="feature-list">
-                <li class="feature-item">Mission: To nurture confident, capable, and responsible learners.</li>
-                <li class="feature-item">Vision: To be a leading institution recognized for academic excellence and holistic development.</li>
-            </ul>
-        </div>
-    </article>
-
-</section>
-
-<!-- ========================================================= -->
-<!-- About Us Section Ends -->
-<!-- ========================================================= -->
+    <script src="dashboard.js"></script>
 </body>
 </html>

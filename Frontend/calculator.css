@@ -1,0 +1,134 @@
+/* ==========================================================================
+   calculator.css
+   Styles for the Calculator page (Calculator.html).
+   Reuses design tokens, borders, shadows, and colors from home-dashboard.css.
+   ========================================================================== */
+
+.calculator-wrapper {
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.calc-display-box {
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  margin-bottom: 18px;
+  text-align: right;
+  overflow: hidden;
+}
+
+.calc-expression {
+  min-height: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  word-break: break-all;
+}
+
+.calc-screen {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  text-align: right;
+  font-family: var(--font-sans);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+  outline: none;
+}
+
+.calc-keypad {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.calc-btn {
+  height: 54px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.calc-btn:hover {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.calc-btn:active {
+  transform: scale(0.96);
+}
+
+.calc-btn--op {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: transparent;
+}
+
+.calc-btn--op:hover {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.calc-btn--action {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.calc-btn--danger {
+  background: var(--danger-light);
+  color: var(--danger);
+  border-color: transparent;
+}
+
+.calc-btn--danger:hover {
+  background: var(--danger);
+  color: #ffffff;
+}
+
+.calc-btn--equal {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.calc-btn--equal:hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+  color: #ffffff;
+}
+
+.calc-hint {
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+@media (max-width: 575.98px) {
+  .calc-btn {
+    height: 48px;
+    font-size: 15px;
+  }
+
+  .calc-screen {
+    font-size: 28px;
+  }
+}

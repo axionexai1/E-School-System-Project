@@ -4,78 +4,342 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News &amp; Updates</title>
+
+    <!-- Font: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+
+    <!-- Icons: Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Shared styles first, then page styles -->
+    <link rel="stylesheet" href="home-dashboard.css">
+    <link rel="stylesheet" href="news-updates.css">
 </head>
 <body>
-<!-- ========================================================= -->
-<!-- News & Updates Section Starts -->
-<!-- ========================================================= -->
 
-<section id="news-updates-section" class="dashboard-section">
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <div id="news-updates-header" class="section-header">
-        <h2 id="news-updates-title" class="section-title">News &amp; Updates</h2>
-        <p id="news-updates-description" class="section-description">
-            Stay informed with the latest news, announcements, and updates
-            from the school.
-        </p>
+    <div class="dashboard-container">
+
+        <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+
+        <!-- ============================= -->
+        <!-- LEFT SIDEBAR                   -->
+        <!-- ============================= -->
+        <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="logo.png" alt="School Logo" class="sidebar-logo-img">
+                    <span class="sidebar-logo-text">SMS Portal</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu" aria-label="Primary navigation">
+
+                <p class="sidebar-label">Menu</p>
+
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-grid-1x2"></i></span>
+                            <span class="sidebar-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="myprofile.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-person"></i></span>
+                            <span class="sidebar-text">My Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="calendar.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calendar3"></i></span>
+                            <span class="sidebar-text">Calendar</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="Calculator.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calculator"></i></span>
+                            <span class="sidebar-text">Calculator</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="Extra Courses.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-hourglass-split"></i></span>
+                            <span class="sidebar-text">Coming Soon</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <p class="sidebar-label sidebar-label--spaced">Support</p>
+
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="contact with school.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-building"></i></span>
+                            <span class="sidebar-text">Contact with School</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="aboutus.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-info-circle"></i></span>
+                            <span class="sidebar-text">About Us</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="news and updates.html" class="sidebar-link" aria-current="page">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-newspaper"></i></span>
+                            <span class="sidebar-text">News &amp; Updates</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="helpcenter.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
+                            <span class="sidebar-text">Help Center</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="privacy-policy.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-shield-lock"></i></span>
+                            <span class="sidebar-text">Privacy Policy</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="terms-conditions.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-file-earmark-text"></i></span>
+                            <span class="sidebar-text">Terms &amp; Conditions</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="settings.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-gear"></i></span>
+                            <span class="sidebar-text">Settings</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="logout.html" class="sidebar-link sidebar-link--danger">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-box-arrow-right"></i></span>
+                            <span class="sidebar-text">Logout</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </aside>
+
+        <!-- ============================= -->
+        <!-- MAIN WRAPPER                   -->
+        <!-- ============================= -->
+        <div class="main-wrapper">
+
+            <header class="top-navbar">
+
+                <button class="menu-toggle" id="menu-toggle" type="button"
+                        aria-label="Toggle sidebar menu" aria-controls="sidebar"
+                        aria-expanded="true" data-ripple>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                </button>
+
+                <div class="navbar-left">
+                    <h1 class="page-title">News &amp; Updates</h1>
+                    <p class="page-subtitle">Official school circulars, notices &amp; portal changelog</p>
+                </div>
+
+                <nav class="navbar-right" aria-label="Top navigation">
+                    <ul class="navbar-menu">
+
+                        <li class="navbar-item">
+                            <a href="#announcement" class="navbar-link" data-ripple>
+                                <i class="bi bi-bell navbar-link-icon" aria-hidden="true"></i>
+                                <span class="navbar-link-text">Announcements</span>
+                                <span class="announcement-badge" id="announcement-badge">0</span>
+                            </a>
+                        </li>
+
+                        <li class="navbar-item">
+                            <a href="myprofile.html" class="avatar-link" aria-label="My Profile" data-ripple>
+                                <i class="bi bi-person-circle" aria-hidden="true"></i>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+            </header>
+
+            <!-- ============================= -->
+            <!-- PAGE CONTENT                   -->
+            <!-- ============================= -->
+            <main class="dashboard-content page-content" id="main-content">
+
+                <a href="dashboard.html" class="back-link" data-ripple>
+                    <i class="bi bi-arrow-left back-icon" aria-hidden="true"></i>
+                    <span>Back to Dashboard</span>
+                </a>
+
+                <p class="page-intro" id="news-updates-description">
+                    Stay informed with the latest news, official circulars, holiday announcements, and portal updates from the school.
+                </p>
+
+                <!-- 1. Latest News Panel -->
+                <section class="panel" id="latest-news-card" aria-labelledby="latest-news-heading">
+                    <header class="panel-header">
+                        <h2 class="panel-title" id="latest-news-heading">Latest News &amp; Circulars</h2>
+                    </header>
+
+                    <div class="panel-body">
+
+                        <!-- Category Filter Buttons -->
+                        <div class="news-filters" role="group" aria-label="Filter news by category">
+                            <button type="button" class="filter-pill is-active" data-filter="all">All</button>
+                            <button type="button" class="filter-pill" data-filter="admissions">Admissions</button>
+                            <button type="button" class="filter-pill" data-filter="holiday">Holidays</button>
+                            <button type="button" class="filter-pill" data-filter="academic">Academic</button>
+                            <button type="button" class="filter-pill" data-filter="sports">Sports &amp; Events</button>
+                        </div>
+
+                        <div class="news-grid" id="notification-list">
+
+                            <a href="#recent-updates-card" class="news-card" data-category="admissions">
+                                <div class="news-card-meta">
+                                    <span class="news-badge">Admissions</span>
+                                    <span>Nov 15, 2026</span>
+                                </div>
+                                <h3 class="news-title">Admissions open for the new academic session</h3>
+                                <p class="news-excerpt">Registration forms for Playgroup through Class 12 are now available at the school admission office and online portal.</p>
+                            </a>
+
+                            <a href="calendar.html" class="news-card news-card--holiday" data-category="holiday">
+                                <div class="news-card-meta">
+                                    <span class="news-badge news-badge--holiday">Holiday Notice</span>
+                                    <span>Nov 10, 2026</span>
+                                </div>
+                                <h3 class="news-title">School will remain closed for public holiday</h3>
+                                <p class="news-excerpt">Classes and administrative offices will remain closed on the upcoming gazetted holiday. Regular schedule resumes the following day.</p>
+                            </a>
+
+                            <a href="dashboard.html" class="news-card news-card--academic" data-category="academic">
+                                <div class="news-card-meta">
+                                    <span class="news-badge news-badge--academic">Academic</span>
+                                    <span>Nov 04, 2026</span>
+                                </div>
+                                <h3 class="news-title">New library resources now available online</h3>
+                                <p class="news-excerpt">Digital textbooks, past papers, and subject reference guides have been added to the Course Content section for all grades.</p>
+                            </a>
+
+                            <a href="calendar.html" class="news-card news-card--sports" data-category="sports">
+                                <div class="news-card-meta">
+                                    <span class="news-badge news-badge--sports">Sports &amp; Events</span>
+                                    <span>Oct 28, 2026</span>
+                                </div>
+                                <h3 class="news-title">Annual sports day schedule announced</h3>
+                                <p class="news-excerpt">Inter-house athletics, cricket, and football trials begin next week. Students can register with their sports coordinator.</p>
+                            </a>
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. Recent Portal Updates Table -->
+                <section class="panel" id="recent-updates-card" aria-labelledby="recent-updates-heading">
+                    <header class="panel-header">
+                        <h2 class="panel-title" id="recent-updates-heading">Recent Updates</h2>
+                    </header>
+
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table id="recent-updates-table" class="updates-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Update</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="update-date">Aug 18, 2026</td>
+                                        <td class="update-text">Result cards uploaded to student portal</td>
+                                        <td><span class="update-status">Live</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="update-date">Aug 10, 2026</td>
+                                        <td class="update-text">Fee submission deadline extended</td>
+                                        <td><span class="update-status">Updated</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="update-date">Aug 01, 2026</td>
+                                        <td class="update-text">New semester timetable published</td>
+                                        <td><span class="update-status">Published</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+
+            <footer class="footer">
+                <p class="footer-text">&copy; Student Management System</p>
+            </footer>
+
+        </div>
+        <!-- /main-wrapper -->
+
     </div>
+    <!-- /dashboard-container -->
 
-    <article id="latest-news-card" class="dashboard-card">
-        <div class="card-header">
-            <h3 class="card-title">Latest News</h3>
-        </div>
-        <div class="card-body">
-            <ul id="notification-list" class="notification-list">
-                <li class="notification-item">
-                    <a href="#" class="notification-link">Admissions open for the new academic session</a>
-                </li>
-                <li class="notification-item">
-                    <a href="#" class="notification-link">School will remain closed for public holiday</a>
-                </li>
-                <li class="notification-item">
-                    <a href="#" class="notification-link">New library resources now available online</a>
-                </li>
-                <li class="notification-item">
-                    <a href="#" class="notification-link">Annual sports day schedule announced</a>
-                </li>
-            </ul>
-        </div>
-    </article>
+    <script src="dashboard.js"></script>
+    <script>
+        (function () {
+            const filterButtons = document.querySelectorAll(".filter-pill");
+            const newsCards = document.querySelectorAll(".news-card");
 
-    <article id="recent-updates-card" class="dashboard-card">
-        <div class="card-header">
-            <h3 class="card-title">Recent Updates</h3>
-        </div>
-        <div class="card-body">
-            <table id="recent-updates-table" class="dashboard-table">
-                <thead>
-                    <tr>
-                        <th class="table-heading">Date</th>
-                        <th class="table-heading">Update</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="table-data">Aug 18, 2026</td>
-                        <td class="table-data">Result cards uploaded to student portal</td>
-                    </tr>
-                    <tr>
-                        <td class="table-data">Aug 10, 2026</td>
-                        <td class="table-data">Fee submission deadline extended</td>
-                    </tr>
-                    <tr>
-                        <td class="table-data">Aug 1, 2026</td>
-                        <td class="table-data">New semester timetable published</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </article>
+            filterButtons.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    filterButtons.forEach((b) => b.classList.remove("is-active"));
+                    btn.classList.add("is-active");
 
-</section>
-
-<!-- ========================================================= -->
-<!-- News & Updates Section Ends -->
-<!-- ========================================================= -->
+                    const selected = btn.getAttribute("data-filter");
+                    newsCards.forEach((card) => {
+                        const category = card.getAttribute("data-category");
+                        if (selected === "all" || category === selected) {
+                            card.classList.remove("is-hidden");
+                        } else {
+                            card.classList.add("is-hidden");
+                        }
+                    });
+                });
+            });
+        })();
+    </script>
 </body>
 </html>

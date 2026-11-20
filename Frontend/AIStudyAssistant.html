@@ -3,332 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>AI Study Assistant</title>
+
+    <!-- Font: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+
+    <!-- Icons: Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Shared styles -->
+    <link rel="stylesheet" href="home-dashboard.css">
+    <link rel="stylesheet" href="ai-assistant.css">
 </head>
 <body>
-    <!-- ========================================================= -->
-<!-- AI Study Assistant Section Starts -->
-<!-- ========================================================= -->
 
-<section id="ai-study-assistant-section" class="dashboard-section">
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <!-- Section Header -->
+    <div class="dashboard-container">
 
-    <div id="ai-assistant-header" class="section-header">
+        <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
 
-        <h2 id="ai-assistant-title" class="section-title">
-            AI Study Assistant
-        </h2>
+        <!-- ============================= -->
+        <!-- LEFT SIDEBAR                   -->
+        <!-- ============================= -->
+        <aside class="sidebar" id="sidebar" aria-label="Sidebar">
 
-        <p id="ai-assistant-description" class="section-description">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="logo.png" alt="School Logo" class="sidebar-logo-img">
+                    <span class="sidebar-logo-text">SMS Portal</span>
+                </div>
+            </div>
 
-            The AI Study Assistant helps students improve their learning by
-            answering questions based only on the school's uploaded study
-            material and providing personalized academic guidance.
+            <nav class="sidebar-menu" aria-label="Primary navigation">
 
-        </p>
+                <p class="sidebar-label">Menu</p>
+
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-grid-1x2"></i></span>
+                            <span class="sidebar-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="myprofile.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-person"></i></span>
+                            <span class="sidebar-text">My Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="calendar.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calendar3"></i></span>
+                            <span class="sidebar-text">Calendar</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="Calculator.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-calculator"></i></span>
+                            <span class="sidebar-text">Calculator</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="Extra Courses.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-hourglass-split"></i></span>
+                            <span class="sidebar-text">Coming Soon</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <p class="sidebar-label sidebar-label--spaced">Support</p>
+
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="contact with school.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-building"></i></span>
+                            <span class="sidebar-text">Contact with School</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="aboutus.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-info-circle"></i></span>
+                            <span class="sidebar-text">About Us</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="news and updates.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-newspaper"></i></span>
+                            <span class="sidebar-text">News &amp; Updates</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="helpcenter.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-question-circle"></i></span>
+                            <span class="sidebar-text">Help Center</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="privacy-policy.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-shield-lock"></i></span>
+                            <span class="sidebar-text">Privacy Policy</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="terms-conditions.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-file-earmark-text"></i></span>
+                            <span class="sidebar-text">Terms &amp; Conditions</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-item">
+                        <a href="settings.html" class="sidebar-link">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-gear"></i></span>
+                            <span class="sidebar-text">Settings</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="logout.html" class="sidebar-link sidebar-link--danger">
+                            <span class="sidebar-icon" aria-hidden="true"><i class="bi bi-box-arrow-right"></i></span>
+                            <span class="sidebar-text">Logout</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </aside>
+
+        <!-- ============================= -->
+        <!-- MAIN WRAPPER                   -->
+        <!-- ============================= -->
+        <div class="main-wrapper">
+
+            <header class="top-navbar">
+
+                <button class="menu-toggle" id="menu-toggle" type="button"
+                        aria-label="Toggle sidebar menu" aria-controls="sidebar"
+                        aria-expanded="true" data-ripple>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                    <span class="menu-toggle-line"></span>
+                </button>
+
+                <div class="navbar-left">
+                    <h1 class="page-title">AI Study Assistant</h1>
+                    <p class="page-subtitle">Ask questions from your course material</p>
+                </div>
+
+                <nav class="navbar-right" aria-label="Top navigation">
+                    <ul class="navbar-menu">
+
+                        <li class="navbar-item">
+                            <a href="#announcement" class="navbar-link" data-ripple>
+                                <i class="bi bi-bell navbar-link-icon" aria-hidden="true"></i>
+                                <span class="navbar-link-text">Announcements</span>
+                                <span class="announcement-badge" id="announcement-badge">0</span>
+                            </a>
+                        </li>
+
+                        <li class="navbar-item">
+                            <a href="myprofile.html" class="avatar-link" aria-label="My Profile" data-ripple>
+                                <i class="bi bi-person-circle" aria-hidden="true"></i>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+            </header>
+
+            <!-- ============================= -->
+            <!-- PAGE CONTENT (Chat Theme)      -->
+            <!-- ============================= -->
+            <main class="dashboard-content page-content" id="main-content">
+
+                <a href="dashboard.html" class="back-link" data-ripple>
+                    <i class="bi bi-arrow-left back-icon" aria-hidden="true"></i>
+                    <span>Back to Dashboard</span>
+                </a>
+
+                <section class="panel" aria-label="AI Study Assistant Chat">
+                    <div class="panel-body">
+                        <div class="chat-shell">
+
+                            <div class="chat-thread" id="chat-thread" aria-live="polite">
+                                <div class="chat-msg chat-msg--ai">
+                                    <div class="chat-avatar" aria-hidden="true">
+                                        <i class="bi bi-sparkles"></i>
+                                    </div>
+                                    <div class="chat-bubble">
+                                        Hello! Ask me anything from your uploaded school study material, syllabus topics, or study guidance.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="chat-prompts" id="chat-prompts">
+                                <button type="button" class="prompt-chip" data-prompt="Explain Newton's First Law">Explain Newton's First Law</button>
+                                <button type="button" class="prompt-chip" data-prompt="Give me study tips for my exams">Study tips</button>
+                                <button type="button" class="prompt-chip" data-prompt="Analyze my attendance and weak subjects">Attendance &amp; weak subjects</button>
+                            </div>
+
+                            <form class="chat-composer" id="ai-chat-form">
+                                <textarea id="student-question" class="chat-input" rows="1" placeholder="Ask your study question..." required></textarea>
+                                <button type="submit" class="chat-send-btn" aria-label="Send question">
+                                    <i class="bi bi-send" aria-hidden="true"></i>
+                                </button>
+                            </form>
+
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+
+            <footer class="footer">
+                <p class="footer-text">&copy; Student Management System</p>
+            </footer>
+
+        </div>
+        <!-- /main-wrapper -->
 
     </div>
-
-    <!-- AI Services -->
-
-    <article id="ai-services-card" class="dashboard-card">
-
-        <div class="card-header">
-
-            <h3 class="card-title">
-                AI Services
-            </h3>
-
-        </div>
-
-        <div class="card-body">
-
-            <ul id="ai-services-list" class="service-list">
-
-                <li class="service-item">
-                    <a href="study-tips.html" id="study-tips-link" class="service-link">
-                        Study Tips
-                    </a>
-                </li>
-
-                <li class="service-item">
-                    <a href="attendance-analysis.html" id="attendance-analysis-link" class="service-link">
-                        Attendance Analysis
-                    </a>
-                </li>
-
-                <li class="service-item">
-                    <a href="performance-analysis.html" id="performance-analysis-link" class="service-link">
-                        Performance Analysis
-                    </a>
-                </li>
-
-                <li class="service-item">
-                    <a href="weak-subjects.html" id="weak-subjects-link" class="service-link">
-                        Weak Subjects
-                    </a>
-                </li>
-
-                <li class="service-item">
-                    <a href="improvement-suggestions.html" id="improvement-link" class="service-link">
-                        Improvement Suggestions
-                    </a>
-                </li>
-
-                <li class="service-item">
-                    <a href="personalized-recommendations.html" id="recommendation-link" class="service-link">
-                        Personalized Recommendations
-                    </a>
-                </li>
-
-            </ul>
-
-        </div>
-
-    </article>
-
-    <!-- Ask AI -->
-
-    <article id="ask-ai-card" class="dashboard-card">
-
-        <div class="card-header">
-
-            <h3 class="card-title">
-                Ask AI Assistant
-            </h3>
-
-        </div>
-
-        <div class="card-body">
-
-            <form id="ai-chat-form"
-                  class="dashboard-form"
-                  action="#"
-                  method="post">
-
-                <div class="form-group">
-
-                    <label for="student-question" class="form-label">
-
-                        Ask Your Question
-
-                    </label>
-
-                    <textarea id="student-question"
-                              name="student_question"
-                              class="form-textarea"
-                              rows="6"
-                              placeholder="Example: Explain Newton's First Law"></textarea>
-
-                </div>
-
-                <div class="form-group">
-
-                    <button type="submit"
-                            id="ask-ai-button"
-                            class="submit-button">
-
-                        Ask AI
-
-                    </button>
-
-                </div>
-
-            </form>
-
-        </div>
-
-    </article>
-
-    <!-- AI Rules -->
-
-    <article id="ai-rules-card" class="dashboard-card">
-
-        <div class="card-header">
-
-            <h3 class="card-title">
-                AI Assistant Rules
-            </h3>
-
-        </div>
-
-        <div class="card-body">
-
-            <ul id="ai-rules-list" class="feature-list">
-
-                <li class="feature-item">
-                    Answers only questions related to the school's uploaded course material.
-                </li>
-
-                <li class="feature-item">
-                    Does not answer unrelated topics such as entertainment or personal advice.
-                </li>
-
-                <li class="feature-item">
-                    Never shares another student's information, grades, or personal data.
-                </li>
-
-                <li class="feature-item">
-                    Protects every student's privacy and follows school safety policies.
-                </li>
-
-                <li class="feature-item">
-                    Provides educational assistance only.
-                </li>
-
-            </ul>
-
-        </div>
-
-    </article>
-
-    <!-- AI Analysis -->
-
-    <article id="ai-analysis-card" class="dashboard-card">
-
-        <div class="card-header">
-
-            <h3 class="card-title">
-                AI Learning Analysis
-            </h3>
-
-        </div>
-
-        <div class="card-body">
-
-            <table id="ai-analysis-table" class="dashboard-table">
-
-                <thead>
-
-                    <tr>
-
-                        <th class="table-heading">
-                            AI Feature
-                        </th>
-
-                        <th class="table-heading">
-                            Description
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td class="table-data">
-                            Study Tips
-                        </td>
-
-                        <td class="table-data">
-                            Daily study suggestions based on current subjects.
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="table-data">
-                            Attendance Analysis
-                        </td>
-
-                        <td class="table-data">
-                            Reviews attendance percentage and warns if attendance is low.
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="table-data">
-                            Performance Analysis
-                        </td>
-
-                        <td class="table-data">
-                            Analyzes exam and test results to identify learning progress.
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="table-data">
-                            Weak Subjects
-                        </td>
-
-                        <td class="table-data">
-                            Identifies subjects that need more attention.
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="table-data">
-                            Improvement Suggestions
-                        </td>
-
-                        <td class="table-data">
-                            Provides practical advice for improving academic performance.
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td class="table-data">
-                            Personalized Recommendations
-                        </td>
-
-                        <td class="table-data">
-                            Suggests study plans based on the student's academic history.
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </article>
-
-    <!-- Example Response -->
-
-    <article id="ai-example-card" class="dashboard-card">
-
-        <div class="card-header">
-
-            <h3 class="card-title">
-                Example AI Response
-            </h3>
-
-        </div>
-
-        <div class="card-body">
-
-            <blockquote id="ai-example-message"
-                        class="ai-message">
-
-                "Your attendance is <strong>82%</strong>.
-                Your Mathematics marks are below average.
-                Study Algebra for <strong>30 minutes daily</strong>
-                and complete your pending assignments this week."
-
-            </blockquote>
-
-        </div>
-
-    </article>
-
-</section>
-
-<!-- ========================================================= -->
-<!-- AI Study Assistant Section Ends -->
-<!-- ========================================================= -->
+    <!-- /dashboard-container -->
+
+    <script src="dashboard.js"></script>
+    <script>
+        (function () {
+            const form = document.getElementById("ai-chat-form");
+            const input = document.getElementById("student-question");
+            const thread = document.getElementById("chat-thread");
+            const chips = document.querySelectorAll(".prompt-chip");
+
+            function appendMessage(role, text) {
+                const wrapper = document.createElement("div");
+                wrapper.className = "chat-msg chat-msg--" + role;
+
+                const avatar = document.createElement("div");
+                avatar.className = "chat-avatar";
+                avatar.setAttribute("aria-hidden", "true");
+                avatar.innerHTML = role === "user"
+                    ? '<i class="bi bi-person"></i>'
+                    : '<i class="bi bi-sparkles"></i>';
+
+                const bubble = document.createElement("div");
+                bubble.className = "chat-bubble";
+                bubble.textContent = text;
+
+                wrapper.appendChild(avatar);
+                wrapper.appendChild(bubble);
+                thread.appendChild(wrapper);
+                thread.scrollTop = thread.scrollHeight;
+            }
+
+            chips.forEach((chip) => {
+                chip.addEventListener("click", () => {
+                    input.value = chip.getAttribute("data-prompt");
+                    input.focus();
+                });
+            });
+
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const query = input.value.trim();
+                if (!query) return;
+
+                appendMessage("user", query);
+                input.value = "";
+                input.style.height = "auto";
+
+                appendMessage(
+                    "ai",
+                    'Your question "' +
+                    query +
+                    '" is ready for the AI assistant. Connect your backend API to answer strictly from uploaded course materials.'
+                );
+            });
+        })();
+    </script>
 </body>
 </html>

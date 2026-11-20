@@ -1,0 +1,341 @@
+/* ==========================================================================
+   calendar.css
+   Styles for the interactive Academic Calendar page (calendar.html).
+   Reuses tokens, shadows, borders, and typography from home-dashboard.css.
+   ========================================================================== */
+
+.calendar-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(280px, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+/* Month Navigation Bar inside Calendar Panel */
+.calendar-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.calendar-month-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.calendar-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.cal-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+.cal-btn--today {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: transparent;
+  font-weight: 600;
+}
+
+.cal-btn--today:hover {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+/* Legend for Event Categories */
+.calendar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 18px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.legend-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend-dot--exam {
+  background: var(--danger);
+}
+
+.legend-dot--holiday {
+  background: var(--success);
+}
+
+.legend-dot--event {
+  background: var(--primary);
+}
+
+/* Weekdays Header Grid */
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.calendar-weekday {
+  padding: 8px 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Days Grid */
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.calendar-day {
+  position: relative;
+  min-height: 68px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  text-align: left;
+  transition: transform var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out);
+}
+
+.calendar-day:hover:not(.calendar-day--empty) {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-xs);
+  transform: translateY(-1px);
+}
+
+.calendar-day--empty {
+  background: var(--bg);
+  border-style: dashed;
+  opacity: 0.55;
+  cursor: default;
+}
+
+.calendar-day--today {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.calendar-day--today .day-number {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.calendar-day--selected {
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.day-number {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.day-dots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.day-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.day-dot--exam {
+  background: var(--danger);
+}
+
+.day-dot--holiday {
+  background: var(--success);
+}
+
+.day-dot--event {
+  background: var(--primary);
+}
+
+/* Events Panel on the Right */
+.selected-date-banner {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  margin-bottom: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.selected-date-banner i {
+  color: var(--primary);
+  font-size: 16px;
+}
+
+.event-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.event-card {
+  padding: 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  border-left-width: 4px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.event-card--exam {
+  border-left-color: var(--danger);
+}
+
+.event-card--holiday {
+  border-left-color: var(--success);
+}
+
+.event-card--event {
+  border-left-color: var(--primary);
+}
+
+.event-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.event-tag {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.event-tag--exam {
+  background: var(--danger-light);
+  color: var(--danger);
+}
+
+.event-tag--holiday {
+  background: var(--success-light);
+  color: var(--success);
+}
+
+.event-tag--event {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.event-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.event-desc {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.empty-events {
+  padding: 24px 16px;
+  text-align: center;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 991.98px) {
+  .calendar-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .calendar-day {
+    min-height: 52px;
+    padding: 6px;
+  }
+
+  .day-number {
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
+  }
+}

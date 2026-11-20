@@ -1,0 +1,165 @@
+/* ==========================================================================
+   about-us.css
+   Styles for the About Us page (aboutus.html).
+   Reuses design tokens, spacing, shadows, and animations from home-dashboard.css.
+   ========================================================================== */
+
+/* 4-Column Quick Facts Stat Grid */
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.fact-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  transition: border-color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.fact-box:hover {
+  border-color: var(--primary);
+  background: var(--surface);
+  transform: translateY(-2px);
+}
+
+.fact-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 20px;
+}
+
+.fact-icon--green {
+  background: var(--green-light);
+  color: var(--green);
+}
+
+.fact-icon--teal {
+  background: var(--teal-light);
+  color: var(--teal);
+}
+
+.fact-icon--indigo {
+  background: var(--indigo-light);
+  color: var(--indigo);
+}
+
+.fact-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.fact-number {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.fact-label {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* Mission & Vision Side-by-Side Cards */
+.mv-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.mv-card {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mv-card--vision {
+  border-left-color: var(--teal);
+}
+
+.mv-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.mv-header i {
+  font-size: 18px;
+  color: var(--primary);
+}
+
+.mv-card--vision .mv-header i {
+  color: var(--teal);
+}
+
+.mv-text {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Story & Core Values List */
+.story-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.story-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.story-item i {
+  color: var(--success);
+  font-size: 17px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1100px) {
+  .facts-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .facts-grid,
+  .mv-grid {
+    grid-template-columns: 1fr;
+  }
+}

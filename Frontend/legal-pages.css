@@ -1,0 +1,132 @@
+/* ==========================================================================
+   legal-pages.css
+   Shared styles for Privacy Policy (privacy-policy.html) and
+   Terms & Conditions (terms-conditions.html).
+   Reuses design tokens, borders, spacing, and shadows from home-dashboard.css.
+   ========================================================================== */
+
+.policy-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.policy-text {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* Two-Column Policy Grid for Information Collected & Used */
+.policy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* Clean Icon List inside Policy Panels */
+.policy-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.policy-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.policy-item i {
+  font-size: 17px;
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.policy-item--security i {
+  color: var(--success);
+}
+
+/* Bottom Contact Callout Box */
+.policy-callout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.policy-callout-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  max-width: 640px;
+}
+
+.policy-callout-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 20px;
+}
+
+.policy-callout-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+
+.policy-callout-desc {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.policy-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 22px;
+  border-radius: var(--radius-md);
+  background: var(--primary);
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: var(--shadow-xs);
+  transition: background var(--duration-fast) var(--ease-out),
+    transform var(--duration-base) var(--ease-spring);
+}
+
+.policy-action-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 860px) {
+  .policy-grid {
+    grid-template-columns: 1fr;
+  }
+}
